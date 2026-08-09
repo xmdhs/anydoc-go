@@ -1,11 +1,67 @@
 package core
 
 import (
+	"encoding/binary"
 	"math"
 	"math/bits"
+	"unsafe"
 	_ "embed"
 )
 
+
+//go:nosplit
+func load32(b []byte) uint32 {
+	if !unalignedOK {
+		return binary.LittleEndian.Uint32(b)
+	}
+	v := *(*uint32)(unsafe.Pointer((*[4]byte)(b)))
+	if big {
+		return bits.ReverseBytes32(v)
+	}
+	return v
+}
+
+//go:nosplit
+func store32(b []byte, v uint32) {
+	if !unalignedOK {
+		binary.LittleEndian.PutUint32(b, v)
+		return
+	}
+	if big {
+		v = bits.ReverseBytes32(v)
+	}
+	*(*uint32)(unsafe.Pointer((*[4]byte)(b))) = v
+}
+
+//go:nosplit
+func load64(b []byte) uint64 {
+	if !unalignedOK {
+		return binary.LittleEndian.Uint64(b)
+	}
+	v := *(*uint64)(unsafe.Pointer((*[8]byte)(b)))
+	if big {
+		return bits.ReverseBytes64(v)
+	}
+	return v
+}
+
+//go:nosplit
+func store64(b []byte, v uint64) {
+	if !unalignedOK {
+		binary.LittleEndian.PutUint64(b, v)
+		return
+	}
+	if big {
+		v = bits.ReverseBytes64(v)
+	}
+	*(*uint64)(unsafe.Pointer((*[8]byte)(b))) = v
+}
+
+//go:nosplit
+func i32(x int32) int32 { return x }
+
+//go:nosplit
+func i64(x int64) int64 { return x }
 
 //go:nosplit
 func i32_shl(x, y int32) int32 {

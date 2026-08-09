@@ -15,6 +15,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
 	anydoc "anydoc-go/lib" // 包的内部名也是 anydoc；别名保证可读
 )
@@ -24,6 +25,7 @@ func main() {
 		output = flag.String("o", "", "write Markdown to `file` (single input only; `-` = stdout)")
 		stdout = flag.Bool("s", false, "print Markdown to stdout (works with multiple inputs)")
 		format = flag.String("f", "", "force input `format` by extension (docx, csv, pdf, ...); default auto-detect")
+		assets = flag.String("assets", "", "write embedded assets (images, objects) into `dir` and link them in the Markdown")
 	)
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: anydoc [options] <file|glob>...\n\n")
@@ -67,6 +69,14 @@ func main() {
 			failed = true
 			continue
 		}
+		if *assets != "" {
+			md, err = extractAssets(conv, file, *format, md, *assets)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "anydoc: %s: %v\n", file, err)
+				failed = true
+				continue
+			}
+		}
 		switch {
 		case *stdout || *output == "-":
 			fmt.Fprint(os.Stdout, md)
@@ -88,4 +98,61 @@ func main() {
 	if failed {
 		os.Exit(1)
 	}
+}
+
+// extractAssets 把文档内嵌资产写入 dir（文件名为 <stem>-<ID>.<ext>），并
+// 把 markdown 里的 asset://<ID> 占位替换为对应路径。与 ConvertFile 相同
+// 的格式兜底（显式 -f → 内容自动检测 → 路径扩展名）。
+func extractAssets(conv *anydoc.Converter, file, format, md, dir string) (string, error) {
+	data, err := os.ReadFile(file)
+	if err != nil {
+		return md, err
+	}
+	formats := []string{format}
+	if format == "" {
+		if ext := strings.TrimPrefix(filepath.Ext(file), "."); ext != "" {
+			formats = append(formats, ext)
+		}
+	}
+	var assets []anydoc.Asset
+	for _, f := range formats {
+		if assets, err = conv.ExtractAssets(data, f); err == nil {
+			break
+		}
+	}
+	if err != nil {
+		return md, err
+	}
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		return md, err
+	}
+	stem := strings.TrimSuffix(filepath.Base(file), filepath.Ext(file))
+	for _, a := range assets {
+		name := fmt.Sprintf("%s-%d.%s", stem, a.ID, assetExt(a.MediaType))
+		path := filepath.Join(dir, name)
+		if err := os.WriteFile(path, a.Bytes, 0o644); err != nil {
+			return md, err
+		}
+		md = strings.ReplaceAll(md, fmt.Sprintf("asset://%d", a.ID), path)
+	}
+	return md, nil
+}
+
+// assetExt 从 media type 推导文件扩展名：image/* 取子类型字母数字，
+// 其余一律 bin（与 anydoc 官方 example convert.rs 的规则一致）。
+func assetExt(mediaType string) string {
+	kind, subtype, ok := strings.Cut(mediaType, "/")
+	if !ok || kind != "image" {
+		return "bin"
+	}
+	var b strings.Builder
+	for _, r := range subtype {
+		if (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') || (r >= '0' && r <= '9') {
+			b.WriteRune(r)
+		}
+	}
+	if b.Len() == 0 {
+		return "bin"
+	}
+	return b.String()
 }

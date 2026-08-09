@@ -5,6 +5,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
@@ -44,6 +45,37 @@ func TestConvertMatchesExpected(t *testing.T) {
 				t.Errorf("output mismatch: got %d bytes, want %d bytes", len(got), len(want))
 			}
 		})
+	}
+}
+
+func TestExtractAssetsCLI(t *testing.T) {
+	conv := anydoc.NewConverter()
+	dir := t.TempDir()
+	md0, err := conv.ConvertBytes(readFile(t, "testdata/fixtures/docx/in-image.docx"), "")
+	if err != nil {
+		t.Fatalf("convert: %v", err)
+	}
+	md, err := extractAssets(conv, "testdata/fixtures/docx/in-image.docx", "", md0, dir)
+	if err != nil {
+		t.Fatalf("extractAssets: %v", err)
+	}
+	// 引用替换：asset://0 → <dir>/in-image-0.png，且文件真实落盘。
+	want := "![a red circle](" + filepath.Join(dir, "in-image-0.png") + ")"
+	if !strings.Contains(md, want) {
+		t.Errorf("markdown missing rewritten asset link: %q", md)
+	}
+	b, err := os.ReadFile(filepath.Join(dir, "in-image-0.png"))
+	if err != nil {
+		t.Fatalf("asset not written: %v", err)
+	}
+	if len(b) != 70 {
+		t.Errorf("asset bytes: want 70, got %d", len(b))
+	}
+	if ext := assetExt("image/png"); ext != "png" {
+		t.Errorf("assetExt(image/png) = %q", ext)
+	}
+	if ext := assetExt("application/octet-stream"); ext != "bin" {
+		t.Errorf("assetExt(octet) = %q", ext)
 	}
 }
 

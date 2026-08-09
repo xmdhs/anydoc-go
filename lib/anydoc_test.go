@@ -91,6 +91,32 @@ func TestConvertFileFallsBackToExtension(t *testing.T) {
 }
 
 // 错误路径返回 *ConvertError，其 Code 是与官方 anydoc 绑定一致的稳定标识。
+func TestExtractAssets(t *testing.T) {
+	conv := NewConverter()
+	data := readFixture(t, "../testdata/fixtures/docx/in-image.docx") // 手工构造的 1 像素 PNG docx
+
+	md, err := conv.ConvertBytes(data, "docx")
+	if err != nil {
+		t.Fatalf("convert: %v", err)
+	}
+	// 渲染层以 asset://<index> 占位（本地 patch），不再只有 alt 文本。
+	if !strings.Contains(md, "![a red circle](asset://0)") {
+		t.Errorf("markdown missing asset placeholder: %q", md)
+	}
+
+	assets, err := conv.ExtractAssets(data, "docx")
+	if err != nil {
+		t.Fatalf("extract assets: %v", err)
+	}
+	if len(assets) != 1 {
+		t.Fatalf("want 1 asset, got %d", len(assets))
+	}
+	a := assets[0]
+	if a.ID != 0 || a.MediaType != "image/png" || len(a.Bytes) != 70 {
+		t.Errorf("unexpected asset: id=%d media=%q bytes=%d", a.ID, a.MediaType, len(a.Bytes))
+	}
+}
+
 func TestLibErrorCode(t *testing.T) {
 	conv := NewConverter()
 	_, err := conv.ConvertBytes([]byte("garbage"), "")

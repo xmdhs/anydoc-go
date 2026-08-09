@@ -108,6 +108,117 @@ func (c *Converter) ConvertFile(path, format string) (string, error) {
 	return c.convert(data, strings.TrimPrefix(format, "."))
 }
 
+// Asset 是文档内嵌的二进制资产（图片、嵌入对象），对应渲染占位符
+// `![alt](asset://<ID>)`；ID 即 Document::assets 的下标。
+type Asset struct {
+	ID        uint32
+	MediaType string
+	Bytes     []byte
+}
+
+// ExtractAssets 解析文档并返回内嵌资产（字节原样保留）。与 ConvertBytes
+// 同一输入协议；markdown 里的图片以 `![alt](asset://<ID>)` 占位，用返回
+// 的 ID/MediaType/Bytes 落盘后可自行替换引用。非线程安全（同 Converter）。
+func (c *Converter) ExtractAssets(data []byte, format string) ([]Asset, error) {
+	mdl := c.mdl
+	if mdl == nil {
+		return nil, errors.New("converter not initialized")
+	}
+	mem := mdl.Xmemory().Slice()
+
+	// 输入分配进线性内存。
+	in := mdl.Xanydoc_alloc(int32(len(data)))
+	if in == 0 && len(data) > 0 {
+		return nil, errOutOfMemory
+	}
+	defer mdl.Xanydoc_free(in, int32(len(data)))
+
+	// 结果槽：out_len(4) + out_code(4)，8 字节对齐。
+	slots := mdl.Xanydoc_alloc(8)
+	if slots == 0 {
+		return nil, errOutOfMemory
+	}
+	defer mdl.Xanydoc_free(slots, 8)
+
+	if len(data) > 0 {
+		copy((*mem)[in:in+int32(len(data))], data)
+	}
+
+	// 可选格式：扩展名字节（NULL = 自动检测）。
+	var fptr, flen int32
+	if format != "" {
+		fbuf := mdl.Xanydoc_alloc(int32(len(format)))
+		if fbuf == 0 {
+			return nil, errOutOfMemory
+		}
+		defer mdl.Xanydoc_free(fbuf, int32(len(format)))
+		copy((*mem)[fbuf:fbuf+int32(len(format))], format)
+		fptr, flen = fbuf, int32(len(format))
+	}
+
+	buf := mdl.Xanydoc_assets(in, int32(len(data)), fptr, flen, slots, slots+4)
+	outLen := binary.LittleEndian.Uint32((*mem)[slots : slots+4])
+	code := binary.LittleEndian.Uint32((*mem)[slots+4 : slots+8])
+
+	result := ""
+	if outLen > 0 && buf != 0 {
+		result = string((*mem)[buf : buf+int32(outLen)])
+	}
+	mdl.Xanydoc_free(buf, int32(outLen))
+
+	if code != 0 {
+		if result == "" {
+			result = "conversion failed"
+		}
+		return nil, codeError(code, result)
+	}
+	return parseAssets(result)
+}
+
+// parseAssets 解析 anydoc_assets 的序列化流
+// （u32 数量 + 每项 u32 id / u32 media_len + bytes / u32 bytes_len + bytes）。
+func parseAssets(stream string) ([]Asset, error) {
+	b, pos := []byte(stream), 0
+	read32 := func() (uint32, bool) {
+		if pos+4 > len(b) {
+			return 0, false
+		}
+		v := binary.LittleEndian.Uint32(b[pos : pos+4])
+		pos += 4
+		return v, true
+	}
+	readBytes := func() ([]byte, bool) {
+		n, ok := read32()
+		if !ok || pos+int(n) > len(b) {
+			return nil, false
+		}
+		v := b[pos : pos+int(n)]
+		pos += int(n)
+		return v, true
+	}
+	count, ok := read32()
+	if !ok {
+		return nil, errors.New("assets stream truncated")
+	}
+	assets := make([]Asset, 0, count)
+	for range count {
+		id, ok := read32()
+		if !ok {
+			return nil, errors.New("assets stream truncated")
+		}
+		mt, ok := readBytes()
+		if !ok {
+			return nil, errors.New("assets stream truncated")
+		}
+		bytes_, ok := readBytes()
+		if !ok {
+			return nil, errors.New("assets stream truncated")
+		}
+		assets = append(assets, Asset{ID: id, MediaType: string(mt), Bytes: bytes_})
+	}
+	return assets, nil
+}
+
 // ConvertFileTo 是 ConvertFile + 写出 Markdown 的便捷封装；非线程安全。
 func (c *Converter) ConvertFileTo(path, format, outPath string) error {
 	md, err := c.ConvertFile(path, format)

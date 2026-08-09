@@ -27,7 +27,7 @@ pub const ERR_MISSING_PART: u32 = 5;
 pub const ERR_IO: u32 = 6;
 pub const ERR_OTHER: u32 = 7;
 
-/// Map a router error to its stable code (mirrors `ConvertError::code`).
+/// Map a stable error to its code (mirrors `ConvertError::code`).
 fn code_of(err: &ConvertError) -> u32 {
     match err.code() {
         "unsupported" => ERR_UNSUPPORTED,
@@ -38,6 +38,41 @@ fn code_of(err: &ConvertError) -> u32 {
         "io" => ERR_IO,
         _ => ERR_OTHER,
     }
+}
+
+/// Write a failure buffer and its code; NULL when out of memory.
+fn fail(err_msg: &str, code: u32, out_len: *mut usize, out_code: *mut u32) -> *mut u8 {
+    let ptr = store_bytes(err_msg.as_bytes(), out_len);
+    // SAFETY: caller-provided out slots.
+    unsafe { *out_code = code }
+    ptr
+}
+
+/// Parse the caller-supplied format extension (`fmt_len == 0` means
+/// detect-from-content); `Err((message, code))` on invalid input.
+fn resolve_format(fmt: *const u8, fmt_len: usize) -> Result<Option<Format>, (String, u32)> {
+    if fmt_len == 0 {
+        return Ok(None);
+    }
+    if fmt.is_null() {
+        return Err(("invalid format pointer".to_string(), ERR_UNSUPPORTED));
+    }
+    // SAFETY: fmt_len bytes of valid memory.
+    let fmt_bytes = unsafe { slice::from_raw_parts(fmt, fmt_len) };
+    let Some(ext) = std::str::from_utf8(fmt_bytes).ok() else {
+        return Err(("format is not valid UTF-8".to_string(), ERR_UNSUPPORTED));
+    };
+    let ext = ext.strip_prefix('.').unwrap_or(ext);
+    let Some(format) = Format::from_extension(ext) else {
+        return Err((format!("unrecognized format: {ext}"), ERR_UNSUPPORTED));
+    };
+    Ok(Some(format))
+}
+
+/// Append a little-endian u32 (the serialized asset stream is little-endian
+/// on every wasm target).
+fn push_u32(buf: &mut Vec<u8>, v: u32) {
+    buf.extend_from_slice(&v.to_le_bytes());
 }
 
 /// Allocate `size` bytes in linear memory (8-byte aligned).
@@ -90,14 +125,6 @@ pub extern "C" fn anydoc_to_markdown(
     out_len: *mut usize,
     out_code: *mut u32,
 ) -> *mut u8 {
-    // Write a failure buffer and its code; NULL when out of memory.
-    fn fail(msg: &str, code: u32, out_len: *mut usize, out_code: *mut u32) -> *mut u8 {
-        let ptr = store_bytes(msg.as_bytes(), out_len);
-        // SAFETY: caller-provided out slot.
-        unsafe { *out_code = code }
-        ptr
-    }
-
     // SAFETY: caller-provided out slots; we always initialize them first.
     unsafe {
         *out_code = ERR_OK;
@@ -110,21 +137,9 @@ pub extern "C" fn anydoc_to_markdown(
     // SAFETY: input_len bytes of valid memory when input_len > 0 (or NULL).
     let input_bytes = unsafe { slice::from_raw_parts(input, input_len) };
 
-    let format: Option<Format> = if fmt_len == 0 {
-        None
-    } else if fmt.is_null() {
-        return fail("invalid format pointer", ERR_UNSUPPORTED, out_len, out_code);
-    } else {
-        // SAFETY: fmt_len bytes of valid memory.
-        let fmt_bytes = unsafe { slice::from_raw_parts(fmt, fmt_len) };
-        let Some(ext) = std::str::from_utf8(fmt_bytes).ok() else {
-            return fail("format is not valid UTF-8", ERR_UNSUPPORTED, out_len, out_code);
-        };
-        let ext = ext.strip_prefix('.').unwrap_or(ext);
-        let Some(format) = Format::from_extension(ext) else {
-            return fail(&format!("unrecognized format: {ext}"), ERR_UNSUPPORTED, out_len, out_code);
-        };
-        Some(format)
+    let format = match resolve_format(fmt, fmt_len) {
+        Ok(format) => format,
+        Err((msg, code)) => return fail(&msg, code, out_len, out_code),
     };
 
     let markdown = match anydoc::to_markdown_bytes(input_bytes, format) {
@@ -144,6 +159,69 @@ pub extern "C" fn anydoc_to_markdown(
     // SAFETY: out_code is still ERR_OK from initialization; length was set
     // by store_bytes.
     ptr
+}
+
+/// Extract embedded assets (images, object payloads) of a document.
+///
+/// Same input/fmt protocol as [`anydoc_to_markdown`]. `out_code == 0` on
+/// success even when the document has no assets (the stream then just holds a
+/// zero count). The returned buffer is the serialized asset stream:
+///
+/// ```text
+/// u32 count
+///   per asset (little-endian):
+///     u32 id            index into the document's assets (matches the
+///                       `asset://<id>` placeholder rendered into Markdown)
+///     u32 type_len      media type bytes
+///     bytes             e.g. "image/png"
+///     u32 bytes_len     payload bytes
+///     bytes
+/// ```
+///
+/// Release the buffer with `anydoc_free(ptr, *out_len)`. PDF 等未编入格式
+/// 与 to_markdown 同样报 unsupported。
+#[unsafe(no_mangle)]
+pub extern "C" fn anydoc_assets(
+    input: *const u8,
+    input_len: usize,
+    fmt: *const u8,
+    fmt_len: usize,
+    out_len: *mut usize,
+    out_code: *mut u32,
+) -> *mut u8 {
+    // SAFETY: caller-provided out slots; we always initialize them first.
+    unsafe {
+        *out_code = ERR_OK;
+        *out_len = 0;
+    }
+
+    if input_len > 0 && input.is_null() {
+        return fail("invalid input pointer", ERR_OTHER, out_len, out_code);
+    }
+    // SAFETY: input_len bytes of valid memory when input_len > 0 (or NULL).
+    let input_bytes = unsafe { slice::from_raw_parts(input, input_len) };
+
+    let format = match resolve_format(fmt, fmt_len) {
+        Ok(format) => format,
+        Err((msg, code)) => return fail(&msg, code, out_len, out_code),
+    };
+
+    let document = match anydoc::to_document(input_bytes, format) {
+        Ok(document) => document,
+        Err(err) => return fail(&format!("{err}"), code_of(&err), out_len, out_code),
+    };
+
+    let mut buf: Vec<u8> = Vec::new();
+    push_u32(&mut buf, document.assets.len() as u32);
+    for asset in &document.assets {
+        push_u32(&mut buf, asset.id.0 as u32);
+        let media_type = asset.media_type.as_bytes();
+        push_u32(&mut buf, media_type.len() as u32);
+        buf.extend_from_slice(media_type);
+        push_u32(&mut buf, asset.bytes.len() as u32);
+        buf.extend_from_slice(&asset.bytes);
+    }
+    store_bytes(&buf, out_len)
 }
 
 /// Copy `bytes` into a fresh 8-byte-aligned allocation; `*out_len` receives

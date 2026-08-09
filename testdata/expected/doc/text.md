@@ -62,7 +62,7 @@ Jump to the bookmarked paragraph.
 
 ## Objects
 
-Inline image:  done.
+Inline image: ![](asset://0) done.
 
 Text box:  after the box.
 

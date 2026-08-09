@@ -4,7 +4,2208 @@ import (
 	"math/bits"
 )
 
-func (m *Module) fn87(v0, v1 int64, v2 int32) int64 {
+func (m *Module) fn87(v0, v1 int32) int32 {
+	var v2, v3, v4, v5, v6, v7, v8 int32
+	var v9 int64
+	var v10, v11, v12 int32
+	var v13, v14 int64
+	var v15, v16 int32
+	var v17, v18 int64
+	var v19, v20 int32
+	{
+		t0 := int32(load32(m.memory[int64(uint32(v0))+12:]))
+		v2 = t0
+		v3 = v2 + i32(1)
+		if v3 == 0 {
+			m.fn34(i32(1271248), i32(57), i32(1271276))
+			panic("unreachable")
+		}
+		{
+			t1 := int32(load32(m.memory[int64(uint32(v0))+4:]))
+			t2 := v3
+			v4 = t1
+			t3 := v4
+			v5 = v4 + i32(1)
+			v6 = int32(uint32(v5) >> 3)
+			v7 = v6 * i32(7)
+			p4 := v7
+			if uint32(v4) < uint32(i32(8)) {
+				p4 = t3
+			}
+			v8 = p4
+			if uint32(t2) <= uint32(int32(uint32(v8)>>1)) {
+				goto l1
+			}
+			{
+				{
+					{
+						v8 = v8 + i32(1)
+						p5 := v3
+						if uint32(v8) > uint32(v3) {
+							p5 = v8
+						}
+						v3 = p5
+						if uint32(v3) < uint32(i32(15)) {
+							goto l2
+						}
+						if uint32(v3) > uint32(i32(0x1fffffff)) {
+							m.fn34(i32(1271248), i32(57), i32(1271276))
+							panic("unreachable")
+						}
+						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
+						v3 = i32_shr_u(i32(-1), int32(bits.LeadingZeros32(uint32(t6+i32(-1))))) + i32(1)
+						goto l4
+					}
+				l2:
+					p7 := v3&i32(8) + i32(8)
+					if uint32(v3) < uint32(i32(4)) {
+						p7 = i32(4)
+					}
+					v3 = p7
+				}
+			l4:
+				v9 = int64(uint32(v3)) * i64(488)
+				if int32(int64(uint64(v9)>>32)) != 0 {
+					goto l5
+				}
+				v8 = v3 + i32(8)
+				t8 := v8
+				v10 = int32(v9)
+				v6 = t8 + v10
+				if uint32(v6) < uint32(v8) {
+					goto l5
+				}
+				if uint32(v6) > uint32(i32(0x7ffffff8)) {
+					goto l5
+				}
+				t9 := m.fn11(v6)
+				v5 = t9
+				if v5 != 0 {
+					v6 = v5 + v10
+					if v8 == 0 {
+						goto l7
+					}
+					memory_fill(m.memory, uint32(v6), i32(255), uint32(v8))
+				l7:
+					v5 = v3 + i32(-1)
+					p10 := int32(uint32(v3)>>3) * i32(7)
+					if uint32(v3) < uint32(i32(9)) {
+						p10 = v5
+					}
+					v11 = p10
+					t11 := int32(load32(m.memory[uint32(v0):]))
+					v12 = t11
+					{
+						if v2 == 0 {
+							goto l8
+						}
+						t12 := int64(load64(m.memory[uint32(v12):]))
+						v9 = (t12 ^ i64(-1)) & i64(-0x7f7f7f7f7f7f7f80)
+						t13 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+						v13 = t13
+						t14 := int64(load64(m.memory[uint32(v1):]))
+						v14 = t14
+						v8 = v12
+						v1 = v2
+						v3 = i32(0)
+					l14:
+						{
+							if v9 != i64(0) {
+								goto l9
+							}
+						l10:
+							{
+								v3 = v3 + i32(8)
+								v8 = v8 + i32(8)
+								t15 := int64(load64(m.memory[uint32(v8):]))
+								v9 = t15 & i64(-0x7f7f7f7f7f7f7f80)
+								if v9 == i64(-0x7f7f7f7f7f7f7f80) {
+									goto l10
+								}
+							}
+							v9 = v9 ^ i64(-0x7f7f7f7f7f7f7f80)
+						l9:
+							{
+								t16 := v6
+								t17 := v5
+								t18 := v14
+								t19 := v13
+								t20 := v12
+								v15 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
+								v10 = t20 + (i32(0)-v15)*i32(488)
+								t21 := int32(load32(m.memory[uint32(v10+i32(-488)):]))
+								t22 := int32(load32(m.memory[uint32(v10+i32(-484)):]))
+								t23 := m.fn88(t18, t19, t21, t22)
+								v16 = int32(t23)
+								v10 = t17 & v16
+								t24 := int64(load64(m.memory[uint32(t16+v10):]))
+								v17 = t24 & i64(-0x7f7f7f7f7f7f7f80)
+								if v17 != i64(0) {
+									goto l11
+								}
+								v7 = i32(8)
+							l12:
+								{
+									v10 = v10 + v7
+									v7 = v7 + i32(8)
+									t25 := v6
+									v10 = v10 & v5
+									t26 := int64(load64(m.memory[uint32(t25+v10):]))
+									v17 = t26 & i64(-0x7f7f7f7f7f7f7f80)
+									if v17 == 0 {
+										goto l12
+									}
+								}
+							}
+						l11:
+							v18 = v9 + i64(-1)
+							{
+								t27 := v6
+								v10 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v17))))>>3) + v10) & v5
+								t28 := int32(int8(m.memory[uint32(t27+v10)]))
+								if t28 < i32(0) {
+									goto l13
+								}
+								t29 := int64(load64(m.memory[uint32(v6):]))
+								v10 = int32(uint32(int64(bits.TrailingZeros64(uint64(t29&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+							}
+						l13:
+							v9 = v18 & v9
+							t30 := v6 + v10
+							v16 = int32(uint32(v16) >> 25)
+							m.memory[uint32(t30)] = byte(v16)
+							m.memory[uint32(v6+(v10+i32(-8))&v5+i32(8))] = byte(v16)
+							memory_copy(m.memory, uint32(v6+(v10^i32(-1))*i32(488)), uint32(v12+(v15^i32(-1))*i32(488)), uint32(i32(488)))
+							v1 = v1 + i32(-1)
+							if v1 != 0 {
+								goto l14
+							}
+						}
+					}
+				l8:
+					store32(m.memory[int64(uint32(v0))+4:], uint32(v5))
+					store32(m.memory[uint32(v0):], uint32(v6))
+					store32(m.memory[int64(uint32(v0))+8:], uint32(v11-v2))
+					if v4 == 0 {
+						goto l15
+					}
+					t31 := v4
+					v8 = (v4*i32(488) + i32(495)) & i32(-8)
+					v3 = t31 + v8 + i32(9)
+					if v3 == 0 {
+						goto l15
+					}
+					v4 = v12 - v8
+					t32 := int32(load32(m.memory[uint32(v4+i32(-4)):]))
+					v8 = t32
+					v6 = v8 & i32(-8)
+					t33 := v6
+					v8 = v8 & i32(3)
+					p34 := i32(8)
+					if v8 != 0 {
+						p34 = i32(4)
+					}
+					if uint32(t33) < uint32(p34+v3) {
+						m.fn2(i32(1273840), i32(46), i32(1273888))
+						panic("unreachable")
+					}
+					if v8 == 0 {
+						goto l17
+					}
+					if uint32(v6) > uint32(v3+i32(39)) {
+						m.fn2(i32(1273904), i32(46), i32(1273952))
+						panic("unreachable")
+					}
+				l17:
+					m.fn1(v4)
+					return i32(-1)
+				}
+				m.fn30(i32(8), v6)
+				panic("unreachable")
+			}
+		}
+	l1:
+		{
+			if v5 != 0 {
+				goto l19
+			}
+			v3 = i32(0)
+			goto l20
+		l19:
+			t35 := int32(load32(m.memory[uint32(v0):]))
+			v8 = t35
+			v3 = i32(0)
+			{
+				{
+					t36 := v6
+					var p37 int32
+					if v5&i32(7) != i32(0) {
+						p37 = 1
+					}
+					v6 = t36 + p37
+					if v6 == i32(1) {
+						goto l21
+					}
+					v12 = v6 & i32(1)
+					v10 = v6 & i32(0x3ffffffe)
+					v3 = i32(0)
+				l22:
+					{
+						v6 = v8 + v3
+						t38 := int64(load64(m.memory[uint32(v6):]))
+						t39 := v6
+						v9 = t38
+						store64(m.memory[uint32(t39):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+						v6 = v6 + i32(8)
+						t40 := int64(load64(m.memory[uint32(v6):]))
+						t41 := v6
+						v9 = t40
+						store64(m.memory[uint32(t41):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+						v3 = v3 + i32(16)
+						v10 = v10 + i32(-2)
+						if v10 != 0 {
+							goto l22
+						}
+					}
+					if v12 == 0 {
+						goto l23
+					}
+				}
+			l21:
+				v3 = v8 + v3
+				t42 := int64(load64(m.memory[uint32(v3):]))
+				t43 := v3
+				v9 = t42
+				store64(m.memory[uint32(t43):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+			}
+		l23:
+			{
+				if uint32(v5) < uint32(i32(8)) {
+					goto l24
+				}
+				t44 := int64(load64(m.memory[uint32(v8):]))
+				store64(m.memory[uint32(v8+v5):], uint64(t44))
+				goto l25
+			}
+		l24:
+			if v5 == 0 {
+				goto l25
+			}
+			memory_copy(m.memory, uint32(v8+i32(8)), uint32(v8), uint32(v5))
+		l25:
+			t45 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+			v17 = t45
+			t46 := int64(load64(m.memory[uint32(v1):]))
+			v18 = t46
+			v6 = v8
+			v10 = i32(0)
+		l34:
+			{
+				t47 := v8
+				v3 = v10
+				v5 = t47 + v3
+				t48 := int32(m.memory[uint32(v5)])
+				if t48 != i32(128) {
+					goto l26
+				}
+				v11 = v8 + (v3^i32(-1))*i32(488)
+				v10 = v8 + (i32(0)-v3)*i32(488)
+				v15 = v10 + i32(-484)
+				v16 = v10 + i32(-488)
+				{
+				l33:
+					{
+						t49 := int32(load32(m.memory[uint32(v16):]))
+						t50 := int32(load32(m.memory[uint32(v15):]))
+						t51 := m.fn88(v18, v17, t49, t50)
+						t52 := v4
+						v1 = int32(t51)
+						v10 = t52 & v1
+						v12 = v10
+						{
+							t53 := int64(load64(m.memory[uint32(v8+v10):]))
+							v9 = t53 & i64(-0x7f7f7f7f7f7f7f80)
+							if v9 != i64(0) {
+								goto l27
+							}
+							v19 = i32(8)
+							v12 = v10
+						l28:
+							{
+								v12 = v12 + v19
+								v19 = v19 + i32(8)
+								t54 := v8
+								v12 = v12 & v4
+								t55 := int64(load64(m.memory[uint32(t54+v12):]))
+								v9 = t55 & i64(-0x7f7f7f7f7f7f7f80)
+								if v9 == 0 {
+									goto l28
+								}
+							}
+						}
+					l27:
+						{
+							t56 := v8
+							v12 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v12) & v4
+							t57 := int32(int8(m.memory[uint32(t56+v12)]))
+							if t57 < i32(0) {
+								goto l29
+							}
+							t58 := int64(load64(m.memory[uint32(v8):]))
+							v12 = int32(uint32(int64(bits.TrailingZeros64(uint64(t58&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+						}
+					l29:
+						{
+							if uint32((v12-v10^(v3-v10))&v4) < uint32(i32(8)) {
+								goto l30
+							}
+							v10 = v8 + v12
+							t59 := int32(m.memory[uint32(v10)])
+							v19 = t59
+							t60 := v10
+							v1 = int32(uint32(v1) >> 25)
+							m.memory[uint32(t60)] = byte(v1)
+							m.memory[uint32(v8+(v12+i32(-8))&v4+i32(8))] = byte(v1)
+							if v19 == i32(255) {
+								goto l31
+							}
+							v10 = i32(-488)
+							v20 = v8 + v12*i32(-488)
+						l32:
+							{
+								v12 = v20 + v10
+								t61 := int32(load32(m.memory[uint32(v12):]))
+								v19 = t61
+								t62 := v12
+								v1 = v6 + v10
+								t63 := int32(load32(m.memory[uint32(v1):]))
+								store32(m.memory[uint32(t62):], uint32(t63))
+								store32(m.memory[uint32(v1):], uint32(v19))
+								v1 = v1 + i32(4)
+								t64 := int32(load32(m.memory[uint32(v1):]))
+								v19 = t64
+								t65 := v1
+								v12 = v12 + i32(4)
+								t66 := int32(load32(m.memory[uint32(v12):]))
+								store32(m.memory[uint32(t65):], uint32(t66))
+								store32(m.memory[uint32(v12):], uint32(v19))
+								v10 = v10 + i32(8)
+								if v10 != 0 {
+									goto l32
+								}
+								goto l33
+							}
+						}
+					l30:
+					}
+					t67 := v5
+					v10 = int32(uint32(v1) >> 25)
+					m.memory[uint32(t67)] = byte(v10)
+					m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(v10)
+					goto l26
+				}
+			l31:
+				m.memory[uint32(v5)] = byte(i32(255))
+				m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(i32(255))
+				memory_copy(m.memory, uint32(v8+(v12^i32(-1))*i32(488)), uint32(v11), uint32(i32(488)))
+			}
+		l26:
+			v10 = v3 + i32(1)
+			v6 = v6 + i32(-488)
+			if v3 != v4 {
+				goto l34
+			}
+			p68 := v7
+			if uint32(v4) < uint32(i32(8)) {
+				p68 = v4
+			}
+			v3 = p68
+		}
+	l20:
+		store32(m.memory[int64(uint32(v0))+8:], uint32(v3-v2))
+	l15:
+		return i32(-1)
+	l5:
+		m.fn34(i32(1271248), i32(57), i32(1271276))
+		panic("unreachable")
+	}
+}
+func (m *Module) fn88(v0, v1 int64, v2, v3 int32) int64 {
+	var v4 int32
+	var v5, v6, v7, v8 int64
+	t0 := m.g0
+	v4 = t0 - i32(80)
+	m.g0 = v4
+	store64(m.memory[int64(uint32(v4))+56:], uint64(i64(0)))
+	store64(m.memory[int64(uint32(v4))+64:], uint64(i64(0)))
+	store64(m.memory[int64(uint32(v4))+48:], uint64(v1))
+	store64(m.memory[int64(uint32(v4))+32:], uint64(v1^i64(8387220255154660723)))
+	store64(m.memory[int64(uint32(v4))+24:], uint64(v1^i64(7237128888997146477)))
+	store64(m.memory[int64(uint32(v4))+40:], uint64(v0))
+	store64(m.memory[int64(uint32(v4))+16:], uint64(v0^i64(0x6c7967656e657261)))
+	store64(m.memory[int64(uint32(v4))+8:], uint64(v0^i64(8317987319222330741)))
+	m.fn65(v4+i32(8), v2, v3)
+	m.memory[int64(uint32(v4))+79] = byte(i32(255))
+	m.fn65(v4+i32(8), v4+i32(79), i32(1))
+	t1 := int64(load64(m.memory[int64(uint32(v4))+8:]))
+	v0 = t1
+	t2 := int64(load64(m.memory[int64(uint32(v4))+24:]))
+	v1 = t2
+	t3 := int64(load32(m.memory[int64(uint32(v4))+64:]))
+	v5 = t3
+	t4 := int64(load64(m.memory[int64(uint32(v4))+56:]))
+	v6 = t4
+	t5 := int64(load64(m.memory[int64(uint32(v4))+32:]))
+	v7 = t5
+	t6 := int64(load64(m.memory[int64(uint32(v4))+16:]))
+	v8 = t6
+	m.g0 = v4 + i32(80)
+	t7 := v7
+	v5 = v6 | v5<<56
+	v6 = t7 ^ v5
+	t8 := i64_rotl(v6, i64(16))
+	v6 = v6 + v8
+	v7 = t8 ^ v6
+	t9 := i64_rotl(v7, i64(21))
+	t10 := v7
+	v0 = v1 + v0
+	v7 = t10 + i64_rotl(v0, i64(32))
+	v8 = t9 ^ v7
+	t11 := i64_rotl(v8, i64(16))
+	t12 := v8
+	t13 := v6
+	v1 = i64_rotl(v1, i64(13)) ^ v0
+	v0 = t13 + v1
+	v6 = t12 + (i64_rotl(v0, i64(32)) ^ i64(255))
+	v8 = t11 ^ v6
+	t14 := i64_rotl(v8, i64(21))
+	t15 := v8
+	t16 := v7 ^ v5
+	v1 = v0 ^ i64_rotl(v1, i64(17))
+	v0 = t16 + v1
+	v5 = t15 + i64_rotl(v0, i64(32))
+	v7 = t14 ^ v5
+	t17 := i64_rotl(v7, i64(16))
+	t18 := v7
+	v1 = v0 ^ i64_rotl(v1, i64(13))
+	v0 = v1 + v6
+	v6 = t18 + i64_rotl(v0, i64(32))
+	v7 = t17 ^ v6
+	t19 := i64_rotl(v7, i64(21))
+	t20 := v7
+	v1 = v0 ^ i64_rotl(v1, i64(17))
+	v0 = v1 + v5
+	v5 = t20 + i64_rotl(v0, i64(32))
+	v7 = t19 ^ v5
+	t21 := i64_rotl(v7, i64(16))
+	t22 := v7
+	v1 = i64_rotl(v1, i64(13)) ^ v0
+	v0 = v1 + v6
+	v6 = t22 + i64_rotl(v0, i64(32))
+	t23 := i64_rotl(t21^v6, i64(21))
+	v1 = i64_rotl(v1, i64(17)) ^ v0
+	v1 = i64_rotl(v1, i64(13)) ^ (v1 + v5)
+	t24 := t23 ^ i64_rotl(v1, i64(17))
+	v1 = v1 + v6
+	return t24 ^ i64_rotl(v1, i64(32)) ^ v1
+}
+func (m *Module) fn89(v0, v1 int32) int32 {
+	var v2, v3, v4, v5, v6, v7, v8 int32
+	var v9 int64
+	var v10, v11 int32
+	var v12, v13 int64
+	var v14, v15 int32
+	var v16 int64
+	var v17 int32
+	var v18 int64
+	{
+		t0 := int32(load32(m.memory[int64(uint32(v0))+12:]))
+		v2 = t0
+		v3 = v2 + i32(1)
+		if v3 == 0 {
+			m.fn34(i32(1271248), i32(57), i32(1271276))
+			panic("unreachable")
+		}
+		{
+			t1 := int32(load32(m.memory[int64(uint32(v0))+4:]))
+			t2 := v3
+			v4 = t1
+			t3 := v4
+			v5 = v4 + i32(1)
+			v6 = int32(uint32(v5) >> 3)
+			v7 = v6 * i32(7)
+			p4 := v7
+			if uint32(v4) < uint32(i32(8)) {
+				p4 = t3
+			}
+			v8 = p4
+			if uint32(t2) <= uint32(int32(uint32(v8)>>1)) {
+				goto l1
+			}
+			{
+				{
+					{
+						v8 = v8 + i32(1)
+						p5 := v3
+						if uint32(v8) > uint32(v3) {
+							p5 = v8
+						}
+						v3 = p5
+						if uint32(v3) < uint32(i32(15)) {
+							goto l2
+						}
+						if uint32(v3) > uint32(i32(0x1fffffff)) {
+							m.fn34(i32(1271248), i32(57), i32(1271276))
+							panic("unreachable")
+						}
+						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
+						v3 = i32_shr_u(i32(-1), int32(bits.LeadingZeros32(uint32(t6+i32(-1))))) + i32(1)
+						goto l4
+					}
+				l2:
+					p7 := v3&i32(8) + i32(8)
+					if uint32(v3) < uint32(i32(4)) {
+						p7 = i32(4)
+					}
+					v3 = p7
+				}
+			l4:
+				v9 = int64(uint32(v3)) * i64(12)
+				if int32(int64(uint64(v9)>>32)) != 0 {
+					goto l5
+				}
+				v6 = int32(v9)
+				if uint32(v6) > uint32(i32(-8)) {
+					goto l5
+				}
+				v8 = v3 + i32(8)
+				t8 := v8
+				v10 = (v6 + i32(7)) & i32(-8)
+				v6 = t8 + v10
+				if uint32(v6) < uint32(v8) {
+					goto l5
+				}
+				if uint32(v6) > uint32(i32(0x7ffffff8)) {
+					goto l5
+				}
+				t9 := m.fn11(v6)
+				v5 = t9
+				if v5 != 0 {
+					v6 = v5 + v10
+					if v8 == 0 {
+						goto l7
+					}
+					memory_fill(m.memory, uint32(v6), i32(255), uint32(v8))
+				l7:
+					v5 = v3 + i32(-1)
+					p10 := int32(uint32(v3)>>3) * i32(7)
+					if uint32(v3) < uint32(i32(9)) {
+						p10 = v5
+					}
+					v7 = p10
+					t11 := int32(load32(m.memory[uint32(v0):]))
+					v11 = t11
+					{
+						if v2 == 0 {
+							goto l8
+						}
+						t12 := int64(load64(m.memory[uint32(v11):]))
+						v9 = (t12 ^ i64(-1)) & i64(-0x7f7f7f7f7f7f7f80)
+						t13 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+						v12 = t13
+						t14 := int64(load64(m.memory[uint32(v1):]))
+						v13 = t14
+						v8 = v11
+						v1 = v2
+						v3 = i32(0)
+					l14:
+						{
+							if v9 != i64(0) {
+								goto l9
+							}
+						l10:
+							{
+								v3 = v3 + i32(8)
+								v8 = v8 + i32(8)
+								t15 := int64(load64(m.memory[uint32(v8):]))
+								v9 = t15 & i64(-0x7f7f7f7f7f7f7f80)
+								if v9 == i64(-0x7f7f7f7f7f7f7f80) {
+									goto l10
+								}
+							}
+							v9 = v9 ^ i64(-0x7f7f7f7f7f7f7f80)
+						l9:
+							{
+								t16 := v6
+								t17 := v5
+								t18 := v13
+								t19 := v12
+								t20 := v11
+								v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
+								v10 = t20 + (i32(0)-v14)*i32(12)
+								t21 := int32(load32(m.memory[uint32(v10+i32(-12)):]))
+								t22 := int32(load32(m.memory[uint32(v10+i32(-8)):]))
+								t23 := m.fn88(t18, t19, t21, t22)
+								v15 = int32(t23)
+								v10 = t17 & v15
+								t24 := int64(load64(m.memory[uint32(t16+v10):]))
+								v16 = t24 & i64(-0x7f7f7f7f7f7f7f80)
+								if v16 != i64(0) {
+									goto l11
+								}
+								v17 = i32(8)
+							l12:
+								{
+									v10 = v10 + v17
+									v17 = v17 + i32(8)
+									t25 := v6
+									v10 = v10 & v5
+									t26 := int64(load64(m.memory[uint32(t25+v10):]))
+									v16 = t26 & i64(-0x7f7f7f7f7f7f7f80)
+									if v16 == 0 {
+										goto l12
+									}
+								}
+							}
+						l11:
+							v18 = v9 + i64(-1)
+							{
+								t27 := v6
+								v10 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v16))))>>3) + v10) & v5
+								t28 := int32(int8(m.memory[uint32(t27+v10)]))
+								if t28 < i32(0) {
+									goto l13
+								}
+								t29 := int64(load64(m.memory[uint32(v6):]))
+								v10 = int32(uint32(int64(bits.TrailingZeros64(uint64(t29&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+							}
+						l13:
+							v9 = v18 & v9
+							t30 := v6 + v10
+							v15 = int32(uint32(v15) >> 25)
+							m.memory[uint32(t30)] = byte(v15)
+							m.memory[uint32(v6+(v10+i32(-8))&v5+i32(8))] = byte(v15)
+							v10 = v6 + (v10^i32(-1))*i32(12)
+							t31 := v10
+							v14 = v11 + (v14^i32(-1))*i32(12)
+							t32 := int32(load32(m.memory[int64(uint32(v14))+8:]))
+							store32(m.memory[int64(uint32(t31))+8:], uint32(t32))
+							t33 := int64(load64(m.memory[uint32(v14):]))
+							store64(m.memory[uint32(v10):], uint64(t33))
+							v1 = v1 + i32(-1)
+							if v1 != 0 {
+								goto l14
+							}
+						}
+					}
+				l8:
+					store32(m.memory[int64(uint32(v0))+4:], uint32(v5))
+					store32(m.memory[uint32(v0):], uint32(v6))
+					store32(m.memory[int64(uint32(v0))+8:], uint32(v7-v2))
+					if v4 == 0 {
+						goto l15
+					}
+					t34 := v4
+					v8 = (v4*i32(12) + i32(19)) & i32(-8)
+					v3 = t34 + v8 + i32(9)
+					if v3 == 0 {
+						goto l15
+					}
+					v4 = v11 - v8
+					t35 := int32(load32(m.memory[uint32(v4+i32(-4)):]))
+					v8 = t35
+					v6 = v8 & i32(-8)
+					t36 := v6
+					v8 = v8 & i32(3)
+					p37 := i32(8)
+					if v8 != 0 {
+						p37 = i32(4)
+					}
+					if uint32(t36) < uint32(p37+v3) {
+						m.fn2(i32(1273840), i32(46), i32(1273888))
+						panic("unreachable")
+					}
+					if v8 == 0 {
+						goto l17
+					}
+					if uint32(v6) > uint32(v3+i32(39)) {
+						m.fn2(i32(1273904), i32(46), i32(1273952))
+						panic("unreachable")
+					}
+				l17:
+					m.fn1(v4)
+					return i32(-1)
+				}
+				m.fn30(i32(8), v6)
+				panic("unreachable")
+			}
+		}
+	l1:
+		{
+			if v5 != 0 {
+				goto l19
+			}
+			v3 = i32(0)
+			goto l20
+		l19:
+			t38 := int32(load32(m.memory[uint32(v0):]))
+			v8 = t38
+			v3 = i32(0)
+			{
+				{
+					t39 := v6
+					var p40 int32
+					if v5&i32(7) != i32(0) {
+						p40 = 1
+					}
+					v6 = t39 + p40
+					if v6 == i32(1) {
+						goto l21
+					}
+					v11 = v6 & i32(1)
+					v10 = v6 & i32(0x3ffffffe)
+					v3 = i32(0)
+				l22:
+					{
+						v6 = v8 + v3
+						t41 := int64(load64(m.memory[uint32(v6):]))
+						t42 := v6
+						v9 = t41
+						store64(m.memory[uint32(t42):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+						v6 = v6 + i32(8)
+						t43 := int64(load64(m.memory[uint32(v6):]))
+						t44 := v6
+						v9 = t43
+						store64(m.memory[uint32(t44):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+						v3 = v3 + i32(16)
+						v10 = v10 + i32(-2)
+						if v10 != 0 {
+							goto l22
+						}
+					}
+					if v11 == 0 {
+						goto l23
+					}
+				}
+			l21:
+				v3 = v8 + v3
+				t45 := int64(load64(m.memory[uint32(v3):]))
+				t46 := v3
+				v9 = t45
+				store64(m.memory[uint32(t46):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+			}
+		l23:
+			{
+				if uint32(v5) < uint32(i32(8)) {
+					goto l24
+				}
+				t47 := int64(load64(m.memory[uint32(v8):]))
+				store64(m.memory[uint32(v8+v5):], uint64(t47))
+				goto l25
+			}
+		l24:
+			if v5 == 0 {
+				goto l25
+			}
+			memory_copy(m.memory, uint32(v8+i32(8)), uint32(v8), uint32(v5))
+		l25:
+			t48 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+			v16 = t48
+			t49 := int64(load64(m.memory[uint32(v1):]))
+			v18 = t49
+			v6 = i32(0)
+		l33:
+			{
+				t50 := v8
+				v3 = v6
+				v10 = t50 + v3
+				t51 := int32(m.memory[uint32(v10)])
+				if t51 != i32(128) {
+					goto l26
+				}
+				v15 = v8 + (v3^i32(-1))*i32(12)
+				v6 = v8 + (i32(0)-v3)*i32(12)
+				v1 = v6 + i32(-8)
+				v14 = v6 + i32(-12)
+			l32:
+				{
+					t52 := int32(load32(m.memory[uint32(v14):]))
+					t53 := int32(load32(m.memory[uint32(v1):]))
+					t54 := m.fn88(v18, v16, t52, t53)
+					t55 := v4
+					v11 = int32(t54)
+					v6 = t55 & v11
+					v5 = v6
+					{
+						t56 := int64(load64(m.memory[uint32(v8+v6):]))
+						v9 = t56 & i64(-0x7f7f7f7f7f7f7f80)
+						if v9 != i64(0) {
+							goto l27
+						}
+						v17 = i32(8)
+						v5 = v6
+					l28:
+						{
+							v5 = v5 + v17
+							v17 = v17 + i32(8)
+							t57 := v8
+							v5 = v5 & v4
+							t58 := int64(load64(m.memory[uint32(t57+v5):]))
+							v9 = t58 & i64(-0x7f7f7f7f7f7f7f80)
+							if v9 == 0 {
+								goto l28
+							}
+						}
+					}
+				l27:
+					{
+						t59 := v8
+						v5 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v5) & v4
+						t60 := int32(int8(m.memory[uint32(t59+v5)]))
+						if t60 < i32(0) {
+							goto l29
+						}
+						t61 := int64(load64(m.memory[uint32(v8):]))
+						v5 = int32(uint32(int64(bits.TrailingZeros64(uint64(t61&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+					}
+				l29:
+					{
+						if uint32((v5-v6^(v3-v6))&v4) < uint32(i32(8)) {
+							goto l30
+						}
+						v6 = v8 + v5
+						t62 := int32(m.memory[uint32(v6)])
+						v17 = t62
+						t63 := v6
+						v11 = int32(uint32(v11) >> 25)
+						m.memory[uint32(t63)] = byte(v11)
+						m.memory[uint32(v8+(v5+i32(-8))&v4+i32(8))] = byte(v11)
+						v6 = v8 + (v5^i32(-1))*i32(12)
+						{
+							if v17 != i32(255) {
+								t66 := int32(load32(m.memory[uint32(v15):]))
+								v5 = t66
+								t67 := int32(load32(m.memory[uint32(v6):]))
+								store32(m.memory[uint32(v15):], uint32(t67))
+								store32(m.memory[uint32(v6):], uint32(v5))
+								t68 := int32(load32(m.memory[int64(uint32(v6))+4:]))
+								v5 = t68
+								t69 := int32(load32(m.memory[int64(uint32(v15))+4:]))
+								store32(m.memory[int64(uint32(v6))+4:], uint32(t69))
+								store32(m.memory[int64(uint32(v15))+4:], uint32(v5))
+								t70 := int32(load32(m.memory[int64(uint32(v15))+8:]))
+								v5 = t70
+								t71 := int32(load32(m.memory[int64(uint32(v6))+8:]))
+								store32(m.memory[int64(uint32(v15))+8:], uint32(t71))
+								store32(m.memory[int64(uint32(v6))+8:], uint32(v5))
+								goto l32
+							}
+							m.memory[uint32(v10)] = byte(i32(255))
+							m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(i32(255))
+							t64 := int32(load32(m.memory[int64(uint32(v15))+8:]))
+							store32(m.memory[int64(uint32(v6))+8:], uint32(t64))
+							t65 := int64(load64(m.memory[uint32(v15):]))
+							store64(m.memory[uint32(v6):], uint64(t65))
+							goto l26
+						}
+					}
+				l30:
+				}
+				t72 := v10
+				v6 = int32(uint32(v11) >> 25)
+				m.memory[uint32(t72)] = byte(v6)
+				m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(v6)
+			}
+		l26:
+			v6 = v3 + i32(1)
+			if v3 != v4 {
+				goto l33
+			}
+			p73 := v7
+			if uint32(v4) < uint32(i32(8)) {
+				p73 = v4
+			}
+			v3 = p73
+		}
+	l20:
+		store32(m.memory[int64(uint32(v0))+8:], uint32(v3-v2))
+	l15:
+		return i32(-1)
+	}
+l5:
+	m.fn34(i32(1271248), i32(57), i32(1271276))
+	panic("unreachable")
+}
+func (m *Module) fn90(v0, v1 int32) int32 {
+	var v2, v3, v4, v5, v6, v7, v8 int32
+	var v9 int64
+	var v10, v11 int32
+	var v12, v13 int64
+	var v14, v15 int32
+	var v16 int64
+	var v17 int32
+	var v18 int64
+	{
+		t0 := int32(load32(m.memory[int64(uint32(v0))+12:]))
+		v2 = t0
+		v3 = v2 + i32(1)
+		if v3 == 0 {
+			m.fn34(i32(1271248), i32(57), i32(1271276))
+			panic("unreachable")
+		}
+		{
+			t1 := int32(load32(m.memory[int64(uint32(v0))+4:]))
+			t2 := v3
+			v4 = t1
+			t3 := v4
+			v5 = v4 + i32(1)
+			v6 = int32(uint32(v5) >> 3)
+			v7 = v6 * i32(7)
+			p4 := v7
+			if uint32(v4) < uint32(i32(8)) {
+				p4 = t3
+			}
+			v8 = p4
+			if uint32(t2) <= uint32(int32(uint32(v8)>>1)) {
+				goto l1
+			}
+			{
+				{
+					{
+						v8 = v8 + i32(1)
+						p5 := v3
+						if uint32(v8) > uint32(v3) {
+							p5 = v8
+						}
+						v3 = p5
+						if uint32(v3) < uint32(i32(15)) {
+							goto l2
+						}
+						if uint32(v3) > uint32(i32(0x1fffffff)) {
+							m.fn34(i32(1271248), i32(57), i32(1271276))
+							panic("unreachable")
+						}
+						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
+						v3 = i32_shr_u(i32(-1), int32(bits.LeadingZeros32(uint32(t6+i32(-1))))) + i32(1)
+						goto l4
+					}
+				l2:
+					p7 := v3&i32(8) + i32(8)
+					if uint32(v3) < uint32(i32(4)) {
+						p7 = i32(4)
+					}
+					v3 = p7
+				}
+			l4:
+				v9 = int64(uint32(v3)) * i64(20)
+				if int32(int64(uint64(v9)>>32)) != 0 {
+					goto l5
+				}
+				v6 = int32(v9)
+				if uint32(v6) > uint32(i32(-8)) {
+					goto l5
+				}
+				v8 = v3 + i32(8)
+				t8 := v8
+				v10 = (v6 + i32(7)) & i32(-8)
+				v6 = t8 + v10
+				if uint32(v6) < uint32(v8) {
+					goto l5
+				}
+				if uint32(v6) > uint32(i32(0x7ffffff8)) {
+					goto l5
+				}
+				t9 := m.fn11(v6)
+				v5 = t9
+				if v5 != 0 {
+					v6 = v5 + v10
+					if v8 == 0 {
+						goto l7
+					}
+					memory_fill(m.memory, uint32(v6), i32(255), uint32(v8))
+				l7:
+					v5 = v3 + i32(-1)
+					p10 := int32(uint32(v3)>>3) * i32(7)
+					if uint32(v3) < uint32(i32(9)) {
+						p10 = v5
+					}
+					v7 = p10
+					t11 := int32(load32(m.memory[uint32(v0):]))
+					v11 = t11
+					{
+						if v2 == 0 {
+							goto l8
+						}
+						t12 := int64(load64(m.memory[uint32(v11):]))
+						v9 = (t12 ^ i64(-1)) & i64(-0x7f7f7f7f7f7f7f80)
+						t13 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+						v12 = t13
+						t14 := int64(load64(m.memory[uint32(v1):]))
+						v13 = t14
+						v8 = v11
+						v14 = v2
+						v3 = i32(0)
+					l14:
+						{
+							if v9 != i64(0) {
+								goto l9
+							}
+						l10:
+							{
+								v3 = v3 + i32(8)
+								v8 = v8 + i32(8)
+								t15 := int64(load64(m.memory[uint32(v8):]))
+								v9 = t15 & i64(-0x7f7f7f7f7f7f7f80)
+								if v9 == i64(-0x7f7f7f7f7f7f7f80) {
+									goto l10
+								}
+							}
+							v9 = v9 ^ i64(-0x7f7f7f7f7f7f7f80)
+						l9:
+							{
+								t16 := v6
+								t17 := v5
+								t18 := v13
+								t19 := v12
+								t20 := v11
+								v1 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
+								v10 = t20 + (i32(0)-v1)*i32(20)
+								t21 := int32(load32(m.memory[uint32(v10+i32(-20)):]))
+								t22 := int32(load32(m.memory[uint32(v10+i32(-16)):]))
+								t23 := m.fn88(t18, t19, t21, t22)
+								v15 = int32(t23)
+								v10 = t17 & v15
+								t24 := int64(load64(m.memory[uint32(t16+v10):]))
+								v16 = t24 & i64(-0x7f7f7f7f7f7f7f80)
+								if v16 != i64(0) {
+									goto l11
+								}
+								v17 = i32(8)
+							l12:
+								{
+									v10 = v10 + v17
+									v17 = v17 + i32(8)
+									t25 := v6
+									v10 = v10 & v5
+									t26 := int64(load64(m.memory[uint32(t25+v10):]))
+									v16 = t26 & i64(-0x7f7f7f7f7f7f7f80)
+									if v16 == 0 {
+										goto l12
+									}
+								}
+							}
+						l11:
+							v18 = v9 + i64(-1)
+							{
+								t27 := v6
+								v10 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v16))))>>3) + v10) & v5
+								t28 := int32(int8(m.memory[uint32(t27+v10)]))
+								if t28 < i32(0) {
+									goto l13
+								}
+								t29 := int64(load64(m.memory[uint32(v6):]))
+								v10 = int32(uint32(int64(bits.TrailingZeros64(uint64(t29&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+							}
+						l13:
+							v9 = v18 & v9
+							t30 := v6 + v10
+							v15 = int32(uint32(v15) >> 25)
+							m.memory[uint32(t30)] = byte(v15)
+							m.memory[uint32(v6+(v10+i32(-8))&v5+i32(8))] = byte(v15)
+							v10 = v6 + (v10^i32(-1))*i32(20)
+							t31 := v10
+							v1 = v11 + (v1^i32(-1))*i32(20)
+							t32 := int32(load32(m.memory[int64(uint32(v1))+16:]))
+							store32(m.memory[int64(uint32(t31))+16:], uint32(t32))
+							t33 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+							store64(m.memory[int64(uint32(v10))+8:], uint64(t33))
+							t34 := int64(load64(m.memory[uint32(v1):]))
+							store64(m.memory[uint32(v10):], uint64(t34))
+							v14 = v14 + i32(-1)
+							if v14 != 0 {
+								goto l14
+							}
+						}
+					}
+				l8:
+					store32(m.memory[int64(uint32(v0))+4:], uint32(v5))
+					store32(m.memory[uint32(v0):], uint32(v6))
+					store32(m.memory[int64(uint32(v0))+8:], uint32(v7-v2))
+					if v4 == 0 {
+						goto l15
+					}
+					t35 := v4
+					v8 = (v4*i32(20) + i32(27)) & i32(-8)
+					v3 = t35 + v8 + i32(9)
+					if v3 == 0 {
+						goto l15
+					}
+					v4 = v11 - v8
+					t36 := int32(load32(m.memory[uint32(v4+i32(-4)):]))
+					v8 = t36
+					v6 = v8 & i32(-8)
+					t37 := v6
+					v8 = v8 & i32(3)
+					p38 := i32(8)
+					if v8 != 0 {
+						p38 = i32(4)
+					}
+					if uint32(t37) < uint32(p38+v3) {
+						m.fn2(i32(1273840), i32(46), i32(1273888))
+						panic("unreachable")
+					}
+					if v8 == 0 {
+						goto l17
+					}
+					if uint32(v6) > uint32(v3+i32(39)) {
+						m.fn2(i32(1273904), i32(46), i32(1273952))
+						panic("unreachable")
+					}
+				l17:
+					m.fn1(v4)
+					return i32(-1)
+				}
+				m.fn30(i32(8), v6)
+				panic("unreachable")
+			}
+		}
+	l1:
+		{
+			if v5 != 0 {
+				goto l19
+			}
+			v3 = i32(0)
+			goto l20
+		l19:
+			t39 := int32(load32(m.memory[uint32(v0):]))
+			v8 = t39
+			v3 = i32(0)
+			{
+				{
+					t40 := v6
+					var p41 int32
+					if v5&i32(7) != i32(0) {
+						p41 = 1
+					}
+					v6 = t40 + p41
+					if v6 == i32(1) {
+						goto l21
+					}
+					v11 = v6 & i32(1)
+					v10 = v6 & i32(0x3ffffffe)
+					v3 = i32(0)
+				l22:
+					{
+						v6 = v8 + v3
+						t42 := int64(load64(m.memory[uint32(v6):]))
+						t43 := v6
+						v9 = t42
+						store64(m.memory[uint32(t43):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+						v6 = v6 + i32(8)
+						t44 := int64(load64(m.memory[uint32(v6):]))
+						t45 := v6
+						v9 = t44
+						store64(m.memory[uint32(t45):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+						v3 = v3 + i32(16)
+						v10 = v10 + i32(-2)
+						if v10 != 0 {
+							goto l22
+						}
+					}
+					if v11 == 0 {
+						goto l23
+					}
+				}
+			l21:
+				v3 = v8 + v3
+				t46 := int64(load64(m.memory[uint32(v3):]))
+				t47 := v3
+				v9 = t46
+				store64(m.memory[uint32(t47):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+			}
+		l23:
+			{
+				if uint32(v5) < uint32(i32(8)) {
+					goto l24
+				}
+				t48 := int64(load64(m.memory[uint32(v8):]))
+				store64(m.memory[uint32(v8+v5):], uint64(t48))
+				goto l25
+			}
+		l24:
+			if v5 == 0 {
+				goto l25
+			}
+			memory_copy(m.memory, uint32(v8+i32(8)), uint32(v8), uint32(v5))
+		l25:
+			t49 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+			v16 = t49
+			t50 := int64(load64(m.memory[uint32(v1):]))
+			v18 = t50
+			v6 = i32(0)
+		l33:
+			{
+				t51 := v8
+				v3 = v6
+				v10 = t51 + v3
+				t52 := int32(m.memory[uint32(v10)])
+				if t52 != i32(128) {
+					goto l26
+				}
+				v15 = v8 + (v3^i32(-1))*i32(20)
+				v6 = v8 + (i32(0)-v3)*i32(20)
+				v11 = v6 + i32(-16)
+				v14 = v6 + i32(-20)
+			l32:
+				{
+					t53 := int32(load32(m.memory[uint32(v14):]))
+					t54 := int32(load32(m.memory[uint32(v11):]))
+					t55 := m.fn88(v18, v16, t53, t54)
+					t56 := v4
+					v1 = int32(t55)
+					v6 = t56 & v1
+					v5 = v6
+					{
+						t57 := int64(load64(m.memory[uint32(v8+v6):]))
+						v9 = t57 & i64(-0x7f7f7f7f7f7f7f80)
+						if v9 != i64(0) {
+							goto l27
+						}
+						v17 = i32(8)
+						v5 = v6
+					l28:
+						{
+							v5 = v5 + v17
+							v17 = v17 + i32(8)
+							t58 := v8
+							v5 = v5 & v4
+							t59 := int64(load64(m.memory[uint32(t58+v5):]))
+							v9 = t59 & i64(-0x7f7f7f7f7f7f7f80)
+							if v9 == 0 {
+								goto l28
+							}
+						}
+					}
+				l27:
+					{
+						t60 := v8
+						v5 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v5) & v4
+						t61 := int32(int8(m.memory[uint32(t60+v5)]))
+						if t61 < i32(0) {
+							goto l29
+						}
+						t62 := int64(load64(m.memory[uint32(v8):]))
+						v5 = int32(uint32(int64(bits.TrailingZeros64(uint64(t62&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+					}
+				l29:
+					{
+						if uint32((v5-v6^(v3-v6))&v4) < uint32(i32(8)) {
+							goto l30
+						}
+						v6 = v8 + v5
+						t63 := int32(m.memory[uint32(v6)])
+						v17 = t63
+						t64 := v6
+						v1 = int32(uint32(v1) >> 25)
+						m.memory[uint32(t64)] = byte(v1)
+						m.memory[uint32(v8+(v5+i32(-8))&v4+i32(8))] = byte(v1)
+						v6 = v8 + (v5^i32(-1))*i32(20)
+						{
+							if v17 != i32(255) {
+								t68 := int32(load32(m.memory[uint32(v15):]))
+								v5 = t68
+								t69 := int32(load32(m.memory[uint32(v6):]))
+								store32(m.memory[uint32(v15):], uint32(t69))
+								store32(m.memory[uint32(v6):], uint32(v5))
+								t70 := int32(load32(m.memory[int64(uint32(v6))+4:]))
+								v5 = t70
+								t71 := int32(load32(m.memory[int64(uint32(v15))+4:]))
+								store32(m.memory[int64(uint32(v6))+4:], uint32(t71))
+								store32(m.memory[int64(uint32(v15))+4:], uint32(v5))
+								t72 := int32(load32(m.memory[int64(uint32(v15))+8:]))
+								v5 = t72
+								t73 := int32(load32(m.memory[int64(uint32(v6))+8:]))
+								store32(m.memory[int64(uint32(v15))+8:], uint32(t73))
+								store32(m.memory[int64(uint32(v6))+8:], uint32(v5))
+								t74 := int32(load32(m.memory[int64(uint32(v6))+12:]))
+								v5 = t74
+								t75 := int32(load32(m.memory[int64(uint32(v15))+12:]))
+								store32(m.memory[int64(uint32(v6))+12:], uint32(t75))
+								store32(m.memory[int64(uint32(v15))+12:], uint32(v5))
+								t76 := int32(load32(m.memory[int64(uint32(v15))+16:]))
+								v5 = t76
+								t77 := int32(load32(m.memory[int64(uint32(v6))+16:]))
+								store32(m.memory[int64(uint32(v15))+16:], uint32(t77))
+								store32(m.memory[int64(uint32(v6))+16:], uint32(v5))
+								goto l32
+							}
+							m.memory[uint32(v10)] = byte(i32(255))
+							m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(i32(255))
+							t65 := int32(load32(m.memory[int64(uint32(v15))+16:]))
+							store32(m.memory[int64(uint32(v6))+16:], uint32(t65))
+							t66 := int64(load64(m.memory[int64(uint32(v15))+8:]))
+							store64(m.memory[int64(uint32(v6))+8:], uint64(t66))
+							t67 := int64(load64(m.memory[uint32(v15):]))
+							store64(m.memory[uint32(v6):], uint64(t67))
+							goto l26
+						}
+					}
+				l30:
+				}
+				t78 := v10
+				v6 = int32(uint32(v1) >> 25)
+				m.memory[uint32(t78)] = byte(v6)
+				m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(v6)
+			}
+		l26:
+			v6 = v3 + i32(1)
+			if v3 != v4 {
+				goto l33
+			}
+			p79 := v7
+			if uint32(v4) < uint32(i32(8)) {
+				p79 = v4
+			}
+			v3 = p79
+		}
+	l20:
+		store32(m.memory[int64(uint32(v0))+8:], uint32(v3-v2))
+	l15:
+		return i32(-1)
+	}
+l5:
+	m.fn34(i32(1271248), i32(57), i32(1271276))
+	panic("unreachable")
+}
+func (m *Module) fn91(v0, v1 int32) int32 {
+	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
+	var v11, v12, v13 int64
+	var v14, v15, v16 int32
+	var v17, v18 int64
+	{
+		{
+			{
+				t0 := int32(load32(m.memory[int64(uint32(v0))+12:]))
+				v2 = t0
+				v3 = v2 + i32(1)
+				if v3 == 0 {
+					m.fn34(i32(1271248), i32(57), i32(1271276))
+					panic("unreachable")
+				}
+				{
+					t1 := int32(load32(m.memory[int64(uint32(v0))+4:]))
+					t2 := v3
+					v4 = t1
+					t3 := v4
+					v5 = v4 + i32(1)
+					v6 = int32(uint32(v5) >> 3)
+					v7 = v6 * i32(7)
+					p4 := v7
+					if uint32(v4) < uint32(i32(8)) {
+						p4 = t3
+					}
+					v8 = p4
+					if uint32(t2) <= uint32(int32(uint32(v8)>>1)) {
+						{
+							if v5 != 0 {
+								goto l6
+							}
+							v3 = i32(0)
+							goto l7
+						l6:
+							t7 := int32(load32(m.memory[uint32(v0):]))
+							v8 = t7
+							v3 = i32(0)
+							{
+								{
+									t8 := v6
+									var p9 int32
+									if v5&i32(7) != i32(0) {
+										p9 = 1
+									}
+									v6 = t8 + p9
+									if v6 == i32(1) {
+										goto l8
+									}
+									v9 = v6 & i32(1)
+									v10 = v6 & i32(0x3ffffffe)
+									v3 = i32(0)
+								l9:
+									{
+										v6 = v8 + v3
+										t10 := int64(load64(m.memory[uint32(v6):]))
+										t11 := v6
+										v11 = t10
+										store64(m.memory[uint32(t11):], uint64(int64(uint64(v11^i64(-1))>>7)&i64(72340172838076673)+(v11|i64(0x7f7f7f7f7f7f7f7f))))
+										v6 = v6 + i32(8)
+										t12 := int64(load64(m.memory[uint32(v6):]))
+										t13 := v6
+										v11 = t12
+										store64(m.memory[uint32(t13):], uint64(int64(uint64(v11^i64(-1))>>7)&i64(72340172838076673)+(v11|i64(0x7f7f7f7f7f7f7f7f))))
+										v3 = v3 + i32(16)
+										v10 = v10 + i32(-2)
+										if v10 != 0 {
+											goto l9
+										}
+									}
+									if v9 == 0 {
+										goto l10
+									}
+								}
+							l8:
+								v3 = v8 + v3
+								t14 := int64(load64(m.memory[uint32(v3):]))
+								t15 := v3
+								v11 = t14
+								store64(m.memory[uint32(t15):], uint64(int64(uint64(v11^i64(-1))>>7)&i64(72340172838076673)+(v11|i64(0x7f7f7f7f7f7f7f7f))))
+							}
+						l10:
+							{
+								if uint32(v5) < uint32(i32(8)) {
+									goto l11
+								}
+								t16 := int64(load64(m.memory[uint32(v8):]))
+								store64(m.memory[uint32(v8+v5):], uint64(t16))
+								goto l12
+							}
+						l11:
+							if v5 == 0 {
+								goto l12
+							}
+							memory_copy(m.memory, uint32(v8+i32(8)), uint32(v8), uint32(v5))
+						l12:
+							t17 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+							v12 = t17
+							t18 := int64(load64(m.memory[uint32(v1):]))
+							v13 = t18
+							v6 = i32(0)
+						l20:
+							{
+								t19 := v8
+								v3 = v6
+								v10 = t19 + v3
+								t20 := int32(m.memory[uint32(v10)])
+								if t20 != i32(128) {
+									goto l13
+								}
+								v6 = v8 - v3<<3
+								v1 = v6 + i32(-4)
+								v14 = v6 + i32(-8)
+								v15 = v8 + (v3^i32(-1))<<3
+							l19:
+								{
+									t21 := int32(load32(m.memory[uint32(v14):]))
+									t22 := int32(load32(m.memory[uint32(v1):]))
+									t23 := m.fn88(v13, v12, t21, t22)
+									t24 := v4
+									v9 = int32(t23)
+									v6 = t24 & v9
+									v5 = v6
+									{
+										t25 := int64(load64(m.memory[uint32(v8+v6):]))
+										v11 = t25 & i64(-0x7f7f7f7f7f7f7f80)
+										if v11 != i64(0) {
+											goto l14
+										}
+										v16 = i32(8)
+										v5 = v6
+									l15:
+										{
+											v5 = v5 + v16
+											v16 = v16 + i32(8)
+											t26 := v8
+											v5 = v5 & v4
+											t27 := int64(load64(m.memory[uint32(t26+v5):]))
+											v11 = t27 & i64(-0x7f7f7f7f7f7f7f80)
+											if v11 == 0 {
+												goto l15
+											}
+										}
+									}
+								l14:
+									{
+										t28 := v8
+										v5 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v11))))>>3) + v5) & v4
+										t29 := int32(int8(m.memory[uint32(t28+v5)]))
+										if t29 < i32(0) {
+											goto l16
+										}
+										t30 := int64(load64(m.memory[uint32(v8):]))
+										v5 = int32(uint32(int64(bits.TrailingZeros64(uint64(t30&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+									}
+								l16:
+									{
+										if uint32((v5-v6^(v3-v6))&v4) < uint32(i32(8)) {
+											goto l17
+										}
+										v6 = v8 + v5
+										t31 := int32(m.memory[uint32(v6)])
+										v16 = t31
+										t32 := v6
+										v9 = int32(uint32(v9) >> 25)
+										m.memory[uint32(t32)] = byte(v9)
+										m.memory[uint32(v8+(v5+i32(-8))&v4+i32(8))] = byte(v9)
+										v6 = v8 + (v5^i32(-1))<<3
+										{
+											if v16 != i32(255) {
+												t34 := int64(load64(m.memory[uint32(v15):]))
+												v11 = t34
+												t35 := int64(load64(m.memory[uint32(v6):]))
+												store64(m.memory[uint32(v15):], uint64(t35))
+												store64(m.memory[uint32(v6):], uint64(v11))
+												goto l19
+											}
+											m.memory[uint32(v10)] = byte(i32(255))
+											m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(i32(255))
+											t33 := int64(load64(m.memory[uint32(v15):]))
+											store64(m.memory[uint32(v6):], uint64(t33))
+											goto l13
+										}
+									}
+								l17:
+								}
+								t36 := v10
+								v6 = int32(uint32(v9) >> 25)
+								m.memory[uint32(t36)] = byte(v6)
+								m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(v6)
+							}
+						l13:
+							v6 = v3 + i32(1)
+							if v3 != v4 {
+								goto l20
+							}
+							p37 := v7
+							if uint32(v4) < uint32(i32(8)) {
+								p37 = v4
+							}
+							v3 = p37
+						}
+					l7:
+						store32(m.memory[int64(uint32(v0))+8:], uint32(v3-v2))
+						goto l21
+					}
+					v8 = v8 + i32(1)
+					p5 := v3
+					if uint32(v8) > uint32(v3) {
+						p5 = v8
+					}
+					v3 = p5
+					if uint32(v3) < uint32(i32(15)) {
+						goto l2
+					}
+					{
+						if uint32(v3) > uint32(i32(0x1fffffff)) {
+							m.fn34(i32(1271248), i32(57), i32(1271276))
+							panic("unreachable")
+						}
+						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
+						v3 = i32_shr_u(i32(-1), int32(bits.LeadingZeros32(uint32(t6+i32(-1)))))
+						if uint32(v3) > uint32(i32(0x1ffffffe)) {
+							goto l4
+						}
+						v3 = v3 + i32(1)
+						goto l5
+					}
+				}
+			}
+		l2:
+			p38 := v3&i32(8) + i32(8)
+			if uint32(v3) < uint32(i32(4)) {
+				p38 = i32(4)
+			}
+			v3 = p38
+		}
+	l5:
+		v8 = v3 + i32(8)
+		t39 := v8
+		v10 = v3 << 3
+		v6 = t39 + v10
+		if uint32(v6) < uint32(v8) {
+			goto l4
+		}
+		if uint32(v6) > uint32(i32(0x7ffffff8)) {
+			goto l4
+		}
+		{
+			t40 := m.fn11(v6)
+			v5 = t40
+			if v5 != 0 {
+				v6 = v5 + v10
+				if v8 == 0 {
+					goto l23
+				}
+				memory_fill(m.memory, uint32(v6), i32(255), uint32(v8))
+			l23:
+				v5 = v3 + i32(-1)
+				p41 := int32(uint32(v3)>>3) * i32(7)
+				if uint32(v3) < uint32(i32(9)) {
+					p41 = v5
+				}
+				v7 = p41
+				t42 := int32(load32(m.memory[uint32(v0):]))
+				v9 = t42
+				{
+					if v2 == 0 {
+						goto l24
+					}
+					t43 := int64(load64(m.memory[uint32(v9):]))
+					v11 = (t43 ^ i64(-1)) & i64(-0x7f7f7f7f7f7f7f80)
+					t44 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+					v17 = t44
+					t45 := int64(load64(m.memory[uint32(v1):]))
+					v18 = t45
+					v8 = v9
+					v1 = v2
+					v3 = i32(0)
+				l30:
+					{
+						if v11 != i64(0) {
+							goto l25
+						}
+					l26:
+						{
+							v3 = v3 + i32(8)
+							v8 = v8 + i32(8)
+							t46 := int64(load64(m.memory[uint32(v8):]))
+							v11 = t46 & i64(-0x7f7f7f7f7f7f7f80)
+							if v11 == i64(-0x7f7f7f7f7f7f7f80) {
+								goto l26
+							}
+						}
+						v11 = v11 ^ i64(-0x7f7f7f7f7f7f7f80)
+					l25:
+						{
+							t47 := v6
+							t48 := v5
+							t49 := v18
+							t50 := v17
+							t51 := v9
+							v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v11))))>>3) + v3
+							v10 = t51 - v14<<3
+							t52 := int32(load32(m.memory[uint32(v10+i32(-8)):]))
+							t53 := int32(load32(m.memory[uint32(v10+i32(-4)):]))
+							t54 := m.fn88(t49, t50, t52, t53)
+							v15 = int32(t54)
+							v10 = t48 & v15
+							t55 := int64(load64(m.memory[uint32(t47+v10):]))
+							v12 = t55 & i64(-0x7f7f7f7f7f7f7f80)
+							if v12 != i64(0) {
+								goto l27
+							}
+							v16 = i32(8)
+						l28:
+							{
+								v10 = v10 + v16
+								v16 = v16 + i32(8)
+								t56 := v6
+								v10 = v10 & v5
+								t57 := int64(load64(m.memory[uint32(t56+v10):]))
+								v12 = t57 & i64(-0x7f7f7f7f7f7f7f80)
+								if v12 == 0 {
+									goto l28
+								}
+							}
+						}
+					l27:
+						v13 = v11 + i64(-1)
+						{
+							t58 := v6
+							v10 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v12))))>>3) + v10) & v5
+							t59 := int32(int8(m.memory[uint32(t58+v10)]))
+							if t59 < i32(0) {
+								goto l29
+							}
+							t60 := int64(load64(m.memory[uint32(v6):]))
+							v10 = int32(uint32(int64(bits.TrailingZeros64(uint64(t60&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+						}
+					l29:
+						v11 = v13 & v11
+						t61 := v6 + v10
+						v15 = int32(uint32(v15) >> 25)
+						m.memory[uint32(t61)] = byte(v15)
+						m.memory[uint32(v6+(v10+i32(-8))&v5+i32(8))] = byte(v15)
+						t62 := int64(load64(m.memory[uint32(v9+(v14^i32(-1))<<3):]))
+						store64(m.memory[uint32(v6+(v10^i32(-1))<<3):], uint64(t62))
+						v1 = v1 + i32(-1)
+						if v1 != 0 {
+							goto l30
+						}
+					}
+				}
+			l24:
+				store32(m.memory[int64(uint32(v0))+4:], uint32(v5))
+				store32(m.memory[uint32(v0):], uint32(v6))
+				store32(m.memory[int64(uint32(v0))+8:], uint32(v7-v2))
+				if v4 == 0 {
+					goto l21
+				}
+				t63 := v4
+				v8 = (v4<<3 + i32(15)) & i32(-8)
+				v3 = t63 + v8 + i32(9)
+				if v3 == 0 {
+					goto l21
+				}
+				v4 = v9 - v8
+				t64 := int32(load32(m.memory[uint32(v4+i32(-4)):]))
+				v8 = t64
+				v6 = v8 & i32(-8)
+				t65 := v6
+				v8 = v8 & i32(3)
+				p66 := i32(8)
+				if v8 != 0 {
+					p66 = i32(4)
+				}
+				if uint32(t65) < uint32(p66+v3) {
+					m.fn2(i32(1273840), i32(46), i32(1273888))
+					panic("unreachable")
+				}
+				if v8 == 0 {
+					goto l32
+				}
+				if uint32(v6) > uint32(v3+i32(39)) {
+					m.fn2(i32(1273904), i32(46), i32(1273952))
+					panic("unreachable")
+				}
+			l32:
+				m.fn1(v4)
+				return i32(-1)
+			}
+			m.fn30(i32(8), v6)
+			panic("unreachable")
+		}
+	}
+l21:
+	return i32(-1)
+l4:
+	m.fn34(i32(1271248), i32(57), i32(1271276))
+	panic("unreachable")
+}
+func (m *Module) fn92(v0, v1 int32) int32 {
+	var v2, v3, v4, v5, v6, v7, v8 int32
+	var v9 int64
+	var v10, v11, v12 int32
+	var v13, v14 int64
+	var v15 int32
+	var v16 int64
+	var v17 int32
+	var v18 int64
+	{
+		t0 := int32(load32(m.memory[int64(uint32(v0))+12:]))
+		v2 = t0
+		v3 = v2 + i32(1)
+		if v3 == 0 {
+			m.fn34(i32(1271248), i32(57), i32(1271276))
+			panic("unreachable")
+		}
+		{
+			t1 := int32(load32(m.memory[int64(uint32(v0))+4:]))
+			t2 := v3
+			v4 = t1
+			t3 := v4
+			v5 = v4 + i32(1)
+			v6 = int32(uint32(v5) >> 3)
+			v7 = v6 * i32(7)
+			p4 := v7
+			if uint32(v4) < uint32(i32(8)) {
+				p4 = t3
+			}
+			v8 = p4
+			if uint32(t2) <= uint32(int32(uint32(v8)>>1)) {
+				goto l1
+			}
+			{
+				{
+					{
+						v8 = v8 + i32(1)
+						p5 := v3
+						if uint32(v8) > uint32(v3) {
+							p5 = v8
+						}
+						v3 = p5
+						if uint32(v3) < uint32(i32(15)) {
+							goto l2
+						}
+						if uint32(v3) > uint32(i32(0x1fffffff)) {
+							m.fn34(i32(1271248), i32(57), i32(1271276))
+							panic("unreachable")
+						}
+						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
+						v3 = i32_shr_u(i32(-1), int32(bits.LeadingZeros32(uint32(t6+i32(-1))))) + i32(1)
+						goto l4
+					}
+				l2:
+					p7 := v3&i32(8) + i32(8)
+					if uint32(v3) < uint32(i32(4)) {
+						p7 = i32(4)
+					}
+					v3 = p7
+				}
+			l4:
+				v9 = int64(uint32(v3)) * i64(24)
+				if int32(int64(uint64(v9)>>32)) != 0 {
+					goto l5
+				}
+				v8 = v3 + i32(8)
+				t8 := v8
+				v10 = int32(v9)
+				v6 = t8 + v10
+				if uint32(v6) < uint32(v8) {
+					goto l5
+				}
+				if uint32(v6) > uint32(i32(0x7ffffff8)) {
+					goto l5
+				}
+				t9 := m.fn11(v6)
+				v5 = t9
+				if v5 != 0 {
+					v6 = v5 + v10
+					if v8 == 0 {
+						goto l7
+					}
+					memory_fill(m.memory, uint32(v6), i32(255), uint32(v8))
+				l7:
+					v5 = v3 + i32(-1)
+					p10 := int32(uint32(v3)>>3) * i32(7)
+					if uint32(v3) < uint32(i32(9)) {
+						p10 = v5
+					}
+					v11 = p10
+					t11 := int32(load32(m.memory[uint32(v0):]))
+					v12 = t11
+					{
+						if v2 == 0 {
+							goto l8
+						}
+						t12 := int64(load64(m.memory[uint32(v12):]))
+						v9 = (t12 ^ i64(-1)) & i64(-0x7f7f7f7f7f7f7f80)
+						t13 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+						v13 = t13
+						t14 := int64(load64(m.memory[uint32(v1):]))
+						v14 = t14
+						v8 = v12
+						v15 = v2
+						v3 = i32(0)
+					l14:
+						{
+							if v9 != i64(0) {
+								goto l9
+							}
+						l10:
+							{
+								v3 = v3 + i32(8)
+								v8 = v8 + i32(8)
+								t15 := int64(load64(m.memory[uint32(v8):]))
+								v9 = t15 & i64(-0x7f7f7f7f7f7f7f80)
+								if v9 == i64(-0x7f7f7f7f7f7f7f80) {
+									goto l10
+								}
+							}
+							v9 = v9 ^ i64(-0x7f7f7f7f7f7f7f80)
+						l9:
+							{
+								t16 := v6
+								t17 := v5
+								t18 := v14
+								t19 := v13
+								t20 := v12
+								v1 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
+								t21 := m.fn93(t18, t19, t20+(i32(0)-v1)*i32(24)+i32(-24))
+								v7 = int32(t21)
+								v10 = t17 & v7
+								t22 := int64(load64(m.memory[uint32(t16+v10):]))
+								v16 = t22 & i64(-0x7f7f7f7f7f7f7f80)
+								if v16 != i64(0) {
+									goto l11
+								}
+								v17 = i32(8)
+							l12:
+								{
+									v10 = v10 + v17
+									v17 = v17 + i32(8)
+									t23 := v6
+									v10 = v10 & v5
+									t24 := int64(load64(m.memory[uint32(t23+v10):]))
+									v16 = t24 & i64(-0x7f7f7f7f7f7f7f80)
+									if v16 == 0 {
+										goto l12
+									}
+								}
+							}
+						l11:
+							v18 = v9 + i64(-1)
+							{
+								t25 := v6
+								v10 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v16))))>>3) + v10) & v5
+								t26 := int32(int8(m.memory[uint32(t25+v10)]))
+								if t26 < i32(0) {
+									goto l13
+								}
+								t27 := int64(load64(m.memory[uint32(v6):]))
+								v10 = int32(uint32(int64(bits.TrailingZeros64(uint64(t27&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+							}
+						l13:
+							v9 = v18 & v9
+							t28 := v6 + v10
+							v7 = int32(uint32(v7) >> 25)
+							m.memory[uint32(t28)] = byte(v7)
+							m.memory[uint32(v6+(v10+i32(-8))&v5+i32(8))] = byte(v7)
+							v10 = v6 + (v10^i32(-1))*i32(24)
+							t29 := v10
+							v1 = v12 + (v1^i32(-1))*i32(24)
+							t30 := int64(load64(m.memory[int64(uint32(v1))+16:]))
+							store64(m.memory[int64(uint32(t29))+16:], uint64(t30))
+							t31 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+							store64(m.memory[int64(uint32(v10))+8:], uint64(t31))
+							t32 := int64(load64(m.memory[uint32(v1):]))
+							store64(m.memory[uint32(v10):], uint64(t32))
+							v15 = v15 + i32(-1)
+							if v15 != 0 {
+								goto l14
+							}
+						}
+					}
+				l8:
+					store32(m.memory[int64(uint32(v0))+4:], uint32(v5))
+					store32(m.memory[uint32(v0):], uint32(v6))
+					store32(m.memory[int64(uint32(v0))+8:], uint32(v11-v2))
+					if v4 == 0 {
+						goto l15
+					}
+					t33 := v4
+					v8 = (v4*i32(24) + i32(31)) & i32(-8)
+					v3 = t33 + v8 + i32(9)
+					if v3 == 0 {
+						goto l15
+					}
+					v4 = v12 - v8
+					t34 := int32(load32(m.memory[uint32(v4+i32(-4)):]))
+					v8 = t34
+					v6 = v8 & i32(-8)
+					t35 := v6
+					v8 = v8 & i32(3)
+					p36 := i32(8)
+					if v8 != 0 {
+						p36 = i32(4)
+					}
+					if uint32(t35) < uint32(p36+v3) {
+						m.fn2(i32(1273840), i32(46), i32(1273888))
+						panic("unreachable")
+					}
+					if v8 == 0 {
+						goto l17
+					}
+					if uint32(v6) > uint32(v3+i32(39)) {
+						m.fn2(i32(1273904), i32(46), i32(1273952))
+						panic("unreachable")
+					}
+				l17:
+					m.fn1(v4)
+					return i32(-1)
+				}
+				m.fn30(i32(8), v6)
+				panic("unreachable")
+			}
+		}
+	l1:
+		{
+			if v5 != 0 {
+				goto l19
+			}
+			v3 = i32(0)
+			goto l20
+		l19:
+			t37 := int32(load32(m.memory[uint32(v0):]))
+			v8 = t37
+			v3 = i32(0)
+			{
+				{
+					t38 := v6
+					var p39 int32
+					if v5&i32(7) != i32(0) {
+						p39 = 1
+					}
+					v6 = t38 + p39
+					if v6 == i32(1) {
+						goto l21
+					}
+					v12 = v6 & i32(1)
+					v10 = v6 & i32(0x3ffffffe)
+					v3 = i32(0)
+				l22:
+					{
+						v6 = v8 + v3
+						t40 := int64(load64(m.memory[uint32(v6):]))
+						t41 := v6
+						v9 = t40
+						store64(m.memory[uint32(t41):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+						v6 = v6 + i32(8)
+						t42 := int64(load64(m.memory[uint32(v6):]))
+						t43 := v6
+						v9 = t42
+						store64(m.memory[uint32(t43):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+						v3 = v3 + i32(16)
+						v10 = v10 + i32(-2)
+						if v10 != 0 {
+							goto l22
+						}
+					}
+					if v12 == 0 {
+						goto l23
+					}
+				}
+			l21:
+				v3 = v8 + v3
+				t44 := int64(load64(m.memory[uint32(v3):]))
+				t45 := v3
+				v9 = t44
+				store64(m.memory[uint32(t45):], uint64(int64(uint64(v9^i64(-1))>>7)&i64(72340172838076673)+(v9|i64(0x7f7f7f7f7f7f7f7f))))
+			}
+		l23:
+			{
+				if uint32(v5) < uint32(i32(8)) {
+					goto l24
+				}
+				t46 := int64(load64(m.memory[uint32(v8):]))
+				store64(m.memory[uint32(v8+v5):], uint64(t46))
+				goto l25
+			}
+		l24:
+			if v5 == 0 {
+				goto l25
+			}
+			memory_copy(m.memory, uint32(v8+i32(8)), uint32(v8), uint32(v5))
+		l25:
+			t47 := int64(load64(m.memory[int64(uint32(v1))+8:]))
+			v16 = t47
+			t48 := int64(load64(m.memory[uint32(v1):]))
+			v18 = t48
+			v6 = i32(0)
+		l33:
+			{
+				t49 := v8
+				v3 = v6
+				v10 = t49 + v3
+				t50 := int32(m.memory[uint32(v10)])
+				if t50 != i32(128) {
+					goto l26
+				}
+				v15 = v8 + (v3^i32(-1))*i32(24)
+				v12 = v8 + (i32(0)-v3)*i32(24) + i32(-24)
+			l32:
+				{
+					t51 := m.fn93(v18, v16, v12)
+					t52 := v4
+					v1 = int32(t51)
+					v6 = t52 & v1
+					v5 = v6
+					{
+						t53 := int64(load64(m.memory[uint32(v8+v6):]))
+						v9 = t53 & i64(-0x7f7f7f7f7f7f7f80)
+						if v9 != i64(0) {
+							goto l27
+						}
+						v11 = i32(8)
+						v5 = v6
+					l28:
+						{
+							v5 = v5 + v11
+							v11 = v11 + i32(8)
+							t54 := v8
+							v5 = v5 & v4
+							t55 := int64(load64(m.memory[uint32(t54+v5):]))
+							v9 = t55 & i64(-0x7f7f7f7f7f7f7f80)
+							if v9 == 0 {
+								goto l28
+							}
+						}
+					}
+				l27:
+					{
+						t56 := v8
+						v5 = (int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v5) & v4
+						t57 := int32(int8(m.memory[uint32(t56+v5)]))
+						if t57 < i32(0) {
+							goto l29
+						}
+						t58 := int64(load64(m.memory[uint32(v8):]))
+						v5 = int32(uint32(int64(bits.TrailingZeros64(uint64(t58&i64(-0x7f7f7f7f7f7f7f80))))) >> 3)
+					}
+				l29:
+					{
+						if uint32((v5-v6^(v3-v6))&v4) < uint32(i32(8)) {
+							goto l30
+						}
+						v6 = v8 + v5
+						t59 := int32(m.memory[uint32(v6)])
+						v11 = t59
+						t60 := v6
+						v1 = int32(uint32(v1) >> 25)
+						m.memory[uint32(t60)] = byte(v1)
+						m.memory[uint32(v8+(v5+i32(-8))&v4+i32(8))] = byte(v1)
+						v6 = v8 + (v5^i32(-1))*i32(24)
+						{
+							if v11 != i32(255) {
+								t64 := int64(load64(m.memory[uint32(v15):]))
+								v9 = t64
+								t65 := int64(load64(m.memory[uint32(v6):]))
+								store64(m.memory[uint32(v15):], uint64(t65))
+								store64(m.memory[uint32(v6):], uint64(v9))
+								t66 := int64(load64(m.memory[int64(uint32(v6))+8:]))
+								v9 = t66
+								t67 := int64(load64(m.memory[int64(uint32(v15))+8:]))
+								store64(m.memory[int64(uint32(v6))+8:], uint64(t67))
+								store64(m.memory[int64(uint32(v15))+8:], uint64(v9))
+								t68 := int32(load32(m.memory[int64(uint32(v15))+16:]))
+								v5 = t68
+								t69 := int32(load32(m.memory[int64(uint32(v6))+16:]))
+								store32(m.memory[int64(uint32(v15))+16:], uint32(t69))
+								t70 := int32(load32(m.memory[int64(uint32(v6))+20:]))
+								v1 = t70
+								t71 := int32(load32(m.memory[int64(uint32(v15))+20:]))
+								store32(m.memory[int64(uint32(v6))+20:], uint32(t71))
+								store32(m.memory[int64(uint32(v15))+20:], uint32(v1))
+								store32(m.memory[int64(uint32(v6))+16:], uint32(v5))
+								goto l32
+							}
+							m.memory[uint32(v10)] = byte(i32(255))
+							m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(i32(255))
+							t61 := int64(load64(m.memory[int64(uint32(v15))+16:]))
+							store64(m.memory[int64(uint32(v6))+16:], uint64(t61))
+							t62 := int64(load64(m.memory[int64(uint32(v15))+8:]))
+							store64(m.memory[int64(uint32(v6))+8:], uint64(t62))
+							t63 := int64(load64(m.memory[uint32(v15):]))
+							store64(m.memory[uint32(v6):], uint64(t63))
+							goto l26
+						}
+					}
+				l30:
+				}
+				t72 := v10
+				v6 = int32(uint32(v1) >> 25)
+				m.memory[uint32(t72)] = byte(v6)
+				m.memory[uint32(v8+v4&(v3+i32(-8))+i32(8))] = byte(v6)
+			}
+		l26:
+			v6 = v3 + i32(1)
+			if v3 != v4 {
+				goto l33
+			}
+			p73 := v7
+			if uint32(v4) < uint32(i32(8)) {
+				p73 = v4
+			}
+			v3 = p73
+		}
+	l20:
+		store32(m.memory[int64(uint32(v0))+8:], uint32(v3-v2))
+	l15:
+		return i32(-1)
+	}
+l5:
+	m.fn34(i32(1271248), i32(57), i32(1271276))
+	panic("unreachable")
+}
+func (m *Module) fn93(v0, v1 int64, v2 int32) int64 {
 	var v3 int32
 	var v4, v5, v6, v7 int64
 	t0 := m.g0
@@ -20,12 +2221,12 @@ func (m *Module) fn87(v0, v1 int64, v2 int32) int64 {
 	store64(m.memory[int64(uint32(v3))+8:], uint64(v0^i64(8317987319222330741)))
 	t1 := int32(load32(m.memory[int64(uint32(v2))+4:]))
 	t2 := int32(load32(m.memory[int64(uint32(v2))+8:]))
-	m.fn59(v3+i32(8), t1, t2)
+	m.fn65(v3+i32(8), t1, t2)
 	m.memory[int64(uint32(v3))+76] = byte(i32(255))
-	m.fn59(v3+i32(8), v3+i32(76), i32(1))
+	m.fn65(v3+i32(8), v3+i32(76), i32(1))
 	t3 := int32(load32(m.memory[int64(uint32(v2))+12:]))
 	store32(m.memory[int64(uint32(v3))+76:], uint32(t3))
-	m.fn59(v3+i32(8), v3+i32(76), i32(4))
+	m.fn65(v3+i32(8), v3+i32(76), i32(4))
 	t4 := int64(load64(m.memory[int64(uint32(v3))+8:]))
 	v0 = t4
 	t5 := int64(load64(m.memory[int64(uint32(v3))+24:]))
@@ -88,7 +2289,7 @@ func (m *Module) fn87(v0, v1 int64, v2 int32) int64 {
 	v1 = v1 + v5
 	return t27 ^ i64_rotl(v1, i64(32)) ^ v1
 }
-func (m *Module) fn88(v0, v1 int32) int32 {
+func (m *Module) fn94(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15, v16 int32
@@ -100,7 +2301,7 @@ func (m *Module) fn88(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -207,7 +2408,7 @@ func (m *Module) fn88(v0, v1 int32) int32 {
 								{
 									t21 := int32(load32(m.memory[uint32(v14):]))
 									t22 := int32(load32(m.memory[uint32(v1):]))
-									t23 := m.fn89(v13, v12, t21, t22)
+									t23 := m.fn95(v13, v12, t21, t22)
 									t24 := v4
 									v9 = int32(t23)
 									v6 = t24 & v9
@@ -313,7 +2514,7 @@ func (m *Module) fn88(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -345,7 +2546,7 @@ func (m *Module) fn88(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t43 := m.fn5(v6)
+			t43 := m.fn11(v6)
 			v5 = t43
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -402,7 +2603,7 @@ func (m *Module) fn88(v0, v1 int32) int32 {
 							v10 = t54 - v14<<4
 							t55 := int32(load32(m.memory[uint32(v10+i32(-16)):]))
 							t56 := int32(load32(m.memory[uint32(v10+i32(-12)):]))
-							t57 := m.fn89(t52, t53, t55, t56)
+							t57 := m.fn95(t52, t53, t55, t56)
 							v15 = int32(t57)
 							v10 = t51 & v15
 							t58 := int64(load64(m.memory[uint32(t50+v10):]))
@@ -479,31 +2680,31 @@ func (m *Module) fn88(v0, v1 int32) int32 {
 					p71 = i32(4)
 				}
 				if uint32(t70) < uint32(p71+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn89(v0, v1 int64, v2, v3 int32) int64 {
+func (m *Module) fn95(v0, v1 int64, v2, v3 int32) int64 {
 	var v4 int32
 	var v5, v6, v7, v8 int64
 	t0 := m.g0
@@ -518,9 +2719,9 @@ func (m *Module) fn89(v0, v1 int64, v2, v3 int32) int64 {
 	store64(m.memory[int64(uint32(v4))+16:], uint64(v0^i64(0x6c7967656e657261)))
 	store64(m.memory[int64(uint32(v4))+8:], uint64(v0^i64(8317987319222330741)))
 	store32(m.memory[int64(uint32(v4))+76:], uint32(v2))
-	m.fn59(v4+i32(8), v4+i32(76), i32(4))
+	m.fn65(v4+i32(8), v4+i32(76), i32(4))
 	store32(m.memory[int64(uint32(v4))+76:], uint32(v3))
-	m.fn59(v4+i32(8), v4+i32(76), i32(4))
+	m.fn65(v4+i32(8), v4+i32(76), i32(4))
 	t1 := int64(load64(m.memory[int64(uint32(v4))+8:]))
 	v0 = t1
 	t2 := int64(load64(m.memory[int64(uint32(v4))+24:]))
@@ -583,7 +2784,7 @@ func (m *Module) fn89(v0, v1 int64, v2, v3 int32) int64 {
 	v1 = v1 + v6
 	return t24 ^ i64_rotl(v1, i64(32)) ^ v1
 }
-func (m *Module) fn90(v0, v1 int32) int32 {
+func (m *Module) fn96(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15, v16 int32
@@ -595,7 +2796,7 @@ func (m *Module) fn90(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -702,7 +2903,7 @@ func (m *Module) fn90(v0, v1 int32) int32 {
 								{
 									t21 := int32(load32(m.memory[uint32(v14):]))
 									t22 := int32(load32(m.memory[uint32(v1):]))
-									t23 := m.fn89(v13, v12, t21, t22)
+									t23 := m.fn95(v13, v12, t21, t22)
 									t24 := v4
 									v9 = int32(t23)
 									v6 = t24 & v9
@@ -801,7 +3002,7 @@ func (m *Module) fn90(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -833,7 +3034,7 @@ func (m *Module) fn90(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t40 := m.fn5(v6)
+			t40 := m.fn11(v6)
 			v5 = t40
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -890,7 +3091,7 @@ func (m *Module) fn90(v0, v1 int32) int32 {
 							v10 = t51 - v14<<3
 							t52 := int32(load32(m.memory[uint32(v10+i32(-8)):]))
 							t53 := int32(load32(m.memory[uint32(v10+i32(-4)):]))
-							t54 := m.fn89(t49, t50, t52, t53)
+							t54 := m.fn95(t49, t50, t52, t53)
 							v15 = int32(t54)
 							v10 = t48 & v15
 							t55 := int64(load64(m.memory[uint32(t47+v10):]))
@@ -962,31 +3163,31 @@ func (m *Module) fn90(v0, v1 int32) int32 {
 					p66 = i32(4)
 				}
 				if uint32(t65) < uint32(p66+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn91(v0, v1 int32) int32 {
+func (m *Module) fn97(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15, v16 int32
@@ -998,7 +3199,7 @@ func (m *Module) fn91(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -1105,7 +3306,7 @@ func (m *Module) fn91(v0, v1 int32) int32 {
 								{
 									t21 := int32(load16(m.memory[uint32(v14):]))
 									t22 := int32(load32(m.memory[uint32(v1):]))
-									t23 := m.fn92(v13, v12, t21, t22)
+									t23 := m.fn98(v13, v12, t21, t22)
 									t24 := v4
 									v9 = int32(t23)
 									v6 = t24 & v9
@@ -1204,7 +3405,7 @@ func (m *Module) fn91(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -1236,7 +3437,7 @@ func (m *Module) fn91(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t40 := m.fn5(v6)
+			t40 := m.fn11(v6)
 			v5 = t40
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -1293,7 +3494,7 @@ func (m *Module) fn91(v0, v1 int32) int32 {
 							v10 = t51 - v14<<3
 							t52 := int32(load16(m.memory[uint32(v10+i32(-8)):]))
 							t53 := int32(load32(m.memory[uint32(v10+i32(-4)):]))
-							t54 := m.fn92(t49, t50, t52, t53)
+							t54 := m.fn98(t49, t50, t52, t53)
 							v15 = int32(t54)
 							v10 = t48 & v15
 							t55 := int64(load64(m.memory[uint32(t47+v10):]))
@@ -1365,31 +3566,31 @@ func (m *Module) fn91(v0, v1 int32) int32 {
 					p66 = i32(4)
 				}
 				if uint32(t65) < uint32(p66+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn92(v0, v1 int64, v2, v3 int32) int64 {
+func (m *Module) fn98(v0, v1 int64, v2, v3 int32) int64 {
 	var v4 int32
 	var v5, v6, v7, v8 int64
 	t0 := m.g0
@@ -1404,9 +3605,9 @@ func (m *Module) fn92(v0, v1 int64, v2, v3 int32) int64 {
 	store64(m.memory[int64(uint32(v4))+16:], uint64(v0^i64(0x6c7967656e657261)))
 	store64(m.memory[int64(uint32(v4))+8:], uint64(v0^i64(8317987319222330741)))
 	store16(m.memory[int64(uint32(v4))+76:], uint16(v2))
-	m.fn59(v4+i32(8), v4+i32(76), i32(2))
+	m.fn65(v4+i32(8), v4+i32(76), i32(2))
 	store32(m.memory[int64(uint32(v4))+76:], uint32(v3))
-	m.fn59(v4+i32(8), v4+i32(76), i32(4))
+	m.fn65(v4+i32(8), v4+i32(76), i32(4))
 	t1 := int64(load64(m.memory[int64(uint32(v4))+8:]))
 	v0 = t1
 	t2 := int64(load64(m.memory[int64(uint32(v4))+24:]))
@@ -1469,7 +3670,7 @@ func (m *Module) fn92(v0, v1 int64, v2, v3 int32) int64 {
 	v1 = v1 + v6
 	return t24 ^ i64_rotl(v1, i64(32)) ^ v1
 }
-func (m *Module) fn93(v0, v1 int32) int32 {
+func (m *Module) fn99(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15 int32
@@ -1482,7 +3683,7 @@ func (m *Module) fn93(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -1586,7 +3787,7 @@ func (m *Module) fn93(v0, v1 int32) int32 {
 							l19:
 								{
 									t21 := int32(load32(m.memory[uint32(v1):]))
-									t22 := m.fn94(v13, v12, t21)
+									t22 := m.fn100(v13, v12, t21)
 									t23 := v4
 									v9 = int32(t22)
 									v6 = t23 & v9
@@ -1692,7 +3893,7 @@ func (m *Module) fn93(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -1724,7 +3925,7 @@ func (m *Module) fn93(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t42 := m.fn5(v6)
+			t42 := m.fn11(v6)
 			v5 = t42
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -1779,7 +3980,7 @@ func (m *Module) fn93(v0, v1 int32) int32 {
 							t53 := v9
 							v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v11))))>>3) + v3
 							t54 := int32(load32(m.memory[uint32(t53-v14<<4+i32(-16)):]))
-							t55 := m.fn94(t51, t52, t54)
+							t55 := m.fn100(t51, t52, t54)
 							v7 = int32(t55)
 							v10 = t50 & v7
 							t56 := int64(load64(m.memory[uint32(t49+v10):]))
@@ -1856,31 +4057,31 @@ func (m *Module) fn93(v0, v1 int32) int32 {
 					p69 = i32(4)
 				}
 				if uint32(t68) < uint32(p69+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn94(v0, v1 int64, v2 int32) int64 {
+func (m *Module) fn100(v0, v1 int64, v2 int32) int64 {
 	var v3 int32
 	var v4, v5, v6, v7 int64
 	t0 := m.g0
@@ -1895,7 +4096,7 @@ func (m *Module) fn94(v0, v1 int64, v2 int32) int64 {
 	store64(m.memory[int64(uint32(v3))+16:], uint64(v0^i64(0x6c7967656e657261)))
 	store64(m.memory[int64(uint32(v3))+8:], uint64(v0^i64(8317987319222330741)))
 	store32(m.memory[int64(uint32(v3))+76:], uint32(v2))
-	m.fn59(v3+i32(8), v3+i32(76), i32(4))
+	m.fn65(v3+i32(8), v3+i32(76), i32(4))
 	t1 := int64(load64(m.memory[int64(uint32(v3))+8:]))
 	v0 = t1
 	t2 := int64(load64(m.memory[int64(uint32(v3))+24:]))
@@ -1958,7 +4159,7 @@ func (m *Module) fn94(v0, v1 int64, v2 int32) int64 {
 	v1 = v1 + v5
 	return t24 ^ i64_rotl(v1, i64(32)) ^ v1
 }
-func (m *Module) fn95(v0, v1 int32) int32 {
+func (m *Module) fn101(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15 int32
@@ -1971,7 +4172,7 @@ func (m *Module) fn95(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -2075,7 +4276,7 @@ func (m *Module) fn95(v0, v1 int32) int32 {
 							l19:
 								{
 									t21 := int32(load32(m.memory[uint32(v1):]))
-									t22 := m.fn94(v13, v12, t21)
+									t22 := m.fn100(v13, v12, t21)
 									t23 := v4
 									v9 = int32(t22)
 									v6 = t23 & v9
@@ -2181,7 +4382,7 @@ func (m *Module) fn95(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -2213,7 +4414,7 @@ func (m *Module) fn95(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t42 := m.fn5(v6)
+			t42 := m.fn11(v6)
 			v5 = t42
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -2268,7 +4469,7 @@ func (m *Module) fn95(v0, v1 int32) int32 {
 							t53 := v9
 							v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v11))))>>3) + v3
 							t54 := int32(load32(m.memory[uint32(t53-v14<<4+i32(-16)):]))
-							t55 := m.fn94(t51, t52, t54)
+							t55 := m.fn100(t51, t52, t54)
 							v7 = int32(t55)
 							v10 = t50 & v7
 							t56 := int64(load64(m.memory[uint32(t49+v10):]))
@@ -2345,31 +4546,31 @@ func (m *Module) fn95(v0, v1 int32) int32 {
 					p69 = i32(4)
 				}
 				if uint32(t68) < uint32(p69+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn96(v0, v1, v2 int32) int32 {
+func (m *Module) fn102(v0, v1, v2 int32) int32 {
 	var v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11, v12 int32
@@ -2383,7 +4584,7 @@ func (m *Module) fn96(v0, v1, v2 int32) int32 {
 		v3 = t0
 		v1 = v3 + v1
 		if uint32(v1) < uint32(v3) {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -2415,7 +4616,7 @@ func (m *Module) fn96(v0, v1, v2 int32) int32 {
 							goto l2
 						}
 						if uint32(v1) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v1<<3) / uint32(i32(7)))
@@ -2448,7 +4649,7 @@ func (m *Module) fn96(v0, v1, v2 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -2503,7 +4704,7 @@ func (m *Module) fn96(v0, v1, v2 int32) int32 {
 								t20 := v12
 								v15 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v1
 								t21 := int32(load32(m.memory[uint32(t20+(i32(0)-v15)*i32(12)+i32(-12)):]))
-								t22 := m.fn94(t18, t19, t21)
+								t22 := m.fn100(t18, t19, t21)
 								v7 = int32(t22)
 								v10 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -2580,21 +4781,21 @@ func (m *Module) fn96(v0, v1, v2 int32) int32 {
 						p36 = i32(4)
 					}
 					if uint32(t35) < uint32(p36+v1) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v1+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -2686,7 +4887,7 @@ func (m *Module) fn96(v0, v1, v2 int32) int32 {
 			l32:
 				{
 					t51 := int32(load32(m.memory[uint32(v2):]))
-					t52 := m.fn94(v18, v16, t51)
+					t52 := m.fn100(v18, v16, t51)
 					t53 := v4
 					v12 = int32(t52)
 					v6 = t53 & v12
@@ -2788,10 +4989,10 @@ func (m *Module) fn96(v0, v1, v2 int32) int32 {
 		return i32(-1)
 	}
 l5:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn97(v0, v1 int32) int32 {
+func (m *Module) fn103(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15 int32
@@ -2804,7 +5005,7 @@ func (m *Module) fn97(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -2908,7 +5109,7 @@ func (m *Module) fn97(v0, v1 int32) int32 {
 							l19:
 								{
 									t21 := int32(load32(m.memory[uint32(v1):]))
-									t22 := m.fn94(v13, v12, t21)
+									t22 := m.fn100(v13, v12, t21)
 									t23 := v4
 									v9 = int32(t22)
 									v6 = t23 & v9
@@ -3007,7 +5208,7 @@ func (m *Module) fn97(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -3039,7 +5240,7 @@ func (m *Module) fn97(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t39 := m.fn5(v6)
+			t39 := m.fn11(v6)
 			v5 = t39
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -3094,7 +5295,7 @@ func (m *Module) fn97(v0, v1 int32) int32 {
 							t50 := v9
 							v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v11))))>>3) + v3
 							t51 := int32(load32(m.memory[uint32(t50-v14<<3+i32(-8)):]))
-							t52 := m.fn94(t48, t49, t51)
+							t52 := m.fn100(t48, t49, t51)
 							v7 = int32(t52)
 							v10 = t47 & v7
 							t53 := int64(load64(m.memory[uint32(t46+v10):]))
@@ -3166,31 +5367,31 @@ func (m *Module) fn97(v0, v1 int32) int32 {
 					p64 = i32(4)
 				}
 				if uint32(t63) < uint32(p64+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn98(v0, v1 int32) int32 {
+func (m *Module) fn104(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15 int32
@@ -3203,7 +5404,7 @@ func (m *Module) fn98(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -3307,7 +5508,7 @@ func (m *Module) fn98(v0, v1 int32) int32 {
 							l19:
 								{
 									t21 := int32(load32(m.memory[uint32(v1):]))
-									t22 := m.fn94(v13, v12, t21)
+									t22 := m.fn100(v13, v12, t21)
 									t23 := v4
 									v9 = int32(t22)
 									v6 = t23 & v9
@@ -3406,7 +5607,7 @@ func (m *Module) fn98(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -3438,7 +5639,7 @@ func (m *Module) fn98(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t39 := m.fn5(v6)
+			t39 := m.fn11(v6)
 			v5 = t39
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -3493,7 +5694,7 @@ func (m *Module) fn98(v0, v1 int32) int32 {
 							t50 := v9
 							v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v11))))>>3) + v3
 							t51 := int32(load32(m.memory[uint32(t50-v14<<2+i32(-4)):]))
-							t52 := m.fn94(t48, t49, t51)
+							t52 := m.fn100(t48, t49, t51)
 							v7 = int32(t52)
 							v10 = t47 & v7
 							t53 := int64(load64(m.memory[uint32(t46+v10):]))
@@ -3565,31 +5766,31 @@ func (m *Module) fn98(v0, v1 int32) int32 {
 					p64 = i32(4)
 				}
 				if uint32(t63) < uint32(p64+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn99(v0, v1 int32) int32 {
+func (m *Module) fn105(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11 int32
@@ -3604,7 +5805,7 @@ func (m *Module) fn99(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -3636,7 +5837,7 @@ func (m *Module) fn99(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -3665,7 +5866,7 @@ func (m *Module) fn99(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -3720,7 +5921,7 @@ func (m *Module) fn99(v0, v1 int32) int32 {
 								t20 := v11
 								v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int32(load32(m.memory[uint32(t20+(i32(0)-v14)*i32(296)+i32(-296)):]))
-								t22 := m.fn94(t18, t19, t21)
+								t22 := m.fn100(t18, t19, t21)
 								v15 = int32(t22)
 								v10 = t17 & v15
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -3791,21 +5992,21 @@ func (m *Module) fn99(v0, v1 int32) int32 {
 						p33 = i32(4)
 					}
 					if uint32(t32) < uint32(p33+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -3899,7 +6100,7 @@ func (m *Module) fn99(v0, v1 int32) int32 {
 				l33:
 					{
 						t48 := int32(load32(m.memory[uint32(v14):]))
-						t49 := m.fn94(v18, v16, t48)
+						t49 := m.fn100(v18, v16, t48)
 						t50 := v4
 						v1 = int32(t49)
 						v10 = t50 & v1
@@ -4008,11 +6209,11 @@ func (m *Module) fn99(v0, v1 int32) int32 {
 	l15:
 		return i32(-1)
 	l5:
-		m.fn28(i32(1271248), i32(57), i32(1271276))
+		m.fn34(i32(1271248), i32(57), i32(1271276))
 		panic("unreachable")
 	}
 }
-func (m *Module) fn100(v0, v1 int32) int32 {
+func (m *Module) fn106(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11, v12 int32
@@ -4026,7 +6227,7 @@ func (m *Module) fn100(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -4058,7 +6259,7 @@ func (m *Module) fn100(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -4091,7 +6292,7 @@ func (m *Module) fn100(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -4146,7 +6347,7 @@ func (m *Module) fn100(v0, v1 int32) int32 {
 								t20 := v12
 								v15 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int32(load32(m.memory[uint32(t20+(i32(0)-v15)*i32(12)+i32(-12)):]))
-								t22 := m.fn94(t18, t19, t21)
+								t22 := m.fn100(t18, t19, t21)
 								v7 = int32(t22)
 								v10 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -4223,21 +6424,21 @@ func (m *Module) fn100(v0, v1 int32) int32 {
 						p36 = i32(4)
 					}
 					if uint32(t35) < uint32(p36+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -4329,7 +6530,7 @@ func (m *Module) fn100(v0, v1 int32) int32 {
 			l32:
 				{
 					t51 := int32(load32(m.memory[uint32(v1):]))
-					t52 := m.fn94(v18, v16, t51)
+					t52 := m.fn100(v18, v16, t51)
 					t53 := v4
 					v12 = int32(t52)
 					v6 = t53 & v12
@@ -4431,10 +6632,10 @@ func (m *Module) fn100(v0, v1 int32) int32 {
 		return i32(-1)
 	}
 l5:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn101(v0, v1 int32) int32 {
+func (m *Module) fn107(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11, v12 int32
@@ -4448,7 +6649,7 @@ func (m *Module) fn101(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -4480,7 +6681,7 @@ func (m *Module) fn101(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -4509,7 +6710,7 @@ func (m *Module) fn101(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -4564,7 +6765,7 @@ func (m *Module) fn101(v0, v1 int32) int32 {
 								t20 := v12
 								v15 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int32(load32(m.memory[uint32(t20+(i32(0)-v15)*i32(96)+i32(-96)):]))
-								t22 := m.fn94(t18, t19, t21)
+								t22 := m.fn100(t18, t19, t21)
 								v7 = int32(t22)
 								v10 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -4635,21 +6836,21 @@ func (m *Module) fn101(v0, v1 int32) int32 {
 						p33 = i32(4)
 					}
 					if uint32(t32) < uint32(p33+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -4741,7 +6942,7 @@ func (m *Module) fn101(v0, v1 int32) int32 {
 			l32:
 				{
 					t48 := int32(load32(m.memory[uint32(v1):]))
-					t49 := m.fn94(v18, v16, t48)
+					t49 := m.fn100(v18, v16, t48)
 					t50 := v4
 					v12 = int32(t49)
 					v6 = t50 & v12
@@ -4931,10 +7132,10 @@ func (m *Module) fn101(v0, v1 int32) int32 {
 		return i32(-1)
 	}
 l5:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn102(v0, v1 int32) int32 {
+func (m *Module) fn108(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11, v12 int32
@@ -4948,7 +7149,7 @@ func (m *Module) fn102(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -4980,7 +7181,7 @@ func (m *Module) fn102(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -5013,7 +7214,7 @@ func (m *Module) fn102(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -5068,7 +7269,7 @@ func (m *Module) fn102(v0, v1 int32) int32 {
 								t20 := v12
 								v1 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int32(load32(m.memory[uint32(t20+(i32(0)-v1)*i32(20)+i32(-20)):]))
-								t22 := m.fn94(t18, t19, t21)
+								t22 := m.fn100(t18, t19, t21)
 								v7 = int32(t22)
 								v10 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -5147,21 +7348,21 @@ func (m *Module) fn102(v0, v1 int32) int32 {
 						p37 = i32(4)
 					}
 					if uint32(t36) < uint32(p37+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -5253,7 +7454,7 @@ func (m *Module) fn102(v0, v1 int32) int32 {
 			l32:
 				{
 					t52 := int32(load32(m.memory[uint32(v12):]))
-					t53 := m.fn94(v18, v16, t52)
+					t53 := m.fn100(v18, v16, t52)
 					t54 := v4
 					v1 = int32(t53)
 					v6 = t54 & v1
@@ -5367,10 +7568,10 @@ func (m *Module) fn102(v0, v1 int32) int32 {
 		return i32(-1)
 	}
 l5:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn103(v0, v1 int32) int32 {
+func (m *Module) fn109(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11 int32
@@ -5385,7 +7586,7 @@ func (m *Module) fn103(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -5417,7 +7618,7 @@ func (m *Module) fn103(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -5446,7 +7647,7 @@ func (m *Module) fn103(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -5501,7 +7702,7 @@ func (m *Module) fn103(v0, v1 int32) int32 {
 								t20 := v11
 								v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int32(load32(m.memory[uint32(t20+(i32(0)-v14)*i32(368)+i32(-368)):]))
-								t22 := m.fn94(t18, t19, t21)
+								t22 := m.fn100(t18, t19, t21)
 								v15 = int32(t22)
 								v10 = t17 & v15
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -5572,21 +7773,21 @@ func (m *Module) fn103(v0, v1 int32) int32 {
 						p33 = i32(4)
 					}
 					if uint32(t32) < uint32(p33+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -5680,7 +7881,7 @@ func (m *Module) fn103(v0, v1 int32) int32 {
 				l33:
 					{
 						t48 := int32(load32(m.memory[uint32(v14):]))
-						t49 := m.fn94(v18, v16, t48)
+						t49 := m.fn100(v18, v16, t48)
 						t50 := v4
 						v1 = int32(t49)
 						v10 = t50 & v1
@@ -5805,11 +8006,11 @@ func (m *Module) fn103(v0, v1 int32) int32 {
 	l15:
 		return i32(-1)
 	l5:
-		m.fn28(i32(1271248), i32(57), i32(1271276))
+		m.fn34(i32(1271248), i32(57), i32(1271276))
 		panic("unreachable")
 	}
 }
-func (m *Module) fn104(v0, v1 int32) int32 {
+func (m *Module) fn110(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11 int64
 	var v12, v13, v14 int32
@@ -5823,7 +8024,7 @@ func (m *Module) fn104(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -6022,7 +8223,7 @@ func (m *Module) fn104(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -6054,7 +8255,7 @@ func (m *Module) fn104(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t36 := m.fn5(v6)
+			t36 := m.fn11(v6)
 			v5 = t36
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -6175,31 +8376,31 @@ func (m *Module) fn104(v0, v1 int32) int32 {
 					p56 = i32(4)
 				}
 				if uint32(t55) < uint32(p56+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn105(v0, v1 int32) int32 {
+func (m *Module) fn111(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15 int32
@@ -6212,7 +8413,7 @@ func (m *Module) fn105(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -6316,7 +8517,7 @@ func (m *Module) fn105(v0, v1 int32) int32 {
 							l19:
 								{
 									t21 := int32(load16(m.memory[uint32(v1):]))
-									t22 := m.fn106(v13, v12, t21)
+									t22 := m.fn112(v13, v12, t21)
 									t23 := v4
 									v9 = int32(t22)
 									v6 = t23 & v9
@@ -6422,7 +8623,7 @@ func (m *Module) fn105(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -6454,7 +8655,7 @@ func (m *Module) fn105(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t42 := m.fn5(v6)
+			t42 := m.fn11(v6)
 			v5 = t42
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -6509,7 +8710,7 @@ func (m *Module) fn105(v0, v1 int32) int32 {
 							t53 := v9
 							v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v11))))>>3) + v3
 							t54 := int32(load16(m.memory[uint32(t53-v14<<4+i32(-16)):]))
-							t55 := m.fn106(t51, t52, t54)
+							t55 := m.fn112(t51, t52, t54)
 							v7 = int32(t55)
 							v10 = t50 & v7
 							t56 := int64(load64(m.memory[uint32(t49+v10):]))
@@ -6586,31 +8787,31 @@ func (m *Module) fn105(v0, v1 int32) int32 {
 					p69 = i32(4)
 				}
 				if uint32(t68) < uint32(p69+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn106(v0, v1 int64, v2 int32) int64 {
+func (m *Module) fn112(v0, v1 int64, v2 int32) int64 {
 	var v3 int32
 	var v4, v5, v6, v7 int64
 	t0 := m.g0
@@ -6625,7 +8826,7 @@ func (m *Module) fn106(v0, v1 int64, v2 int32) int64 {
 	store64(m.memory[int64(uint32(v3))+16:], uint64(v0^i64(0x6c7967656e657261)))
 	store64(m.memory[int64(uint32(v3))+8:], uint64(v0^i64(8317987319222330741)))
 	store16(m.memory[int64(uint32(v3))+78:], uint16(v2))
-	m.fn59(v3+i32(8), v3+i32(78), i32(2))
+	m.fn65(v3+i32(8), v3+i32(78), i32(2))
 	t1 := int64(load64(m.memory[int64(uint32(v3))+8:]))
 	v0 = t1
 	t2 := int64(load64(m.memory[int64(uint32(v3))+24:]))
@@ -6688,7 +8889,7 @@ func (m *Module) fn106(v0, v1 int64, v2 int32) int64 {
 	v1 = v1 + v5
 	return t24 ^ i64_rotl(v1, i64(32)) ^ v1
 }
-func (m *Module) fn107(v0, v1 int32) int32 {
+func (m *Module) fn113(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12, v13 int64
 	var v14, v15 int32
@@ -6701,7 +8902,7 @@ func (m *Module) fn107(v0, v1 int32) int32 {
 				v2 = t0
 				v3 = v2 + i32(1)
 				if v3 == 0 {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
 				{
@@ -6805,7 +9006,7 @@ func (m *Module) fn107(v0, v1 int32) int32 {
 							l19:
 								{
 									t21 := int32(load16(m.memory[uint32(v1):]))
-									t22 := m.fn106(v13, v12, t21)
+									t22 := m.fn112(v13, v12, t21)
 									t23 := v4
 									v9 = int32(t22)
 									v6 = t23 & v9
@@ -6904,7 +9105,7 @@ func (m *Module) fn107(v0, v1 int32) int32 {
 					}
 					{
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -6936,7 +9137,7 @@ func (m *Module) fn107(v0, v1 int32) int32 {
 			goto l4
 		}
 		{
-			t39 := m.fn5(v6)
+			t39 := m.fn11(v6)
 			v5 = t39
 			if v5 != 0 {
 				v6 = v5 + v10
@@ -6991,7 +9192,7 @@ func (m *Module) fn107(v0, v1 int32) int32 {
 							t50 := v9
 							v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v11))))>>3) + v3
 							t51 := int32(load16(m.memory[uint32(t50-v14<<2+i32(-4)):]))
-							t52 := m.fn106(t48, t49, t51)
+							t52 := m.fn112(t48, t49, t51)
 							v7 = int32(t52)
 							v10 = t47 & v7
 							t53 := int64(load64(m.memory[uint32(t46+v10):]))
@@ -7063,31 +9264,31 @@ func (m *Module) fn107(v0, v1 int32) int32 {
 					p64 = i32(4)
 				}
 				if uint32(t63) < uint32(p64+v3) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v8 == 0 {
 					goto l32
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l32:
 				m.fn1(v4)
 				return i32(-1)
 			}
-			m.fn24(i32(8), v6)
+			m.fn30(i32(8), v6)
 			panic("unreachable")
 		}
 	}
 l21:
 	return i32(-1)
 l4:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn108(v0, v1 int32) int32 {
+func (m *Module) fn114(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11, v12, v13 int32
@@ -7099,7 +9300,7 @@ func (m *Module) fn108(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -7131,7 +9332,7 @@ func (m *Module) fn108(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -7164,7 +9365,7 @@ func (m *Module) fn108(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v5 = v5 + v10
@@ -7219,7 +9420,7 @@ func (m *Module) fn108(v0, v1 int32) int32 {
 								t20 := v13
 								v10 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int32(load16(m.memory[uint32(t20+(i32(0)-v10)*i32(60)+i32(-60)):]))
-								t22 := m.fn106(t18, t19, t21)
+								t22 := m.fn112(t18, t19, t21)
 								v7 = int32(t22)
 								v6 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v6):]))
@@ -7308,21 +9509,21 @@ func (m *Module) fn108(v0, v1 int32) int32 {
 						p42 = i32(4)
 					}
 					if uint32(t41) < uint32(p42+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v10) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v6)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -7414,7 +9615,7 @@ func (m *Module) fn108(v0, v1 int32) int32 {
 			l32:
 				{
 					t57 := int32(load16(m.memory[uint32(v13):]))
-					t58 := m.fn106(v18, v16, t57)
+					t58 := m.fn112(v18, v16, t57)
 					t59 := v4
 					v11 = int32(t58)
 					v6 = t59 & v11
@@ -7588,10 +9789,10 @@ func (m *Module) fn108(v0, v1 int32) int32 {
 		return i32(-1)
 	}
 l5:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn109(v0, v1 int32) int32 {
+func (m *Module) fn115(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11, v12, v13 int32
@@ -7603,7 +9804,7 @@ func (m *Module) fn109(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -7635,7 +9836,7 @@ func (m *Module) fn109(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -7668,7 +9869,7 @@ func (m *Module) fn109(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -7723,7 +9924,7 @@ func (m *Module) fn109(v0, v1 int32) int32 {
 								t20 := v13
 								v5 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int32(load16(m.memory[uint32(t20+(i32(0)-v5)*i32(36)+i32(-36)):]))
-								t22 := m.fn106(t18, t19, t21)
+								t22 := m.fn112(t18, t19, t21)
 								v7 = int32(t22)
 								v10 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -7806,21 +10007,21 @@ func (m *Module) fn109(v0, v1 int32) int32 {
 						p39 = i32(4)
 					}
 					if uint32(t38) < uint32(p39+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -7912,7 +10113,7 @@ func (m *Module) fn109(v0, v1 int32) int32 {
 			l32:
 				{
 					t54 := int32(load16(m.memory[uint32(v13):]))
-					t55 := m.fn106(v18, v16, t54)
+					t55 := m.fn112(v18, v16, t54)
 					t56 := v4
 					v11 = int32(t55)
 					v6 = t56 & v11
@@ -8050,10 +10251,10 @@ func (m *Module) fn109(v0, v1 int32) int32 {
 		return i32(-1)
 	}
 l5:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn110(v0, v1 int32) int32 {
+func (m *Module) fn116(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11 int32
@@ -8068,7 +10269,7 @@ func (m *Module) fn110(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -8100,7 +10301,7 @@ func (m *Module) fn110(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -8129,7 +10330,7 @@ func (m *Module) fn110(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -8184,7 +10385,7 @@ func (m *Module) fn110(v0, v1 int32) int32 {
 								t20 := v11
 								v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int32(load16(m.memory[uint32(t20+(i32(0)-v14)*i32(520)+i32(-520)):]))
-								t22 := m.fn106(t18, t19, t21)
+								t22 := m.fn112(t18, t19, t21)
 								v15 = int32(t22)
 								v10 = t17 & v15
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -8255,21 +10456,21 @@ func (m *Module) fn110(v0, v1 int32) int32 {
 						p33 = i32(4)
 					}
 					if uint32(t32) < uint32(p33+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -8363,7 +10564,7 @@ func (m *Module) fn110(v0, v1 int32) int32 {
 				l33:
 					{
 						t48 := int32(load16(m.memory[uint32(v14):]))
-						t49 := m.fn106(v18, v16, t48)
+						t49 := m.fn112(v18, v16, t48)
 						t50 := v4
 						v1 = int32(t49)
 						v10 = t50 & v1
@@ -8472,11 +10673,11 @@ func (m *Module) fn110(v0, v1 int32) int32 {
 	l15:
 		return i32(-1)
 	l5:
-		m.fn28(i32(1271248), i32(57), i32(1271276))
+		m.fn34(i32(1271248), i32(57), i32(1271276))
 		panic("unreachable")
 	}
 }
-func (m *Module) fn111(v0, v1 int32) int32 {
+func (m *Module) fn117(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10, v11 int32
 	var v12, v13, v14 int64
 	var v15 int32
@@ -8488,7 +10689,7 @@ func (m *Module) fn111(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -8520,7 +10721,7 @@ func (m *Module) fn111(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -8540,10 +10741,10 @@ func (m *Module) fn111(v0, v1 int32) int32 {
 				v9 = (v3<<1 + i32(7)) & i32(-8)
 				v6 = t8 + v9
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
-					m.fn28(i32(1271248), i32(57), i32(1271276))
+					m.fn34(i32(1271248), i32(57), i32(1271276))
 					panic("unreachable")
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v9
@@ -8598,7 +10799,7 @@ func (m *Module) fn111(v0, v1 int32) int32 {
 								t20 := v11
 								v15 = int32(uint32(int64(bits.TrailingZeros64(uint64(v12))))>>3) + v3
 								t21 := int32(load16(m.memory[uint32(t20-v15<<1+i32(-2)):]))
-								t22 := m.fn106(t18, t19, t21)
+								t22 := m.fn112(t18, t19, t21)
 								v7 = int32(t22)
 								v9 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v9):]))
@@ -8670,21 +10871,21 @@ func (m *Module) fn111(v0, v1 int32) int32 {
 						p34 = i32(4)
 					}
 					if uint32(t33) < uint32(p34+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -8776,7 +10977,7 @@ func (m *Module) fn111(v0, v1 int32) int32 {
 			l32:
 				{
 					t49 := int32(load16(m.memory[uint32(v1):]))
-					t50 := m.fn106(v18, v16, t49)
+					t50 := m.fn112(v18, v16, t49)
 					t51 := v4
 					v11 = int32(t50)
 					v6 = t51 & v11
@@ -8866,7 +11067,7 @@ func (m *Module) fn111(v0, v1 int32) int32 {
 		return i32(-1)
 	}
 }
-func (m *Module) fn112(v0, v1 int32) int32 {
+func (m *Module) fn118(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11, v12 int32
@@ -8880,7 +11081,7 @@ func (m *Module) fn112(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -8912,7 +11113,7 @@ func (m *Module) fn112(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -8941,7 +11142,7 @@ func (m *Module) fn112(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -8996,7 +11197,7 @@ func (m *Module) fn112(v0, v1 int32) int32 {
 								t20 := v12
 								v15 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int64(load64(m.memory[uint32(t20+(i32(0)-v15)*i32(104)+i32(-104)):]))
-								t22 := m.fn113(t18, t19, t21)
+								t22 := m.fn119(t18, t19, t21)
 								v7 = int32(t22)
 								v10 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -9067,21 +11268,21 @@ func (m *Module) fn112(v0, v1 int32) int32 {
 						p33 = i32(4)
 					}
 					if uint32(t32) < uint32(p33+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -9173,7 +11374,7 @@ func (m *Module) fn112(v0, v1 int32) int32 {
 			l32:
 				{
 					t48 := int64(load64(m.memory[uint32(v1):]))
-					t49 := m.fn113(v18, v16, t48)
+					t49 := m.fn119(v18, v16, t48)
 					t50 := v4
 					v12 = int32(t49)
 					v6 = t50 & v12
@@ -9375,10 +11576,10 @@ func (m *Module) fn112(v0, v1 int32) int32 {
 		return i32(-1)
 	}
 l5:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn113(v0, v1, v2 int64) int64 {
+func (m *Module) fn119(v0, v1, v2 int64) int64 {
 	var v3 int32
 	var v4, v5, v6 int64
 	t0 := m.g0
@@ -9393,7 +11594,7 @@ func (m *Module) fn113(v0, v1, v2 int64) int64 {
 	store64(m.memory[int64(uint32(v3))+16:], uint64(v0^i64(0x6c7967656e657261)))
 	store64(m.memory[int64(uint32(v3))+8:], uint64(v0^i64(8317987319222330741)))
 	store64(m.memory[int64(uint32(v3))+72:], uint64(v2))
-	m.fn59(v3+i32(8), v3+i32(72), i32(8))
+	m.fn65(v3+i32(8), v3+i32(72), i32(8))
 	t1 := int64(load64(m.memory[int64(uint32(v3))+8:]))
 	v0 = t1
 	t2 := int64(load64(m.memory[int64(uint32(v3))+24:]))
@@ -9456,7 +11657,7 @@ func (m *Module) fn113(v0, v1, v2 int64) int64 {
 	v1 = v1 + v4
 	return t24 ^ i64_rotl(v1, i64(32)) ^ v1
 }
-func (m *Module) fn114(v0, v1 int32) int32 {
+func (m *Module) fn120(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11 int32
@@ -9471,7 +11672,7 @@ func (m *Module) fn114(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -9503,7 +11704,7 @@ func (m *Module) fn114(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -9532,7 +11733,7 @@ func (m *Module) fn114(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -9587,7 +11788,7 @@ func (m *Module) fn114(v0, v1 int32) int32 {
 								t20 := v11
 								v14 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int64(load64(m.memory[uint32(t20+(i32(0)-v14)*i32(480)+i32(-480)):]))
-								t22 := m.fn113(t18, t19, t21)
+								t22 := m.fn119(t18, t19, t21)
 								v15 = int32(t22)
 								v10 = t17 & v15
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -9658,21 +11859,21 @@ func (m *Module) fn114(v0, v1 int32) int32 {
 						p33 = i32(4)
 					}
 					if uint32(t32) < uint32(p33+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -9766,7 +11967,7 @@ func (m *Module) fn114(v0, v1 int32) int32 {
 				l33:
 					{
 						t48 := int64(load64(m.memory[uint32(v14):]))
-						t49 := m.fn113(v18, v16, t48)
+						t49 := m.fn119(v18, v16, t48)
 						t50 := v4
 						v1 = int32(t49)
 						v10 = t50 & v1
@@ -9891,11 +12092,11 @@ func (m *Module) fn114(v0, v1 int32) int32 {
 	l15:
 		return i32(-1)
 	l5:
-		m.fn28(i32(1271248), i32(57), i32(1271276))
+		m.fn34(i32(1271248), i32(57), i32(1271276))
 		panic("unreachable")
 	}
 }
-func (m *Module) fn115(v0, v1 int32) int32 {
+func (m *Module) fn121(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	var v10, v11, v12 int32
@@ -9909,7 +12110,7 @@ func (m *Module) fn115(v0, v1 int32) int32 {
 		v2 = t0
 		v3 = v2 + i32(1)
 		if v3 == 0 {
-			m.fn28(i32(1271248), i32(57), i32(1271276))
+			m.fn34(i32(1271248), i32(57), i32(1271276))
 			panic("unreachable")
 		}
 		{
@@ -9941,7 +12142,7 @@ func (m *Module) fn115(v0, v1 int32) int32 {
 							goto l2
 						}
 						if uint32(v3) > uint32(i32(0x1fffffff)) {
-							m.fn28(i32(1271248), i32(57), i32(1271276))
+							m.fn34(i32(1271248), i32(57), i32(1271276))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v3<<3) / uint32(i32(7)))
@@ -9970,7 +12171,7 @@ func (m *Module) fn115(v0, v1 int32) int32 {
 				if uint32(v6) > uint32(i32(0x7ffffff8)) {
 					goto l5
 				}
-				t9 := m.fn5(v6)
+				t9 := m.fn11(v6)
 				v5 = t9
 				if v5 != 0 {
 					v6 = v5 + v10
@@ -10025,7 +12226,7 @@ func (m *Module) fn115(v0, v1 int32) int32 {
 								t20 := v12
 								v1 = int32(uint32(int64(bits.TrailingZeros64(uint64(v9))))>>3) + v3
 								t21 := int64(load64(m.memory[uint32(t20+(i32(0)-v1)*i32(24)+i32(-24)):]))
-								t22 := m.fn113(t18, t19, t21)
+								t22 := m.fn119(t18, t19, t21)
 								v7 = int32(t22)
 								v10 = t17 & v7
 								t23 := int64(load64(m.memory[uint32(t16+v10):]))
@@ -10104,21 +12305,21 @@ func (m *Module) fn115(v0, v1 int32) int32 {
 						p37 = i32(4)
 					}
 					if uint32(t36) < uint32(p37+v3) {
-						m.fn3(i32(1273840), i32(46), i32(1273888))
+						m.fn2(i32(1273840), i32(46), i32(1273888))
 						panic("unreachable")
 					}
 					if v8 == 0 {
 						goto l17
 					}
 					if uint32(v6) > uint32(v3+i32(39)) {
-						m.fn3(i32(1273904), i32(46), i32(1273952))
+						m.fn2(i32(1273904), i32(46), i32(1273952))
 						panic("unreachable")
 					}
 				l17:
 					m.fn1(v4)
 					return i32(-1)
 				}
-				m.fn24(i32(8), v6)
+				m.fn30(i32(8), v6)
 				panic("unreachable")
 			}
 		}
@@ -10210,7 +12411,7 @@ func (m *Module) fn115(v0, v1 int32) int32 {
 			l32:
 				{
 					t52 := int64(load64(m.memory[uint32(v12):]))
-					t53 := m.fn113(v18, v16, t52)
+					t53 := m.fn119(v18, v16, t52)
 					t54 := v4
 					v1 = int32(t53)
 					v6 = t54 & v1
@@ -10319,10 +12520,10 @@ func (m *Module) fn115(v0, v1 int32) int32 {
 		return i32(-1)
 	}
 l5:
-	m.fn28(i32(1271248), i32(57), i32(1271276))
+	m.fn34(i32(1271248), i32(57), i32(1271276))
 	panic("unreachable")
 }
-func (m *Module) fn116(v0, v1 int32) {
+func (m *Module) fn122(v0, v1 int32) {
 	var v2, v3, v4, v5 int32
 	t0 := m.g0
 	v2 = t0 - i32(4096)
@@ -10345,14 +12546,14 @@ func (m *Module) fn116(v0, v1 int32) {
 				goto l0
 			}
 			if uint32(v4) >= uint32(i32(29826162)) {
-				m.fn9()
+				m.fn12()
 				panic("unreachable")
 			}
 			v5 = v3 * i32(72)
-			t4 := m.fn5(v5)
+			t4 := m.fn11(v5)
 			v4 = t4
 			if v4 == 0 {
-				m.fn10(i32(4), v5)
+				m.fn7(i32(4), v5)
 				panic("unreachable")
 			}
 			store32(m.memory[int64(uint32(v2))+8:], uint32(i32(0)))
@@ -10366,8 +12567,8 @@ func (m *Module) fn116(v0, v1 int32) {
 			if uint32(v1) < uint32(i32(65)) {
 				p9 = 1
 			}
-			m.fn117(t5, t6, t7, t8, p9)
-			m.fn118(v2)
+			m.fn123(t5, t6, t7, t8, p9)
+			m.fn124(v2)
 			goto l3
 		}
 	l0:
@@ -10378,12 +12579,12 @@ func (m *Module) fn116(v0, v1 int32) {
 		if uint32(v1) < uint32(i32(65)) {
 			p13 = 1
 		}
-		m.fn117(t10, t11, t12, i32(56), p13)
+		m.fn123(t10, t11, t12, i32(56), p13)
 	}
 l3:
 	m.g0 = v2 + i32(4096)
 }
-func (m *Module) fn117(v0, v1, v2, v3, v4 int32) {
+func (m *Module) fn123(v0, v1, v2, v3, v4 int32) {
 	var v5 int32
 	var v6, v7 int64
 	var v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25 int32
@@ -10674,7 +12875,7 @@ l32:
 				p59 = v19
 			}
 			v19 = p59
-			m.fn119(t60, v19, v2, v3, i32(0), i32(0))
+			m.fn125(t60, v19, v2, v3, i32(0), i32(0))
 			v15 = v19<<1 | i32(1)
 		}
 	l13:
@@ -10719,12 +12920,12 @@ l2:
 			}
 			goto l19
 		l18:
-			m.fn119(v21, v19, v2, v3, int32(bits.LeadingZeros32(uint32(v19|i32(1))))<<1^i32(62), i32(0))
+			m.fn125(v21, v19, v2, v3, int32(bits.LeadingZeros32(uint32(v19|i32(1))))<<1^i32(62), i32(0))
 		l19:
 			if v8&i32(1) != 0 {
 				goto l21
 			}
-			m.fn119(v21+v19*i32(72), v13, v2, v3, int32(bits.LeadingZeros32(uint32(v13|i32(1))))<<1^i32(62), i32(0))
+			m.fn125(v21+v19*i32(72), v13, v2, v3, int32(bits.LeadingZeros32(uint32(v13|i32(1))))<<1^i32(62), i32(0))
 		l21:
 			{
 				if v13 == 0 {
@@ -10880,11 +13081,11 @@ l31:
 	if v8&i32(1) != 0 {
 		goto l33
 	}
-	m.fn119(v0, v1, v2, v3, int32(bits.LeadingZeros32(uint32(v1|i32(1))))<<1^i32(62), i32(0))
+	m.fn125(v0, v1, v2, v3, int32(bits.LeadingZeros32(uint32(v1|i32(1))))<<1^i32(62), i32(0))
 l33:
 	m.g0 = v5 + i32(336)
 }
-func (m *Module) fn118(v0 int32) {
+func (m *Module) fn124(v0 int32) {
 	var v1, v2, v3, v4, v5, v6, v7 int32
 	t0 := int32(load32(m.memory[int64(uint32(v0))+4:]))
 	v1 = t0
@@ -10914,14 +13115,14 @@ func (m *Module) fn118(v0 int32) {
 				p6 = i32(4)
 			}
 			if uint32(t5) < uint32(p6+v4) {
-				m.fn3(i32(1273840), i32(46), i32(1273888))
+				m.fn2(i32(1273840), i32(46), i32(1273888))
 				panic("unreachable")
 			}
 			if v6 == 0 {
 				goto l3
 			}
 			if uint32(v7) > uint32(v4+i32(39)) {
-				m.fn3(i32(1273904), i32(46), i32(1273952))
+				m.fn2(i32(1273904), i32(46), i32(1273952))
 				panic("unreachable")
 			}
 		l3:
@@ -10951,14 +13152,14 @@ func (m *Module) fn118(v0 int32) {
 				}
 				v4 = v4 << 1
 				if uint32(t10) < uint32(p11+v4) {
-					m.fn3(i32(1273840), i32(46), i32(1273888))
+					m.fn2(i32(1273840), i32(46), i32(1273888))
 					panic("unreachable")
 				}
 				if v6 == 0 {
 					goto l8
 				}
 				if uint32(v7) > uint32(v4+i32(39)) {
-					m.fn3(i32(1273904), i32(46), i32(1273952))
+					m.fn2(i32(1273904), i32(46), i32(1273952))
 					panic("unreachable")
 				}
 			l8:
@@ -10983,14 +13184,14 @@ func (m *Module) fn118(v0 int32) {
 			}
 			v4 = v4 << 2
 			if uint32(t15) < uint32(p16+v4) {
-				m.fn3(i32(1273840), i32(46), i32(1273888))
+				m.fn2(i32(1273840), i32(46), i32(1273888))
 				panic("unreachable")
 			}
 			if v6 == 0 {
 				goto l11
 			}
 			if uint32(v7) > uint32(v4+i32(39)) {
-				m.fn3(i32(1273904), i32(46), i32(1273952))
+				m.fn2(i32(1273904), i32(46), i32(1273952))
 				panic("unreachable")
 			}
 		l11:
@@ -11021,21 +13222,21 @@ l0:
 		}
 		v3 = v3 * i32(72)
 		if uint32(t19) < uint32(p20+v3) {
-			m.fn3(i32(1273840), i32(46), i32(1273888))
+			m.fn2(i32(1273840), i32(46), i32(1273888))
 			panic("unreachable")
 		}
 		if v2 == 0 {
 			goto l16
 		}
 		if uint32(v4) > uint32(v3+i32(39)) {
-			m.fn3(i32(1273904), i32(46), i32(1273952))
+			m.fn2(i32(1273904), i32(46), i32(1273952))
 			panic("unreachable")
 		}
 	l16:
 		m.fn1(v1)
 	}
 }
-func (m *Module) fn119(v0, v1, v2, v3, v4, v5 int32) {
+func (m *Module) fn125(v0, v1, v2, v3, v4, v5 int32) {
 	var v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20 int32
 	t0 := m.g0
 	v6 = t0 - i32(80)
@@ -11048,7 +13249,7 @@ func (m *Module) fn119(v0, v1, v2, v3, v4, v5 int32) {
 				if v4 != 0 {
 					goto l2
 				}
-				m.fn117(v0, v1, v2, v3, i32(1))
+				m.fn123(v0, v1, v2, v3, i32(1))
 				goto l3
 			l2:
 				t1 := v0
@@ -11060,7 +13261,7 @@ func (m *Module) fn119(v0, v1, v2, v3, v4, v5 int32) {
 						if uint32(v1) < uint32(i32(64)) {
 							goto l4
 						}
-						t2 := m.fn120(v0, v10, v7, v9)
+						t2 := m.fn126(v0, v10, v7, v9)
 						v11 = t2
 						goto l5
 					}
@@ -11205,7 +13406,7 @@ func (m *Module) fn119(v0, v1, v2, v3, v4, v5 int32) {
 						if uint32(v1) < uint32(v7) {
 							goto l17
 						}
-						m.fn119(v0+v17, v18, v2, v3, v4, v6+i32(8))
+						m.fn125(v0+v17, v18, v2, v3, v4, v6+i32(8))
 						v1 = v7
 						if uint32(v7) < uint32(i32(33)) {
 							goto l1
@@ -11319,10 +13520,10 @@ func (m *Module) fn119(v0, v1, v2, v3, v4, v5 int32) {
 				goto l18
 			l27:
 			}
-			m.fn121(v10, v1, v1, i32(1069572))
+			m.fn127(v10, v1, v1, i32(1069588))
 			panic("unreachable")
 		l17:
-			m.fn28(i32(1271784), i32(19), i32(1069556))
+			m.fn34(i32(1271784), i32(19), i32(1069572))
 		l8:
 			panic("unreachable")
 		}
@@ -11815,13 +14016,13 @@ func (m *Module) fn119(v0, v1, v2, v3, v4, v5 int32) {
 			goto l3
 		}
 	l44:
-		m.fn122()
+		m.fn128()
 		panic("unreachable")
 	}
 l3:
 	m.g0 = v6 + i32(80)
 }
-func (m *Module) fn120(v0, v1, v2, v3 int32) int32 {
+func (m *Module) fn126(v0, v1, v2, v3 int32) int32 {
 	var v4, v5, v6 int32
 	{
 		if uint32(v3) < uint32(i32(8)) {
@@ -11834,11 +14035,11 @@ func (m *Module) fn120(v0, v1, v2, v3 int32) int32 {
 		t2 := t1 + v4
 		t3 := v0
 		v5 = v3 * i32(504)
-		t4 := m.fn120(t0, t2, t3+v5, v3)
+		t4 := m.fn126(t0, t2, t3+v5, v3)
 		v0 = t4
-		t5 := m.fn120(v1, v1+v4, v1+v5, v3)
+		t5 := m.fn126(v1, v1+v4, v1+v5, v3)
 		v1 = t5
-		t6 := m.fn120(v2, v2+v4, v2+v5, v3)
+		t6 := m.fn126(v2, v2+v4, v2+v5, v3)
 		v2 = t6
 	}
 l0:
@@ -11878,7 +14079,7 @@ l0:
 	}
 	return p21
 }
-func (m *Module) fn121(v0, v1, v2, v3 int32) {
+func (m *Module) fn127(v0, v1, v2, v3 int32) {
 	var v4 int32
 	var v5 int64
 	t0 := m.g0
@@ -11888,43 +14089,43 @@ func (m *Module) fn121(v0, v1, v2, v3 int32) {
 		store32(m.memory[int64(uint32(v4))+8:], uint32(v0))
 		store32(m.memory[int64(uint32(v4))+12:], uint32(v2))
 		t1 := v4
-		v5 = int64(uint32(i32(2))) << 32
+		v5 = int64(uint32(i32(3))) << 32
 		store64(m.memory[int64(uint32(t1))+24:], uint64(v5|int64(uint32(v4+i32(12)))))
 		store64(m.memory[int64(uint32(v4))+16:], uint64(v5|int64(uint32(v4+i32(8)))))
-		m.fn28(i32(1050466), v4+i32(16), v3)
+		m.fn34(i32(1050416), v4+i32(16), v3)
 		panic("unreachable")
 	}
 	if uint32(v1) > uint32(v2) {
 		store32(m.memory[int64(uint32(v4))+8:], uint32(v1))
 		store32(m.memory[int64(uint32(v4))+12:], uint32(v2))
 		t2 := v4
-		v5 = int64(uint32(i32(2))) << 32
+		v5 = int64(uint32(i32(3))) << 32
 		store64(m.memory[int64(uint32(t2))+24:], uint64(v5|int64(uint32(v4+i32(12)))))
 		store64(m.memory[int64(uint32(v4))+16:], uint64(v5|int64(uint32(v4+i32(8)))))
-		m.fn28(i32(1050523), v4+i32(16), v3)
+		m.fn34(i32(1050473), v4+i32(16), v3)
 		panic("unreachable")
 	}
-	v5 = int64(uint32(i32(2))) << 32
+	v5 = int64(uint32(i32(3))) << 32
 	if uint32(v0) <= uint32(v1) {
 		store32(m.memory[int64(uint32(v4))+8:], uint32(v1))
 		store32(m.memory[int64(uint32(v4))+12:], uint32(v2))
 		store64(m.memory[int64(uint32(v4))+24:], uint64(v5|int64(uint32(v4+i32(12)))))
 		store64(m.memory[int64(uint32(v4))+16:], uint64(v5|int64(uint32(v4+i32(8)))))
-		m.fn28(i32(1050523), v4+i32(16), v3)
+		m.fn34(i32(1050473), v4+i32(16), v3)
 		panic("unreachable")
 	}
 	store32(m.memory[int64(uint32(v4))+8:], uint32(v0))
 	store32(m.memory[int64(uint32(v4))+12:], uint32(v1))
 	store64(m.memory[int64(uint32(v4))+24:], uint64(v5|int64(uint32(v4+i32(12)))))
 	store64(m.memory[int64(uint32(v4))+16:], uint64(v5|int64(uint32(v4+i32(8)))))
-	m.fn28(i32(1049723), v4+i32(16), v3)
+	m.fn34(i32(0x100449), v4+i32(16), v3)
 	panic("unreachable")
 }
-func (m *Module) fn122() {
-	m.fn28(i32(1119608), i32(153), i32(1119684))
+func (m *Module) fn128() {
+	m.fn34(i32(1119624), i32(153), i32(1119700))
 	panic("unreachable")
 }
-func (m *Module) fn123(v0, v1 int32) {
+func (m *Module) fn129(v0, v1 int32) {
 	var v2, v3, v4, v5 int32
 	t0 := m.g0
 	v2 = t0 - i32(4096)
@@ -11953,10 +14154,10 @@ func (m *Module) fn123(v0, v1 int32) {
 			if uint32(v4) >= uint32(i32(0x7ffffffd)) {
 				goto l1
 			}
-			t4 := m.fn5(v4)
+			t4 := m.fn11(v4)
 			v5 = t4
 			if v5 == 0 {
-				m.fn10(i32(4), v4)
+				m.fn7(i32(4), v4)
 				panic("unreachable")
 			}
 			t5 := v0
@@ -11967,7 +14168,7 @@ func (m *Module) fn123(v0, v1 int32) {
 			if uint32(v1) < uint32(i32(65)) {
 				p9 = 1
 			}
-			m.fn124(t5, t6, t7, t8, p9)
+			m.fn130(t5, t6, t7, t8, p9)
 			t10 := int32(load32(m.memory[uint32(v5+i32(-4)):]))
 			v1 = t10
 			v3 = v1 & i32(-8)
@@ -11978,14 +14179,14 @@ func (m *Module) fn123(v0, v1 int32) {
 				p12 = i32(4)
 			}
 			if uint32(t11) < uint32(p12+v4) {
-				m.fn3(i32(1273840), i32(46), i32(1273888))
+				m.fn2(i32(1273840), i32(46), i32(1273888))
 				panic("unreachable")
 			}
 			if v1 == 0 {
 				goto l4
 			}
 			if uint32(v3) > uint32(v4+i32(39)) {
-				m.fn3(i32(1273904), i32(46), i32(1273952))
+				m.fn2(i32(1273904), i32(46), i32(1273952))
 				panic("unreachable")
 			}
 		l4:
@@ -12000,16 +14201,16 @@ func (m *Module) fn123(v0, v1 int32) {
 		if uint32(v1) < uint32(i32(65)) {
 			p16 = 1
 		}
-		m.fn124(t13, t14, t15, i32(512), p16)
+		m.fn130(t13, t14, t15, i32(512), p16)
 	}
 l6:
 	m.g0 = v2 + i32(4096)
 	return
 l1:
-	m.fn9()
+	m.fn12()
 	panic("unreachable")
 }
-func (m *Module) fn124(v0, v1, v2, v3, v4 int32) {
+func (m *Module) fn130(v0, v1, v2, v3, v4 int32) {
 	var v5 int32
 	var v6, v7 int64
 	var v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25 int32
@@ -12223,7 +14424,7 @@ l33:
 				p25 = v19
 			}
 			v20 = p25
-			m.fn125(t26, v20, v2, v3, i32(0), i32(0))
+			m.fn131(t26, v20, v2, v3, i32(0), i32(0))
 			v15 = v20<<1 | i32(1)
 		}
 	l14:
@@ -12268,12 +14469,12 @@ l2:
 			}
 			goto l20
 		l19:
-			m.fn125(v20, v13, v2, v3, int32(bits.LeadingZeros32(uint32(v13|i32(1))))<<1^i32(62), i32(0))
+			m.fn131(v20, v13, v2, v3, int32(bits.LeadingZeros32(uint32(v13|i32(1))))<<1^i32(62), i32(0))
 		l20:
 			if v8&i32(1) != 0 {
 				goto l22
 			}
-			m.fn125(v20+v13<<3, v19, v2, v3, int32(bits.LeadingZeros32(uint32(v19|i32(1))))<<1^i32(62), i32(0))
+			m.fn131(v20+v13<<3, v19, v2, v3, int32(bits.LeadingZeros32(uint32(v19|i32(1))))<<1^i32(62), i32(0))
 		l22:
 			{
 				if v19 == 0 {
@@ -12431,11 +14632,11 @@ l32:
 	if v8&i32(1) != 0 {
 		goto l34
 	}
-	m.fn125(v0, v1, v2, v3, int32(bits.LeadingZeros32(uint32(v1|i32(1))))<<1^i32(62), i32(0))
+	m.fn131(v0, v1, v2, v3, int32(bits.LeadingZeros32(uint32(v1|i32(1))))<<1^i32(62), i32(0))
 l34:
 	m.g0 = v5 + i32(336)
 }
-func (m *Module) fn125(v0, v1, v2, v3, v4, v5 int32) {
+func (m *Module) fn131(v0, v1, v2, v3, v4, v5 int32) {
 	var v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23 int32
 	var v24 int64
 	t0 := m.g0
@@ -12449,7 +14650,7 @@ func (m *Module) fn125(v0, v1, v2, v3, v4, v5 int32) {
 				if v4 != 0 {
 					goto l2
 				}
-				m.fn124(v0, v1, v2, v3, i32(1))
+				m.fn130(v0, v1, v2, v3, i32(1))
 				goto l3
 			l2:
 				t1 := v0
@@ -12461,7 +14662,7 @@ func (m *Module) fn125(v0, v1, v2, v3, v4, v5 int32) {
 						if uint32(v1) < uint32(i32(64)) {
 							goto l4
 						}
-						t2 := m.fn126(v0, v11, v8, v10)
+						t2 := m.fn132(v0, v11, v8, v10)
 						v12 = t2
 						goto l5
 					}
@@ -12730,7 +14931,7 @@ func (m *Module) fn125(v0, v1, v2, v3, v4, v5 int32) {
 							if uint32(v8) > uint32(v1) {
 								goto l21
 							}
-							m.fn125(v0+v21, v7, v2, v3, v4, v6+i32(8))
+							m.fn131(v0+v21, v7, v2, v3, v4, v6+i32(8))
 							v1 = v8
 							if uint32(v8) >= uint32(i32(33)) {
 								goto l22
@@ -12972,10 +15173,10 @@ func (m *Module) fn125(v0, v1, v2, v3, v4, v5 int32) {
 				goto l22
 			l35:
 			}
-			m.fn121(v11, v1, v1, i32(1069572))
+			m.fn127(v11, v1, v1, i32(1069588))
 			panic("unreachable")
 		l21:
-			m.fn28(i32(1271784), i32(19), i32(1069556))
+			m.fn34(i32(1271784), i32(19), i32(1069572))
 		l8:
 			panic("unreachable")
 		}
@@ -13233,10 +15434,10 @@ func (m *Module) fn125(v0, v1, v2, v3, v4, v5 int32) {
 			t212 := v7
 			t213 := v2
 			v10 = v2 + v8<<3
-			m.fn127(t212, t213, v10)
+			m.fn133(t212, t213, v10)
 			t214 := v7
 			v11 = v22 << 3
-			m.fn127(t214+v11, v2+v11, v10+i32(64))
+			m.fn133(t214+v11, v2+v11, v10+i32(64))
 			v23 = i32(8)
 		}
 	l38:
@@ -13459,2163 +15660,9 @@ func (m *Module) fn125(v0, v1, v2, v3, v4, v5 int32) {
 			goto l3
 		}
 	l53:
-		m.fn122()
+		m.fn128()
 		panic("unreachable")
 	}
 l3:
 	m.g0 = v6 + i32(16)
-}
-func (m *Module) fn126(v0, v1, v2, v3 int32) int32 {
-	var v4, v5, v6 int32
-	{
-		if uint32(v3) < uint32(i32(8)) {
-			goto l0
-		}
-		t0 := v0
-		t1 := v0
-		v3 = int32(uint32(v3) >> 3)
-		v4 = v3 << 5
-		t2 := t1 + v4
-		t3 := v0
-		v5 = v3 * i32(56)
-		t4 := m.fn126(t0, t2, t3+v5, v3)
-		v0 = t4
-		t5 := m.fn126(v1, v1+v4, v1+v5, v3)
-		v1 = t5
-		t6 := m.fn126(v2, v2+v4, v2+v5, v3)
-		v2 = t6
-	}
-l0:
-	t7 := int32(load32(m.memory[uint32(v0+i32(4)):]))
-	t8 := v0
-	t9 := v2
-	t10 := v1
-	v3 = t7
-	t11 := int32(load32(m.memory[uint32(v1+i32(4)):]))
-	t12 := v3
-	v4 = t11
-	var p13 int32
-	if uint32(t12) < uint32(v4) {
-		p13 = 1
-	}
-	v5 = p13
-	t14 := int32(load32(m.memory[uint32(v2+i32(4)):]))
-	t15 := v5
-	t16 := v4
-	v6 = t14
-	var p17 int32
-	if uint32(t16) < uint32(v6) {
-		p17 = 1
-	}
-	p18 := t10
-	if t15^p17 != 0 {
-		p18 = t9
-	}
-	t19 := v5
-	var p20 int32
-	if uint32(v3) < uint32(v6) {
-		p20 = 1
-	}
-	p21 := p18
-	if t19^p20 != 0 {
-		p21 = t8
-	}
-	return p21
-}
-func (m *Module) fn127(v0, v1, v2 int32) {
-	var v3, v4, v5, v6, v7, v8, v9, v10, v11, v12 int32
-	var v13, v14 int64
-	var v15 int32
-	var v16, v17 int64
-	t0 := int32(load32(m.memory[uint32(v0+i32(12)):]))
-	t1 := v0
-	v3 = t0
-	t2 := int32(load32(m.memory[uint32(v0+i32(4)):]))
-	t3 := v3
-	v4 = t2
-	var p4 int32
-	if uint32(t3) < uint32(v4) {
-		p4 = 1
-	}
-	v5 = t1 + p4<<3
-	t5 := int32(load32(m.memory[uint32(v0+i32(28)):]))
-	t6 := int32(load32(m.memory[uint32(v0+i32(20)):]))
-	t7 := v5
-	t8 := v0
-	var p9 int32
-	if uint32(t5) < uint32(t6) {
-		p9 = 1
-	}
-	v6 = p9
-	p10 := i32(16)
-	if v6 != 0 {
-		p10 = i32(24)
-	}
-	v7 = t8 + p10
-	t11 := v7
-	t12 := v0
-	var p13 int32
-	if uint32(v3) >= uint32(v4) {
-		p13 = 1
-	}
-	v3 = t12 + p13<<3
-	t15 := v3
-	t16 := v0
-	p14 := i32(24)
-	if v6 != 0 {
-		p14 = i32(16)
-	}
-	v4 = t16 + p14
-	t17 := int32(load32(m.memory[uint32(v4+i32(4)):]))
-	t18 := int32(load32(m.memory[uint32(v3+i32(4)):]))
-	var p19 int32
-	if uint32(t17) < uint32(t18) {
-		p19 = 1
-	}
-	v6 = p19
-	p20 := t15
-	if v6 != 0 {
-		p20 = t11
-	}
-	t21 := int32(load32(m.memory[uint32(v7+i32(4)):]))
-	t22 := int32(load32(m.memory[uint32(v5+i32(4)):]))
-	var p23 int32
-	if uint32(t21) < uint32(t22) {
-		p23 = 1
-	}
-	v8 = p23
-	p24 := p20
-	if v8 != 0 {
-		p24 = t7
-	}
-	v9 = p24
-	t25 := int32(load32(m.memory[uint32(v9+i32(4)):]))
-	v10 = t25
-	t27 := v4
-	p26 := v7
-	if v8 != 0 {
-		p26 = v3
-	}
-	p28 := p26
-	if v6 != 0 {
-		p28 = t27
-	}
-	v11 = p28
-	t29 := int32(load32(m.memory[uint32(v11+i32(4)):]))
-	v12 = t29
-	t31 := v2
-	p30 := v5
-	if v8 != 0 {
-		p30 = v7
-	}
-	t32 := int64(load64(m.memory[uint32(p30):]))
-	v13 = t32
-	store64(m.memory[uint32(t31):], uint64(v13))
-	t33 := v2
-	t34 := v11
-	t35 := v9
-	var p36 int32
-	if uint32(v12) < uint32(v10) {
-		p36 = 1
-	}
-	v7 = p36
-	p37 := t35
-	if v7 != 0 {
-		p37 = t34
-	}
-	t38 := int64(load64(m.memory[uint32(p37):]))
-	store64(m.memory[int64(uint32(t33))+8:], uint64(t38))
-	t40 := v2
-	p39 := v11
-	if v7 != 0 {
-		p39 = v9
-	}
-	t41 := int64(load64(m.memory[uint32(p39):]))
-	store64(m.memory[int64(uint32(t40))+16:], uint64(t41))
-	v10 = v2 + i32(24)
-	t43 := v10
-	p42 := v4
-	if v6 != 0 {
-		p42 = v3
-	}
-	t44 := int64(load64(m.memory[uint32(p42):]))
-	v14 = t44
-	store64(m.memory[uint32(t43):], uint64(v14))
-	v7 = v0 + i32(32)
-	t45 := int32(load32(m.memory[uint32(v0+i32(44)):]))
-	t46 := v7
-	v3 = t45
-	t47 := int32(load32(m.memory[uint32(v0+i32(36)):]))
-	t48 := v3
-	v4 = t47
-	var p49 int32
-	if uint32(t48) < uint32(v4) {
-		p49 = 1
-	}
-	v5 = t46 + p49<<3
-	t50 := int32(load32(m.memory[uint32(v0+i32(60)):]))
-	t51 := int32(load32(m.memory[uint32(v0+i32(52)):]))
-	t52 := v5
-	t53 := v7
-	var p54 int32
-	if uint32(t50) < uint32(t51) {
-		p54 = 1
-	}
-	v6 = p54
-	p55 := i32(16)
-	if v6 != 0 {
-		p55 = i32(24)
-	}
-	v0 = t53 + p55
-	t56 := v0
-	t57 := v7
-	var p58 int32
-	if uint32(v3) >= uint32(v4) {
-		p58 = 1
-	}
-	v3 = t57 + p58<<3
-	t60 := v3
-	t61 := v7
-	p59 := i32(24)
-	if v6 != 0 {
-		p59 = i32(16)
-	}
-	v7 = t61 + p59
-	t62 := int32(load32(m.memory[uint32(v7+i32(4)):]))
-	t63 := int32(load32(m.memory[uint32(v3+i32(4)):]))
-	var p64 int32
-	if uint32(t62) < uint32(t63) {
-		p64 = 1
-	}
-	v4 = p64
-	p65 := t60
-	if v4 != 0 {
-		p65 = t56
-	}
-	t66 := int32(load32(m.memory[uint32(v0+i32(4)):]))
-	t67 := int32(load32(m.memory[uint32(v5+i32(4)):]))
-	var p68 int32
-	if uint32(t66) < uint32(t67) {
-		p68 = 1
-	}
-	v6 = p68
-	p69 := p65
-	if v6 != 0 {
-		p69 = t52
-	}
-	v8 = p69
-	t70 := int32(load32(m.memory[uint32(v8+i32(4)):]))
-	v12 = t70
-	t72 := v7
-	p71 := v0
-	if v6 != 0 {
-		p71 = v3
-	}
-	p73 := p71
-	if v4 != 0 {
-		p73 = t72
-	}
-	v9 = p73
-	t74 := int32(load32(m.memory[uint32(v9+i32(4)):]))
-	v15 = t74
-	v11 = v2 + i32(32)
-	t76 := v11
-	p75 := v5
-	if v6 != 0 {
-		p75 = v0
-	}
-	t77 := int64(load64(m.memory[uint32(p75):]))
-	v16 = t77
-	store64(m.memory[uint32(t76):], uint64(v16))
-	t78 := v2 + i32(40)
-	t79 := v9
-	t80 := v8
-	var p81 int32
-	if uint32(v15) < uint32(v12) {
-		p81 = 1
-	}
-	v0 = p81
-	p82 := t80
-	if v0 != 0 {
-		p82 = t79
-	}
-	t83 := int64(load64(m.memory[uint32(p82):]))
-	store64(m.memory[uint32(t78):], uint64(t83))
-	t85 := v2 + i32(48)
-	p84 := v9
-	if v0 != 0 {
-		p84 = v8
-	}
-	t86 := int64(load64(m.memory[uint32(p84):]))
-	store64(m.memory[uint32(t85):], uint64(t86))
-	v5 = v2 + i32(56)
-	t88 := v5
-	p87 := v7
-	if v4 != 0 {
-		p87 = v3
-	}
-	t89 := int64(load64(m.memory[uint32(p87):]))
-	v17 = t89
-	store64(m.memory[uint32(t88):], uint64(v17))
-	t90 := v1
-	t91 := v11
-	t92 := v2
-	v16 = int64(uint64(v16) >> 32)
-	t93 := v16
-	v13 = int64(uint64(v13) >> 32)
-	var p94 int32
-	if uint64(t93) < uint64(v13) {
-		p94 = 1
-	}
-	v0 = p94
-	p95 := t92
-	if v0 != 0 {
-		p95 = t91
-	}
-	t96 := int64(load64(m.memory[uint32(p95):]))
-	store64(m.memory[uint32(t90):], uint64(t96))
-	t97 := v1
-	t98 := v2
-	v17 = int64(uint64(v17) >> 32)
-	t99 := v17
-	v14 = int64(uint64(v14) >> 32)
-	var p100 int32
-	if uint64(t99) < uint64(v14) {
-		p100 = 1
-	}
-	v7 = p100
-	p101 := i32(56)
-	if v7 != 0 {
-		p101 = i32(24)
-	}
-	t102 := int64(load64(m.memory[uint32(t98+p101):]))
-	store64(m.memory[int64(uint32(t97))+56:], uint64(t102))
-	t103 := v1
-	v0 = v11 + v0<<3
-	t104 := v0
-	t105 := v2
-	var p106 int32
-	if uint64(v16) >= uint64(v13) {
-		p106 = 1
-	}
-	v2 = t105 + p106<<3
-	t107 := int32(load32(m.memory[uint32(v0+i32(4)):]))
-	t108 := v2
-	v4 = t107
-	t109 := int32(load32(m.memory[uint32(v2+i32(4)):]))
-	t110 := v4
-	v6 = t109
-	var p111 int32
-	if uint32(t110) < uint32(v6) {
-		p111 = 1
-	}
-	v8 = p111
-	p112 := t108
-	if v8 != 0 {
-		p112 = t104
-	}
-	t113 := int64(load64(m.memory[uint32(p112):]))
-	store64(m.memory[int64(uint32(t103))+8:], uint64(t113))
-	t115 := v1
-	t116 := v10
-	p114 := i32(0)
-	if v7 != 0 {
-		p114 = i32(-8)
-	}
-	v7 = t116 + p114
-	t118 := v7
-	t119 := v5
-	p117 := i32(0)
-	if uint64(v17) >= uint64(v14) {
-		p117 = i32(-8)
-	}
-	v3 = t119 + p117
-	t120 := int32(load32(m.memory[uint32(v3+i32(4)):]))
-	t121 := v3
-	v5 = t120
-	t122 := int32(load32(m.memory[uint32(v7+i32(4)):]))
-	t123 := v5
-	v9 = t122
-	var p124 int32
-	if uint32(t123) < uint32(v9) {
-		p124 = 1
-	}
-	v11 = p124
-	p125 := t121
-	if v11 != 0 {
-		p125 = t118
-	}
-	t126 := int64(load64(m.memory[uint32(p125):]))
-	store64(m.memory[int64(uint32(t115))+48:], uint64(t126))
-	t127 := v1
-	v0 = v0 + v8<<3
-	t128 := v0
-	t129 := v2
-	var p130 int32
-	if uint32(v4) >= uint32(v6) {
-		p130 = 1
-	}
-	v2 = t129 + p130<<3
-	t131 := int32(load32(m.memory[uint32(v0+i32(4)):]))
-	t132 := v2
-	v4 = t131
-	t133 := int32(load32(m.memory[uint32(v2+i32(4)):]))
-	t134 := v4
-	v6 = t133
-	var p135 int32
-	if uint32(t134) < uint32(v6) {
-		p135 = 1
-	}
-	v8 = p135
-	p136 := t132
-	if v8 != 0 {
-		p136 = t128
-	}
-	t137 := int64(load64(m.memory[uint32(p136):]))
-	store64(m.memory[int64(uint32(t127))+16:], uint64(t137))
-	t139 := v1
-	t140 := v7
-	p138 := i32(0)
-	if v11 != 0 {
-		p138 = i32(-8)
-	}
-	v7 = t140 + p138
-	t142 := v7
-	t143 := v3
-	p141 := i32(0)
-	if uint32(v5) >= uint32(v9) {
-		p141 = i32(-8)
-	}
-	v3 = t143 + p141
-	t144 := int32(load32(m.memory[uint32(v3+i32(4)):]))
-	t145 := v3
-	v9 = t144
-	t146 := int32(load32(m.memory[uint32(v7+i32(4)):]))
-	t147 := v9
-	v11 = t146
-	var p148 int32
-	if uint32(t147) < uint32(v11) {
-		p148 = 1
-	}
-	v10 = p148
-	p149 := t145
-	if v10 != 0 {
-		p149 = t142
-	}
-	t150 := int64(load64(m.memory[uint32(p149):]))
-	store64(m.memory[int64(uint32(t139))+40:], uint64(t150))
-	t151 := v1
-	v5 = v0 + v8<<3
-	t152 := v5
-	t153 := v2
-	var p154 int32
-	if uint32(v4) >= uint32(v6) {
-		p154 = 1
-	}
-	v0 = t153 + p154<<3
-	t155 := int32(load32(m.memory[uint32(v5+i32(4)):]))
-	t156 := v0
-	v4 = t155
-	t157 := int32(load32(m.memory[uint32(v0+i32(4)):]))
-	t158 := v4
-	v6 = t157
-	var p159 int32
-	if uint32(t158) < uint32(v6) {
-		p159 = 1
-	}
-	v8 = p159
-	p160 := t156
-	if v8 != 0 {
-		p160 = t152
-	}
-	t161 := int64(load64(m.memory[uint32(p160):]))
-	store64(m.memory[int64(uint32(t151))+24:], uint64(t161))
-	t163 := v1
-	t164 := v7
-	p162 := i32(0)
-	if v10 != 0 {
-		p162 = i32(-8)
-	}
-	v2 = t164 + p162
-	t166 := v2
-	t167 := v3
-	p165 := i32(0)
-	if uint32(v9) >= uint32(v11) {
-		p165 = i32(-8)
-	}
-	v7 = t167 + p165
-	t168 := int32(load32(m.memory[uint32(v7+i32(4)):]))
-	t169 := v7
-	v9 = t168
-	t170 := int32(load32(m.memory[uint32(v2+i32(4)):]))
-	t171 := v9
-	v11 = t170
-	var p172 int32
-	if uint32(t171) < uint32(v11) {
-		p172 = 1
-	}
-	v3 = p172
-	p173 := t169
-	if v3 != 0 {
-		p173 = t166
-	}
-	t174 := int64(load64(m.memory[uint32(p173):]))
-	store64(m.memory[int64(uint32(t163))+32:], uint64(t174))
-	{
-		t175 := v0
-		var p176 int32
-		if uint32(v4) >= uint32(v6) {
-			p176 = 1
-		}
-		t178 := t175 + p176<<3
-		t179 := v2
-		p177 := i32(0)
-		if v3 != 0 {
-			p177 = i32(-8)
-		}
-		if t178 != t179+p177+i32(8) {
-			goto l0
-		}
-		t181 := v5 + v8<<3
-		t182 := v7
-		p180 := i32(0)
-		if uint32(v9) >= uint32(v11) {
-			p180 = i32(-8)
-		}
-		if t181 == t182+p180+i32(8) {
-			return
-		}
-	}
-l0:
-	m.fn122()
-	panic("unreachable")
-}
-func (m *Module) fn128(v0, v1 int32) {
-	var v2, v3, v4, v5 int32
-	t0 := m.g0
-	v2 = t0 - i32(4096)
-	m.g0 = v2
-	{
-		{
-			p1 := i32(666666)
-			if uint32(v1) < uint32(i32(666666)) {
-				p1 = v1
-			}
-			v3 = p1
-			t2 := v3
-			v4 = v1 - int32(uint32(v1)>>1)
-			p3 := v4
-			if uint32(v3) > uint32(v4) {
-				p3 = t2
-			}
-			v3 = p3
-			if uint32(v3) < uint32(i32(342)) {
-				goto l0
-			}
-			if uint32(v4) >= uint32(i32(0xaaaaaab)) {
-				m.fn9()
-				panic("unreachable")
-			}
-			v5 = v3 * i32(12)
-			t4 := m.fn5(v5)
-			v4 = t4
-			if v4 == 0 {
-				m.fn10(i32(4), v5)
-				panic("unreachable")
-			}
-			t5 := v0
-			t6 := v1
-			t7 := v4
-			t8 := v3
-			var p9 int32
-			if uint32(v1) < uint32(i32(65)) {
-				p9 = 1
-			}
-			m.fn129(t5, t6, t7, t8, p9)
-			t10 := int32(load32(m.memory[uint32(v4+i32(-4)):]))
-			v1 = t10
-			v3 = v1 & i32(-8)
-			t11 := v3
-			v1 = v1 & i32(3)
-			p12 := i32(8)
-			if v1 != 0 {
-				p12 = i32(4)
-			}
-			if uint32(t11) < uint32(p12+v5) {
-				m.fn3(i32(1273840), i32(46), i32(1273888))
-				panic("unreachable")
-			}
-			if v1 == 0 {
-				goto l4
-			}
-			if uint32(v3) > uint32(v5+i32(39)) {
-				m.fn3(i32(1273904), i32(46), i32(1273952))
-				panic("unreachable")
-			}
-		l4:
-			m.fn1(v4)
-			goto l6
-		}
-	l0:
-		t13 := v0
-		t14 := v1
-		t15 := v2
-		var p16 int32
-		if uint32(v1) < uint32(i32(65)) {
-			p16 = 1
-		}
-		m.fn129(t13, t14, t15, i32(341), p16)
-	}
-l6:
-	m.g0 = v2 + i32(4096)
-}
-func (m *Module) fn129(v0, v1, v2, v3, v4 int32) {
-	var v5 int32
-	var v6, v7 int64
-	var v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26 int32
-	t0 := m.g0
-	v5 = t0 - i32(336)
-	m.g0 = v5
-	v6 = int64(uint32(v1))
-	t1 := int64(uint64(i64(0x4000000000000000)) / uint64(v6))
-	v7 = t1
-	var p2 int32
-	if v7*v6 != i64(0x4000000000000000) {
-		p2 = 1
-	}
-	v6 = int64(uint32(p2))
-	{
-		if uint32(v1) < uint32(i32(4097)) {
-			goto l0
-		}
-		v8 = int32(bits.LeadingZeros32(uint32(v1|i32(1)))) ^ i32(31)
-		v8 = int32(uint32(v8)>>1) + v8&i32(1)
-		v9 = int32(uint32(i32_shl(i32(1), v8)+i32_shr_u(v1, v8)) >> 1)
-		goto l1
-	l0:
-		v8 = v1 - int32(uint32(v1)>>1)
-		p3 := i32(64)
-		if uint32(v8) < uint32(i32(64)) {
-			p3 = v8
-		}
-		v9 = p3
-	}
-l1:
-	v7 = v7 + v6
-	v10 = v0 + i32(-12)
-	v11 = v0 + i32(24)
-	v8 = i32(1)
-	v12 = i32(0)
-	v13 = i32(0)
-l32:
-	v14 = i32(0)
-	v15 = i32(1)
-	{
-		var p4 int32
-		if uint32(v1) > uint32(v12) {
-			p4 = 1
-		}
-		v16 = p4
-		if v16 == 0 {
-			goto l2
-		}
-		t5 := v0
-		v17 = v12 * i32(12)
-		v18 = t5 + v17
-		{
-			v19 = v1 - v12
-			if uint32(v19) < uint32(v9) {
-				goto l3
-			}
-			if uint32(v19) >= uint32(i32(2)) {
-				goto l4
-			}
-			v20 = v19
-			goto l5
-		l4:
-			{
-				t6 := int32(load32(m.memory[int64(uint32(v18))+12:]))
-				v21 = t6
-				t7 := int32(load32(m.memory[uint32(v18):]))
-				var p8 int32
-				if uint32(v21) < uint32(t7) {
-					p8 = 1
-				}
-				v22 = p8
-				if v22 != 0 {
-					goto l6
-				}
-				v20 = i32(2)
-				if v19 == i32(2) {
-					goto l5
-				}
-				v23 = v11 + v17
-				v20 = i32(2)
-			l8:
-				{
-					t9 := int32(load32(m.memory[uint32(v23):]))
-					v24 = t9
-					if uint32(v24) < uint32(v21) {
-						goto l7
-					}
-					v23 = v23 + i32(12)
-					v21 = v24
-					t10 := v19
-					v20 = v20 + i32(1)
-					if t10 != v20 {
-						goto l8
-					}
-					goto l9
-				}
-			}
-		l6:
-			v20 = i32(2)
-			v23 = i32(1)
-			if v19 == i32(2) {
-				goto l10
-			}
-			v23 = v11 + v17
-			v20 = i32(2)
-		l11:
-			{
-				t11 := int32(load32(m.memory[uint32(v23):]))
-				v24 = t11
-				if uint32(v24) >= uint32(v21) {
-					goto l7
-				}
-				v23 = v23 + i32(12)
-				v21 = v24
-				t12 := v19
-				v20 = v20 + i32(1)
-				if t12 != v20 {
-					goto l11
-				}
-			}
-		l9:
-			v20 = v19
-		l7:
-			if uint32(v20) < uint32(v9) {
-				goto l3
-			}
-			if v22 == 0 {
-				goto l5
-			}
-			v23 = int32(uint32(v20) >> 1)
-			if v23 == 0 {
-				goto l5
-			}
-		l10:
-			v19 = v10 + (v20*i32(12) + v17)
-		l12:
-			{
-				t13 := int32(load32(m.memory[uint32(v18):]))
-				v21 = t13
-				t14 := int32(load32(m.memory[uint32(v19):]))
-				store32(m.memory[uint32(v18):], uint32(t14))
-				store32(m.memory[uint32(v19):], uint32(v21))
-				v21 = v18 + i32(4)
-				t15 := int64(load64(m.memory[uint32(v21):]))
-				v6 = t15
-				t16 := v21
-				v24 = v19 + i32(4)
-				t17 := int64(load64(m.memory[uint32(v24):]))
-				store64(m.memory[uint32(t16):], uint64(t17))
-				store64(m.memory[uint32(v24):], uint64(v6))
-				v19 = v19 + i32(-12)
-				v18 = v18 + i32(12)
-				v23 = v23 + i32(-1)
-				if v23 != 0 {
-					goto l12
-				}
-			}
-		l5:
-			v15 = v20<<1 | i32(1)
-			goto l13
-		l3:
-			{
-				if v4 != 0 {
-					goto l14
-				}
-				p18 := v9
-				if uint32(v19) < uint32(v9) {
-					p18 = v19
-				}
-				v15 = p18 << 1
-				goto l13
-			}
-		l14:
-			t20 := v18
-			p19 := i32(32)
-			if uint32(v19) < uint32(i32(32)) {
-				p19 = v19
-			}
-			v19 = p19
-			m.fn130(t20, v19, v2, v3, i32(0), i32(0))
-			v15 = v19<<1 | i32(1)
-		}
-	l13:
-		v14 = int32(int64(bits.LeadingZeros64(uint64(v7*int64(uint32(int32(uint32(v15)>>1)+v12<<1)) ^ (int64(uint32(v12-int32(uint32(v8)>>1)))+int64(uint32(v12)))*v7))))
-	}
-l2:
-	{
-		if uint32(v13) < uint32(i32(2)) {
-			goto l15
-		}
-		t21 := v10
-		v18 = v12 * i32(12)
-		v25 = t21 + v18
-		v26 = v0 + v18
-	l29:
-		{
-			t22 := v5 + i32(270)
-			v23 = v13 + i32(-1)
-			t23 := int32(m.memory[uint32(t22+v23)])
-			if uint32(t23) < uint32(v14) {
-				goto l15
-			}
-			{
-				t24 := int32(load32(m.memory[uint32(v5+i32(4)+v23<<2):]))
-				v20 = t24
-				v18 = int32(uint32(v20) >> 1)
-				t25 := v18
-				v19 = int32(uint32(v8) >> 1)
-				v22 = t25 + v19
-				if uint32(v22) > uint32(v3) {
-					goto l16
-				}
-				if (v20|v8)&i32(1) == 0 {
-					v8 = v22 << 1
-					goto l20
-				}
-			}
-		l16:
-			v13 = v0 + (v12-v22)*i32(12)
-			if v20&i32(1) == 0 {
-				goto l18
-			}
-			goto l19
-		l18:
-			m.fn130(v13, v18, v2, v3, int32(bits.LeadingZeros32(uint32(v18|i32(1))))<<1^i32(62), i32(0))
-		l19:
-			if v8&i32(1) != 0 {
-				goto l21
-			}
-			m.fn130(v13+v18*i32(12), v19, v2, v3, int32(bits.LeadingZeros32(uint32(v19|i32(1))))<<1^i32(62), i32(0))
-		l21:
-			{
-				if v19 == 0 {
-					goto l22
-				}
-				if v18 == 0 {
-					goto l22
-				}
-				t26 := v3
-				t27 := v19
-				t28 := v18
-				var p29 int32
-				if uint32(v19) < uint32(v18) {
-					p29 = 1
-				}
-				v20 = p29
-				p30 := t28
-				if v20 != 0 {
-					p30 = t27
-				}
-				v19 = p30
-				if uint32(t26) < uint32(v19) {
-					goto l22
-				}
-				v8 = v13 + v18*i32(12)
-				{
-					v18 = v19 * i32(12)
-					if v18 == 0 {
-						goto l23
-					}
-					t32 := v2
-					p31 := v13
-					if v20 != 0 {
-						p31 = v8
-					}
-					memory_copy(m.memory, uint32(t32), uint32(p31), uint32(v18))
-				}
-			l23:
-				v19 = v2 + v18
-				if v20 != 0 {
-					goto l24
-				}
-				v18 = v2
-			l26:
-				{
-					t33 := int32(load32(m.memory[uint32(v8):]))
-					t34 := v13
-					t35 := v8
-					t36 := v18
-					v20 = t33
-					t37 := int32(load32(m.memory[uint32(v18):]))
-					t38 := v20
-					v21 = t37
-					var p39 int32
-					if uint32(t38) < uint32(v21) {
-						p39 = 1
-					}
-					v17 = p39
-					p40 := t36
-					if v17 != 0 {
-						p40 = t35
-					}
-					v24 = p40
-					t41 := int64(load64(m.memory[uint32(v24):]))
-					store64(m.memory[uint32(t34):], uint64(t41))
-					t42 := int32(load32(m.memory[int64(uint32(v24))+8:]))
-					store32(m.memory[int64(uint32(v13))+8:], uint32(t42))
-					v13 = v13 + i32(12)
-					t43 := v18
-					var p44 int32
-					if uint32(v20) >= uint32(v21) {
-						p44 = 1
-					}
-					v18 = t43 + p44*i32(12)
-					if v18 == v19 {
-						goto l25
-					}
-					v8 = v8 + v17*i32(12)
-					if v8 != v26 {
-						goto l26
-					}
-					goto l25
-				}
-			l24:
-				v18 = v25
-			l28:
-				{
-					t45 := v18
-					v8 = v8 + i32(-12)
-					t46 := v8
-					v19 = v19 + i32(-12)
-					t47 := int32(load32(m.memory[uint32(v19):]))
-					t48 := v19
-					v20 = t47
-					t49 := int32(load32(m.memory[uint32(v8):]))
-					t50 := v20
-					v21 = t49
-					var p51 int32
-					if uint32(t50) < uint32(v21) {
-						p51 = 1
-					}
-					v24 = p51
-					p52 := t48
-					if v24 != 0 {
-						p52 = t46
-					}
-					v17 = p52
-					t53 := int64(load64(m.memory[uint32(v17):]))
-					store64(m.memory[uint32(t45):], uint64(t53))
-					t54 := int32(load32(m.memory[int64(uint32(v17))+8:]))
-					store32(m.memory[int64(uint32(v18))+8:], uint32(t54))
-					v19 = v19 + v24*i32(12)
-					t55 := v8
-					var p56 int32
-					if uint32(v20) >= uint32(v21) {
-						p56 = 1
-					}
-					v8 = t55 + p56*i32(12)
-					if v8 == v13 {
-						goto l27
-					}
-					v18 = v18 + i32(-12)
-					if v19 != v2 {
-						goto l28
-					}
-				}
-			l27:
-				v13 = v8
-				v18 = v2
-			l25:
-				v8 = v19 - v18
-				if v8 == 0 {
-					goto l22
-				}
-				memory_copy(m.memory, uint32(v13), uint32(v18), uint32(v8))
-			}
-		l22:
-			v8 = v22<<1 | i32(1)
-		l20:
-			v18 = i32(1)
-			v13 = v23
-			if uint32(v23) > uint32(i32(1)) {
-				goto l29
-			}
-			goto l30
-		}
-	}
-l15:
-	v18 = v13
-l30:
-	m.memory[uint32(v5+i32(270)+v18)] = byte(v14)
-	store32(m.memory[uint32(v5+i32(4)+v18<<2):], uint32(v8))
-	if v16 == 0 {
-		goto l31
-	}
-	v13 = v18 + i32(1)
-	v12 = int32(uint32(v15)>>1) + v12
-	v8 = v15
-	goto l32
-l31:
-	if v8&i32(1) != 0 {
-		goto l33
-	}
-	m.fn130(v0, v1, v2, v3, int32(bits.LeadingZeros32(uint32(v1|i32(1))))<<1^i32(62), i32(0))
-l33:
-	m.g0 = v5 + i32(336)
-}
-func (m *Module) fn130(v0, v1, v2, v3, v4, v5 int32) {
-	var v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21 int32
-	var v22 int64
-	t0 := m.g0
-	v6 = t0 - i32(16)
-	m.g0 = v6
-	{
-		if uint32(v1) >= uint32(i32(33)) {
-			v8 = v2 + i32(-12)
-		l20:
-			{
-				if v4 != 0 {
-					goto l2
-				}
-				m.fn129(v0, v1, v2, v3, i32(1))
-				goto l3
-			l2:
-				t1 := v0
-				v9 = int32(uint32(v1) >> 3)
-				v10 = t1 + v9*i32(84)
-				v7 = v0 + v9*i32(48)
-				{
-					{
-						if uint32(v1) < uint32(i32(64)) {
-							goto l4
-						}
-						t2 := m.fn131(v0, v7, v10, v9)
-						v11 = t2
-						goto l5
-					}
-				l4:
-					t3 := int32(load32(m.memory[uint32(v0):]))
-					t4 := v0
-					t5 := v10
-					t6 := v7
-					v9 = t3
-					t7 := int32(load32(m.memory[uint32(v7):]))
-					t8 := v9
-					v11 = t7
-					var p9 int32
-					if uint32(t8) < uint32(v11) {
-						p9 = 1
-					}
-					v12 = p9
-					t10 := int32(load32(m.memory[uint32(v10):]))
-					t11 := v12
-					t12 := v11
-					v13 = t10
-					var p13 int32
-					if uint32(t12) < uint32(v13) {
-						p13 = 1
-					}
-					p14 := t6
-					if t11^p13 != 0 {
-						p14 = t5
-					}
-					t15 := v12
-					var p16 int32
-					if uint32(v9) < uint32(v13) {
-						p16 = 1
-					}
-					p17 := p14
-					if t15^p16 != 0 {
-						p17 = t4
-					}
-					v11 = p17
-				}
-			l5:
-				v4 = v4 + i32(-1)
-				t18 := int32(load32(m.memory[int64(uint32(v11))+8:]))
-				store32(m.memory[int64(uint32(v6))+8:], uint32(t18))
-				t19 := int64(load64(m.memory[uint32(v11):]))
-				store64(m.memory[uint32(v6):], uint64(t19))
-				t20 := int32(uint32(v11-v0) / uint32(i32(12)))
-				v14 = t20
-				{
-					{
-						if v5 == 0 {
-							goto l6
-						}
-						t21 := int32(load32(m.memory[uint32(v5):]))
-						t22 := int32(load32(m.memory[uint32(v11):]))
-						if uint32(t21) >= uint32(t22) {
-							goto l7
-						}
-					}
-				l6:
-					if uint32(v3) < uint32(v1) {
-						goto l8
-					}
-					v7 = i32(0)
-					v9 = v0
-					t23 := v2
-					v15 = v1 * i32(12)
-					v16 = t23 + v15
-					v10 = v16
-					v17 = v14
-				l14:
-					{
-						t24 := v9
-						t25 := v0
-						v12 = v17 + i32(-3)
-						p26 := v12
-						if uint32(v12) > uint32(v17) {
-							p26 = i32(0)
-						}
-						v18 = t25 + p26*i32(12)
-						if uint32(t24) >= uint32(v18) {
-							goto l9
-						}
-					l10:
-						{
-							t27 := int32(load32(m.memory[uint32(v9):]))
-							t28 := int32(load32(m.memory[uint32(v11):]))
-							t29 := v2
-							t30 := v10 + i32(-12)
-							var p31 int32
-							if uint32(t27) < uint32(t28) {
-								p31 = 1
-							}
-							v12 = p31
-							p32 := t30
-							if v12 != 0 {
-								p32 = t29
-							}
-							v13 = p32 + v7*i32(12)
-							t33 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-							store32(m.memory[int64(uint32(v13))+8:], uint32(t33))
-							t34 := int64(load64(m.memory[uint32(v9):]))
-							store64(m.memory[uint32(v13):], uint64(t34))
-							t35 := v2
-							t36 := v10 + i32(-24)
-							v13 = v9 + i32(12)
-							t37 := int32(load32(m.memory[uint32(v13):]))
-							t38 := int32(load32(m.memory[uint32(v11):]))
-							var p39 int32
-							if uint32(t37) < uint32(t38) {
-								p39 = 1
-							}
-							v19 = p39
-							p40 := t36
-							if v19 != 0 {
-								p40 = t35
-							}
-							v7 = v7 + v12
-							v12 = p40 + v7*i32(12)
-							t41 := int32(load32(m.memory[uint32(v9+i32(20)):]))
-							store32(m.memory[int64(uint32(v12))+8:], uint32(t41))
-							t42 := int64(load64(m.memory[uint32(v13):]))
-							store64(m.memory[uint32(v12):], uint64(t42))
-							t43 := v2
-							t44 := v10 + i32(-36)
-							v12 = v9 + i32(24)
-							t45 := int32(load32(m.memory[uint32(v12):]))
-							t46 := int32(load32(m.memory[uint32(v11):]))
-							var p47 int32
-							if uint32(t45) < uint32(t46) {
-								p47 = 1
-							}
-							v13 = p47
-							p48 := t44
-							if v13 != 0 {
-								p48 = t43
-							}
-							v7 = v7 + v19
-							v19 = p48 + v7*i32(12)
-							t49 := int32(load32(m.memory[uint32(v9+i32(32)):]))
-							store32(m.memory[int64(uint32(v19))+8:], uint32(t49))
-							t50 := int64(load64(m.memory[uint32(v12):]))
-							store64(m.memory[uint32(v19):], uint64(t50))
-							t51 := v2
-							v10 = v10 + i32(-48)
-							t52 := v10
-							v12 = v9 + i32(36)
-							t53 := int32(load32(m.memory[uint32(v12):]))
-							t54 := int32(load32(m.memory[uint32(v11):]))
-							var p55 int32
-							if uint32(t53) < uint32(t54) {
-								p55 = 1
-							}
-							v19 = p55
-							p56 := t52
-							if v19 != 0 {
-								p56 = t51
-							}
-							v7 = v7 + v13
-							v13 = p56 + v7*i32(12)
-							t57 := int32(load32(m.memory[uint32(v9+i32(44)):]))
-							store32(m.memory[int64(uint32(v13))+8:], uint32(t57))
-							t58 := int64(load64(m.memory[uint32(v12):]))
-							store64(m.memory[uint32(v13):], uint64(t58))
-							v7 = v7 + v19
-							v9 = v9 + i32(48)
-							if uint32(v9) < uint32(v18) {
-								goto l10
-							}
-						}
-					}
-				l9:
-					{
-						t59 := v9
-						v19 = v0 + v17*i32(12)
-						if uint32(t59) >= uint32(v19) {
-							goto l11
-						}
-					l12:
-						{
-							t60 := v2
-							v10 = v10 + i32(-12)
-							t61 := int32(load32(m.memory[uint32(v9):]))
-							t62 := int32(load32(m.memory[uint32(v11):]))
-							t63 := v10
-							var p64 int32
-							if uint32(t61) < uint32(t62) {
-								p64 = 1
-							}
-							v12 = p64
-							p65 := t63
-							if v12 != 0 {
-								p65 = t60
-							}
-							v13 = p65 + v7*i32(12)
-							t66 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-							store32(m.memory[int64(uint32(v13))+8:], uint32(t66))
-							t67 := int64(load64(m.memory[uint32(v9):]))
-							store64(m.memory[uint32(v13):], uint64(t67))
-							v7 = v7 + v12
-							v9 = v9 + i32(12)
-							if uint32(v9) < uint32(v19) {
-								goto l12
-							}
-						}
-					}
-				l11:
-					{
-						if v17 == v1 {
-							v18 = v7 * i32(12)
-							if v18 == 0 {
-								goto l15
-							}
-							memory_copy(m.memory, uint32(v0), uint32(v2), uint32(v18))
-						l15:
-							v17 = v1 - v7
-							{
-								if v1 == v7 {
-									goto l16
-								}
-								v20 = v0 + v18
-								v12 = i32(0)
-								if v1 == v7+i32(1) {
-									goto l17
-								}
-								v21 = v17 & i32(1)
-								v19 = v17 & i32(-2)
-								v10 = v8 + v15
-								v12 = i32(0)
-								v9 = v20
-							l18:
-								{
-									t70 := int32(load32(m.memory[int64(uint32(v10))+8:]))
-									store32(m.memory[int64(uint32(v9))+8:], uint32(t70))
-									t71 := int64(load64(m.memory[uint32(v10):]))
-									store64(m.memory[uint32(v9):], uint64(t71))
-									t72 := v9 + i32(12)
-									v13 = v16 + (v12^i32(0x3ffffffe))*i32(12)
-									t73 := int64(load64(m.memory[uint32(v13):]))
-									store64(m.memory[uint32(t72):], uint64(t73))
-									t74 := int32(load32(m.memory[uint32(v13+i32(8)):]))
-									store32(m.memory[uint32(v9+i32(20)):], uint32(t74))
-									v10 = v10 + i32(-24)
-									v9 = v9 + i32(24)
-									t75 := v19
-									v12 = v12 + i32(2)
-									if t75 != v12 {
-										goto l18
-									}
-								}
-								if v21 == 0 {
-									goto l16
-								}
-							l17:
-								v9 = v20 + v12*i32(12)
-								t76 := v9
-								v10 = v16 + (v12^i32(-1))*i32(12)
-								t77 := int32(load32(m.memory[int64(uint32(v10))+8:]))
-								store32(m.memory[int64(uint32(t76))+8:], uint32(t77))
-								t78 := int64(load64(m.memory[uint32(v10):]))
-								store64(m.memory[uint32(v9):], uint64(t78))
-							}
-						l16:
-							if v7 == 0 {
-								goto l7
-							}
-							if uint32(v1) < uint32(v7) {
-								goto l19
-							}
-							m.fn130(v0+v18, v17, v2, v3, v4, v6)
-							v1 = v7
-							if uint32(v7) < uint32(i32(33)) {
-								goto l1
-							}
-							goto l20
-						}
-						v10 = v10 + i32(-12)
-						v12 = v10 + v7*i32(12)
-						t68 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-						store32(m.memory[int64(uint32(v12))+8:], uint32(t68))
-						t69 := int64(load64(m.memory[uint32(v9):]))
-						store64(m.memory[uint32(v12):], uint64(t69))
-						v9 = v9 + i32(12)
-						v17 = v1
-						goto l14
-					}
-				}
-			l7:
-				if uint32(v3) < uint32(v1) {
-					goto l8
-				}
-				v12 = i32(0)
-				v9 = v0
-				t79 := v2
-				v16 = v1 * i32(12)
-				v17 = t79 + v16
-				v10 = v17
-			l26:
-				{
-					t80 := v9
-					t81 := v0
-					v7 = v14 + i32(-3)
-					p82 := v7
-					if uint32(v7) > uint32(v14) {
-						p82 = i32(0)
-					}
-					v18 = t81 + p82*i32(12)
-					if uint32(t80) >= uint32(v18) {
-						goto l21
-					}
-				l22:
-					{
-						t83 := int32(load32(m.memory[uint32(v11):]))
-						t84 := int32(load32(m.memory[uint32(v9):]))
-						t85 := v2
-						t86 := v10 + i32(-12)
-						var p87 int32
-						if uint32(t83) >= uint32(t84) {
-							p87 = 1
-						}
-						v7 = p87
-						p88 := t86
-						if v7 != 0 {
-							p88 = t85
-						}
-						v13 = p88 + v12*i32(12)
-						t89 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-						store32(m.memory[int64(uint32(v13))+8:], uint32(t89))
-						t90 := int64(load64(m.memory[uint32(v9):]))
-						store64(m.memory[uint32(v13):], uint64(t90))
-						t91 := int32(load32(m.memory[uint32(v11):]))
-						t92 := v2
-						t93 := v10 + i32(-24)
-						v13 = v9 + i32(12)
-						t94 := int32(load32(m.memory[uint32(v13):]))
-						var p95 int32
-						if uint32(t91) >= uint32(t94) {
-							p95 = 1
-						}
-						v19 = p95
-						p96 := t93
-						if v19 != 0 {
-							p96 = t92
-						}
-						v7 = v12 + v7
-						v12 = p96 + v7*i32(12)
-						t97 := int32(load32(m.memory[uint32(v9+i32(20)):]))
-						store32(m.memory[int64(uint32(v12))+8:], uint32(t97))
-						t98 := int64(load64(m.memory[uint32(v13):]))
-						store64(m.memory[uint32(v12):], uint64(t98))
-						t99 := int32(load32(m.memory[uint32(v11):]))
-						t100 := v2
-						t101 := v10 + i32(-36)
-						v12 = v9 + i32(24)
-						t102 := int32(load32(m.memory[uint32(v12):]))
-						var p103 int32
-						if uint32(t99) >= uint32(t102) {
-							p103 = 1
-						}
-						v13 = p103
-						p104 := t101
-						if v13 != 0 {
-							p104 = t100
-						}
-						v7 = v7 + v19
-						v19 = p104 + v7*i32(12)
-						t105 := int32(load32(m.memory[uint32(v9+i32(32)):]))
-						store32(m.memory[int64(uint32(v19))+8:], uint32(t105))
-						t106 := int64(load64(m.memory[uint32(v12):]))
-						store64(m.memory[uint32(v19):], uint64(t106))
-						t107 := v2
-						v10 = v10 + i32(-48)
-						t108 := int32(load32(m.memory[uint32(v11):]))
-						t109 := v10
-						v12 = v9 + i32(36)
-						t110 := int32(load32(m.memory[uint32(v12):]))
-						var p111 int32
-						if uint32(t108) >= uint32(t110) {
-							p111 = 1
-						}
-						v19 = p111
-						p112 := t109
-						if v19 != 0 {
-							p112 = t107
-						}
-						v7 = v7 + v13
-						v13 = p112 + v7*i32(12)
-						t113 := int32(load32(m.memory[uint32(v9+i32(44)):]))
-						store32(m.memory[int64(uint32(v13))+8:], uint32(t113))
-						t114 := int64(load64(m.memory[uint32(v12):]))
-						store64(m.memory[uint32(v13):], uint64(t114))
-						v12 = v7 + v19
-						v9 = v9 + i32(48)
-						if uint32(v9) < uint32(v18) {
-							goto l22
-						}
-					}
-				}
-			l21:
-				{
-					t115 := v9
-					v19 = v0 + v14*i32(12)
-					if uint32(t115) >= uint32(v19) {
-						goto l23
-					}
-				l24:
-					{
-						t116 := v2
-						v10 = v10 + i32(-12)
-						t117 := int32(load32(m.memory[uint32(v11):]))
-						t118 := int32(load32(m.memory[uint32(v9):]))
-						t119 := v10
-						var p120 int32
-						if uint32(t117) >= uint32(t118) {
-							p120 = 1
-						}
-						v7 = p120
-						p121 := t119
-						if v7 != 0 {
-							p121 = t116
-						}
-						v13 = p121 + v12*i32(12)
-						t122 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-						store32(m.memory[int64(uint32(v13))+8:], uint32(t122))
-						t123 := int64(load64(m.memory[uint32(v9):]))
-						store64(m.memory[uint32(v13):], uint64(t123))
-						v12 = v12 + v7
-						v9 = v9 + i32(12)
-						if uint32(v9) < uint32(v19) {
-							goto l24
-						}
-					}
-				}
-			l23:
-				{
-					if v14 == v1 {
-						goto l25
-					}
-					v7 = v2 + v12*i32(12)
-					t124 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-					store32(m.memory[int64(uint32(v7))+8:], uint32(t124))
-					t125 := int64(load64(m.memory[uint32(v9):]))
-					store64(m.memory[uint32(v7):], uint64(t125))
-					v9 = v9 + i32(12)
-					v12 = v12 + i32(1)
-					v10 = v10 + i32(-12)
-					v14 = v1
-					goto l26
-				}
-			l25:
-				v9 = v12 * i32(12)
-				if v9 == 0 {
-					goto l27
-				}
-				memory_copy(m.memory, uint32(v0), uint32(v2), uint32(v9))
-			l27:
-				if v1 == v12 {
-					goto l3
-				}
-				v7 = v1 - v12
-				v0 = v0 + v9
-				v11 = i32(0)
-				{
-					if v1 == v12+i32(1) {
-						goto l28
-					}
-					v18 = v7 & i32(1)
-					v19 = v7 & i32(-2)
-					v10 = v8 + v16
-					v11 = i32(0)
-					v9 = v0
-				l29:
-					{
-						t126 := int32(load32(m.memory[int64(uint32(v10))+8:]))
-						store32(m.memory[int64(uint32(v9))+8:], uint32(t126))
-						t127 := int64(load64(m.memory[uint32(v10):]))
-						store64(m.memory[uint32(v9):], uint64(t127))
-						t128 := v9 + i32(12)
-						v13 = v17 + (v11^i32(0x3ffffffe))*i32(12)
-						t129 := int64(load64(m.memory[uint32(v13):]))
-						store64(m.memory[uint32(t128):], uint64(t129))
-						t130 := int32(load32(m.memory[uint32(v13+i32(8)):]))
-						store32(m.memory[uint32(v9+i32(20)):], uint32(t130))
-						v10 = v10 + i32(-24)
-						v9 = v9 + i32(24)
-						t131 := v19
-						v11 = v11 + i32(2)
-						if t131 != v11 {
-							goto l29
-						}
-					}
-					if v18 == 0 {
-						goto l30
-					}
-				l28:
-					v9 = v0 + v11*i32(12)
-					t132 := v9
-					v10 = v17 + (v11^i32(-1))*i32(12)
-					t133 := int32(load32(m.memory[int64(uint32(v10))+8:]))
-					store32(m.memory[int64(uint32(t132))+8:], uint32(t133))
-					t134 := int64(load64(m.memory[uint32(v10):]))
-					store64(m.memory[uint32(v9):], uint64(t134))
-				}
-			l30:
-				if uint32(v1) < uint32(v12) {
-					goto l31
-				}
-				v5 = i32(0)
-				v1 = v7
-				if uint32(v7) < uint32(i32(33)) {
-					goto l1
-				}
-				goto l20
-			l31:
-			}
-			m.fn121(v12, v1, v1, i32(1069572))
-			panic("unreachable")
-		l19:
-			m.fn28(i32(1271784), i32(19), i32(1069556))
-		l8:
-			panic("unreachable")
-		}
-		v7 = v1
-		goto l1
-	l1:
-		if uint32(v7) < uint32(i32(2)) {
-			goto l3
-		}
-		v17 = int32(uint32(v7) >> 1)
-		{
-			if uint32(v7) > uint32(i32(15)) {
-				goto l32
-			}
-			{
-				if uint32(v7) <= uint32(i32(7)) {
-					t234 := int32(load32(m.memory[int64(uint32(v0))+8:]))
-					store32(m.memory[int64(uint32(v2))+8:], uint32(t234))
-					t235 := int64(load64(m.memory[uint32(v0):]))
-					store64(m.memory[uint32(v2):], uint64(t235))
-					t236 := v2
-					v9 = v17 * i32(12)
-					v10 = t236 + v9
-					t237 := v10
-					v9 = v0 + v9
-					t238 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-					store32(m.memory[int64(uint32(t237))+8:], uint32(t238))
-					t239 := int64(load64(m.memory[uint32(v9):]))
-					store64(m.memory[uint32(v10):], uint64(t239))
-					v1 = i32(1)
-					goto l34
-				}
-				t135 := int32(load32(m.memory[int64(uint32(v0))+12:]))
-				t136 := v0
-				v10 = t135
-				t137 := int32(load32(m.memory[uint32(v0):]))
-				t138 := v10
-				v12 = t137
-				var p139 int32
-				if uint32(t138) < uint32(v12) {
-					p139 = 1
-				}
-				v11 = t136 + p139*i32(12)
-				t140 := int32(load32(m.memory[int64(uint32(v0))+36:]))
-				t141 := int32(load32(m.memory[int64(uint32(v0))+24:]))
-				t142 := v11
-				t143 := v0
-				var p144 int32
-				if uint32(t140) < uint32(t141) {
-					p144 = 1
-				}
-				v13 = p144
-				p145 := i32(24)
-				if v13 != 0 {
-					p145 = i32(36)
-				}
-				v9 = t143 + p145
-				t146 := v9
-				t147 := v0
-				var p148 int32
-				if uint32(v10) >= uint32(v12) {
-					p148 = 1
-				}
-				v10 = t147 + p148*i32(12)
-				t150 := v10
-				t151 := v0
-				p149 := i32(36)
-				if v13 != 0 {
-					p149 = i32(24)
-				}
-				v12 = t151 + p149
-				t152 := int32(load32(m.memory[uint32(v12):]))
-				t153 := int32(load32(m.memory[uint32(v10):]))
-				var p154 int32
-				if uint32(t152) < uint32(t153) {
-					p154 = 1
-				}
-				v13 = p154
-				p155 := t150
-				if v13 != 0 {
-					p155 = t146
-				}
-				t156 := int32(load32(m.memory[uint32(v9):]))
-				t157 := int32(load32(m.memory[uint32(v11):]))
-				var p158 int32
-				if uint32(t156) < uint32(t157) {
-					p158 = 1
-				}
-				v19 = p158
-				p159 := p155
-				if v19 != 0 {
-					p159 = t142
-				}
-				v18 = p159
-				t160 := int32(load32(m.memory[uint32(v18):]))
-				v14 = t160
-				t162 := v12
-				p161 := v9
-				if v19 != 0 {
-					p161 = v10
-				}
-				p163 := p161
-				if v13 != 0 {
-					p163 = t162
-				}
-				v1 = p163
-				t164 := int32(load32(m.memory[uint32(v1):]))
-				v16 = t164
-				t166 := v2
-				p165 := v11
-				if v19 != 0 {
-					p165 = v9
-				}
-				v9 = p165
-				t167 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-				store32(m.memory[int64(uint32(t166))+8:], uint32(t167))
-				t168 := int64(load64(m.memory[uint32(v9):]))
-				store64(m.memory[uint32(v2):], uint64(t168))
-				t169 := v2
-				t170 := v1
-				t171 := v18
-				var p172 int32
-				if uint32(v16) < uint32(v14) {
-					p172 = 1
-				}
-				v9 = p172
-				p173 := t171
-				if v9 != 0 {
-					p173 = t170
-				}
-				v11 = p173
-				t174 := int32(load32(m.memory[int64(uint32(v11))+8:]))
-				store32(m.memory[int64(uint32(t169))+20:], uint32(t174))
-				t175 := int64(load64(m.memory[uint32(v11):]))
-				store64(m.memory[int64(uint32(v2))+12:], uint64(t175))
-				t177 := v2
-				p176 := v1
-				if v9 != 0 {
-					p176 = v18
-				}
-				v9 = p176
-				t178 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-				store32(m.memory[int64(uint32(t177))+32:], uint32(t178))
-				t179 := int64(load64(m.memory[uint32(v9):]))
-				store64(m.memory[int64(uint32(v2))+24:], uint64(t179))
-				t181 := v2
-				p180 := v12
-				if v13 != 0 {
-					p180 = v10
-				}
-				v9 = p180
-				t182 := int32(load32(m.memory[int64(uint32(v9))+8:]))
-				store32(m.memory[int64(uint32(t181))+44:], uint32(t182))
-				t183 := int64(load64(m.memory[uint32(v9):]))
-				store64(m.memory[int64(uint32(v2))+36:], uint64(t183))
-				t184 := v0
-				v16 = v17 * i32(12)
-				v9 = t184 + v16
-				t185 := int32(load32(m.memory[int64(uint32(v9))+36:]))
-				t186 := int32(load32(m.memory[int64(uint32(v9))+24:]))
-				t187 := v9
-				var p188 int32
-				if uint32(t185) < uint32(t186) {
-					p188 = 1
-				}
-				v11 = p188
-				p189 := i32(36)
-				if v11 != 0 {
-					p189 = i32(24)
-				}
-				v12 = t187 + p189
-				t190 := int32(load32(m.memory[int64(uint32(v9))+12:]))
-				t191 := v12
-				t192 := v9
-				v13 = t190
-				t193 := int32(load32(m.memory[uint32(v9):]))
-				t194 := v13
-				v19 = t193
-				var p195 int32
-				if uint32(t194) >= uint32(v19) {
-					p195 = 1
-				}
-				v10 = t192 + p195*i32(12)
-				t197 := v10
-				t198 := v9
-				p196 := i32(24)
-				if v11 != 0 {
-					p196 = i32(36)
-				}
-				v11 = t198 + p196
-				t199 := int32(load32(m.memory[uint32(v11):]))
-				t200 := v11
-				t201 := v9
-				var p202 int32
-				if uint32(v13) < uint32(v19) {
-					p202 = 1
-				}
-				v13 = t201 + p202*i32(12)
-				t203 := int32(load32(m.memory[uint32(v13):]))
-				var p204 int32
-				if uint32(t199) < uint32(t203) {
-					p204 = 1
-				}
-				v19 = p204
-				p205 := t200
-				if v19 != 0 {
-					p205 = t197
-				}
-				t206 := int32(load32(m.memory[uint32(v12):]))
-				t207 := int32(load32(m.memory[uint32(v10):]))
-				var p208 int32
-				if uint32(t206) < uint32(t207) {
-					p208 = 1
-				}
-				v18 = p208
-				p209 := p205
-				if v18 != 0 {
-					p209 = t191
-				}
-				v1 = p209
-				t210 := int32(load32(m.memory[uint32(v1):]))
-				v4 = t210
-				t212 := v13
-				p211 := v10
-				if v18 != 0 {
-					p211 = v11
-				}
-				p213 := p211
-				if v19 != 0 {
-					p213 = t212
-				}
-				v14 = p213
-				t214 := int32(load32(m.memory[uint32(v14):]))
-				v3 = t214
-				v9 = v2 + v16
-				t216 := v9
-				p215 := v13
-				if v19 != 0 {
-					p215 = v11
-				}
-				v11 = p215
-				t217 := int32(load32(m.memory[int64(uint32(v11))+8:]))
-				store32(m.memory[int64(uint32(t216))+8:], uint32(t217))
-				t218 := int64(load64(m.memory[uint32(v11):]))
-				store64(m.memory[uint32(v9):], uint64(t218))
-				t219 := v9
-				t220 := v1
-				t221 := v14
-				var p222 int32
-				if uint32(v4) < uint32(v3) {
-					p222 = 1
-				}
-				v11 = p222
-				p223 := t221
-				if v11 != 0 {
-					p223 = t220
-				}
-				v13 = p223
-				t224 := int64(load64(m.memory[uint32(v13):]))
-				store64(m.memory[int64(uint32(t219))+12:], uint64(t224))
-				t225 := int32(load32(m.memory[int64(uint32(v13))+8:]))
-				store32(m.memory[int64(uint32(v9))+20:], uint32(t225))
-				t227 := v9
-				p226 := v1
-				if v11 != 0 {
-					p226 = v14
-				}
-				v11 = p226
-				t228 := int64(load64(m.memory[uint32(v11):]))
-				store64(m.memory[int64(uint32(t227))+24:], uint64(t228))
-				t229 := int32(load32(m.memory[int64(uint32(v11))+8:]))
-				store32(m.memory[int64(uint32(v9))+32:], uint32(t229))
-				t231 := v9
-				p230 := v12
-				if v18 != 0 {
-					p230 = v10
-				}
-				v10 = p230
-				t232 := int64(load64(m.memory[uint32(v10):]))
-				store64(m.memory[int64(uint32(t231))+36:], uint64(t232))
-				t233 := int32(load32(m.memory[int64(uint32(v10))+8:]))
-				store32(m.memory[int64(uint32(v9))+44:], uint32(t233))
-				v1 = i32(4)
-				goto l34
-			}
-		l32:
-			t240 := v0
-			t241 := v2
-			v9 = v2 + v7*i32(12)
-			m.fn132(t240, t241, v9)
-			t242 := v0
-			v10 = v17 * i32(12)
-			m.fn132(t242+v10, v2+v10, v9+i32(96))
-			v1 = i32(8)
-		}
-	l34:
-		v4 = v7 - v17
-		if uint32(v1) >= uint32(v17) {
-			goto l35
-		}
-		v19 = v1 * i32(12)
-		v13 = v1
-	l40:
-		{
-			t243 := v2
-			v10 = v13 * i32(12)
-			v9 = t243 + v10
-			t244 := v9
-			v10 = v0 + v10
-			t245 := int32(load32(m.memory[int64(uint32(v10))+8:]))
-			store32(m.memory[int64(uint32(t244))+8:], uint32(t245))
-			t246 := int64(load64(m.memory[uint32(v10):]))
-			t247 := v9
-			v22 = t246
-			store64(m.memory[uint32(t247):], uint64(v22))
-			{
-				v12 = int32(v22)
-				t248 := int32(load32(m.memory[uint32(v9+i32(-12)):]))
-				if uint32(v12) >= uint32(t248) {
-					goto l36
-				}
-				t249 := int64(load64(m.memory[int64(uint32(v9))+4:]))
-				v22 = t249
-				v9 = v19
-			l39:
-				{
-					v10 = v2 + v9
-					t250 := v10
-					v11 = v10 + i32(-12)
-					t251 := int32(load32(m.memory[int64(uint32(v11))+8:]))
-					store32(m.memory[int64(uint32(t250))+8:], uint32(t251))
-					t252 := int64(load64(m.memory[uint32(v11):]))
-					store64(m.memory[uint32(v10):], uint64(t252))
-					if v9 != i32(12) {
-						goto l37
-					}
-					v9 = v2
-					goto l38
-				l37:
-					v9 = v9 + i32(-12)
-					t253 := int32(load32(m.memory[uint32(v10+i32(-24)):]))
-					if uint32(v12) < uint32(t253) {
-						goto l39
-					}
-				}
-				v9 = v2 + v9
-			l38:
-				store64(m.memory[int64(uint32(v9))+4:], uint64(v22))
-				store32(m.memory[uint32(v9):], uint32(v12))
-			}
-		l36:
-			v19 = v19 + i32(12)
-			v13 = v13 + i32(1)
-			if v13 != v17 {
-				goto l40
-			}
-		}
-	l35:
-		t254 := v2
-		v9 = v17 * i32(12)
-		v19 = t254 + v9
-		if uint32(v1) >= uint32(v4) {
-			goto l41
-		}
-		v3 = v0 + v9
-		v12 = v1 * i32(12)
-		v14 = i32(12)
-		v16 = v19
-	l46:
-		{
-			t255 := v19
-			v10 = v1 * i32(12)
-			v9 = t255 + v10
-			t256 := v9
-			v10 = v3 + v10
-			t257 := int32(load32(m.memory[int64(uint32(v10))+8:]))
-			store32(m.memory[int64(uint32(t256))+8:], uint32(t257))
-			t258 := int64(load64(m.memory[uint32(v10):]))
-			t259 := v9
-			v22 = t258
-			store64(m.memory[uint32(t259):], uint64(v22))
-			{
-				v18 = int32(v22)
-				t260 := int32(load32(m.memory[uint32(v9+i32(-12)):]))
-				if uint32(v18) >= uint32(t260) {
-					goto l42
-				}
-				t261 := int64(load64(m.memory[int64(uint32(v9))+4:]))
-				v22 = t261
-				v11 = v14
-				v10 = v16
-			l45:
-				{
-					v9 = v10 + v12
-					t262 := v9
-					v13 = v9 + i32(-12)
-					t263 := int32(load32(m.memory[int64(uint32(v13))+8:]))
-					store32(m.memory[int64(uint32(t262))+8:], uint32(t263))
-					t264 := int64(load64(m.memory[uint32(v13):]))
-					store64(m.memory[uint32(v9):], uint64(t264))
-					if v12 != v11 {
-						goto l43
-					}
-					v9 = v19
-					goto l44
-				l43:
-					v11 = v11 + i32(12)
-					v10 = v10 + i32(-12)
-					t265 := int32(load32(m.memory[uint32(v9+i32(-24)):]))
-					if uint32(v18) < uint32(t265) {
-						goto l45
-					}
-				}
-				v9 = v10 + v12
-			l44:
-				store64(m.memory[int64(uint32(v9))+4:], uint64(v22))
-				store32(m.memory[uint32(v9):], uint32(v18))
-			}
-		l42:
-			v14 = v14 + i32(-12)
-			v16 = v16 + i32(12)
-			v1 = v1 + i32(1)
-			if v1 != v4 {
-				goto l46
-			}
-		}
-	l41:
-		v9 = v19 + i32(-12)
-		t266 := v2
-		v11 = v7*i32(12) + i32(-12)
-		v10 = t266 + v11
-		v11 = v0 + v11
-	l47:
-		{
-			t267 := int32(load32(m.memory[uint32(v19):]))
-			t268 := v0
-			t269 := v19
-			t270 := v2
-			v12 = t267
-			t271 := int32(load32(m.memory[uint32(v2):]))
-			t272 := v12
-			v13 = t271
-			var p273 int32
-			if uint32(t272) < uint32(v13) {
-				p273 = 1
-			}
-			v18 = p273
-			p274 := t270
-			if v18 != 0 {
-				p274 = t269
-			}
-			v1 = p274
-			t275 := int32(load32(m.memory[int64(uint32(v1))+8:]))
-			store32(m.memory[int64(uint32(t268))+8:], uint32(t275))
-			t276 := int64(load64(m.memory[uint32(v1):]))
-			store64(m.memory[uint32(v0):], uint64(t276))
-			t277 := int32(load32(m.memory[uint32(v10):]))
-			t278 := v11
-			t279 := v9
-			t280 := v10
-			v1 = t277
-			t281 := int32(load32(m.memory[uint32(v9):]))
-			t282 := v1
-			v14 = t281
-			var p283 int32
-			if uint32(t282) < uint32(v14) {
-				p283 = 1
-			}
-			v16 = p283
-			p284 := t280
-			if v16 != 0 {
-				p284 = t279
-			}
-			v4 = p284
-			t285 := int32(load32(m.memory[int64(uint32(v4))+8:]))
-			store32(m.memory[int64(uint32(t278))+8:], uint32(t285))
-			t286 := int64(load64(m.memory[uint32(v4):]))
-			store64(m.memory[uint32(v11):], uint64(t286))
-			v11 = v11 + i32(-12)
-			v0 = v0 + i32(12)
-			t287 := v2
-			var p288 int32
-			if uint32(v12) >= uint32(v13) {
-				p288 = 1
-			}
-			v2 = t287 + p288*i32(12)
-			v19 = v19 + v18*i32(12)
-			t290 := v9
-			p289 := i32(0)
-			if v16 != 0 {
-				p289 = i32(-12)
-			}
-			v9 = t290 + p289
-			t292 := v10
-			p291 := i32(0)
-			if uint32(v1) >= uint32(v14) {
-				p291 = i32(-12)
-			}
-			v10 = t292 + p291
-			v17 = v17 + i32(-1)
-			if v17 != 0 {
-				goto l47
-			}
-		}
-		v9 = v9 + i32(12)
-		{
-			if v7&i32(1) == 0 {
-				goto l48
-			}
-			t293 := v0
-			t294 := v2
-			t295 := v19
-			var p296 int32
-			if uint32(v2) < uint32(v9) {
-				p296 = 1
-			}
-			v7 = p296
-			p297 := t295
-			if v7 != 0 {
-				p297 = t294
-			}
-			v11 = p297
-			t298 := int32(load32(m.memory[int64(uint32(v11))+8:]))
-			store32(m.memory[int64(uint32(t293))+8:], uint32(t298))
-			t299 := int64(load64(m.memory[uint32(v11):]))
-			store64(m.memory[uint32(v0):], uint64(t299))
-			t300 := v19
-			var p301 int32
-			if uint32(v2) >= uint32(v9) {
-				p301 = 1
-			}
-			v19 = t300 + p301*i32(12)
-			v2 = v2 + v7*i32(12)
-		}
-	l48:
-		if v2 != v9 {
-			goto l49
-		}
-		if v19 == v10+i32(12) {
-			goto l3
-		}
-	l49:
-		m.fn122()
-		panic("unreachable")
-	}
-l3:
-	m.g0 = v6 + i32(16)
-}
-func (m *Module) fn131(v0, v1, v2, v3 int32) int32 {
-	var v4, v5, v6 int32
-	{
-		if uint32(v3) < uint32(i32(8)) {
-			goto l0
-		}
-		t0 := v0
-		t1 := v0
-		v3 = int32(uint32(v3) >> 3)
-		v4 = v3 * i32(48)
-		t2 := t1 + v4
-		t3 := v0
-		v5 = v3 * i32(84)
-		t4 := m.fn131(t0, t2, t3+v5, v3)
-		v0 = t4
-		t5 := m.fn131(v1, v1+v4, v1+v5, v3)
-		v1 = t5
-		t6 := m.fn131(v2, v2+v4, v2+v5, v3)
-		v2 = t6
-	}
-l0:
-	t7 := int32(load32(m.memory[uint32(v0):]))
-	t8 := v0
-	t9 := v2
-	t10 := v1
-	v3 = t7
-	t11 := int32(load32(m.memory[uint32(v1):]))
-	t12 := v3
-	v4 = t11
-	var p13 int32
-	if uint32(t12) < uint32(v4) {
-		p13 = 1
-	}
-	v5 = p13
-	t14 := int32(load32(m.memory[uint32(v2):]))
-	t15 := v5
-	t16 := v4
-	v6 = t14
-	var p17 int32
-	if uint32(t16) < uint32(v6) {
-		p17 = 1
-	}
-	p18 := t10
-	if t15^p17 != 0 {
-		p18 = t9
-	}
-	t19 := v5
-	var p20 int32
-	if uint32(v3) < uint32(v6) {
-		p20 = 1
-	}
-	p21 := p18
-	if t19^p20 != 0 {
-		p21 = t8
-	}
-	return p21
 }

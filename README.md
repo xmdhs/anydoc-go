@@ -97,13 +97,21 @@ helpers 里的指针直读（load16/32/64），生成代码仍保持边界检查
 ## 用法
 
 ```bash
-bin/anydoc report.docx            # → 同目录 report.docx.md（默认）
-bin/anydoc "docs/*.docx" "*.csv"   # glob 批量（模式含 * 时用引号包裹）
-bin/anydoc -s report.docx          # 输出到 stdout（可多个输入）
-bin/anydoc -o out.md report.docx   # 指定单个输出文件
-bin/anydoc -o - a.docx             # 与 -s 等价
-bin/anydoc -f docx weird.bin       # 强制定制解析
+bin/anydoc report.docx              # → 同目录 report.docx.md（默认）
+bin/anydoc "docs/*.docx" "*.csv"    # glob 批量（模式含 * 时用引号包裹）
+bin/anydoc -s report.docx           # 输出到 stdout（可多个输入）
+bin/anydoc -o out.md report.docx    # 指定单个输出文件
+bin/anydoc -o - a.docx              # 与 -s 等价
+bin/anydoc -f docx weird.bin        # 强制定制解析
+bin/anydoc --assets img -o a.md a.docx  # 图片落盘；a.md 里引用 img/a-0.png
 ```
+
+**内嵌图片（--assets）**：docx/pptx 等容器内的图片字节不会出现在
+markdown 里（本地 patch 渲染为 `![alt](asset://<id>)` 占位，`<id>` 即资产
+下标）。传 `--assets dir` 时，`<stem>-<id>.<ext>` 写入 `dir/`，markdown 中
+的占位被替换为对应路径（`<ext>` 由 media type 派生，其余一律 `bin`）。
+不带 `--assets` 时占位原样保留。库 API 对应 `Converter.ExtractAssets`
+（返回 ID/MediaType/Bytes）。
 
 格式识别优先级：`-f` 显式 > 文件内容自动检测 > **路径扩展名兜底**（CSV 等
 无签名格式直接转换，无需再传 `-f`）。字节流 API（`ConvertBytes`）没有路径
@@ -148,9 +156,13 @@ md, err = func() (string, error) {
 单元测试（`./build.sh test`，标准 go test）：
 
 - **TestConvertMatchesExpected**：6 种格式（docx/csv/doc/pptx/epub/ods）用
-  third-party/anydoc 的样本（testdata/fixtures/）转换，与官方快照期望
-  （testdata/expected/，`tools/gen_expected.py` 从 anydoc 的 insta 快照生成）
-  逐字节比对；
+  third-party/anydoc 的样本（testdata/fixtures/）转换，与快照期望
+  （testdata/expected/，`tools/gen_expected.py` 从 anydoc 的 insta 快照生成，
+  **例外**：含内嵌图片的样例在本地 patch 下多出 `asset://` 占位，
+  与官方快照不同，已手工更新 docx/doc/epub 三个文件）逐字节比对；
+- **TestExtractAssets**：手工构造的 in-image.docx（1×1 PNG）→ markdown
+  含 `asset://0` 占位、`ExtractAssets` 取回原始 PNG 字节；CLI 集成用例
+  验证 `--assets` 落盘 + 引用重写；
 - **TestReuseModuleIsStateless**：同一模块连续转换结果一致；
 - **TestErrors**：encrypted / malformed / 未识别格式 / CSV 需要 -f /
   PDF 报 unsupported（stub 剔除后不解析）。
