@@ -48,30 +48,16 @@ jobs:
         with:
           target: wasm32-unknown-unknown
 
-      - name: Setup zig (C toolchain)
-        run: |
-          set -euxo pipefail
-          VER=$(curl -fsSL https://ziglang.org/download/index.json | python3 -c \
-            "import json,sys; d=json.load(sys.stdin); print([k for k in d if k!='master'][0])")
-          curl -fsSL "https://ziglang.org/download/${VER}/zig-x86_64-linux-${VER}.tar.xz" \
-            -o /tmp/zig.tar.xz
-          mkdir -p .zig
-          tar -xJf /tmp/zig.tar.xz -C .zig
-          mv .zig/zig-* .zig/bin
-          # rustc 默认链接器找 "cc"：提供 zig cc 的 wrapper（与 README 一致）
-          printf '#!/bin/sh\nexec "$(dirname "$0")/zig" cc "$@"\n' > .zig/bin/cc
-          chmod +x .zig/bin/cc
-          .zig/bin/zig version
+      # 注：zig 只为无 C 编译器的环境准备（见 build.sh/README 本机约束）；
+      # ubuntu runner 自带 gcc，直接作为 rustc 的 cc。
 
-      - name: Cache cargo & Go & zig build artifacts
+      - name: Cache cargo & Go build artifacts
         uses: actions/cache@v6
         with:
           path: |
             /home/runner/.cargo
             target/
             .go-cache/
-            .zig-cache/
-            libzig-cache/
           key: anydoc-build-${{ runner.os }}-${{ hashFiles('cabi/Cargo.lock', 'go.mod') }}
           restore-keys: |
             anydoc-build-${{ runner.os }}-
@@ -95,7 +81,7 @@ jobs:
         with:
           name: anydoc-linux-amd64-${{ github.sha }}
           path: bin/anydoc
-          retention-days: 7
+          retention-days: 3
           archive: false
 
       - name: Create GitHub Release

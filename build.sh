@@ -17,7 +17,11 @@ export ZIG_LOCAL_CACHE_DIR="${ZIG_LOCAL_CACHE_DIR:-${ROOT}/libzig-cache}"
 export GOCACHE="${GOCACHE:-${ROOT}/.go-cache}"
 export GOPATH="${GOPATH:-${ROOT}/.gopath}"
 export PATH="${CARGO_HOME}/bin:${ROOT}/.zig/bin:${ROOT}/bin:${PATH}"
-export CC="${CC:-zig cc}"
+# 仅本机用 zig cc 作宿主链接器（无系统 cc；.zig 见 README）。
+# 没有 .zig 的环境（如 CI runner，自带 gcc）直接走系统 cc。
+if [ -x "${ROOT}/.zig/bin/zig" ]; then
+    export CC="${CC:-zig cc}"
+fi
 
 ANYDOC_DIR="${ROOT}/third-party/anydoc"
 WASM2GO_DIR="${ROOT}/third-party/wasm2go"

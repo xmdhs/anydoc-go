@@ -55,8 +55,9 @@ bin/anydoc
 
 ## 构建
 
-C 工具链用 zig：`.zig/bin/cc` 是 `zig cc` 的 wrapper，
-作为 rustc 的宿主链接器（本机没有 gcc/clang）。
+C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 rustc
+的宿主链接器——本机没有 gcc/clang）。有系统 cc 的环境直接用系统工具链，
+无需 zig。
 
 ```bash
 ./build.sh fetch    # 首次 & 更新：拉取 third-party/anydoc、wasm2go（git clone/fetch）
@@ -141,18 +142,6 @@ md, err = func() (string, error) {
 ```
 
 导入路径随 module 名（当前为本地 `anydoc-go`，发布时改为真实仓库路径）。
-
-## CI（GitHub Actions）
-
-`.github/workflows/build-anydoc.yml` 在 runner 上重放本机流程（与 build.sh
-一致：zig C 工具链 → cargo wasm → wasm2go -unsafe → go build → go test →
-CLI 冒烟），并上传 `bin/anydoc` artifact：
-
-- `push` 到 main：构建 + 测试 + 归档产物；
-- `workflow_dispatch` 且填写 version：额外创建同名 tag 的 GitHub Release
-  （需仓库权限；版本随意填写如 `1.0.0`）。
-
-产物可直接在 workflow 运行页的 Artifacts 下载，7 天保留。
 
 ## 验证
 
