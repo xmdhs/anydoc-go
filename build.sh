@@ -88,7 +88,11 @@ wasm_step() {
 
 cli_step() {
     [ -f "${WASM}" ] || { echo "missing wasm — run: $0 wasm" >&2; exit 2; }
-    [ -x "${ROOT}/bin/wasm2go" ] || { echo "missing bin/wasm2go — run: $0 fetch && (cd third-party/wasm2go && go build -o ${ROOT}/bin/wasm2go .)" >&2; exit 2; }
+    # bin/ 不入库；缺失时自动从 third-party/wasm2go 构建（CI 也需要）。
+    if [ ! -x "${ROOT}/bin/wasm2go" ]; then
+        echo "building wasm2go → ${ROOT}/bin/wasm2go"
+        (cd "${WASM2GO_DIR}" && go build -o "${ROOT}/bin/wasm2go" .)
+    fi
     mkdir -p "${ROOT}/core"
     rm -f "${ROOT}/core/anydoc_gen_*.go" "${ROOT}/core/anydoc.wasm.go"
     # -unsafe 用指针直读替代 encoding/binary 解码，转换快约 1.1~1.4 倍
