@@ -11,7 +11,6 @@
 package main
 
 import (
-	"crypto/sha256"
 	"flag"
 	"fmt"
 	"os"
@@ -26,7 +25,7 @@ func main() {
 		output = flag.String("o", "", "write Markdown to `file` (single input only; `-` = stdout)")
 		stdout = flag.Bool("s", false, "print Markdown to stdout (works with multiple inputs)")
 		format = flag.String("f", "", "force input `format` by extension (docx, csv, pdf, ...); default auto-detect")
-		assets = flag.String("assets", "", "write embedded assets (images) into `dir` and link them in the Markdown")
+		imgs   = flag.Bool("imgs", false, "write embedded assets into <input dir>/imgs")
 	)
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: anydoc [options] <file|glob>...\n\n")
@@ -70,9 +69,10 @@ func main() {
 			failed = true
 			continue
 		}
-		// 图片导出仅显式 --assets dir（默认不导出，占位保留）。
-		if *assets != "" {
-			md, err = extractAssets(conv, file, *format, md, *assets, *assets)
+		// 图片导出：--imgs 时导出到输入文件同目录的 imgs/（引用相对该目录）；
+		// 否则不导出，占位原样保留。
+		if *imgs {
+			md, err = extractAssets(conv, file, *format, md, filepath.Join(filepath.Dir(file), "imgs"))
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "anydoc: %s: %v\n", file, err)
 				failed = true
@@ -102,12 +102,12 @@ func main() {
 	}
 }
 
-// extractAssets 把文档内嵌资产写入 dir（文件名为 <stem>-<ID>.<ext>），并
-// 把 markdown 里的 asset://<ID> 占位替换为 refBase 下的对应路径
-// （refBase 通常是相对 markdown 文件所在目录的 assets 目录；显式
-// --assets 时与 dir 相同）。与 ConvertFile 相同的格式兜底
-// （显式 -f → 内容自动检测 → 路径扩展名）。
-func extractAssets(conv *anydoc.Converter, file, format, md, dir, refBase string) (string, error) {
+// extractAssets 把文档内嵌资产写入 dir（文件名 <stem>-<ID>.<ext>），并把
+// markdown 里的 asset://<ID> 占位替换为相对引用（ref 为固定 imgs/ 目录，
+// 与输入文件同级的 imgs/）。
+// 与 ConvertFile 相同的格式兜底（显式 -f → 内容自动检测 → 路径扩展名）。
+// 不同输入各自导到自己的 imgs/，无跨输入覆盖。
+func extractAssets(conv *anydoc.Converter, file, format, md, dir string) (string, error) {
 	data, err := os.ReadFile(file)
 	if err != nil {
 		return md, err
@@ -130,17 +130,14 @@ func extractAssets(conv *anydoc.Converter, file, format, md, dir, refBase string
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return md, err
 	}
-	// 文件名带输入路径 hash：不同目录的同名输入（a/foo.docx 与 b/foo.docx）
-	// 转换到同一资产目录时互不覆盖；同一输入重复转换保持幂等。
+	// 各输入导出到自己的 imgs/，无跨输入覆盖；重复转换幂等（覆盖自己）。
 	stem := strings.TrimSuffix(filepath.Base(file), filepath.Ext(file))
-	sum := sha256.Sum256([]byte(file))
-	prefix := fmt.Sprintf("%s-%x", stem, sum[:4])
 	for _, a := range assets {
-		name := fmt.Sprintf("%s-%d.%s", prefix, a.ID, assetExt(a.MediaType))
+		name := fmt.Sprintf("%s-%d.%s", stem, a.ID, assetExt(a.MediaType))
 		if err := os.WriteFile(filepath.Join(dir, name), a.Bytes, 0o644); err != nil {
 			return md, err
 		}
-		md = strings.ReplaceAll(md, fmt.Sprintf("asset://%d", a.ID), filepath.Join(refBase, name))
+		md = strings.ReplaceAll(md, fmt.Sprintf("asset://%d", a.ID), filepath.Join("imgs", name))
 	}
 	return md, nil
 }

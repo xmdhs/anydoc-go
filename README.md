@@ -103,16 +103,16 @@ bin/anydoc -s report.docx           # 输出到 stdout（可多个输入）
 bin/anydoc -o out.md report.docx    # 指定单个输出文件
 bin/anydoc -o - a.docx              # 与 -s 等价
 bin/anydoc -f docx weird.bin          # 强制定制解析
-bin/anydoc --assets assets -o a.md a.docx # 显式导出图片到 assets/
+bin/anydoc --imgs "docs/*.docx"        # 图片导出到每个输入旁的 imgs/
 ```
 
 **内嵌图片**（docx/pptx 等容器内的图片字节不会出现在 markdown 里——本地
 patch 渲染为 `![alt](asset://<id>)` 占位，`<id>` 即资产下标）：
-- **默认不导出**：不带 `--assets` 时 md 里保留 `asset://` 占位；
-- `--assets dir`：`<stem>-<hash>-<id>.<ext>` 写入 `dir/`，md 引用替换
-  为实际路径（`hash` 取输入路径的哈希，不同目录的同名输入互不覆盖）；
-- 扩展名由 media type 派生，其余一律 `bin`；重复转换幂等（同名文件覆盖
-  自己）。
+- **默认不导出**：md 里保留 `asset://` 占位；
+- `--imgs`：`<stem>-<id>.<ext>` 写入**输入文件同目录的 `imgs/`**，md
+  引用替换为相对 `imgs/` 路径；各输入独立目录无跨输入覆盖，重复转换
+  幂等；
+- 扩展名由 media type 派生，其余一律 `bin`。
 - 库 API 对应 `Converter.ExtractAssets`（返回 `ID/MediaType/Bytes`）。
 
 格式识别优先级：`-f` 显式 > 文件内容自动检测 > **路径扩展名兜底**（CSV 等
@@ -164,7 +164,7 @@ md, err = func() (string, error) {
   与官方快照不同，已手工更新 docx/doc/epub 三个文件）逐字节比对；
 - **TestExtractAssets**：手工构造的 in-image.docx（1×1 PNG）→ markdown
   含 `asset://0` 占位、`ExtractAssets` 取回原始 PNG 字节；CLI 集成用例
-  验证 `--assets` 落盘 + 引用重写；
+  验证 `--imgs` 落盘 + 引用重写；
 - **TestReuseModuleIsStateless**：同一模块连续转换结果一致；
 - **TestErrors**：encrypted / malformed / 未识别格式 / CSV 需要 -f /
   PDF 报 unsupported（stub 剔除后不解析）。

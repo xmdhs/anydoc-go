@@ -55,12 +55,11 @@ func TestExtractAssetsCLI(t *testing.T) {
 	if err != nil {
 		t.Fatalf("convert: %v", err)
 	}
-	md, err := extractAssets(conv, "testdata/fixtures/docx/in-image.docx", "", md0, dir, dir)
+	md, err := extractAssets(conv, "testdata/fixtures/docx/in-image.docx", "", md0, dir)
 	if err != nil {
 		t.Fatalf("extractAssets: %v", err)
 	}
-	// 名称为 <stem>-<hash>-<id>.png（hash 防跨输入覆盖），断言目录里
-	// 恰好一个 PNG 且 md 引用指向它。
+	// 名称为 <stem>-<id>.png；各输入独立 imgs/ 目录，无需防覆盖。
 	entries, err := os.ReadDir(dir)
 	if err != nil {
 		t.Fatalf("read dir: %v", err)
@@ -70,7 +69,7 @@ func TestExtractAssetsCLI(t *testing.T) {
 		t.Fatalf("unexpected assets: %v", entries)
 	}
 	name := entries[0].Name()
-	want := "![a red circle](" + filepath.Join(dir, name) + ")"
+	want := "![a red circle](imgs/" + name + ")"
 	if !strings.Contains(md, want) {
 		t.Errorf("markdown missing rewritten asset link: %q", md)
 	}
