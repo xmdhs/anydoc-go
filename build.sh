@@ -79,8 +79,25 @@ require_repos() {
     [ -d "${WASM2GO_DIR}/.git" ] || { echo "missing third-party/wasm2go — run: $0 fetch" >&2; exit 2; }
 }
 
+# 应用本地 patch（第三方仓库不提交任何改动；CI fresh clone 后必须有同一
+# patch 才能构建出 asset:// 占位）。
+ANYDOC_PATCH="${ROOT}/patches/anydoc-asset-placeholder.patch"
+apply_anydoc_patch() {
+    if grep -q 'asset://' "${ANYDOC_DIR}/src/render/markdown/inline.rs" 2>/dev/null; then
+        echo "anydoc patch already applied"
+        return
+    fi
+    if ! git -C "${ANYDOC_DIR}" apply --check "${ANYDOC_PATCH}" 2>/dev/null; then
+        echo "error: anydoc patch no longer applies — regenerate ${ANYDOC_PATCH} (升级 anydoc tag 后常见)" >&2
+        exit 2
+    fi
+    git -C "${ANYDOC_DIR}" apply "${ANYDOC_PATCH}"
+    echo "applied ${ANYDOC_PATCH}"
+}
+
 wasm_step() {
     require_repos
+    apply_anydoc_patch
     cd "${ROOT}/cabi"
     cargo build --release --target wasm32-unknown-unknown
     cd "${ROOT}"

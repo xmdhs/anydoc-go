@@ -1,0 +1,26 @@
+diff --git a/src/render/markdown/inline.rs b/src/render/markdown/inline.rs
+index 1461e33..bbaa533 100644
+--- a/src/render/markdown/inline.rs
++++ b/src/render/markdown/inline.rs
+@@ -164,10 +164,17 @@ fn render_image(
+                 escape_text(alt.trim(), ctx, EscapeOpts { in_label: true, ..Default::default() });
+             let _ = write!(out, "![{}]({})", alt, format_url(url));
+         }
+-        // Embedded assets render as their alt text: Markdown cannot embed
+-        // bytes, and the bytes stay available in `Document::assets`. A
+-        // source-less image has only its alt text to offer.
+-        ImageSource::Asset(_) | ImageSource::Unavailable => {
++        // Local patch (anydoc-go): embedded assets render as a
++        // `![alt](asset://<id>)` placeholder so a host application can write
++        // the bytes out (CLI --assets) and rewrite the reference; `id` is
++        // the index into `Document::assets`, keeping the mapping exact.
++        // A source-less image has only its alt text to offer.
++        ImageSource::Asset(asset_id) => {
++            let alt =
++                escape_text(alt.trim(), ctx, EscapeOpts { in_label: true, ..Default::default() });
++            let _ = write!(out, "![{alt}](asset://{})", asset_id.0);
++        }
++        ImageSource::Unavailable => {
+             if !alt.trim().is_empty() {
+                 out.push_str(&escape_text(
+                     alt.trim(),
