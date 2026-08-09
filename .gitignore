@@ -11,10 +11,3 @@
 
 # python 工具缓存
 /tools/__pycache__/
-
-# Claude Code 环境目录：除 doc/（项目文档）外都是容器设备文件/会话配置
-/.claude/*
-!/.claude/doc/
-
-# 容器映射占位文件（无真实内容，不可入库）
-/.mcp.json
