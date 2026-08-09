@@ -1,0 +1,565 @@
+package core
+
+func (m *Module) X__wbindgen_describe___wbg_set_style_27102dee81a529fa() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn984()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_style_4c43f396c9ee2547() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn991()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_style_675319a7c4d43a0b() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn996()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_style_a08fea26e8d3d194() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn955()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_style_e608e9fd40658cd1() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn983()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_time_zone_name_29d5ce7363cd0514() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn974()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_trailing_zero_display_bd7a4f137e051db2() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn964()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_type_1cab979afbf5d242() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn978()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_type_6cb2c9ae38cc619d() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn990()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_type_b3fa21110653df3f() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn987()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_unit_display_d036cbbe4644c58c() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn961()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_usage_6f42f844d59a24aa() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn993()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_use_grouping_38c84d2d414bff54() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn965()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_value_1b7bd2bc4ef248bb() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn937()
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_value_4ff9f1104945e4b5() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_weekday_c2e329f83dd50092() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn969()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_set_year_71ced93de475af70() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn0(i32(24))
+	m.fn972()
+	m.fn0(i32(33))
+	m.fn0(i32(33))
+}
+func (m *Module) X__wbindgen_describe___wbg_size_7400d94692c0fd45() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(1))
+	m.fn0(i32(19))
+	m.fn0(i32(25))
+	m.fn0(i32(8))
+	m.fn0(i32(83))
+	m.fn0(i32(101))
+	m.fn0(i32(116))
+	m.fn0(i32(60))
+	m.fn0(i32(97))
+	m.fn0(i32(110))
+	m.fn0(i32(121))
+	m.fn0(i32(62))
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+}
+func (m *Module) X__wbindgen_describe___wbg_size_7c5f5d6c17503441() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(1))
+	m.fn0(i32(19))
+	m.fn1090()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+}
+func (m *Module) X__wbindgen_describe___wbg_slice_1c056f7ed0f7efd9() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn1001()
+	m.fn0(i32(5))
+	m.fn1001()
+	m.fn1001()
+}
+func (m *Module) X__wbindgen_describe___wbg_slice_21a782545f917094() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn923()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn923()
+	m.fn923()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_4c72eaa54c879ba8() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn919()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn919()
+	m.fn919()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_af86a64c21183f73() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn922()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn922()
+	m.fn922()
+}
+func (m *Module) X__wbindgen_describe___wbg_transfer_0f5926c9e9a96ed8() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn925()
+	m.fn0(i32(5))
+	m.fn925()
+	m.fn925()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_ee85cf872d5960cb() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn933()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn933()
+	m.fn933()
+}
+func (m *Module) X__wbindgen_describe___wbg_slice_60143382c6cbb1d8() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn925()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn925()
+	m.fn925()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_ea9bd2f9b4698998() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn916()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn916()
+	m.fn916()
+}
+func (m *Module) X__wbindgen_describe___wbg_slice_6438d3c2b2847d98() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(1))
+	m.fn0(i32(19))
+	m.fn1001()
+	m.fn0(i32(23))
+	m.fn0(i32(24))
+	m.fn0(i32(23))
+	m.fn0(i32(24))
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_a4cc58201c7359fd() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn915()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn915()
+	m.fn915()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_0d24c6679e9a65f1() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn921()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn921()
+	m.fn921()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_d728444e2a568ccb() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn913()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn913()
+	m.fn913()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_c08acc355b325c86() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn920()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn920()
+	m.fn920()
+}
+func (m *Module) X__wbindgen_describe___wbg_slice_abfa69ea4c189230() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn1001()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn1001()
+	m.fn1001()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_095365bb46f94afd() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn914()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn914()
+	m.fn914()
+}
+func (m *Module) X__wbindgen_describe___wbg_slice_ba35502bdaeca771() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn923()
+	m.fn0(i32(5))
+	m.fn923()
+	m.fn923()
+}
+func (m *Module) X__wbindgen_describe___wbg_substring_a58d30b533ac4ea2() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn0(i32(25))
+	m.fn0(i32(6))
+	m.fn0(i32(115))
+	m.fn0(i32(116))
+	m.fn0(i32(114))
+	m.fn0(i32(105))
+	m.fn0(i32(110))
+	m.fn0(i32(103))
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn0(i32(25))
+	m.fn0(i32(6))
+	m.fn0(i32(115))
+	m.fn0(i32(116))
+	m.fn0(i32(114))
+	m.fn0(i32(105))
+	m.fn0(i32(110))
+	m.fn0(i32(103))
+	m.fn0(i32(25))
+	m.fn0(i32(6))
+	m.fn0(i32(115))
+	m.fn0(i32(116))
+	m.fn0(i32(114))
+	m.fn0(i32(105))
+	m.fn0(i32(110))
+	m.fn0(i32(103))
+}
+func (m *Module) X__wbindgen_describe___wbg_slice_dcf9faa1fb3de5bb() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn925()
+	m.fn0(i32(4))
+	m.fn925()
+	m.fn925()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_e3ceefdfcd5100ac() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn918()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn918()
+	m.fn918()
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_3eda9231e87d0657() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn0(i32(25))
+	m.fn0(i32(9))
+	m.fn0(i32(73))
+	m.fn0(i32(110))
+	m.fn0(i32(116))
+	m.fn0(i32(56))
+	m.fn0(i32(65))
+	m.fn0(i32(114))
+	m.fn0(i32(114))
+	m.fn0(i32(97))
+	m.fn0(i32(121))
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn0(i32(25))
+	m.fn0(i32(9))
+	m.fn0(i32(73))
+	m.fn0(i32(110))
+	m.fn0(i32(116))
+	m.fn0(i32(56))
+	m.fn0(i32(65))
+	m.fn0(i32(114))
+	m.fn0(i32(114))
+	m.fn0(i32(97))
+	m.fn0(i32(121))
+	m.fn0(i32(25))
+	m.fn0(i32(9))
+	m.fn0(i32(73))
+	m.fn0(i32(110))
+	m.fn0(i32(116))
+	m.fn0(i32(56))
+	m.fn0(i32(65))
+	m.fn0(i32(114))
+	m.fn0(i32(114))
+	m.fn0(i32(97))
+	m.fn0(i32(121))
+}
+func (m *Module) X__wbindgen_describe___wbg_subarray_1da675fbcbb4fefd() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(3))
+	m.fn0(i32(19))
+	m.fn917()
+	m.fn0(i32(5))
+	m.fn0(i32(5))
+	m.fn917()
+	m.fn917()
+}
+func (m *Module) X__wbindgen_describe___wbg_slice_from_03ad37aa2ffd08be() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn923()
+	m.fn0(i32(4))
+	m.fn923()
+	m.fn923()
+}
+func (m *Module) X__wbindgen_describe___wbg_some_10e170fde9c7b0c8() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn1001()
+	m.fn0(i32(20))
+	m.fn0(i32(15))
+	m.fn0(i32(114))
+	m.fn0(i32(1))
+	m.fn0(i32(24))
+	m.fn0(i32(32))
+	m.fn0(i32(14))
+	m.fn0(i32(32))
+	m.fn0(i32(14))
+	m.fn0(i32(14))
+	m.fn0(i32(14))
+}
+func (m *Module) fn1749(v0, v1, v2, v3 int32) {
+	var v4 int32
+	t0 := m.g0
+	v4 = t0 - i32(16)
+	m.g0 = v4
+	if v1 != 0 {
+		goto l0
+	}
+	m.fn912()
+	panic("unreachable")
+l0:
+	t1 := int32(load32(m.memory[int64(uint32(v2))+16:]))
+	m.t0[uint(t1)].(func(int32, int32, int32))(v4+i32(8), v1, v3)
+	t2 := int32(m.memory[int64(uint32(v4))+8])
+	t3 := v0
+	v1 = t2
+	store32(m.memory[int64(uint32(t3))+8:], uint32(v1))
+	t4 := int32(load32(m.memory[int64(uint32(v4))+12:]))
+	t6 := v0
+	p5 := i32(0)
+	if v1 != 0 {
+		p5 = t4
+	}
+	store32(m.memory[int64(uint32(t6))+4:], uint32(p5))
+	t7 := int32(m.memory[int64(uint32(v4))+9])
+	t9 := v0
+	p8 := t7
+	if v1 != 0 {
+		p8 = i32(0)
+	}
+	store32(m.memory[uint32(t9):], uint32(p8))
+	m.g0 = v4 + i32(16)
+}
+func (m *Module) X__wbindgen_describe___wbg_some_b9a93b338321a6eb() {
+	m.fn0(i32(15))
+	m.fn0(i32(0))
+	m.fn0(i32(2))
+	m.fn0(i32(19))
+	m.fn1001()
+	m.fn0(i32(20))
+	m.fn0(i32(15))
+	m.fn0(i32(115))
+	m.fn0(i32(1))
+	m.fn0(i32(24))
+	m.fn0(i32(14))
+	m.fn0(i32(14))
+	m.fn0(i32(14))
+	m.fn0(i32(14))
+}
+func (m *Module) fn1751(v0, v1, v2 int32) int32 {
+	if v0 != 0 {
+		t0 := int32(load32(m.memory[int64(uint32(v1))+16:]))
+		t1 := m.t0[uint(t0)].(func(int32, int32) int32)(v0, v2)
+		return t1
+	}
+	m.fn912()
+	panic("unreachable")
+}

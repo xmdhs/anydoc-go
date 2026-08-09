@@ -1,0 +1,20 @@
+# anydoc-go 是独立仓库；以下均不提交。
+
+# 第三方项目（经 ./build.sh fetch 拉取到 third-party/）
+/third-party/
+
+# cargo 编译产物
+/target/
+
+# 构建产物 & 翻译器二进制
+/bin/
+
+# python 工具缓存
+/tools/__pycache__/
+
+# Claude Code 环境目录：除 doc/（项目文档）外都是容器设备文件/会话配置
+/.claude/*
+!/.claude/doc/
+
+# 容器映射占位文件（无真实内容，不可入库）
+/.mcp.json

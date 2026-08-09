@@ -1,0 +1,19 @@
+[package]
+name = "anydoc-cabi"
+version = "0.1.0"
+edition = "2024"
+publish = false
+description = "C-ABI wasm exports wrapping the anydoc document converter"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anydoc = { path = "../../third-party/anydoc", default-features = false }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = "symbols"
+panic = "abort"
