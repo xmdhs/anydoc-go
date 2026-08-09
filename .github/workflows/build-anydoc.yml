@@ -46,6 +46,7 @@ jobs:
       - name: Setup Rust (wasm32 target)
         uses: dtolnay/rust-toolchain@v1
         with:
+          toolchain: stable # dtolnay/rust-toolchain 无默认 toolchain，必须显式
           target: wasm32-unknown-unknown
 
       # 注：zig 只为无 C 编译器的环境准备（见 build.sh/README 本机约束）；
