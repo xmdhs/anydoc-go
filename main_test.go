@@ -149,3 +149,41 @@ func TestErrors(t *testing.T) {
 		}
 	})
 }
+
+func TestRewriteAssetRefs(t *testing.T) {
+	// 画像：asset://3 与 asset://31 并存。旧实现 strings.ReplaceAll 先替换
+	// asset://3 会误吞 asset://31 前缀，残留 `1` 产生 imgs/doc-3.png1。
+	refs := map[string]string{
+		"asset://3":  "imgs/doc-3.png",
+		"asset://31": "imgs/doc-31.png",
+	}
+	md := "![alt-3](asset://3) and ![alt-31](asset://31)"
+	got := rewriteAssetRefs(md, refs)
+	want := "![alt-3](imgs/doc-3.png) and ![alt-31](imgs/doc-31.png)"
+	if got != want {
+		t.Errorf("rewriteAssetRefs:\n got %q\nwant %q", got, want)
+	}
+}
+
+func TestRewriteAssetRefsUnknownID(t *testing.T) {
+	// 未在映射中的占位原样保留，不 panic、不吞文本。
+	md := "![x](asset://99)"
+	got := rewriteAssetRefs(md, map[string]string{"asset://1": "imgs/a.png"})
+	if got != md {
+		t.Errorf("unknown id should stay intact: got %q", got)
+	}
+}
+
+func TestMdURL(t *testing.T) {
+	cases := []struct{ in, want string }{
+		{"doc-3.png", "doc-3.png"},                       // 仅 unreserved 保持原样
+		{"my report-1.png", "my%20report-1.png"},         // 空格 → %20
+		{"图-2.png", "%E5%9B%BE-2.png"},                  // 非 ASCII → %XX
+		{"keep._~-x.png", "keep._~-x.png"},               // 运算符等子集保持
+	}
+	for _, c := range cases {
+		if got := mdURL(c.in); got != c.want {
+			t.Errorf("mdURL(%q) = %q, want %q", c.in, got, c.want)
+		}
+	}
+}

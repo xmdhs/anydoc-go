@@ -15,6 +15,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	anydoc "anydoc-go/lib" // 包的内部名也是 anydoc；别名保证可读
@@ -132,14 +133,58 @@ func extractAssets(conv *anydoc.Converter, file, format, md, dir string) (string
 	}
 	// 各输入导出到自己的 imgs/，无跨输入覆盖；重复转换幂等（覆盖自己）。
 	stem := strings.TrimSuffix(filepath.Base(file), filepath.Ext(file))
+	refs := make(map[string]string, len(assets))
 	for _, a := range assets {
 		name := fmt.Sprintf("%s-%d.%s", stem, a.ID, assetExt(a.MediaType))
 		if err := os.WriteFile(filepath.Join(dir, name), a.Bytes, 0o644); err != nil {
 			return md, err
 		}
-		md = strings.ReplaceAll(md, fmt.Sprintf("asset://%d", a.ID), filepath.Join("imgs", name))
+		// markdown 引用固定用 `/` 分隔（跨平台，且 filepath.Join 在 Windows
+		// 会产生 `\` 导致无法解析）；文件名做百分号编码，空格等不安全字符
+		// 转成 %XX，保证 `![alt](imgs/xxx.png)` 可被解析。
+		refs[fmt.Sprintf("asset://%d", a.ID)] = "imgs/" + mdURL(name)
 	}
+	md = rewriteAssetRefs(md, refs)
 	return md, nil
+}
+
+// assetRefRe 匹配 `asset://<id>` 占位（id 为纯数字）。
+//
+// 不能用 strings.ReplaceAll 逐个替换：它是子串替换，asset://3 会误吞
+// asset://31 的前缀，把后者替换成 imgs/<stem>-3.png 再残留一个 `1`，产生
+// 末尾"多 1"的坏引用。这里一次正则整体替换，先建 ID→引用 映射再整串匹配
+// 替换，长短 ID 互不干扰。
+var assetRefRe = regexp.MustCompile(`asset://\d+`)
+
+// rewriteAssetRefs 把 md 里的 `asset://<id>` 占位替换为 refs 中对应引用；
+// 未在映射中的占位原样保留。
+func rewriteAssetRefs(md string, refs map[string]string) string {
+	return assetRefRe.ReplaceAllStringFunc(md, func(ph string) string {
+		if ref, ok := refs[ph]; ok {
+			return ref
+		}
+		return ph
+	})
+}
+
+// mdURL 对 markdown 图片引用的文件名做百分号编码：只保留 RFC3986 unreserved
+// 字符（A-Za-z0-9-._~），其余（空格、非 ASCII、`#` 等）编码为 %XX。保证
+// `![alt](imgs/…png)` 里的路径可被 markdown 解析器识别，不与空格/特殊字符冲突。
+func mdURL(s string) string {
+	const hex = "0123456789ABCDEF"
+	var b strings.Builder
+	for i := 0; i < len(s); i++ {
+		c := s[i]
+		if (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') ||
+			(c >= '0' && c <= '9') || c == '-' || c == '_' || c == '.' || c == '~' {
+			b.WriteByte(c)
+			continue
+		}
+		b.WriteByte('%')
+		b.WriteByte(hex[c>>4])
+		b.WriteByte(hex[c&0x0f])
+	}
+	return b.String()
 }
 
 // assetExt 从 media type 推导文件扩展名：image/* 取子类型字母数字，
