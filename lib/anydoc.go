@@ -65,15 +65,12 @@ func codeError(code uint32, msg string) *ConvertError {
 // 为每个 goroutine 各自 NewConverter（各实例内存独立，天然并行）。
 type Converter struct {
 	mdl *core.Module
-	env hostEnv
 }
 
 // NewConverter 创建并初始化转换器（加载 wasm 模块、填充线性内存）。
 // 创建成本约数十毫秒，长期复用一个实例。
 func NewConverter() *Converter {
-	c := new(Converter)
-	c.mdl = core.New(&c.env, &extrefEnv{})
-	return c
+	return &Converter{mdl: core.New()}
 }
 
 // 错误消息词表，供下面辅助函数使用。

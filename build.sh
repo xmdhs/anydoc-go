@@ -64,6 +64,7 @@ case "${1:-build}" in
         [ -f "${WASM}" ] || { echo "missing wasm — run: $0 wasm" >&2; exit 2; }
         [ -x "${ROOT}/bin/wasm2go" ] || { echo "missing bin/wasm2go — run: $0 fetch && (cd third-party/wasm2go && go build -o ${ROOT}/bin/wasm2go .)" >&2; exit 2; }
         mkdir -p "${ROOT}/core"
+        rm -f "${ROOT}/core/anydoc_gen_*.go" "${ROOT}/core/anydoc.wasm.go"
         "${ROOT}/bin/wasm2go" -pkg core -embed -o "${ROOT}/core/anydoc.wasm.go" "${WASM}"
         python3 "${ROOT}/tools/split_gen.py" 45 "${ROOT}/core"
         cd "${ROOT}"

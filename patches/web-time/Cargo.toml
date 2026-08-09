@@ -1,0 +1,9 @@
+[package]
+name = "web-time"
+version = "1.1.0"
+edition = "2021"
+description = "本地 patch：web-time 的 std 实现（wasm32-unknown-unknown 上不引 js-sys/wasm-bindgen）"
+
+[features]
+# cfb 等依赖可正常声明 serde 特性；我们不做 serde 实现。
+serde = []

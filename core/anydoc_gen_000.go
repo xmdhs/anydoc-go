@@ -7,14 +7,10 @@ import (
 )
 
 type Module struct {
-	t0                            []any
-	elements                      [][]any
-	memory                        []byte
-	maxMem                        int64
-	g0                            int32
-	g1                            int32
-	g2                            int32
-	___wbindgen_placeholder__     X__wbindgen_placeholder__
-	___wbindgen_externref_xform__ X__wbindgen_externref_xform__
+	t0       []any
+	elements [][]any
+	memory   []byte
+	maxMem   int64
+	g0       int32
 }
 

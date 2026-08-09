@@ -11,8 +11,14 @@ crate-type = ["cdylib"]
 [dependencies]
 anydoc = { path = "../third-party/anydoc", default-features = false }
 
+# 替换 crates.io 的 web-time 为本地 std 实现：
+# 去掉 js-sys/wasm-bindgen，wasm 产物不再包含 __wbindgen_* 符号
+# （同版本号 1.1.0；见 patches/web-time）
+[patch.crates-io]
+web-time = { path = "../patches/web-time" }
+
 [profile.release]
-opt-level = 3
+opt-level = "z"
 lto = true
 codegen-units = 1
 strip = "symbols"
