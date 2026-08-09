@@ -418,7 +418,7 @@ func (m *Module) fn1812(v0, v1, v2, v3, v4, v5, v6 int32) {
 					v9 = v10
 					v17 = t10 + v9
 					if uint32(v17) >= uint32(v4) {
-						m.fn36(v17, v4, i32(0x136600))
+						m.fn33(v17, v4, i32(1271936))
 						panic("unreachable")
 					}
 					v12 = i32(0)
@@ -465,13 +465,13 @@ func (m *Module) fn1812(v0, v1, v2, v3, v4, v5, v6 int32) {
 						v10 = v16
 					l22:
 						if uint32(v10) >= uint32(v6) {
-							m.fn36(v10, v6, i32(1271328))
+							m.fn33(v10, v6, i32(1271968))
 							panic("unreachable")
 						}
 						{
 							v8 = v9 + v10
 							if uint32(v8) >= uint32(v4) {
-								m.fn36(v8, v4, i32(1271344))
+								m.fn33(v8, v4, i32(1271984))
 								panic("unreachable")
 							}
 							t16 := int32(m.memory[uint32(v5+v10)])
@@ -490,13 +490,13 @@ func (m *Module) fn1812(v0, v1, v2, v3, v4, v5, v6 int32) {
 						}
 					l17:
 						if uint32(v1) >= uint32(v6) {
-							m.fn36(v1, v6, i32(1271360))
+							m.fn33(v1, v6, i32(1272000))
 							panic("unreachable")
 						}
 						{
 							v8 = v9 + v1
 							if uint32(v8) >= uint32(v4) {
-								m.fn36(v8, v4, i32(1271376))
+								m.fn33(v8, v4, i32(1272016))
 								panic("unreachable")
 							}
 							v11 = v14
@@ -530,7 +530,7 @@ func (m *Module) fn1812(v0, v1, v2, v3, v4, v5, v6 int32) {
 				if uint32(v4) > uint32(v10) {
 					p21 = t20
 				}
-				m.fn36(p21, v4, i32(1271312))
+				m.fn33(p21, v4, i32(1271952))
 				panic("unreachable")
 			}
 		}
@@ -553,7 +553,7 @@ func (m *Module) fn1812(v0, v1, v2, v3, v4, v5, v6 int32) {
 			{
 				v10 = v16 + v9
 				if uint32(v10) >= uint32(v4) {
-					m.fn36(v10, v4, i32(1271216))
+					m.fn33(v10, v4, i32(1271856))
 					panic("unreachable")
 				}
 				v1 = v6
@@ -576,7 +576,7 @@ func (m *Module) fn1812(v0, v1, v2, v3, v4, v5, v6 int32) {
 						if uint32(v4) > uint32(v10) {
 							p32 = t31
 						}
-						m.fn36(p32, v4, i32(1271232))
+						m.fn33(p32, v4, i32(1271872))
 						panic("unreachable")
 					}
 					t26 := int32(m.memory[uint32(v5+v10)])
@@ -602,12 +602,12 @@ func (m *Module) fn1812(v0, v1, v2, v3, v4, v5, v6 int32) {
 				l32:
 					v10 = v10 + i32(-1)
 					if v11 != 0 {
-						m.fn36(v10, v6, i32(1271248))
+						m.fn33(v10, v6, i32(1271888))
 						panic("unreachable")
 					}
 					v1 = v10 + v9
 					if uint32(v1) >= uint32(v4) {
-						m.fn36(v1, v4, i32(1271264))
+						m.fn33(v1, v4, i32(1271904))
 						panic("unreachable")
 					}
 					t29 := int32(m.memory[uint32(v5+v10)])
@@ -946,7 +946,7 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 				l13:
 					{
 						if uint32(v4) < uint32(v11) {
-							m.fn124(v11, v4, v4, i32(0x136660))
+							m.fn121(v11, v4, v4, i32(1272032))
 							panic("unreachable")
 						}
 						t15 := v7 + i32(8)
@@ -1026,7 +1026,7 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 								if uint32(v4) > uint32(v12) {
 									p37 = t36
 								}
-								m.fn36(p37, v4, i32(1271312))
+								m.fn33(p37, v4, i32(1271952))
 								panic("unreachable")
 							}
 							t29 := int32(m.memory[uint32(v5+v12)])
@@ -1048,13 +1048,13 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 						v12 = v19
 					l27:
 						if uint32(v12) >= uint32(v6) {
-							m.fn36(v12, v6, i32(1271328))
+							m.fn33(v12, v6, i32(1271968))
 							panic("unreachable")
 						}
 						{
 							v10 = v11 + v12
 							if uint32(v10) >= uint32(v4) {
-								m.fn36(v10, v4, i32(1271344))
+								m.fn33(v10, v4, i32(1271984))
 								panic("unreachable")
 							}
 							t32 := int32(m.memory[uint32(v5+v12)])
@@ -1073,13 +1073,13 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 						}
 					l22:
 						if uint32(v1) >= uint32(v6) {
-							m.fn36(v1, v6, i32(1271360))
+							m.fn33(v1, v6, i32(1272000))
 							panic("unreachable")
 						}
 						{
 							v13 = v11 + v1
 							if uint32(v13) >= uint32(v4) {
-								m.fn36(v13, v4, i32(1271376))
+								m.fn33(v13, v4, i32(1272016))
 								panic("unreachable")
 							}
 							v10 = v5 + v1
@@ -1109,7 +1109,7 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 					}
 					goto l31
 				}
-				m.fn36(v12, v4, i32(0x136600))
+				m.fn33(v12, v4, i32(1271936))
 				panic("unreachable")
 			}
 		}
@@ -1148,7 +1148,7 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 			l34:
 				{
 					if uint32(v4) < uint32(v11) {
-						m.fn124(v11, v4, v4, i32(1271280))
+						m.fn121(v11, v4, v4, i32(1271920))
 						panic("unreachable")
 					}
 					t44 := v7
@@ -1207,7 +1207,7 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 		l33:
 			v12 = v16 + v11
 			if uint32(v12) >= uint32(v4) {
-				m.fn36(v12, v4, i32(1271216))
+				m.fn33(v12, v4, i32(1271856))
 				panic("unreachable")
 			}
 			v1 = v6
@@ -1231,7 +1231,7 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 						if uint32(v4) > uint32(v12) {
 							p64 = t63
 						}
-						m.fn36(p64, v4, i32(1271232))
+						m.fn33(p64, v4, i32(1271872))
 						panic("unreachable")
 					}
 					t58 := int32(m.memory[uint32(v5+v12)])
@@ -1257,12 +1257,12 @@ func (m *Module) fn1815(v0, v1, v2, v3, v4, v5, v6 int32) {
 				l43:
 					v12 = v12 + i32(-1)
 					if v13 != 0 {
-						m.fn36(v12, v6, i32(1271248))
+						m.fn33(v12, v6, i32(1271888))
 						panic("unreachable")
 					}
 					v1 = v12 + v11
 					if uint32(v1) >= uint32(v4) {
-						m.fn36(v1, v4, i32(1271264))
+						m.fn33(v1, v4, i32(1271904))
 						panic("unreachable")
 					}
 					t61 := int32(m.memory[uint32(v5+v12)])
@@ -1310,7 +1310,7 @@ func (m *Module) fn1816(v0 int32) int32 {
 				v1 = t0
 				v2 = v1 + i32(1)
 				if v2 == 0 {
-					m.fn31(i32(1271120), i32(57), i32(1271148))
+					m.fn28(i32(1271760), i32(57), i32(1271788))
 					panic("unreachable")
 				}
 				{
@@ -1506,7 +1506,7 @@ func (m *Module) fn1816(v0 int32) int32 {
 					}
 					{
 						if uint32(v2) > uint32(i32(0x1fffffff)) {
-							m.fn31(i32(1271120), i32(57), i32(1271148))
+							m.fn28(i32(1271760), i32(57), i32(1271788))
 							panic("unreachable")
 						}
 						t6 := int32(uint32(v2<<3) / uint32(i32(7)))
@@ -1657,28 +1657,28 @@ func (m *Module) fn1816(v0 int32) int32 {
 					p56 = i32(4)
 				}
 				if uint32(t55) < uint32(p56+v2) {
-					m.fn7(i32(1273764), i32(46), i32(1273812))
+					m.fn7(i32(1274404), i32(46), i32(1274452))
 					panic("unreachable")
 				}
 				if v7 == 0 {
 					goto l31
 				}
 				if uint32(v5) > uint32(v2+i32(39)) {
-					m.fn7(i32(1273828), i32(46), i32(1273876))
+					m.fn7(i32(1274468), i32(46), i32(1274516))
 					panic("unreachable")
 				}
 			l31:
 				m.fn5(v3)
 				return i32(-1)
 			}
-			m.fn27(i32(8), v5)
+			m.fn23(i32(8), v5)
 			panic("unreachable")
 		}
 	}
 l20:
 	return i32(-1)
 l4:
-	m.fn31(i32(1271120), i32(57), i32(1271148))
+	m.fn28(i32(1271760), i32(57), i32(1271788))
 	panic("unreachable")
 }
 func (m *Module) fn1817(v0, v1, v2, v3, v4, v5 int32) {
@@ -1705,7 +1705,7 @@ l2:
 			if v1 == 0 {
 				goto l3
 			}
-			t0 := m.fn23(v2, v5*v1, v4, v3)
+			t0 := m.fn26(v2, v5*v1, v4, v3)
 			v7 = t0
 			goto l4
 		}
@@ -1744,7 +1744,7 @@ func (m *Module) fn1818(v0, v1, v2, v3, v4 int32) int32 {
 	{
 		{
 			if uint32(v3) >= uint32(v2) {
-				m.fn36(v3, v2, i32(1272316))
+				m.fn33(v3, v2, i32(1272956))
 				panic("unreachable")
 			}
 			t1 := int32(m.memory[uint32(v1+v3)])
@@ -1760,7 +1760,7 @@ func (m *Module) fn1818(v0, v1, v2, v3, v4 int32) int32 {
 					if t4 != v6 {
 						goto l4
 					}
-					m.fn248(v0, v6, i32(1))
+					m.fn245(v0, v6, i32(1))
 				}
 			l4:
 				store32(m.memory[int64(uint32(v0))+8:], uint32(v6+i32(1)))
@@ -1787,7 +1787,7 @@ func (m *Module) fn1818(v0, v1, v2, v3, v4 int32) int32 {
 				store64(m.memory[int64(uint32(v5))+32:], uint64(int64(uint32(i32(18)))<<32|v7))
 				store64(m.memory[int64(uint32(v5))+24:], uint64(int64(uint32(i32(44)))<<32|int64(uint32(v5+i32(12)))))
 				store64(m.memory[int64(uint32(v5))+16:], uint64(int64(uint32(i32(3)))<<32|int64(uint32(v5+i32(4)))))
-				m.fn31(i32(1065673), v5+i32(16), i32(1272332))
+				m.fn28(i32(1066311), v5+i32(16), i32(1272972))
 				panic("unreachable")
 			}
 		}
@@ -1799,7 +1799,7 @@ func (m *Module) fn1818(v0, v1, v2, v3, v4 int32) int32 {
 			if t9 != v2 {
 				goto l6
 			}
-			m.fn248(v0, v2, i32(1))
+			m.fn245(v0, v2, i32(1))
 		}
 	l6:
 		store32(m.memory[int64(uint32(v0))+8:], uint32(v2+i32(1)))
@@ -1820,7 +1820,7 @@ func (m *Module) fn1819(v0 int32) {
 		if t0 != v1 {
 			goto l0
 		}
-		m.fn248(v0, v1, i32(1))
+		m.fn245(v0, v1, i32(1))
 	}
 l0:
 	store32(m.memory[int64(uint32(v0))+8:], uint32(v1+i32(1)))
@@ -1837,7 +1837,7 @@ func (m *Module) fn1820(v0, v1, v2 int32) {
 		if uint32(t2) <= uint32(t0-v3) {
 			goto l0
 		}
-		m.fn248(v0, v3, v2)
+		m.fn245(v0, v3, v2)
 		t3 := int32(load32(m.memory[int64(uint32(v0))+8:]))
 		v3 = t3
 	}
@@ -2256,7 +2256,7 @@ func (m *Module) fn1822(v0, v1, v2 int32) {
 	l6:
 		v7 = v6 - v1
 		if uint32(v7) > uint32(v2) {
-			m.fn124(i32(0), v7, v2, i32(1272352))
+			m.fn121(i32(0), v7, v2, i32(1272992))
 			panic("unreachable")
 		}
 		{
@@ -2288,7 +2288,7 @@ func (m *Module) fn1823(v0, v1 int32) {
 	m.g0 = v2
 	t1 := int32(load32(m.memory[int64(uint32(v1))+40:]))
 	t2 := int32(load32(m.memory[int64(uint32(v1))+44:]))
-	m.fn244(v2+i32(12), v1, t1, t2)
+	m.fn241(v2+i32(12), v1, t1, t2)
 	{
 		t3 := int32(load32(m.memory[int64(uint32(v2))+12:]))
 		v3 = t3
@@ -2330,7 +2330,7 @@ func (m *Module) fn1823(v0, v1 int32) {
 			switch v3 {
 			default:
 				if v7 != 0 {
-					m.fn124(v5, v4, v6, i32(1271692))
+					m.fn121(v5, v4, v6, i32(1272332))
 					panic("unreachable")
 				}
 				if uint32(v1) < uint32(v9) {
@@ -2340,11 +2340,11 @@ func (m *Module) fn1823(v0, v1 int32) {
 					goto l10
 				}
 			l9:
-				m.fn124(v9, v1, v6, i32(1271692))
+				m.fn121(v9, v1, v6, i32(1272332))
 				panic("unreachable")
 			case 1:
 				if v7 != 0 {
-					m.fn124(v5, v4, v6, i32(1271692))
+					m.fn121(v5, v4, v6, i32(1272332))
 					panic("unreachable")
 				}
 				if uint32(v1) < uint32(v9) {
@@ -2354,11 +2354,11 @@ func (m *Module) fn1823(v0, v1 int32) {
 					goto l10
 				}
 			l12:
-				m.fn124(v9, v1, v6, i32(1271692))
+				m.fn121(v9, v1, v6, i32(1272332))
 				panic("unreachable")
 			case 2:
 				if v7 != 0 {
-					m.fn124(v5, v4, v6, i32(1271692))
+					m.fn121(v5, v4, v6, i32(1272332))
 					panic("unreachable")
 				}
 				if uint32(v1) < uint32(v9) {
@@ -2368,11 +2368,11 @@ func (m *Module) fn1823(v0, v1 int32) {
 					goto l10
 				}
 			l14:
-				m.fn124(v9, v1, v6, i32(1271692))
+				m.fn121(v9, v1, v6, i32(1272332))
 				panic("unreachable")
 			case 3:
 				if v7 != 0 {
-					m.fn124(v5, v4, v6, i32(1271692))
+					m.fn121(v5, v4, v6, i32(1272332))
 					panic("unreachable")
 				}
 				v1 = i32(0)
@@ -2515,12 +2515,12 @@ func (m *Module) fn1825(v0, v1, v2, v3, v4, v5 int32) {
 					goto l4
 				}
 				if uint32(v12) <= uint32(v3) {
-					m.fn124(v4, v5, v3, i32(1271596))
+					m.fn121(v4, v5, v3, i32(1272236))
 					panic("unreachable")
 				}
 			}
 		l4:
-			m.fn124(v13, v12, v3, i32(1271612))
+			m.fn121(v13, v12, v3, i32(1272252))
 			panic("unreachable")
 		}
 	}
@@ -2583,7 +2583,7 @@ func (m *Module) fn1827(v0, v1, v2, v3, v4, v5 int32) {
 					if v8 != 0 {
 						goto l1
 					}
-					v9 = i32(1275616)
+					v9 = i32(1276256)
 					v10 = i32(0)
 					v11 = i32(0)
 					goto l2
@@ -2623,7 +2623,7 @@ func (m *Module) fn1827(v0, v1, v2, v3, v4, v5 int32) {
 				t6 := m.fn11(v9)
 				v13 = t6
 				if v13 == 0 {
-					m.fn27(i32(8), v9)
+					m.fn23(i32(8), v9)
 					panic("unreachable")
 				}
 				v9 = v13 + v12
@@ -2748,16 +2748,16 @@ func (m *Module) fn1827(v0, v1, v2, v3, v4, v5 int32) {
 			goto l13
 		}
 	l11:
-		m.fn124(v4, v5, v3, i32(1272100))
+		m.fn121(v4, v5, v3, i32(1272740))
 		panic("unreachable")
 	l5:
-		m.fn31(i32(1271120), i32(57), i32(1271148))
+		m.fn28(i32(1271760), i32(57), i32(1271788))
 		panic("unreachable")
 	l9:
-		m.fn124(v11, v8, v3, i32(1271628))
+		m.fn121(v11, v8, v3, i32(1272268))
 		panic("unreachable")
 	l15:
-		m.fn124(v11, v8, v3, i32(1271644))
+		m.fn121(v11, v8, v3, i32(1272284))
 		panic("unreachable")
 	l13:
 		{
@@ -3168,7 +3168,7 @@ l3:
 				}
 				t12 := int32(int8(m.memory[uint32(v1+v6)]))
 				if t12 < i32(-64) {
-					m.fn41(v1, v2, i32(0), v6, i32(1272268))
+					m.fn38(v1, v2, i32(0), v6, i32(1272908))
 					panic("unreachable")
 				}
 				if v6 == 0 {
@@ -3311,7 +3311,7 @@ l3:
 							if uint32(t27) <= uint32(t25-v5) {
 								goto l29
 							}
-							m.fn248(v3+i32(4), v5, v12)
+							m.fn245(v3+i32(4), v5, v12)
 							t28 := int32(load32(m.memory[int64(uint32(v3))+12:]))
 							v5 = t28
 							goto l30
@@ -3335,7 +3335,7 @@ l3:
 								if uint32(t32) <= uint32(t30-v7) {
 									goto l32
 								}
-								m.fn248(v3+i32(4), v7, v6)
+								m.fn245(v3+i32(4), v7, v6)
 								t33 := int32(load32(m.memory[int64(uint32(v3))+12:]))
 								v7 = t33
 								goto l33
@@ -3361,10 +3361,10 @@ l3:
 					}
 				}
 			l14:
-				m.fn124(v7, v2, v2, i32(1272300))
+				m.fn121(v7, v2, v2, i32(1272940))
 				panic("unreachable")
 			l31:
-				m.fn41(v1, v2, v7, v12, i32(1272284))
+				m.fn38(v1, v2, v7, v12, i32(1272924))
 				panic("unreachable")
 			l29:
 				if v2 == v7 {
@@ -3405,7 +3405,7 @@ func (m *Module) fn1832(v0, v1 int32) int32 {
 	v0 = i32(9)
 l0:
 	{
-		t3 := int32(m.memory[int64(uint32(v3&i32(15)))+1098720])
+		t3 := int32(m.memory[int64(uint32(v3&i32(15)))+1099352])
 		m.memory[uint32(v2+i32(8)+v0+i32(-2))] = byte(t3)
 		v0 = v0 + i32(-1)
 		v3 = int32(uint32(v3) >> 4)
@@ -3413,7 +3413,7 @@ l0:
 			goto l0
 		}
 	}
-	t4 := m.fn683(v1, i32(1), i32(1122454), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
+	t4 := m.fn681(v1, i32(1), i32(1123086), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
 	v0 = t4
 	m.g0 = v2 + i32(16)
 	return v0
@@ -3445,7 +3445,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 					v0 = i32(9)
 				l4:
 					{
-						t5 := int32(m.memory[int64(uint32(v4&i32(15)))+1098720])
+						t5 := int32(m.memory[int64(uint32(v4&i32(15)))+1099352])
 						m.memory[uint32(v2+i32(8)+v0+i32(-2))] = byte(t5)
 						v0 = v0 + i32(-1)
 						v4 = int32(uint32(v4) >> 4)
@@ -3454,7 +3454,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 						}
 					}
 					v4 = i32(1)
-					t6 := m.fn683(v1, i32(1), i32(1122454), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
+					t6 := m.fn681(v1, i32(1), i32(1123086), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
 					if t6 == 0 {
 						goto l2
 					}
@@ -3463,7 +3463,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 				if v0&i32(0x4000000) != 0 {
 					goto l1
 				}
-				t3 := m.fn47(v3, v1)
+				t3 := m.fn44(v3, v1)
 				if t3 == 0 {
 					goto l2
 				}
@@ -3476,7 +3476,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 			v0 = i32(9)
 		l5:
 			{
-				t8 := int32(m.memory[int64(uint32(v4&i32(15)))+1122456])
+				t8 := int32(m.memory[int64(uint32(v4&i32(15)))+1123088])
 				m.memory[uint32(v2+i32(8)+v0+i32(-2))] = byte(t8)
 				v0 = v0 + i32(-1)
 				v4 = int32(uint32(v4) >> 4)
@@ -3485,7 +3485,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 				}
 			}
 			v4 = i32(1)
-			t9 := m.fn683(v1, i32(1), i32(1122454), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
+			t9 := m.fn681(v1, i32(1), i32(1123086), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
 			if t9 != 0 {
 				goto l3
 			}
@@ -3495,7 +3495,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 			t10 := int32(load32(m.memory[uint32(v1):]))
 			t11 := int32(load32(m.memory[int64(uint32(v1))+4:]))
 			t12 := int32(load32(m.memory[int64(uint32(t11))+12:]))
-			t13 := m.t0[uint(t12)].(func(int32, int32, int32) int32)(t10, i32(1273571), i32(2))
+			t13 := m.t0[uint(t12)].(func(int32, int32, int32) int32)(t10, i32(1274211), i32(2))
 			if t13 == 0 {
 				goto l6
 			}
@@ -3513,7 +3513,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 				v0 = i32(9)
 			l9:
 				{
-					t17 := int32(m.memory[int64(uint32(v4&i32(15)))+1098720])
+					t17 := int32(m.memory[int64(uint32(v4&i32(15)))+1099352])
 					m.memory[uint32(v2+i32(8)+v0+i32(-2))] = byte(t17)
 					v0 = v0 + i32(-1)
 					v4 = int32(uint32(v4) >> 4)
@@ -3521,14 +3521,14 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 						goto l9
 					}
 				}
-				t18 := m.fn683(v1, i32(1), i32(1122454), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
+				t18 := m.fn681(v1, i32(1), i32(1123086), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
 				v4 = t18
 				goto l3
 			}
 			if v4&i32(0x4000000) != 0 {
 				goto l8
 			}
-			t15 := m.fn47(v0, v1)
+			t15 := m.fn44(v0, v1)
 			v4 = t15
 			goto l3
 		}
@@ -3538,7 +3538,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 		v0 = i32(9)
 	l10:
 		{
-			t20 := int32(m.memory[int64(uint32(v4&i32(15)))+1122456])
+			t20 := int32(m.memory[int64(uint32(v4&i32(15)))+1123088])
 			m.memory[uint32(v2+i32(8)+v0+i32(-2))] = byte(t20)
 			v0 = v0 + i32(-1)
 			v4 = int32(uint32(v4) >> 4)
@@ -3546,7 +3546,7 @@ func (m *Module) fn1834(v0, v1 int32) int32 {
 				goto l10
 			}
 		}
-		t21 := m.fn683(v1, i32(1), i32(1122454), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
+		t21 := m.fn681(v1, i32(1), i32(1123086), i32(2), v2+i32(8)+v0+i32(-1), i32(9)-v0)
 		v4 = t21
 	}
 l3:
@@ -3567,15 +3567,15 @@ func (m *Module) fn1835(v0, v1 int32) int32 {
 			t3 := int32(load32(m.memory[uint32(v1):]))
 			t4 := int32(load32(m.memory[int64(uint32(v1))+4:]))
 			t5 := int32(load32(m.memory[int64(uint32(t4))+12:]))
-			t6 := m.t0[uint(t5)].(func(int32, int32, int32) int32)(t3, i32(1273120), i32(22))
+			t6 := m.t0[uint(t5)].(func(int32, int32, int32) int32)(t3, i32(1273760), i32(22))
 			v1 = t6
 			goto l4
 		case 1:
 			t7 := int32(m.memory[int64(uint32(v0))+1])
 			t8 := v1
 			v0 = t7 << 2
-			t9 := int32(load32(m.memory[int64(uint32(v0))+1290728:]))
-			t10 := int32(load32(m.memory[int64(uint32(v0))+1290704:]))
+			t9 := int32(load32(m.memory[int64(uint32(v0))+1291368:]))
+			t10 := int32(load32(m.memory[int64(uint32(v0))+1291344:]))
 			t11 := m.fn9(t8, t9, t10)
 			v1 = t11
 			goto l4
@@ -3584,7 +3584,7 @@ func (m *Module) fn1835(v0, v1 int32) int32 {
 			store64(m.memory[int64(uint32(v2))+8:], uint64(int64(uint32(i32(34)))<<32|int64(uint32(v2+i32(4)))))
 			t12 := int32(load32(m.memory[uint32(v1):]))
 			t13 := int32(load32(m.memory[int64(uint32(v1))+4:]))
-			t14 := m.fn49(t12, t13, i32(1052731), v2+i32(8))
+			t14 := m.fn46(t12, t13, i32(1052731), v2+i32(8))
 			v1 = t14
 			goto l4
 		case 3:
@@ -3592,7 +3592,7 @@ func (m *Module) fn1835(v0, v1 int32) int32 {
 			store64(m.memory[int64(uint32(v2))+8:], uint64(int64(uint32(i32(118)))<<32|int64(uint32(v2+i32(4)))))
 			t15 := int32(load32(m.memory[uint32(v1):]))
 			t16 := int32(load32(m.memory[int64(uint32(v1))+4:]))
-			t17 := m.fn49(t15, t16, i32(1065893), v2+i32(8))
+			t17 := m.fn46(t15, t16, i32(1066531), v2+i32(8))
 			v1 = t17
 		}
 	}
@@ -3613,19 +3613,19 @@ func (m *Module) fn1836(v0, v1, v2 int32) int32 {
 		default:
 			store32(m.memory[int64(uint32(v3))+12:], uint32(v4))
 			store64(m.memory[int64(uint32(v3))+16:], uint64(int64(uint32(i32(34)))<<32|int64(uint32(v3+i32(12)))))
-			t2 := m.fn49(v1, v2, i32(1065312), v3+i32(16))
+			t2 := m.fn46(v1, v2, i32(1065950), v3+i32(16))
 			v0 = t2
 			goto l5
 		case 1:
 			store32(m.memory[int64(uint32(v3))+12:], uint32(v4))
 			store64(m.memory[int64(uint32(v3))+16:], uint64(int64(uint32(i32(34)))<<32|int64(uint32(v3+i32(12)))))
-			t3 := m.fn49(v1, v2, i32(1064996), v3+i32(16))
+			t3 := m.fn46(v1, v2, i32(1065634), v3+i32(16))
 			v0 = t3
 			goto l5
 		case 2:
 			store32(m.memory[int64(uint32(v3))+12:], uint32(v4))
 			store64(m.memory[int64(uint32(v3))+16:], uint64(int64(uint32(i32(34)))<<32|int64(uint32(v3+i32(12)))))
-			t4 := m.fn49(v1, v2, i32(1065612), v3+i32(16))
+			t4 := m.fn46(v1, v2, i32(1066250), v3+i32(16))
 			v0 = t4
 			goto l5
 		case 3:
@@ -3634,7 +3634,7 @@ func (m *Module) fn1836(v0, v1, v2 int32) int32 {
 			store32(m.memory[int64(uint32(v3))+12:], uint32(t5))
 			store64(m.memory[int64(uint32(v3))+24:], uint64(int64(uint32(i32(44)))<<32|int64(uint32(v3+i32(12)))))
 			store64(m.memory[int64(uint32(v3))+16:], uint64(int64(uint32(i32(34)))<<32|int64(uint32(v3+i32(8)))))
-			t6 := m.fn49(v1, v2, i32(1064936), v3+i32(16))
+			t6 := m.fn46(v1, v2, i32(1065574), v3+i32(16))
 			v0 = t6
 			goto l5
 		case 4:
@@ -3644,7 +3644,7 @@ func (m *Module) fn1836(v0, v1, v2 int32) int32 {
 			v5 = int64(uint32(i32(34))) << 32
 			store64(m.memory[int64(uint32(t7))+24:], uint64(v5|int64(uint32(v3+i32(12)))))
 			store64(m.memory[int64(uint32(v3))+16:], uint64(v5|int64(uint32(v3+i32(8)))))
-			t8 := m.fn49(v1, v2, i32(1050308), v3+i32(16))
+			t8 := m.fn46(v1, v2, i32(1050308), v3+i32(16))
 			v0 = t8
 		}
 	}
@@ -3655,7 +3655,7 @@ l5:
 func (m *Module) fn1837(v0, v1 int32) int32 {
 	t0 := int32(load32(m.memory[uint32(v0):]))
 	t1 := int32(load32(m.memory[uint32(t0):]))
-	t2 := m.fn258(t1+i32(8), v1)
+	t2 := m.fn255(t1+i32(8), v1)
 	return t2
 }
 func (m *Module) fn1838(v0, v1 int32) int32 {
@@ -3670,31 +3670,31 @@ func (m *Module) fn1838(v0, v1 int32) int32 {
 		t4 := int32(m.memory[uint32(t3)])
 		switch t4 {
 		default:
-			t5 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1272623), i32(34))
+			t5 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273263), i32(34))
 			return t5
 		case 1:
-			t6 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1272657), i32(69))
+			t6 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273297), i32(69))
 			return t6
 		case 2:
-			t7 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1272726), i32(62))
+			t7 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273366), i32(62))
 			return t7
 		case 3:
-			t8 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1272788), i32(55))
+			t8 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273428), i32(55))
 			return t8
 		case 4:
-			t9 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1272843), i32(53))
+			t9 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273483), i32(53))
 			return t9
 		case 5:
-			t10 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1272896), i32(53))
+			t10 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273536), i32(53))
 			return t10
 		case 6:
-			t11 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1272949), i32(49))
+			t11 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273589), i32(49))
 			return t11
 		case 7:
-			t12 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1272998), i32(61))
+			t12 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273638), i32(61))
 			return t12
 		case 8:
-			t13 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273059), i32(61))
+			t13 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v2, i32(1273699), i32(61))
 			return t13
 		}
 	}
@@ -3721,24 +3721,24 @@ func (m *Module) fn1839(v0, v1 int32) int32 {
 		switch p5 {
 		case 1:
 			t6 := int32(load32(m.memory[int64(uint32(v3))+12:]))
-			t7 := m.t0[uint(t6)].(func(int32, int32, int32) int32)(v1, i32(1273231), i32(50))
+			t7 := m.t0[uint(t6)].(func(int32, int32, int32) int32)(v1, i32(1273871), i32(50))
 			v1 = t7
 			goto l8
 		case 2:
 			t8 := int32(load32(m.memory[int64(uint32(v3))+12:]))
-			t9 := m.t0[uint(t8)].(func(int32, int32, int32) int32)(v1, i32(1273281), i32(67))
+			t9 := m.t0[uint(t8)].(func(int32, int32, int32) int32)(v1, i32(1273921), i32(67))
 			v1 = t9
 			goto l8
 		case 3:
 			store32(m.memory[int64(uint32(v2))+12:], uint32(v4+i32(4)))
 			store64(m.memory[int64(uint32(v2))+16:], uint64(int64(uint32(i32(31)))<<32|int64(uint32(v2+i32(12)))))
-			t10 := m.fn49(v1, v3, i32(0x100ffe), v2+i32(16))
+			t10 := m.fn46(v1, v3, i32(0x100ffe), v2+i32(16))
 			v1 = t10
 			goto l8
 		case 4:
 			store32(m.memory[int64(uint32(v2))+12:], uint32(v4+i32(4)))
 			store64(m.memory[int64(uint32(v2))+16:], uint64(int64(uint32(i32(31)))<<32|int64(uint32(v2+i32(12)))))
-			t11 := m.fn49(v1, v3, i32(1064837), v2+i32(16))
+			t11 := m.fn46(v1, v3, i32(1065475), v2+i32(16))
 			v1 = t11
 			goto l8
 		case 5:
@@ -3748,17 +3748,17 @@ func (m *Module) fn1839(v0, v1 int32) int32 {
 			v5 = int64(uint32(i32(31))) << 32
 			store64(m.memory[int64(uint32(t12))+24:], uint64(v5|int64(uint32(v2+i32(12)))))
 			store64(m.memory[int64(uint32(v2))+16:], uint64(v5|int64(uint32(v2+i32(8)))))
-			t13 := m.fn49(v1, v3, i32(1065480), v2+i32(16))
+			t13 := m.fn46(v1, v3, i32(1066118), v2+i32(16))
 			v1 = t13
 			goto l8
 		case 6:
 			t14 := int32(load32(m.memory[int64(uint32(v3))+12:]))
-			t15 := m.t0[uint(t14)].(func(int32, int32, int32) int32)(v1, i32(1273348), i32(44))
+			t15 := m.t0[uint(t14)].(func(int32, int32, int32) int32)(v1, i32(1273988), i32(44))
 			v1 = t15
 			goto l8
 		case 7:
 			t16 := int32(load32(m.memory[int64(uint32(v3))+12:]))
-			t17 := m.t0[uint(t16)].(func(int32, int32, int32) int32)(v1, i32(1273392), i32(75))
+			t17 := m.t0[uint(t16)].(func(int32, int32, int32) int32)(v1, i32(1274032), i32(75))
 			v1 = t17
 			goto l8
 		default:
@@ -3769,13 +3769,13 @@ func (m *Module) fn1839(v0, v1 int32) int32 {
 				}
 				store32(m.memory[int64(uint32(v2))+12:], uint32(v4+i32(4)))
 				store64(m.memory[int64(uint32(v2))+16:], uint64(int64(uint32(i32(31)))<<32|int64(uint32(v2+i32(12)))))
-				t19 := m.fn49(v1, v3, i32(1065805), v2+i32(16))
+				t19 := m.fn46(v1, v3, i32(1066443), v2+i32(16))
 				v1 = t19
 				goto l8
 			}
 		l9:
 			t20 := int32(load32(m.memory[int64(uint32(v3))+12:]))
-			t21 := m.t0[uint(t20)].(func(int32, int32, int32) int32)(v1, i32(1273176), i32(55))
+			t21 := m.t0[uint(t20)].(func(int32, int32, int32) int32)(v1, i32(1273816), i32(55))
 			v1 = t21
 		}
 	}
@@ -3788,23 +3788,23 @@ func (m *Module) fn1840(v0, v1, v2, v3 int32) {
 	t0 := m.g0
 	v4 = t0 - i32(16)
 	m.g0 = v4
-	t1 := int32(load32(m.memory[int64(uint32(i32(0)))+1293368:]))
+	t1 := int32(load32(m.memory[int64(uint32(i32(0)))+1294008:]))
 	v5 = t1
-	store32(m.memory[int64(uint32(i32(0)))+1293368:], uint32(v5+i32(1)))
+	store32(m.memory[int64(uint32(i32(0)))+1294008:], uint32(v5+i32(1)))
 	if v5 < i32(0) {
 		goto l0
 	}
 	{
-		t2 := int32(m.memory[int64(uint32(i32(0)))+1293360])
+		t2 := int32(m.memory[int64(uint32(i32(0)))+1294000])
 		if t2 != 0 {
 			t5 := int32(load32(m.memory[int64(uint32(v1))+24:]))
 			m.t0[uint(t5)].(func(int32, int32))(v4+i32(8), v0)
 			panic("unreachable")
 		}
-		m.memory[int64(uint32(i32(0)))+1293360] = byte(i32(1))
-		t3 := int32(load32(m.memory[int64(uint32(i32(0)))+1293356:]))
-		store32(m.memory[int64(uint32(i32(0)))+1293356:], uint32(t3+i32(1)))
-		t4 := int32(load32(m.memory[int64(uint32(i32(0)))+1293364:]))
+		m.memory[int64(uint32(i32(0)))+1294000] = byte(i32(1))
+		t3 := int32(load32(m.memory[int64(uint32(i32(0)))+1293996:]))
+		store32(m.memory[int64(uint32(i32(0)))+1293996:], uint32(t3+i32(1)))
+		t4 := int32(load32(m.memory[int64(uint32(i32(0)))+1294004:]))
 		v5 = t4
 		if v5 <= i32(-1) {
 			goto l0
@@ -3813,16 +3813,16 @@ func (m *Module) fn1840(v0, v1, v2, v3 int32) {
 		if v1 >= v5 {
 			goto l2
 		}
-		m.fn143(i32(1273892), i32(28), i32(1273920))
+		m.fn140(i32(1274532), i32(28), i32(1274560))
 		panic("unreachable")
 	}
 l2:
-	store32(m.memory[int64(uint32(i32(0)))+1293364:], uint32(v1+i32(-1)))
+	store32(m.memory[int64(uint32(i32(0)))+1294004:], uint32(v1+i32(-1)))
 	if v1 <= i32(0) {
-		m.fn31(i32(1274612), i32(77), i32(1274652))
+		m.fn28(i32(1275252), i32(77), i32(1275292))
 		panic("unreachable")
 	}
-	m.memory[int64(uint32(i32(0)))+1293360] = byte(i32(0))
+	m.memory[int64(uint32(i32(0)))+1294000] = byte(i32(0))
 	if v2 != 0 {
 		fn1841()
 		panic("unreachable")

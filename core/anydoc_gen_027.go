@@ -241,14 +241,14 @@ func (m *Module) fn1178(v0, v1, v2, v3, v4, v5 int32) {
 					p9 = i32(4)
 				}
 				if uint32(t8) < uint32(p9+v4) {
-					m.fn7(i32(1273764), i32(46), i32(1273812))
+					m.fn7(i32(1274404), i32(46), i32(1274452))
 					panic("unreachable")
 				}
 				if v3 == 0 {
 					goto l5
 				}
 				if uint32(v2) > uint32(v4+i32(39)) {
-					m.fn7(i32(1273828), i32(46), i32(1273876))
+					m.fn7(i32(1274468), i32(46), i32(1274516))
 					panic("unreachable")
 				}
 			l5:
@@ -260,7 +260,7 @@ func (m *Module) fn1178(v0, v1, v2, v3, v4, v5 int32) {
 			t10 := v5
 			t11 := v4
 			v3 = v1 << 2
-			t12 := m.fn23(t10, t11, i32(4), v3)
+			t12 := m.fn26(t10, t11, i32(4), v3)
 			v5 = t12
 			if v5 == 0 {
 				m.fn16(i32(4), v3)
@@ -337,14 +337,14 @@ func (m *Module) fn1180(v0, v1, v2, v3, v4 int32) {
 					p9 = i32(4)
 				}
 				if uint32(t8) < uint32(p9+v3) {
-					m.fn7(i32(1273764), i32(46), i32(1273812))
+					m.fn7(i32(1274404), i32(46), i32(1274452))
 					panic("unreachable")
 				}
 				if v2 == 0 {
 					goto l5
 				}
 				if uint32(v6) > uint32(v3+i32(39)) {
-					m.fn7(i32(1273828), i32(46), i32(1273876))
+					m.fn7(i32(1274468), i32(46), i32(1274516))
 					panic("unreachable")
 				}
 			l5:
@@ -356,7 +356,7 @@ func (m *Module) fn1180(v0, v1, v2, v3, v4 int32) {
 			t10 := v4
 			t11 := v3
 			v2 = v1 << 2
-			t12 := m.fn23(t10, t11, i32(4), v2)
+			t12 := m.fn26(t10, t11, i32(4), v2)
 			v4 = t12
 			if v4 == 0 {
 				m.fn16(i32(4), v2)

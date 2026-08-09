@@ -9,7 +9,7 @@ description = "C-ABI wasm exports wrapping the anydoc document converter"
 crate-type = ["cdylib"]
 
 [dependencies]
-anydoc = { path = "../../third-party/anydoc", default-features = false }
+anydoc = { path = "../third-party/anydoc", default-features = false }
 
 [profile.release]
 opt-level = 3

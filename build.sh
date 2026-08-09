@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # anydoc-go 构建管线：
-#   fetch: 拉取/刷新第三方仓库（../anydoc、../wasm2go），URL 可用环境变量覆盖
-#   wasm:  cargo → target/<...>/anydoc_cabi.wasm（依赖 ../anydoc）
-#   cli:   wasm2go → 拆分 → go build → bin/anydoc（依赖 ../wasm2go）
+#   fetch: 拉取/刷新第三方仓库（third-party/anydoc、third-party/wasm2go），
+#          URL 可用 ANPYOC_REPO / WASM2GO_REPO 覆盖
+#   wasm:  cargo → target/<arch>/release/anydoc_cabi.wasm（依赖 third-party/anydoc）
+#   cli:   wasm2go → 拆分 core/ → go build → bin/anydoc
+#   test:  go test ./...
 #   build: wasm + cli（默认）
 set -euo pipefail
 
