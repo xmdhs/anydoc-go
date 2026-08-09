@@ -1,0 +1,111 @@
+#
+# anydoc-go CI：构建 wasm → wasm2go → Go 二进制，跑测试并归档产物。
+# 与 build.sh 同一路径：fetch / wasm / cli / test。
+#
+# 触发：
+#   - push 到 main：构建 + 测试 + 上传 artifact
+#   - workflow_dispatch 且填写 version（如 1.0.0）：额外打 tag 发布 Release
+#
+name: Build anydoc
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. 1.0.0)；留空则只构建并上传 artifact"
+        required: false
+        type: string
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write # gh-release 上传资产需要；构建读取用不到
+
+concurrency:
+  group: build-anydoc-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    env:
+      # build.sh 默认把工具链缓存放在仓库根（.rustup/.cargo/target/…）；
+      # CI 上改用 runner 的 home，避免污染工作区并方便 actions/cache。
+      RUSTUP_HOME: /home/runner/.rustup
+      CARGO_HOME: /home/runner/.cargo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+
+      - name: Setup Rust (wasm32 target)
+        uses: dtolnay/rust-toolchain@v1
+        with:
+          target: wasm32-unknown-unknown
+
+      - name: Setup zig (C toolchain)
+        run: |
+          set -euxo pipefail
+          VER=$(curl -fsSL https://ziglang.org/download/index.json | python3 -c \
+            "import json,sys; d=json.load(sys.stdin); print([k for k in d if k!='master'][0])")
+          curl -fsSL "https://ziglang.org/download/${VER}/zig-x86_64-linux-${VER}.tar.xz" \
+            -o /tmp/zig.tar.xz
+          mkdir -p .zig
+          tar -xJf /tmp/zig.tar.xz -C .zig
+          mv .zig/zig-* .zig/bin
+          # rustc 默认链接器找 "cc"：提供 zig cc 的 wrapper（与 README 一致）
+          printf '#!/bin/sh\nexec "$(dirname "$0")/zig" cc "$@"\n' > .zig/bin/cc
+          chmod +x .zig/bin/cc
+          .zig/bin/zig version
+
+      - name: Cache cargo & Go & zig build artifacts
+        uses: actions/cache@v6
+        with:
+          path: |
+            /home/runner/.cargo
+            target/
+            .go-cache/
+            .zig-cache/
+            libzig-cache/
+          key: anydoc-build-${{ runner.os }}-${{ hashFiles('cabi/Cargo.lock', 'go.mod') }}
+          restore-keys: |
+            anydoc-build-${{ runner.os }}-
+
+      - name: Fetch third-party repos
+        run: ./build.sh fetch
+
+      - name: Build wasm + Go binary
+        run: ./build.sh build
+
+      - name: Run tests
+        run: ./build.sh test
+
+      - name: Smoke test CLI output
+        run: |
+          ./bin/anydoc -s testdata/fixtures/docx/text.docx > /tmp/smoke.md
+          diff /tmp/smoke.md testdata/expected/docx/text.md
+
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: anydoc-linux-amd64-${{ github.sha }}
+          path: bin/anydoc
+          retention-days: 7
+          archive: false
+
+      - name: Create GitHub Release
+        if: github.event_name == 'workflow_dispatch' && inputs.version != ''
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ inputs.version }}
+          name: Release ${{ inputs.version }}
+          draft: false
+          prerelease: false
+          files: bin/anydoc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
