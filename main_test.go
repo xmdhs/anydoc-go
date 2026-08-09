@@ -55,16 +55,26 @@ func TestExtractAssetsCLI(t *testing.T) {
 	if err != nil {
 		t.Fatalf("convert: %v", err)
 	}
-	md, err := extractAssets(conv, "testdata/fixtures/docx/in-image.docx", "", md0, dir)
+	md, err := extractAssets(conv, "testdata/fixtures/docx/in-image.docx", "", md0, dir, dir)
 	if err != nil {
 		t.Fatalf("extractAssets: %v", err)
 	}
-	// 引用替换：asset://0 → <dir>/in-image-0.png，且文件真实落盘。
-	want := "![a red circle](" + filepath.Join(dir, "in-image-0.png") + ")"
+	// 名称为 <stem>-<hash>-<id>.png（hash 防跨输入覆盖），断言目录里
+	// 恰好一个 PNG 且 md 引用指向它。
+	entries, err := os.ReadDir(dir)
+	if err != nil {
+		t.Fatalf("read dir: %v", err)
+	}
+	if len(entries) != 1 || !strings.HasPrefix(entries[0].Name(), "in-image-") ||
+		!strings.HasSuffix(entries[0].Name(), ".png") {
+		t.Fatalf("unexpected assets: %v", entries)
+	}
+	name := entries[0].Name()
+	want := "![a red circle](" + filepath.Join(dir, name) + ")"
 	if !strings.Contains(md, want) {
 		t.Errorf("markdown missing rewritten asset link: %q", md)
 	}
-	b, err := os.ReadFile(filepath.Join(dir, "in-image-0.png"))
+	b, err := os.ReadFile(filepath.Join(dir, name))
 	if err != nil {
 		t.Fatalf("asset not written: %v", err)
 	}

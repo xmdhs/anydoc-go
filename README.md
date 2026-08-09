@@ -102,16 +102,18 @@ bin/anydoc "docs/*.docx" "*.csv"    # glob 批量（模式含 * 时用引号包�
 bin/anydoc -s report.docx           # 输出到 stdout（可多个输入）
 bin/anydoc -o out.md report.docx    # 指定单个输出文件
 bin/anydoc -o - a.docx              # 与 -s 等价
-bin/anydoc -f docx weird.bin        # 强制定制解析
-bin/anydoc --assets img -o a.md a.docx  # 图片落盘；a.md 里引用 img/a-0.png
+bin/anydoc -f docx weird.bin          # 强制定制解析
+bin/anydoc --assets assets -o a.md a.docx # 显式导出图片到 assets/
 ```
 
-**内嵌图片（--assets）**：docx/pptx 等容器内的图片字节不会出现在
-markdown 里（本地 patch 渲染为 `![alt](asset://<id>)` 占位，`<id>` 即资产
-下标）。传 `--assets dir` 时，`<stem>-<id>.<ext>` 写入 `dir/`，markdown 中
-的占位被替换为对应路径（`<ext>` 由 media type 派生，其余一律 `bin`）。
-不带 `--assets` 时占位原样保留。库 API 对应 `Converter.ExtractAssets`
-（返回 ID/MediaType/Bytes）。
+**内嵌图片**（docx/pptx 等容器内的图片字节不会出现在 markdown 里——本地
+patch 渲染为 `![alt](asset://<id>)` 占位，`<id>` 即资产下标）：
+- **默认不导出**：不带 `--assets` 时 md 里保留 `asset://` 占位；
+- `--assets dir`：`<stem>-<hash>-<id>.<ext>` 写入 `dir/`，md 引用替换
+  为实际路径（`hash` 取输入路径的哈希，不同目录的同名输入互不覆盖）；
+- 扩展名由 media type 派生，其余一律 `bin`；重复转换幂等（同名文件覆盖
+  自己）。
+- 库 API 对应 `Converter.ExtractAssets`（返回 `ID/MediaType/Bytes`）。
 
 格式识别优先级：`-f` 显式 > 文件内容自动检测 > **路径扩展名兜底**（CSV 等
 无签名格式直接转换，无需再传 `-f`）。字节流 API（`ConvertBytes`）没有路径
