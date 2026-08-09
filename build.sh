@@ -79,29 +79,41 @@ require_repos() {
     [ -d "${WASM2GO_DIR}/.git" ] || { echo "missing third-party/wasm2go — run: $0 fetch" >&2; exit 2; }
 }
 
+wasm_step() {
+    require_repos
+    cd "${ROOT}/cabi"
+    cargo build --release --target wasm32-unknown-unknown
+    cd "${ROOT}"
+}
+
+cli_step() {
+    [ -f "${WASM}" ] || { echo "missing wasm — run: $0 wasm" >&2; exit 2; }
+    [ -x "${ROOT}/bin/wasm2go" ] || { echo "missing bin/wasm2go — run: $0 fetch && (cd third-party/wasm2go && go build -o ${ROOT}/bin/wasm2go .)" >&2; exit 2; }
+    mkdir -p "${ROOT}/core"
+    rm -f "${ROOT}/core/anydoc_gen_*.go" "${ROOT}/core/anydoc.wasm.go"
+    # -unsafe 用指针直读替代 encoding/binary 解码，转换快约 1.1~1.4 倍
+    # （基准见 bench_test.go）；生成代码仍保持边界检查语义。
+    "${ROOT}/bin/wasm2go" -unsafe -pkg core -embed -o "${ROOT}/core/anydoc.wasm.go" "${WASM}"
+    python3 "${ROOT}/tools/split_gen.py" 45 "${ROOT}/core"
+    cd "${ROOT}"
+    go build -p 2 -gcflags=all="-N -l" -o "${ROOT}/bin/anydoc" .
+}
+
+test_step() {
+    cd "${ROOT}"
+    go test -p 1 -gcflags=all="-N -l" -v ./...
+}
+
 case "${1:-build}" in
     fetch) fetch ;;
-    wasm)
-        require_repos
-        cd "${ROOT}/cabi"
-        cargo build --release --target wasm32-unknown-unknown
+    build)
+        # wasm + cli 全流程（默认命令）
+        wasm_step
+        cli_step
         ;;
-    cli)
-        [ -f "${WASM}" ] || { echo "missing wasm — run: $0 wasm" >&2; exit 2; }
-        [ -x "${ROOT}/bin/wasm2go" ] || { echo "missing bin/wasm2go — run: $0 fetch && (cd third-party/wasm2go && go build -o ${ROOT}/bin/wasm2go .)" >&2; exit 2; }
-        mkdir -p "${ROOT}/core"
-        rm -f "${ROOT}/core/anydoc_gen_*.go" "${ROOT}/core/anydoc.wasm.go"
-        # -unsafe 用指针直读替代 encoding/binary 解码，转换快约 1.1~1.4 倍
-        # （基准见 bench_test.go）；生成代码仍保持边界检查语义。
-        "${ROOT}/bin/wasm2go" -unsafe -pkg core -embed -o "${ROOT}/core/anydoc.wasm.go" "${WASM}"
-        python3 "${ROOT}/tools/split_gen.py" 45 "${ROOT}/core"
-        cd "${ROOT}"
-        go build -p 2 -gcflags=all="-N -l" -o "${ROOT}/bin/anydoc" .
-        ;;
-    test)
-        cd "${ROOT}"
-        go test -p 1 -gcflags=all="-N -l" -v ./...
-        ;;
+    wasm) wasm_step ;;
+    cli) cli_step ;;
+    test) test_step ;;
     *)
         echo "usage: $0 [fetch|wasm|cli|test|build]" >&2
         exit 2
