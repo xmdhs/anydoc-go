@@ -9,26 +9,34 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
-export RUSTUP_HOME="${RUSTUP_HOME:-${ROOT}/../.rustup}"
-export CARGO_HOME="${CARGO_HOME:-${ROOT}/../.cargo}"
+export RUSTUP_HOME="${RUSTUP_HOME:-${ROOT}/.rustup}"
+export CARGO_HOME="${CARGO_HOME:-${ROOT}/.cargo}"
 export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-${ROOT}/target}"
 export ZIG_GLOBAL_CACHE_DIR="${ZIG_GLOBAL_CACHE_DIR:-${ROOT}/.zig-cache}"
 export ZIG_LOCAL_CACHE_DIR="${ZIG_LOCAL_CACHE_DIR:-${ROOT}/libzig-cache}"
-export GOCACHE="${GOCACHE:-${ROOT}/../.go-cache}"
-export GOPATH="${GOPATH:-${ROOT}/../.gopath}"
-export PATH="${CARGO_HOME}/bin:${ROOT}/bin:${PATH}"
+export GOCACHE="${GOCACHE:-${ROOT}/.go-cache}"
+export GOPATH="${GOPATH:-${ROOT}/.gopath}"
+export PATH="${CARGO_HOME}/bin:${ROOT}/.zig/bin:${ROOT}/bin:${PATH}"
+export CC="${CC:-zig cc}"
 
 ANYDOC_DIR="${ROOT}/third-party/anydoc"
 WASM2GO_DIR="${ROOT}/third-party/wasm2go"
 ANYDOC_REPO="${ANYDOC_REPO:-https://github.com/firecrawl/anydoc}"
 WASM2GO_REPO="${WASM2GO_REPO:-https://github.com/ncruces/wasm2go}"
 
-FETCH_REF="${FETCH_REF:-main}"      # fetch 时拉的分支/标签
+FETCH_REF="${FETCH_REF:-}"           # 显式指定分支/标签（默认见 fetch_one）
 WASM="${CARGO_TARGET_DIR}/wasm32-unknown-unknown/release/anydoc_cabi.wasm"
+
+# 语义化版本排序的最新 tag（v0.1.9 > v0.1.10 > v0.2.0）。
+latest_tag() {
+    git ls-remote --tags --refs --sort=-v:refname "$1" 'refs/tags/*' 2>/dev/null \
+        | head -1 | awk '{print $NF}' | sed 's|refs/tags/||'
+}
 
 fetch() {
     # 第三方仓库位于 anydoc-go 自己的 third-party/ 下（.gitignore 排除，
-    # 不随本仓库提交）。cabi 对 anydoc 有本地改动（pdf feature 开关），
+    # 不随本仓库提交）。anydoc 只跟最新发布 tag（避免 main 的不稳定代码，
+    # 也便于我们以 tag 为准复现构建）；wasm2go 跟 main。
     # fetch 只做 fetch/checkout/ff-only pull，有本地改动且冲突时不强推。
     fetch_one anydoc   "${ANYDOC_REPO}"   "${ANYDOC_DIR}"
     fetch_one wasm2go  "${WASM2GO_REPO}"  "${WASM2GO_DIR}"
@@ -37,15 +45,29 @@ fetch() {
 
 fetch_one() {
     local name="$1" url="$2" dir="$3"
+    local ref="${FETCH_REF}"
+    if [ -z "${ref}" ]; then
+        if [ "${name}" = "anydoc" ]; then
+            ref="$(latest_tag "${url}")" || true
+            [ -n "${ref}" ] || ref="main"   # 取 tag 失败时回退 main
+        else
+            ref="main"
+        fi
+        echo "${name}: target ${ref}"
+    fi
     if [ ! -d "${dir}/.git" ]; then
         echo "cloning ${name} (${url}) → ${dir}"
-        git clone -q -b "${FETCH_REF}" "${url}" "${dir}"
+        git clone -q "${url}" "${dir}"
     else
         echo "updating ${name} → ${dir}"
         git -C "${dir}" fetch -q origin || true
-        git -C "${dir}" checkout -q "${FETCH_REF}" 2>/dev/null || true
-        git -C "${dir}" pull -q --ff-only origin "${FETCH_REF}" || true
+        git -C "${dir}" fetch -q --tags origin || true
     fi
+    # tag/branch 统一走 checkout；branch 再 ff-only pull 追平远端。
+    git -C "${dir}" checkout -q "${ref}" \
+        || git -C "${dir}" fetch -q origin tag "${ref}" \
+        || echo "warn: checkout ${ref} 失败（本地改动冲突？）" >&2
+    git -C "${dir}" pull -q --ff-only origin "${ref}" || true
 }
 
 require_repos() {
@@ -65,7 +87,9 @@ case "${1:-build}" in
         [ -x "${ROOT}/bin/wasm2go" ] || { echo "missing bin/wasm2go — run: $0 fetch && (cd third-party/wasm2go && go build -o ${ROOT}/bin/wasm2go .)" >&2; exit 2; }
         mkdir -p "${ROOT}/core"
         rm -f "${ROOT}/core/anydoc_gen_*.go" "${ROOT}/core/anydoc.wasm.go"
-        "${ROOT}/bin/wasm2go" -pkg core -embed -o "${ROOT}/core/anydoc.wasm.go" "${WASM}"
+        # -unsafe 用指针直读替代 encoding/binary 解码，转换快约 1.1~1.4 倍
+        # （基准见 bench_test.go）；生成代码仍保持边界检查语义。
+        "${ROOT}/bin/wasm2go" -unsafe -pkg core -embed -o "${ROOT}/core/anydoc.wasm.go" "${WASM}"
         python3 "${ROOT}/tools/split_gen.py" 45 "${ROOT}/core"
         cd "${ROOT}"
         go build -p 2 -gcflags=all="-N -l" -o "${ROOT}/bin/anydoc" .

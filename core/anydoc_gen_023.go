@@ -1,12 +1,46 @@
 package core
 
 import (
-	"encoding/binary"
 	"math"
 	"math/bits"
 	_ "embed"
 )
 
+
+//go:nosplit
+func i32_shl(x, y int32) int32 {
+	return x << (y & 31)
+}
+
+//go:nosplit
+func i32_shr_u(x, y int32) int32 {
+	return int32(uint32(x) >> (y & 31))
+}
+
+//go:nosplit
+func i64_shl(x, y int64) int64 {
+	return x << (y & 63)
+}
+
+//go:nosplit
+func i64_shr_s(x, y int64) int64 {
+	return x >> (y & 63)
+}
+
+//go:nosplit
+func i64_shr_u(x, y int64) int64 {
+	return int64(uint64(x) >> (y & 63))
+}
+
+//go:nosplit
+func i32_rotl(x, y int32) int32 {
+	return int32(bits.RotateLeft32(uint32(x), int(y)))
+}
+
+//go:nosplit
+func i32_rotr(x, y int32) int32 {
+	return int32(bits.RotateLeft32(uint32(x), -int(y)))
+}
 
 //go:nosplit
 func i64_rotl(x, y int64) int64 {
@@ -38,36 +72,6 @@ func i64_trunc_sat_f64_u(f float64) int64 {
 		i = uint64(f)
 	}
 	return int64(i)
-}
-
-//go:nosplit
-func load16(b []byte) uint16 {
-	return binary.LittleEndian.Uint16(b)
-}
-
-//go:nosplit
-func store16(b []byte, v uint16) {
-	binary.LittleEndian.PutUint16(b, v)
-}
-
-//go:nosplit
-func load32(b []byte) uint32 {
-	return binary.LittleEndian.Uint32(b)
-}
-
-//go:nosplit
-func store32(b []byte, v uint32) {
-	binary.LittleEndian.PutUint32(b, v)
-}
-
-//go:nosplit
-func load64(b []byte) uint64 {
-	return binary.LittleEndian.Uint64(b)
-}
-
-//go:nosplit
-func store64(b []byte, v uint64) {
-	binary.LittleEndian.PutUint64(b, v)
 }
 
 func memory_grow(mem *[]byte, delta, max int64) int64 {

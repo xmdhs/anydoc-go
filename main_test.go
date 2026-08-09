@@ -99,8 +99,8 @@ func TestErrors(t *testing.T) {
 		}
 	})
 	t.Run("pdfUncompiled", func(t *testing.T) {
-		// 当前构建无 pdf feature：应报 unsupported。
-		// 若将来打开 pdf 重建，本用例需更新为期望成功。
+		// pdf-inspector 被本地 stub patch 剔除（cabi Cargo.toml 的
+		// [patch.crates-io]）：应报 unsupported。
 		input := readFile(t, "testdata/fixtures/pdf/text.pdf")
 		_, err := conv.ConvertBytes(input, "")
 		if err == nil || !strings.Contains(err.Error(), "unsupported") {

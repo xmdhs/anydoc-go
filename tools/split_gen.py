@@ -76,6 +76,8 @@ def needed_imports(body):
         used.append('"math"')
     if "unsafe." in body:
         used.append('"unsafe"')
+    if "runtime." in body:
+        used.append('"runtime"')
     return sorted(used)
 
 chunks = [funcs[i : i + FUNCS_PER_FILE] for i in range(0, len(funcs), FUNCS_PER_FILE)]

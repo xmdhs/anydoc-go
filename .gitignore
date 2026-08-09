@@ -9,5 +9,14 @@
 # 构建产物 & 翻译器二进制
 /bin/
 
+# 工具链与缓存（build.sh 默认放本目录；rustup 二进制、zig 本体见各自自述）
+/.rustup/
+/.cargo/
+/.zig/
+/.zig-cache/
+/libzig-cache/
+/.go-cache/
+/.gopath/
+
 # python 工具缓存
 /tools/__pycache__/

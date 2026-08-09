@@ -9,13 +9,20 @@ description = "C-ABI wasm exports wrapping the anydoc document converter"
 crate-type = ["cdylib"]
 
 [dependencies]
-anydoc = { path = "../third-party/anydoc", default-features = false }
+# 注意：anydoc（0.1.x）没有 [features] 段，default-features = false 无效，
+# 不再写。pdf 的剔除由下方 [patch.crates-io] 的 stub 完成。
+anydoc = { path = "../third-party/anydoc" }
 
 # 替换 crates.io 的 web-time 为本地 std 实现：
 # 去掉 js-sys/wasm-bindgen，wasm 产物不再包含 __wbindgen_* 符号
 # （同版本号 1.1.0；见 patches/web-time）
+#
+# 替换 pdf-inspector 为本地 stub（见 patches/pdf-inspector）：
+# 剔除 pdf 解析及其 129 个依赖 crate，wasm 显著变小。
+# anydoc 对它的调用在 stub 中返回无可提取文本 → 报 unsupported。
 [patch.crates-io]
 web-time = { path = "../patches/web-time" }
+pdf-inspector = { path = "../patches/pdf-inspector" }
 
 [profile.release]
 opt-level = 3
