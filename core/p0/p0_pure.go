@@ -1,7 +1,7 @@
 package p0
 
 import (
-	base "anydoc-go/core/base"
+	base "github.com/xmdhs/anydoc-go/core/base"
 	"math"
 	"unsafe"
 )

@@ -1,11 +1,11 @@
 package core
 
 import (
-	base "anydoc-go/core/base"
+	base "github.com/xmdhs/anydoc-go/core/base"
 	"sync"
 	"sync/atomic"
 	"unsafe"
-	_ "anydoc-go/core/p1"
+	_ "github.com/xmdhs/anydoc-go/core/p1"
 	_ "embed"
 )
 

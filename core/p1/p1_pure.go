@@ -1,8 +1,8 @@
 package p1
 
 import (
-	base "anydoc-go/core/base"
-	_ "anydoc-go/core/p0"
+	base "github.com/xmdhs/anydoc-go/core/base"
+	_ "github.com/xmdhs/anydoc-go/core/p0"
 	"unsafe"
 )
 
