@@ -1,5 +1,5 @@
-// Package anydoc 把 anydoc 文档转换核心（wasm2go 生成的 core 包）封装成
-// 一个简单、并发安全的 Go API。
+// Package anydoc 把 anydoc 文档转换核心（goccy/wasm2go 生成的 core 包）封装
+// 成一个简单、并发安全的 Go API。
 //
 // 用法：
 //
@@ -20,7 +20,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"anydoc-go/core"
+	core "anydoc-go/core"
+	corebase "anydoc-go/core/base"
 )
 
 // ConvertError 是一次转换失败的结构化错误。Code 是稳定机器可读的标识，
@@ -58,17 +59,17 @@ func codeError(code uint32, msg string) *ConvertError {
 	return &ConvertError{Code: codeName(code), Msg: msg}
 }
 
-// Converter 拥有一个 wasm 转换模块（线性内存 + 全局栈指针），可反复
-// 转换任意文档。
+// Converter 拥有一个 goccy 生成的 wasm 模块（线性内存 + 全局栈指针），可
+// 反复转换任意文档。
 //
 // 非线程安全：同一实例同一时间只能被一个 goroutine 使用；并发转换请
 // 为每个 goroutine 各自 NewConverter（各实例内存独立，天然并行）。
 type Converter struct {
-	mdl *core.Module
+	mdl *corebase.Module
 }
 
-// NewConverter 创建并初始化转换器（加载 wasm 模块、填充线性内存）。
-// 创建成本约数十毫秒，长期复用一个实例。
+// NewConverter 创建并初始化转换器（初始化线性内存、载入内嵌数据）。
+// 创建成本约 1ms 级，长期复用一个实例。
 func NewConverter() *Converter {
 	return &Converter{mdl: core.New()}
 }
@@ -124,47 +125,50 @@ func (c *Converter) ExtractAssets(data []byte, format string) ([]Asset, error) {
 	if mdl == nil {
 		return nil, errors.New("converter not initialized")
 	}
-	mem := mdl.Xmemory().Slice()
 
-	// 输入分配进线性内存。
-	in := mdl.Xanydoc_alloc(int32(len(data)))
+	// 输入分配进线性内存（goccy 的 Memory 是 slice 值：alloc 可能触发
+	// memory.grow 重赋 m.Memory，因此每次用到前都要重新获取）。
+	in := core.AnydocAlloc(mdl, int32(len(data)))
 	if in == 0 && len(data) > 0 {
 		return nil, errOutOfMemory
 	}
-	defer mdl.Xanydoc_free(in, int32(len(data)))
+	defer core.AnydocFree(mdl, in, int32(len(data)))
 
 	// 结果槽：out_len(4) + out_code(4)，8 字节对齐。
-	slots := mdl.Xanydoc_alloc(8)
+	slots := core.AnydocAlloc(mdl, 8)
 	if slots == 0 {
 		return nil, errOutOfMemory
 	}
-	defer mdl.Xanydoc_free(slots, 8)
+	defer core.AnydocFree(mdl, slots, 8)
 
+	mem := core.Memory(mdl)
 	if len(data) > 0 {
-		copy((*mem)[in:in+int32(len(data))], data)
+		copy(mem[in:in+int32(len(data))], data)
 	}
 
 	// 可选格式：扩展名字节（NULL = 自动检测）。
 	var fptr, flen int32
 	if format != "" {
-		fbuf := mdl.Xanydoc_alloc(int32(len(format)))
+		fbuf := core.AnydocAlloc(mdl, int32(len(format)))
 		if fbuf == 0 {
 			return nil, errOutOfMemory
 		}
-		defer mdl.Xanydoc_free(fbuf, int32(len(format)))
-		copy((*mem)[fbuf:fbuf+int32(len(format))], format)
+		defer core.AnydocFree(mdl, fbuf, int32(len(format)))
+		mem = core.Memory(mdl) // 上面的 alloc 可能 grow
+		copy(mem[fbuf:fbuf+int32(len(format))], format)
 		fptr, flen = fbuf, int32(len(format))
 	}
 
-	buf := mdl.Xanydoc_assets(in, int32(len(data)), fptr, flen, slots, slots+4)
-	outLen := binary.LittleEndian.Uint32((*mem)[slots : slots+4])
-	code := binary.LittleEndian.Uint32((*mem)[slots+4 : slots+8])
+	buf := core.AnydocAssets(mdl, in, int32(len(data)), fptr, flen, slots, slots+4)
+	mem = core.Memory(mdl) // 调用内部可能 grow，取最新线性内存再读结果
+	outLen := binary.LittleEndian.Uint32(mem[slots : slots+4])
+	code := binary.LittleEndian.Uint32(mem[slots+4 : slots+8])
 
 	result := ""
 	if outLen > 0 && buf != 0 {
-		result = string((*mem)[buf : buf+int32(outLen)])
+		result = string(mem[buf : buf+int32(outLen)])
 	}
-	mdl.Xanydoc_free(buf, int32(outLen))
+	core.AnydocFree(mdl, buf, int32(outLen))
 
 	if code != 0 {
 		if result == "" {
@@ -234,51 +238,54 @@ func (c *Converter) convert(data []byte, format string) (string, error) {
 	if mdl == nil {
 		return "", errors.New("converter not initialized")
 	}
-	mem := mdl.Xmemory().Slice()
 
-	// 输入分配进线性内存。
-	in := mdl.Xanydoc_alloc(int32(len(data)))
+	// 输入分配进线性内存（goccy 的 Memory 是 slice 值：alloc 可能触发
+	// memory.grow 重赋 m.Memory，因此每次用到前都要重新获取）。
+	in := core.AnydocAlloc(mdl, int32(len(data)))
 	if in == 0 && len(data) > 0 {
 		return "", errOutOfMemory
 	}
-	defer mdl.Xanydoc_free(in, int32(len(data)))
+	defer core.AnydocFree(mdl, in, int32(len(data)))
 
 	// 结果槽：out_len(4) + out_code(4)，8 字节对齐。
-	slots := mdl.Xanydoc_alloc(8)
+	slots := core.AnydocAlloc(mdl, 8)
 	if slots == 0 {
 		return "", errOutOfMemory
 	}
-	defer mdl.Xanydoc_free(slots, 8)
+	defer core.AnydocFree(mdl, slots, 8)
 
+	mem := core.Memory(mdl)
 	if len(data) > 0 {
-		copy((*mem)[in:in+int32(len(data))], data)
+		copy(mem[in:in+int32(len(data))], data)
 	}
 
 	// 可选格式：扩展名字节（NULL = 自动检测）。
 	var fptr, flen int32
 	if format != "" {
-		fbuf := mdl.Xanydoc_alloc(int32(len(format)))
+		fbuf := core.AnydocAlloc(mdl, int32(len(format)))
 		if fbuf == 0 {
 			return "", errOutOfMemory
 		}
-		defer mdl.Xanydoc_free(fbuf, int32(len(format)))
-		copy((*mem)[fbuf:fbuf+int32(len(format))], format)
+		defer core.AnydocFree(mdl, fbuf, int32(len(format)))
+		mem = core.Memory(mdl) // 上面的 alloc 可能 grow
+		copy(mem[fbuf:fbuf+int32(len(format))], format)
 		fptr, flen = fbuf, int32(len(format))
 	}
 
 	// 调用 wasm 转换；槽接收（长度, 错误码）。
-	buf := mdl.Xanydoc_to_markdown(in, int32(len(data)), fptr, flen, slots, slots+4)
-	outLen := binary.LittleEndian.Uint32((*mem)[slots : slots+4])
-	code := binary.LittleEndian.Uint32((*mem)[slots+4 : slots+8])
+	buf := core.AnydocToMarkdown(mdl, in, int32(len(data)), fptr, flen, slots, slots+4)
+	mem = core.Memory(mdl) // 转换内部可能 grow，取最新线性内存再读结果
+	outLen := binary.LittleEndian.Uint32(mem[slots : slots+4])
+	code := binary.LittleEndian.Uint32(mem[slots+4 : slots+8])
 
 	result := ""
 	if outLen > 0 {
 		if buf == 0 {
 			return "", fmt.Errorf("conversion produced length %d but no buffer (code %d)", outLen, code)
 		}
-		result = string((*mem)[buf : buf+int32(outLen)])
+		result = string(mem[buf : buf+int32(outLen)])
 	}
-	mdl.Xanydoc_free(buf, int32(outLen))
+	core.AnydocFree(mdl, buf, int32(outLen))
 
 	if code != 0 {
 		if result == "" {

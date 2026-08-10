@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# anydoc-go 构建管线：
-#   fetch: 拉取/刷新第三方仓库（third-party/anydoc、third-party/wasm2go），
-#          URL 可用 ANPYOC_REPO / WASM2GO_REPO 覆盖
+# anydoc-go 构建管线（goccy 分支）：
+#   fetch: 拉取/刷新第三方仓库（third-party/anydoc、third-party/goccy-wasm2go），
+#          URL 可用 ANYDOC_REPO / GOCCY2GO_REPO 覆盖
 #   wasm:  cargo → target/<arch>/release/anydoc_cabi.wasm（依赖 third-party/anydoc）
-#   cli:   wasm2go → 拆分 core/ → go build → bin/anydoc
+#   cli:   goccy-wasm2go → core/ → go build → bin/anydoc
 #   test:  go test ./...
 #   build: wasm + cli（默认）
 set -euo pipefail
@@ -24,9 +24,9 @@ if [ -x "${ROOT}/.zig/bin/zig" ]; then
 fi
 
 ANYDOC_DIR="${ROOT}/third-party/anydoc"
-WASM2GO_DIR="${ROOT}/third-party/wasm2go"
+GOCCY_DIR="${ROOT}/third-party/goccy-wasm2go"
 ANYDOC_REPO="${ANYDOC_REPO:-https://github.com/firecrawl/anydoc}"
-WASM2GO_REPO="${WASM2GO_REPO:-https://github.com/ncruces/wasm2go}"
+GOCCY_REPO="${GOCCY_REPO:-https://github.com/goccy/wasm2go}"
 
 FETCH_REF="${FETCH_REF:-}"           # 显式指定分支/标签（默认见 fetch_one）
 WASM="${CARGO_TARGET_DIR}/wasm32-unknown-unknown/release/anydoc_cabi.wasm"
@@ -40,11 +40,11 @@ latest_tag() {
 fetch() {
     # 第三方仓库位于 anydoc-go 自己的 third-party/ 下（.gitignore 排除，
     # 不随本仓库提交）。anydoc 只跟最新发布 tag（避免 main 的不稳定代码，
-    # 也便于我们以 tag 为准复现构建）；wasm2go 跟 main。
+    # 也便于我们以 tag 为准复现构建）；goccy-wasm2go 跟 main。
     # fetch 只做 fetch/checkout/ff-only pull，有本地改动且冲突时不强推。
     fetch_one anydoc   "${ANYDOC_REPO}"   "${ANYDOC_DIR}"
-    fetch_one wasm2go  "${WASM2GO_REPO}"  "${WASM2GO_DIR}"
-    echo "third-party repos ready:" "${ANYDOC_DIR}" "${WASM2GO_DIR}"
+    fetch_one goccy    "${GOCCY_REPO}"    "${GOCCY_DIR}"
+    echo "third-party repos ready:" "${ANYDOC_DIR}" "${GOCCY_DIR}"
 }
 
 fetch_one() {
@@ -76,7 +76,7 @@ fetch_one() {
 
 require_repos() {
     [ -d "${ANYDOC_DIR}/.git" ] || { echo "missing third-party/anydoc — run: $0 fetch" >&2; exit 2; }
-    [ -d "${WASM2GO_DIR}/.git" ] || { echo "missing third-party/wasm2go — run: $0 fetch" >&2; exit 2; }
+    [ -d "${GOCCY_DIR}/.git" ] || { echo "missing third-party/goccy-wasm2go — run: $0 fetch" >&2; exit 2; }
 }
 
 # 应用本地 patch（第三方仓库不提交任何改动；CI fresh clone 后必须有同一
@@ -99,30 +99,32 @@ wasm_step() {
     require_repos
     apply_anydoc_patch
     cd "${ROOT}/cabi"
-    cargo build --release --target wasm32-unknown-unknown
+    # 显式关 SIMD：goccy 支持 SIMD wasm，但本项目文档转换是标量/字符串/
+    # XML/zlib 主导，实测 SIMD 反而慢 3-4 倍（见 README「工具链对比」）。
+    RUSTFLAGS="-C target-feature=-simd128" cargo build --release --target wasm32-unknown-unknown
     cd "${ROOT}"
 }
 
 cli_step() {
     [ -f "${WASM}" ] || { echo "missing wasm — run: $0 wasm" >&2; exit 2; }
-    # bin/ 不入库；缺失时自动从 third-party/wasm2go 构建（CI 也需要）。
-    if [ ! -x "${ROOT}/bin/wasm2go" ]; then
-        echo "building wasm2go → ${ROOT}/bin/wasm2go"
-        (cd "${WASM2GO_DIR}" && go build -o "${ROOT}/bin/wasm2go" .)
+    # bin/ 不入库；缺失时自动从 third-party/goccy-wasm2go 构建（CI 也需要）。
+    if [ ! -x "${ROOT}/bin/goccy-wasm2go" ]; then
+        echo "building goccy-wasm2go → ${ROOT}/bin/goccy-wasm2go"
+        (cd "${GOCCY_DIR}" && go build -o "${ROOT}/bin/goccy-wasm2go" ./cmd/wasm2go)
     fi
-    mkdir -p "${ROOT}/core"
-    rm -f "${ROOT}/core/anydoc_gen_*.go" "${ROOT}/core/anydoc.wasm.go"
-    # -unsafe 用指针直读替代 encoding/binary 解码，转换快约 1.1~1.4 倍
-    # （基准见 bench_test.go）；生成代码仍保持边界检查语义。
-    "${ROOT}/bin/wasm2go" -unsafe -pkg core -embed -o "${ROOT}/core/anydoc.wasm.go" "${WASM}"
-    python3 "${ROOT}/tools/split_gen.py" 45 "${ROOT}/core"
+    # goccy AOT 生成多包 core（core.go + base/ + p0/ + p1/ + data.bin），
+    # 整目录进 core/，不需要 split_gen 拆文件；生成耗时长（内部跑 go build
+    # 抓 asm），但只发生在 wasm 变更后。
+    rm -rf "${ROOT}/core"
+    "${ROOT}/bin/goccy-wasm2go" -i "${WASM}" -pkg core -import anydoc-go/core \
+        -out-dir "${ROOT}/core"
     cd "${ROOT}"
-    go build -p 2 -gcflags=all="-N -l" -o "${ROOT}/bin/anydoc" .
+    go build -p 2 -trimpath -ldflags="-s -w" -o "${ROOT}/bin/anydoc" .
 }
 
 test_step() {
     cd "${ROOT}"
-    go test -p 1 -gcflags=all="-N -l" -v ./...
+    go test -p 1 -trimpath -ldflags="-s -w" -v ./...
 }
 
 case "${1:-build}" in

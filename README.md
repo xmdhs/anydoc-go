@@ -1,19 +1,25 @@
-# anydoc-go: anydoc via wasm2go + a Go CLI
+# anydoc-go（goccy 分支）: anydoc via goccy/wasm2go + a Go CLI
 
-anydoc（Rust 文档→Markdown 库）的 C-ABI wasm 用 [wasm2go](https://github.com/ncruces/wasm2go)
-翻译成纯标准库 Go 源码，再由一个 Go CLI 把任意文档
-（docx/pptx/xlsx/ods/odp/epub/doc/odt/rtf/csv；pdf 被 stub 剔除，
-见「架构」）转成 GitHub-Flavored Markdown。
+anydoc（Rust 文档→Markdown 库）的 C-ABI wasm 用 [goccy/wasm2go]（AOT 编译器：
+生成 amd64/arm64 汇编 + 纯 Go 回退）编译成 Go 源码，再由一个 Go CLI 把任意
+文档（docx/pptx/xlsx/ods/odp/epub/doc/odt/rtf/csv；pdf 被 stub 剔除，见
+「架构」）转成 GitHub-Flavored Markdown。
+
+> 与 main 分支（[ncruces/wasm2go] 纯 Go 翻译）的区别：goccy 把 wasm 真正编译
+> 成宿主汇编，转换快约 1.6-2×，二进制约 5/8 体积；局限是生成物约 64MB、
+> 一次生成耗时长（≈6-7 分钟），且 goccy 至今没有 tag 只跟 main。详细对比见
+> 「工具链对比」。
 
 独立仓库：第三方代码只放在 `third-party/`（不提交），其余全部自足。
 
 ```
 cabi/            Rust cdylib：C ABI 导出 anydoc 核心库（避开 wasm-bindgen JS 依赖）
-core/            wasm2go 生成产物（package core，build.sh cli 生成，随仓库提交）
-third-party/     build.sh fetch 拉取的第三方仓库：anydoc、wasm2go（git 工作树）
+core/            goccy-wasm2go 生成产物（core.go + base/ + p0/ + p1/ + data.bin，
+                 随仓库提交；amd64/arm64 双架构 asm + 纯 Go 回退）
+third-party/     build.sh fetch 拉取的第三方仓库：anydoc、goccy-wasm2go（git 工作树）
 patches/         本地 crate 替换：web-time（去 wasm-bindgen 依赖）、pdf-inspector stub
-tools/           split_gen.py（wasm2go 产物按函数拆分）等辅助脚本
-bin/             wasm2go 翻译器 + 最终 anydoc 二进制
+tools/           辅助脚本（split_gen.py 已不再使用——goccy 自带多包拆分）
+bin/             goccy-wasm2go 翻译器 + 最终 anydoc 二进制
 target/          cargo 编译目录（.gitignore 排除）
 testdata/        单元测试样本（fixtures/ 复制自 anydoc + expected/ 快照期望）
 main.go          唯一手写 Go 入口（package main）
@@ -34,65 +40,65 @@ main.go + cabi/src/lib.rs
         │ cargo build --release --target wasm32-unknown-unknown（zig cc 提供宿主链接器）
         ▼
 anydoc_cabi.wasm（≈1.7MB；pdf-inspector 被本地 stub patch 剔除）
-        │ wasm2go -unsafe -pkg core -embed
+        │ goccy-wasm2go -pkg core -import anydoc-go/core -out-dir core
         ▼
-anydoc_gen_*.go（≈9.7MB，1007 函数拆分 24 文件）+ anydoc.wasm.dat
-        │ go build -p 2 -N -l
+core/core.go + base/ + p0/ + p1/ + data.bin（≈64MB，984 函数）
+        │ go build -p 2 -trimpath -ldflags="-s -w"
         ▼
-bin/anydoc
+bin/anydoc（≈8MB static ELF）
 ```
 
+- **SIMD 显式关闭**：`wasm_step` 用 `RUSTFLAGS="-C target-feature=-simd128"`。
+  文档转换是标量/字符串/XML/zlib 主导，实测 SIMD 开启反而慢 3-4 倍（见
+  「工具链对比」），goccy 虽支持 SIMD wasm 但本负载用不上。
 - **无 wasm-bindgen 残留**：pdf 剔除（见下）把依赖树里的 web-time/getrandom
   一并带走了，`core.New()` 无宿主接口参数，wasm 是纯 anydoc 导出。
 - **PDF 被 stub 剔除**（重要）：anydoc 新版把 pdf-inspector 移入普通依赖
   （非 optional feature），`default-features = false` 裁不掉。cabi 用
   `[patch.crates-io]` 把它替换为本地 stub（patches/pdf-inspector，85 行），
-  依赖闭包 129 个 crate 全部消失：wasm 7.2→1.7MB、生成 Go 源码 37→9.7MB。
-  pdf 输入报 unsupported（"no extractable text"）。stub 接口即 anydoc
-  用到的 `PdfError`/`process_pdf_mem`/`PdfProcessResult`（map_error 穷尽
-  匹配，接口漂移会编译失败提醒）。恢复 pdf：删掉 cabi/Cargo.toml 里的
-  patch 行并重建即可。
+  依赖闭包 129 个 crate 全部消失：wasm 7.2→1.7MB、生成物 37→64MB 中
+  pdf 相关代码为零。pdf 输入报 unsupported（"no extractable text"）。
+  stub 接口即 anydoc 用到的 `PdfError`/`process_pdf_mem`/`PdfProcessResult`
+  （map_error 穷尽匹配，接口漂移会编译失败提醒）。恢复 pdf：删掉
+  cabi/Cargo.toml 里的 patch 行并重建即可。
 
 ## 构建
 
 C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 rustc
 的宿主链接器——本机没有 gcc/clang）。有系统 cc 的环境直接用系统工具链，
-无需 zig。
+无需 zig。goccy 翻译器内部会跑一次 `go build` 抓取 asm，需要
+`GOCACHE`/`GOPATH` 可写（build.sh 已默认指到项目内缓存）。
 
 ```bash
-./build.sh fetch    # 首次 & 更新：拉取 third-party/anydoc、wasm2go（git clone/fetch）
-                    #   anydoc 默认取语义排序的最新 tag（如 v0.1.7），
-                    #   wasm2go 默认 main；FETCH_REF 可统一覆盖
-./build.sh wasm     # cargo → anydoc_cabi.wasm
-./build.sh cli      # wasm2go -unsafe → 拆分 → go build
+./build.sh fetch    # 首次 & 更新：拉取 third-party/anydoc、third-party/goccy-wasm2go
+                    #   anydoc 默认取语义排序的最新 tag；goccy 跟 main（无 tag）
+./build.sh wasm     # cargo → anydoc_cabi.wasm（-simd128）
+./build.sh cli      # goccy-wasm2go → core/ → go build（生成约 6-7 分钟，仅 wasm 变更后重跑）
 ./build.sh test     # 单元测试（见「验证」）
-./build.sh build    # wasm + cli 全流程
+./build.sh build    # wasm + cli 全流程（默认）
 ```
 
-### `-unsafe` 与性能
+注意：`cli` 步骤的 goccy 翻译是本分支耗时大头（2 核机约 6-7 分钟，内部要
+为 984 个函数跑 SSA + 抓 amd64/arm64 asm）；core/ 随仓库提交，日常改
+main.go/lib 只跑 `go build` 即可，无需重新翻译。
 
-wasm2go 默认生成用 `encoding/binary` 边界检查解码的代码；`-unsafe` 启用
-helpers 里的指针直读（load16/32/64），生成代码仍保持边界检查语义
-（wasm2go 文档：加入 unsafe 后所有内存访问依旧有界检查），转换路径不涉及
-其他 unsafe 危险行为（lib 的 Converter 仍非线程安全）。
+## 工具链对比（why goccy）
 
-本机实测（`go test -bench .`，`-gcflags=all="-N -l"`，中位数，各 6 次）：
+同一份 wasm 分别在 ncruces（main 分支）与 goccy（本分支）下实测，本机
+（AMD GX-215JJ，2 核）中位耗时（ms）：
 
-| 输入 | 基线 | -unsafe | 加速 |
-| --- | ---: | ---: | ---: |
-| sheet.csv | 1.24 ms | 1.11 ms | 1.12x |
-| book.epub | 3.25 ms | 2.61 ms | 1.25x |
-| pres.pptx | 10.7 ms | 8.31 ms | 1.29x |
-| sheet.ods | 5.33 ms | 4.12 ms | 1.29x |
-| text.docx | 13.7 ms | 10.6 ms | 1.29x |
-| text.doc | 2.75 ms | 2.07 ms | 1.33x |
-| 2MB CSV | 1208 ms | 852 ms | 1.42x |
+| 输入 | ncruces | goccy（本分支） |
+| --- | ---: | ---: |
+| book.epub | 2.41 | 1.17 |
+| pres.pptx | 6.17 | 3.36 |
+| sheet.ods | 3.19 | 1.71 |
+| text.docx | 7.08 | 4.65 |
+| 2MB CSV | 623 | 321 |
 
-输入越大收益越大（内存访问占比高）：小样本约 1.1-1.3×，2MB CSV 约 1.4×。
-表中数值为含 pdf 版生成物（pdf 剔除前）的实测；pdf 剔除不影响转换路径，
-相对加速比结论不变。复测：`go test -bench . -benchtime 10x -count 3
--run 'Benchmark'`——注意 `-run '^$'` 会把子基准（BenchmarkConvert/xxx）
-一并过滤掉；对比时两个版本用相同编译参数。
+结论：goccy 快约 1.3-2×（CSV/大文件约 1.9×），最终二进制 7.8MB vs 12.5MB。
+代价：① 生成物大（64MB vs 9.7MB）且翻译时间长；② 无发布 tag；③ 做不了
+ncruces 的 `-embed` 单文件（多包结构）；④ SIMD 开启反而慢——本分支已在
+`wasm_step` 显式关闭。
 
 ## 用法
 
@@ -133,7 +139,7 @@ import (
     "anydoc-go/lib"
 )
 
-conv := lib.NewConverter() // 创建成本约几十毫秒，长期复用
+conv := lib.NewConverter() // 创建成本约 1ms 级，长期复用
 
 md, err := conv.ConvertFile("report.docx", "") // 自动检测格式
 md, err = conv.ConvertBytes(data, "csv")        // 无签名格式需显式扩展名
@@ -175,7 +181,12 @@ md, err = func() (string, error) {
 ## 已知限制
 
 - panic = "abort"（wasm 内部崩溃直接终止进程）；
-- 运行期线性内存 3MB 起、可 grow 至 64MB（maxMem），单次 docx 转换约 10ms；
+- 运行期线性内存 1.25MB 起、可 grow，单次 docx 转换约 4-5ms（goccy AOT）；
 - PDF 不解析（stub 剔除，报 unsupported），见「架构」；
-- 生成物接口以 `core` 包为准（如 `core.New` 签名、`Xanydoc_*` 导出名），
-  不要手工注释或改名（编译即校验）。
+- 生成物接口以 `core` 包为准：导出为顶层 `core.New()`/`core.Memory(m)`/
+  `core.Anydoc*` 函数，模块类型是 `core/base.Module`。lib 依赖这些名字，
+  不要手工注释或改名（编译即校验）；
+- `cli` 步骤（goccy 翻译）耗时长，core/ 已随仓库提交，日常构建无需重跑。
+
+[goccy/wasm2go]: https://github.com/goccy/wasm2go
+[ncruces/wasm2go]: https://github.com/ncruces/wasm2go

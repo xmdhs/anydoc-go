@@ -7,8 +7,8 @@
 // 注意：-run 必须匹配子基准名（BenchmarkConvert/xxx），`-run '^$'` 会把
 // 全部子基准过滤掉，只剩父级空循环。
 //
-// 注意：core 包（wasm2go 生成物）编译参数会影响结果，两个对比版本必须用
-// 完全相同的编译参数（见 build.sh 的 -gcflags=all="-N -l"）。
+// 注意：core 包（生成物）编译参数会影响结果，对比版本必须用
+// 完全相同的编译参数（见 build.sh 的 -trimpath -ldflags="-s -w"）。
 package main
 
 import (
