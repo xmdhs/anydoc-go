@@ -34,6 +34,7 @@ func Fn143(m *base.Module, l0 int32, l1 int32)
 func Fn148(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn153(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn155(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn166(m *base.Module, l0 int32)
 func Fn17(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn170(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn18(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
@@ -49,140 +50,138 @@ func Fn224(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 func Fn23(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn231(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn232(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn247(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn248(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn26(m *base.Module, l0 int32, l1 int32)
-func Fn260(m *base.Module, l0 int32)
-func Fn271(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-func Fn303(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn334(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn335(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn336(m *base.Module, l0 int32)
-func Fn337(m *base.Module, l0 int32, l1 int32)
-func Fn342(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn261(m *base.Module, l0 int32)
+func Fn275(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+func Fn307(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn338(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn339(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn340(m *base.Module, l0 int32)
+func Fn341(m *base.Module, l0 int32, l1 int32)
 func Fn346(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn347(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn348(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn350(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn350(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn351(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn352(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn353(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn354(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn357(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn354(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn356(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn357(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn358(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn359(m *base.Module, l0 int32, l1 int32)
-func Fn362(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn365(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn366(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn369(m *base.Module, l0 int32, l1 int32)
+func Fn361(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn362(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn363(m *base.Module, l0 int32, l1 int32)
+func Fn366(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn369(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn37(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn373(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn375(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn381(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn383(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn394(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn370(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn373(m *base.Module, l0 int32, l1 int32)
+func Fn377(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn379(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn385(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn387(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn398(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 func Fn4(m *base.Module, l0 int32)
-func Fn404(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn405(m *base.Module, l0 int32, l1 int32)
-func Fn412(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn413(m *base.Module, l0 int32)
+func Fn408(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn409(m *base.Module, l0 int32, l1 int32)
 func Fn416(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn423(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn425(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn426(m *base.Module, l0 int32)
-func Fn430(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn431(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn432(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn438(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn441(m *base.Module, l0 int32)
-func Fn443(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn448(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn455(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn459(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn465(m *base.Module, l0 int32)
-func Fn468(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn417(m *base.Module, l0 int32)
+func Fn420(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn427(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn429(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn430(m *base.Module, l0 int32)
+func Fn434(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn435(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn436(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn442(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn445(m *base.Module, l0 int32)
+func Fn447(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn452(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn459(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn463(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 func Fn469(m *base.Module, l0 int32)
-func Fn471(m *base.Module, l0 int32, l1 int32)
-func Fn476(m *base.Module, l0 int32)
-func Fn480(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn492(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn493(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn497(m *base.Module, l0 int32, l1 int32)
-func Fn507(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn517(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn520(m *base.Module, l0 int32, l1 int32)
-func Fn521(m *base.Module, l0 int32, l1 int32)
-func Fn523(m *base.Module, l0 int32, l1 int32)
-func Fn533(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
-func Fn539(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn547(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn552(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn555(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn556(m *base.Module, l0 int32)
-func Fn565(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn567(m *base.Module, l0 int32, l1 int32)
-func Fn568(m *base.Module, l0 int32, l1 int32)
-func Fn579(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn580(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn582(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn583(m *base.Module, l0 int32, l1 int32)
+func Fn472(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn473(m *base.Module, l0 int32)
+func Fn475(m *base.Module, l0 int32, l1 int32)
+func Fn480(m *base.Module, l0 int32)
+func Fn484(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn496(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn497(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn501(m *base.Module, l0 int32, l1 int32)
+func Fn511(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn521(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn524(m *base.Module, l0 int32, l1 int32)
+func Fn525(m *base.Module, l0 int32, l1 int32)
+func Fn527(m *base.Module, l0 int32, l1 int32)
+func Fn537(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
+func Fn543(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn551(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn556(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn559(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn560(m *base.Module, l0 int32)
+func Fn569(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn571(m *base.Module, l0 int32, l1 int32)
+func Fn572(m *base.Module, l0 int32, l1 int32)
+func Fn583(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn584(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn586(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn587(m *base.Module, l0 int32, l1 int32)
-func Fn597(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn601(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-func Fn603(m *base.Module, l0 int32, l1 int32)
-func Fn613(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn615(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
-func Fn624(m *base.Module, l0 int32)
-func Fn628(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn650(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn659(m *base.Module, l0 int32, l1 int32)
+func Fn591(m *base.Module, l0 int32, l1 int32)
+func Fn601(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn605(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+func Fn607(m *base.Module, l0 int32, l1 int32)
+func Fn617(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn619(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
+func Fn628(m *base.Module, l0 int32)
+func Fn632(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn655(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn66(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn660(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn662(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn663(m *base.Module, l0 int32, l1 int32)
-func Fn672(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn664(m *base.Module, l0 int32, l1 int32)
+func Fn665(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn667(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn668(m *base.Module, l0 int32, l1 int32)
+func Fn677(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn68(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn682(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn687(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn69(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn693(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn698(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn698(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn70(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn700(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn703(m *base.Module, l0 int32, l1 int32)
+func Fn703(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn705(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn708(m *base.Module, l0 int32, l1 int32)
 func Fn72(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn720(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn724(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn728(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn725(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn729(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 func Fn73(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn737(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
-func Fn738(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn739(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn733(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 func Fn74(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn743(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn744(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn745(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn742(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
+func Fn743(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn744(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn748(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn749(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 func Fn75(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn753(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn754(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn756(m *base.Module, l0 int32, l1 int32)
-func Fn761(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn762(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn767(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn750(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn758(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn759(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn761(m *base.Module, l0 int32, l1 int32)
+func Fn766(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn767(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn772(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn78(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn782(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn783(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn786(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn789(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn787(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn788(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn79(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn795(m *base.Module, l0 int32, l1 int32)
-func Fn796(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn799(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn791(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn794(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 func Fn80(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn800(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn803(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn800(m *base.Module, l0 int32, l1 int32)
+func Fn801(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn804(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn805(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn808(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn81(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn82(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn825(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn83(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn844(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn845(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64) (r0 int32)
 func Fn85(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn86(m *base.Module, l0 int32, l1 int32) (r0 int32)
@@ -653,67 +652,67 @@ func gcasmFwdFn24(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn24(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn245 anydoc-go/core/p1.Fn245
-func gcasmLNgcasmFwdFn245(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
-
-func gcasmFwdFn245(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn245(a0, a1, a2, a3, a4, a5)
-}
-
 //go:linkname gcasmLNgcasmFwdFn246 anydoc-go/core/p1.Fn246
-func gcasmLNgcasmFwdFn246(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn246(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn246(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn246(a0, a1, a2, a3, a4)
+func gcasmFwdFn246(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn246(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn248 anydoc-go/core/p1.Fn248
-func gcasmLNgcasmFwdFn248(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn247 anydoc-go/core/p1.Fn247
+func gcasmLNgcasmFwdFn247(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn248(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn248(a0, a1, a2)
+func gcasmFwdFn247(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn247(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn249 anydoc-go/core/p1.Fn249
-func gcasmLNgcasmFwdFn249(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn249(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn249(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn249(a0, a1, a2, a3, a4)
+func gcasmFwdFn249(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn249(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn250 anydoc-go/core/p1.Fn250
-func gcasmLNgcasmFwdFn250(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
+func gcasmLNgcasmFwdFn250(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn250(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn250(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn250(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn250(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn254 anydoc-go/core/p1.Fn254
-func gcasmLNgcasmFwdFn254(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn251 anydoc-go/core/p1.Fn251
+func gcasmLNgcasmFwdFn251(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
 
-func gcasmFwdFn254(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn254(a0, a1)
+func gcasmFwdFn251(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
+	gcasmLNgcasmFwdFn251(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn256 anydoc-go/core/p1.Fn256
-func gcasmLNgcasmFwdFn256(a0 *base.Module, a1 int64, a2 int64, a3 int32, a4 int32) int64
+//go:linkname gcasmLNgcasmFwdFn255 anydoc-go/core/p1.Fn255
+func gcasmLNgcasmFwdFn255(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn256(a0 *base.Module, a1 int64, a2 int64, a3 int32, a4 int32) int64 {
-	return gcasmLNgcasmFwdFn256(a0, a1, a2, a3, a4)
+func gcasmFwdFn255(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn255(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn257 anydoc-go/core/p1.Fn257
-func gcasmLNgcasmFwdFn257(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn257(a0 *base.Module, a1 int64, a2 int64, a3 int32, a4 int32) int64
 
-func gcasmFwdFn257(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn257(a0, a1, a2, a3, a4)
+func gcasmFwdFn257(a0 *base.Module, a1 int64, a2 int64, a3 int32, a4 int32) int64 {
+	return gcasmLNgcasmFwdFn257(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn258 anydoc-go/core/p1.Fn258
-func gcasmLNgcasmFwdFn258(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn258(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn258(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn258(a0, a1, a2, a3)
+func gcasmFwdFn258(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn258(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn259 anydoc-go/core/p1.Fn259
+func gcasmLNgcasmFwdFn259(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn259(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn259(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn264 anydoc-go/core/p1.Fn264
@@ -737,20 +736,6 @@ func gcasmFwdFn266(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn266(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn268 anydoc-go/core/p1.Fn268
-func gcasmLNgcasmFwdFn268(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn268(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn268(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn269 anydoc-go/core/p1.Fn269
-func gcasmLNgcasmFwdFn269(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn269(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn269(a0, a1, a2, a3, a4)
-}
-
 //go:linkname gcasmLNgcasmFwdFn27 anydoc-go/core/p1.Fn27
 func gcasmLNgcasmFwdFn27(a0 *base.Module, a1 int32, a2 int32) int32
 
@@ -758,60 +743,60 @@ func gcasmFwdFn27(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn27(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn270 anydoc-go/core/p1.Fn270
-func gcasmLNgcasmFwdFn270(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn272 anydoc-go/core/p1.Fn272
+func gcasmLNgcasmFwdFn272(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn270(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn270(a0, a1, a2, a3)
+func gcasmFwdFn272(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn272(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn273 anydoc-go/core/p1.Fn273
+func gcasmLNgcasmFwdFn273(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn273(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn273(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn274 anydoc-go/core/p1.Fn274
-func gcasmLNgcasmFwdFn274(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn274(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn274(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn274(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn276 anydoc-go/core/p1.Fn276
-func gcasmLNgcasmFwdFn276(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn276(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn276(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn277 anydoc-go/core/p1.Fn277
-func gcasmLNgcasmFwdFn277(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn277(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn277(a0, a1, a2, a3)
+func gcasmFwdFn274(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn274(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn278 anydoc-go/core/p1.Fn278
-func gcasmLNgcasmFwdFn278(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn278(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn278(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn278(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn279 anydoc-go/core/p1.Fn279
-func gcasmLNgcasmFwdFn279(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn279(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn279(a0, a1, a2, a3)
+func gcasmFwdFn278(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn278(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn280 anydoc-go/core/p1.Fn280
-func gcasmLNgcasmFwdFn280(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn280(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn280(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn280(a0, a1, a2, a3)
+func gcasmFwdFn280(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn280(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn281 anydoc-go/core/p1.Fn281
-func gcasmLNgcasmFwdFn281(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+func gcasmLNgcasmFwdFn281(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn281(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn281(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn281(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn281(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn282 anydoc-go/core/p1.Fn282
+func gcasmLNgcasmFwdFn282(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn282(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn282(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn283 anydoc-go/core/p1.Fn283
+func gcasmLNgcasmFwdFn283(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn283(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn283(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn284 anydoc-go/core/p1.Fn284
@@ -821,25 +806,32 @@ func gcasmFwdFn284(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn284(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn289 anydoc-go/core/p1.Fn289
-func gcasmLNgcasmFwdFn289(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn285 anydoc-go/core/p1.Fn285
+func gcasmLNgcasmFwdFn285(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn289(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn289(a0, a1)
+func gcasmFwdFn285(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn285(a0, a1, a2, a3, a4, a5, a6)
+}
+
+//go:linkname gcasmLNgcasmFwdFn288 anydoc-go/core/p1.Fn288
+func gcasmLNgcasmFwdFn288(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn288(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn288(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn293 anydoc-go/core/p1.Fn293
-func gcasmLNgcasmFwdFn293(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn293(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn293(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn293(a0, a1, a2, a3)
+func gcasmFwdFn293(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn293(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn297 anydoc-go/core/p1.Fn297
-func gcasmLNgcasmFwdFn297(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn297(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn297(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn297(a0, a1, a2, a3, a4)
+func gcasmFwdFn297(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn297(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3 anydoc-go/core/p1.Fn3
@@ -856,60 +848,46 @@ func gcasmFwdFn30(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn30(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn300 anydoc-go/core/p1.Fn300
-func gcasmLNgcasmFwdFn300(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn301 anydoc-go/core/p1.Fn301
+func gcasmLNgcasmFwdFn301(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn300(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn300(a0, a1, a2, a3, a4)
+func gcasmFwdFn301(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn301(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn309 anydoc-go/core/p1.Fn309
-func gcasmLNgcasmFwdFn309(a0 *base.Module, a1 int32, a2 int32, a3 int64)
+//go:linkname gcasmLNgcasmFwdFn304 anydoc-go/core/p1.Fn304
+func gcasmLNgcasmFwdFn304(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn309(a0 *base.Module, a1 int32, a2 int32, a3 int64) {
-	gcasmLNgcasmFwdFn309(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn312 anydoc-go/core/p1.Fn312
-func gcasmLNgcasmFwdFn312(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn312(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn312(a0, a1)
+func gcasmFwdFn304(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn304(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn313 anydoc-go/core/p1.Fn313
-func gcasmLNgcasmFwdFn313(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+func gcasmLNgcasmFwdFn313(a0 *base.Module, a1 int32, a2 int32, a3 int64)
 
-func gcasmFwdFn313(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn313(a0, a1, a2, a3, a4, a5, a6)
-}
-
-//go:linkname gcasmLNgcasmFwdFn315 anydoc-go/core/p1.Fn315
-func gcasmLNgcasmFwdFn315(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn315(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn315(a0, a1, a2, a3)
+func gcasmFwdFn313(a0 *base.Module, a1 int32, a2 int32, a3 int64) {
+	gcasmLNgcasmFwdFn313(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn316 anydoc-go/core/p1.Fn316
-func gcasmLNgcasmFwdFn316(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn316(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn316(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn316(a0, a1)
+func gcasmFwdFn316(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn316(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn317 anydoc-go/core/p1.Fn317
-func gcasmLNgcasmFwdFn317(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn317(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn317(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn317(a0, a1)
+func gcasmFwdFn317(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn317(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn318 anydoc-go/core/p1.Fn318
-func gcasmLNgcasmFwdFn318(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn319 anydoc-go/core/p1.Fn319
+func gcasmLNgcasmFwdFn319(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn318(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn318(a0, a1)
+func gcasmFwdFn319(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn319(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn32 anydoc-go/core/p1.Fn32
@@ -919,11 +897,25 @@ func gcasmFwdFn32(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
 	gcasmLNgcasmFwdFn32(a0, a1, a2, a3, a4)
 }
 
+//go:linkname gcasmLNgcasmFwdFn320 anydoc-go/core/p1.Fn320
+func gcasmLNgcasmFwdFn320(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn320(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn320(a0, a1)
+}
+
 //go:linkname gcasmLNgcasmFwdFn321 anydoc-go/core/p1.Fn321
 func gcasmLNgcasmFwdFn321(a0 *base.Module, a1 int32)
 
 func gcasmFwdFn321(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn321(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn322 anydoc-go/core/p1.Fn322
+func gcasmLNgcasmFwdFn322(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn322(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn322(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn323 anydoc-go/core/p1.Fn323
@@ -947,18 +939,18 @@ func gcasmFwdFn33(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn33(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn330 anydoc-go/core/p1.Fn330
-func gcasmLNgcasmFwdFn330(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn331 anydoc-go/core/p1.Fn331
+func gcasmLNgcasmFwdFn331(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn330(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn330(a0, a1)
+func gcasmFwdFn331(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn331(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn338 anydoc-go/core/p1.Fn338
-func gcasmLNgcasmFwdFn338(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn334 anydoc-go/core/p1.Fn334
+func gcasmLNgcasmFwdFn334(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn338(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn338(a0, a1)
+func gcasmFwdFn334(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn334(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn34 anydoc-go/core/p1.Fn34
@@ -968,25 +960,32 @@ func gcasmFwdFn34(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn34(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn341 anydoc-go/core/p1.Fn341
-func gcasmLNgcasmFwdFn341(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn342 anydoc-go/core/p1.Fn342
+func gcasmLNgcasmFwdFn342(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn341(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn341(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn343 anydoc-go/core/p1.Fn343
-func gcasmLNgcasmFwdFn343(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn343(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn343(a0, a1, a2, a3)
+func gcasmFwdFn342(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn342(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn345 anydoc-go/core/p1.Fn345
-func gcasmLNgcasmFwdFn345(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+func gcasmLNgcasmFwdFn345(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn345(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn345(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn345(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn345(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn347 anydoc-go/core/p1.Fn347
+func gcasmLNgcasmFwdFn347(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn347(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn347(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn349 anydoc-go/core/p1.Fn349
+func gcasmLNgcasmFwdFn349(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+
+func gcasmFwdFn349(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn349(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn35 anydoc-go/core/p1.Fn35
@@ -996,13 +995,6 @@ func gcasmFwdFn35(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn35(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn356 anydoc-go/core/p1.Fn356
-func gcasmLNgcasmFwdFn356(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn356(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn356(a0, a1)
-}
-
 //go:linkname gcasmLNgcasmFwdFn360 anydoc-go/core/p1.Fn360
 func gcasmLNgcasmFwdFn360(a0 *base.Module, a1 int32)
 
@@ -1010,74 +1002,67 @@ func gcasmFwdFn360(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn360(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn361 anydoc-go/core/p1.Fn361
-func gcasmLNgcasmFwdFn361(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn364 anydoc-go/core/p1.Fn364
+func gcasmLNgcasmFwdFn364(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn361(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn361(a0, a1)
+func gcasmFwdFn364(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn364(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn363 anydoc-go/core/p1.Fn363
-func gcasmLNgcasmFwdFn363(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn365 anydoc-go/core/p1.Fn365
+func gcasmLNgcasmFwdFn365(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn363(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn363(a0, a1)
+func gcasmFwdFn365(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn365(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn367 anydoc-go/core/p1.Fn367
-func gcasmLNgcasmFwdFn367(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn367(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn367(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn367(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn370 anydoc-go/core/p1.Fn370
-func gcasmLNgcasmFwdFn370(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn370(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn370(a0, a1, a2)
+func gcasmFwdFn367(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn367(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn371 anydoc-go/core/p1.Fn371
-func gcasmLNgcasmFwdFn371(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn371(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn371(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn371(a0, a1, a2, a3, a4)
+func gcasmFwdFn371(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn371(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn372 anydoc-go/core/p1.Fn372
-func gcasmLNgcasmFwdFn372(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn374 anydoc-go/core/p1.Fn374
+func gcasmLNgcasmFwdFn374(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn372(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn372(a0, a1, a2, a3)
+func gcasmFwdFn374(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn374(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn375 anydoc-go/core/p1.Fn375
+func gcasmLNgcasmFwdFn375(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn375(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn375(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn376 anydoc-go/core/p1.Fn376
-func gcasmLNgcasmFwdFn376(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn376(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn376(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn376(a0, a1)
+func gcasmFwdFn376(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn376(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn377 anydoc-go/core/p1.Fn377
-func gcasmLNgcasmFwdFn377(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn380 anydoc-go/core/p1.Fn380
+func gcasmLNgcasmFwdFn380(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn377(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn377(a0, a1, a2, a3, a4)
+func gcasmFwdFn380(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn380(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn386 anydoc-go/core/p1.Fn386
-func gcasmLNgcasmFwdFn386(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn381 anydoc-go/core/p1.Fn381
+func gcasmLNgcasmFwdFn381(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn386(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn386(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn389 anydoc-go/core/p1.Fn389
-func gcasmLNgcasmFwdFn389(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn389(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn389(a0, a1)
+func gcasmFwdFn381(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn381(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn39 anydoc-go/core/p1.Fn39
@@ -1087,6 +1072,13 @@ func gcasmFwdFn39(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn39(a0, a1, a2, a3)
 }
 
+//go:linkname gcasmLNgcasmFwdFn390 anydoc-go/core/p1.Fn390
+func gcasmLNgcasmFwdFn390(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn390(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn390(a0, a1)
+}
+
 //go:linkname gcasmLNgcasmFwdFn393 anydoc-go/core/p1.Fn393
 func gcasmLNgcasmFwdFn393(a0 *base.Module, a1 int32)
 
@@ -1094,137 +1086,137 @@ func gcasmFwdFn393(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn393(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn398 anydoc-go/core/p1.Fn398
-func gcasmLNgcasmFwdFn398(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn397 anydoc-go/core/p1.Fn397
+func gcasmLNgcasmFwdFn397(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn398(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn398(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn399 anydoc-go/core/p1.Fn399
-func gcasmLNgcasmFwdFn399(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn399(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn399(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn400 anydoc-go/core/p1.Fn400
-func gcasmLNgcasmFwdFn400(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32)
-
-func gcasmFwdFn400(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) {
-	gcasmLNgcasmFwdFn400(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
-}
-
-//go:linkname gcasmLNgcasmFwdFn401 anydoc-go/core/p1.Fn401
-func gcasmLNgcasmFwdFn401(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn401(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn401(a0, a1)
+func gcasmFwdFn397(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn397(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn402 anydoc-go/core/p1.Fn402
-func gcasmLNgcasmFwdFn402(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn402(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn402(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn402(a0, a1, a2, a3, a4)
+func gcasmFwdFn402(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn402(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn403 anydoc-go/core/p1.Fn403
+func gcasmLNgcasmFwdFn403(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn403(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn403(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn404 anydoc-go/core/p1.Fn404
+func gcasmLNgcasmFwdFn404(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32)
+
+func gcasmFwdFn404(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) {
+	gcasmLNgcasmFwdFn404(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+}
+
+//go:linkname gcasmLNgcasmFwdFn405 anydoc-go/core/p1.Fn405
+func gcasmLNgcasmFwdFn405(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn405(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn405(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn406 anydoc-go/core/p1.Fn406
-func gcasmLNgcasmFwdFn406(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn406(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn406(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn406(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn407 anydoc-go/core/p1.Fn407
-func gcasmLNgcasmFwdFn407(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn407(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn407(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn408 anydoc-go/core/p1.Fn408
-func gcasmLNgcasmFwdFn408(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn408(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn408(a0, a1)
+func gcasmFwdFn406(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn406(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn410 anydoc-go/core/p1.Fn410
-func gcasmLNgcasmFwdFn410(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32)
+func gcasmLNgcasmFwdFn410(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn410(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) {
-	gcasmLNgcasmFwdFn410(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+func gcasmFwdFn410(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn410(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn411 anydoc-go/core/p1.Fn411
-func gcasmLNgcasmFwdFn411(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn411(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn411(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn411(a0, a1, a2, a3, a4)
+func gcasmFwdFn411(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn411(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn412 anydoc-go/core/p1.Fn412
+func gcasmLNgcasmFwdFn412(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn412(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn412(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn414 anydoc-go/core/p1.Fn414
-func gcasmLNgcasmFwdFn414(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn414(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32)
 
-func gcasmFwdFn414(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn414(a0, a1)
+func gcasmFwdFn414(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) {
+	gcasmLNgcasmFwdFn414(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 }
 
 //go:linkname gcasmLNgcasmFwdFn415 anydoc-go/core/p1.Fn415
-func gcasmLNgcasmFwdFn415(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn415(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn415(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn415(a0, a1, a2, a3)
+func gcasmFwdFn415(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn415(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn418 anydoc-go/core/p1.Fn418
+func gcasmLNgcasmFwdFn418(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn418(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn418(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn419 anydoc-go/core/p1.Fn419
-func gcasmLNgcasmFwdFn419(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn419(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn419(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn419(a0, a1)
+func gcasmFwdFn419(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn419(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn424 anydoc-go/core/p1.Fn424
-func gcasmLNgcasmFwdFn424(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn423 anydoc-go/core/p1.Fn423
+func gcasmLNgcasmFwdFn423(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn424(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn424(a0, a1, a2, a3)
+func gcasmFwdFn423(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn423(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn428 anydoc-go/core/p1.Fn428
-func gcasmLNgcasmFwdFn428(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn428(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn428(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn428(a0, a1, a2)
+func gcasmFwdFn428(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn428(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn429 anydoc-go/core/p1.Fn429
-func gcasmLNgcasmFwdFn429(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn432 anydoc-go/core/p1.Fn432
+func gcasmLNgcasmFwdFn432(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn429(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn429(a0, a1)
+func gcasmFwdFn432(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn432(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn433 anydoc-go/core/p1.Fn433
-func gcasmLNgcasmFwdFn433(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn433(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn433(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn433(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn435 anydoc-go/core/p1.Fn435
-func gcasmLNgcasmFwdFn435(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn435(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn435(a0, a1, a2, a3)
+func gcasmFwdFn433(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn433(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn437 anydoc-go/core/p1.Fn437
-func gcasmLNgcasmFwdFn437(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn437(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn437(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn437(a0, a1)
+func gcasmFwdFn437(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn437(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn439 anydoc-go/core/p1.Fn439
+func gcasmLNgcasmFwdFn439(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn439(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn439(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn44 anydoc-go/core/p1.Fn44
@@ -1234,88 +1226,74 @@ func gcasmFwdFn44(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 in
 	gcasmLNgcasmFwdFn44(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn442 anydoc-go/core/p1.Fn442
-func gcasmLNgcasmFwdFn442(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn441 anydoc-go/core/p1.Fn441
+func gcasmLNgcasmFwdFn441(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn442(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn442(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn444 anydoc-go/core/p1.Fn444
-func gcasmLNgcasmFwdFn444(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn444(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn444(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn445 anydoc-go/core/p1.Fn445
-func gcasmLNgcasmFwdFn445(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
-
-func gcasmFwdFn445(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn445(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn441(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn441(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn446 anydoc-go/core/p1.Fn446
-func gcasmLNgcasmFwdFn446(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+func gcasmLNgcasmFwdFn446(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn446(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn446(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn446(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn446(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn448 anydoc-go/core/p1.Fn448
+func gcasmLNgcasmFwdFn448(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn448(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn448(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn449 anydoc-go/core/p1.Fn449
-func gcasmLNgcasmFwdFn449(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn449(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn449(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn449(a0, a1, a2)
+func gcasmFwdFn449(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn449(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn451 anydoc-go/core/p1.Fn451
-func gcasmLNgcasmFwdFn451(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn450 anydoc-go/core/p1.Fn450
+func gcasmLNgcasmFwdFn450(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn451(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn451(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn452 anydoc-go/core/p1.Fn452
-func gcasmLNgcasmFwdFn452(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn452(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn452(a0, a1, a2, a3)
+func gcasmFwdFn450(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn450(a0, a1, a2, a3, a4, a5, a6)
 }
 
 //go:linkname gcasmLNgcasmFwdFn453 anydoc-go/core/p1.Fn453
-func gcasmLNgcasmFwdFn453(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32)
+func gcasmLNgcasmFwdFn453(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn453(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) {
-	gcasmLNgcasmFwdFn453(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn453(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn453(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn454 anydoc-go/core/p1.Fn454
-func gcasmLNgcasmFwdFn454(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
+//go:linkname gcasmLNgcasmFwdFn455 anydoc-go/core/p1.Fn455
+func gcasmLNgcasmFwdFn455(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn454(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn454(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn455(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn455(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn456 anydoc-go/core/p1.Fn456
+func gcasmLNgcasmFwdFn456(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn456(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn456(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn457 anydoc-go/core/p1.Fn457
-func gcasmLNgcasmFwdFn457(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn457(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32)
 
-func gcasmFwdFn457(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn457(a0, a1, a2, a3)
+func gcasmFwdFn457(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) {
+	gcasmLNgcasmFwdFn457(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
 //go:linkname gcasmLNgcasmFwdFn458 anydoc-go/core/p1.Fn458
-func gcasmLNgcasmFwdFn458(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+func gcasmLNgcasmFwdFn458(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
 
-func gcasmFwdFn458(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn458(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn460 anydoc-go/core/p1.Fn460
-func gcasmLNgcasmFwdFn460(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn460(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn460(a0, a1, a2, a3)
+func gcasmFwdFn458(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
+	gcasmLNgcasmFwdFn458(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn461 anydoc-go/core/p1.Fn461
@@ -1326,73 +1304,80 @@ func gcasmFwdFn461(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 }
 
 //go:linkname gcasmLNgcasmFwdFn462 anydoc-go/core/p1.Fn462
-func gcasmLNgcasmFwdFn462(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn462(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn462(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn462(a0, a1, a2)
+func gcasmFwdFn462(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn462(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn464 anydoc-go/core/p1.Fn464
-func gcasmLNgcasmFwdFn464(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn464(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn464(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn464(a0, a1, a2)
+func gcasmFwdFn464(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn464(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn465 anydoc-go/core/p1.Fn465
+func gcasmLNgcasmFwdFn465(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn465(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn465(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn466 anydoc-go/core/p1.Fn466
-func gcasmLNgcasmFwdFn466(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+func gcasmLNgcasmFwdFn466(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn466(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn466(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn466(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn466(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn467 anydoc-go/core/p1.Fn467
-func gcasmLNgcasmFwdFn467(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn468 anydoc-go/core/p1.Fn468
+func gcasmLNgcasmFwdFn468(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn467(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn467(a0, a1, a2, a3, a4)
+func gcasmFwdFn468(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn468(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn470 anydoc-go/core/p1.Fn470
-func gcasmLNgcasmFwdFn470(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn470(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn470(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn470(a0, a1)
+func gcasmFwdFn470(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn470(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn472 anydoc-go/core/p1.Fn472
-func gcasmLNgcasmFwdFn472(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn471 anydoc-go/core/p1.Fn471
+func gcasmLNgcasmFwdFn471(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn472(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn472(a0, a1, a2)
+func gcasmFwdFn471(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn471(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn474 anydoc-go/core/p1.Fn474
-func gcasmLNgcasmFwdFn474(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn474(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn474(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn474(a0, a1, a2, a3, a4)
+func gcasmFwdFn474(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn474(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn475 anydoc-go/core/p1.Fn475
-func gcasmLNgcasmFwdFn475(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn476 anydoc-go/core/p1.Fn476
+func gcasmLNgcasmFwdFn476(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn475(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn475(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn477 anydoc-go/core/p1.Fn477
-func gcasmLNgcasmFwdFn477(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn477(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn477(a0, a1)
+func gcasmFwdFn476(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn476(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn478 anydoc-go/core/p1.Fn478
-func gcasmLNgcasmFwdFn478(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn478(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn478(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn478(a0, a1)
+func gcasmFwdFn478(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn478(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn479 anydoc-go/core/p1.Fn479
+func gcasmLNgcasmFwdFn479(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn479(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn479(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn48 anydoc-go/core/p1.Fn48
@@ -1403,38 +1388,45 @@ func gcasmFwdFn48(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 in
 }
 
 //go:linkname gcasmLNgcasmFwdFn481 anydoc-go/core/p1.Fn481
-func gcasmLNgcasmFwdFn481(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn481(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn481(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn481(a0, a1, a2)
+func gcasmFwdFn481(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn481(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn483 anydoc-go/core/p1.Fn483
-func gcasmLNgcasmFwdFn483(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn482 anydoc-go/core/p1.Fn482
+func gcasmLNgcasmFwdFn482(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn483(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn483(a0, a1, a2)
+func gcasmFwdFn482(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn482(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn486 anydoc-go/core/p1.Fn486
-func gcasmLNgcasmFwdFn486(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn485 anydoc-go/core/p1.Fn485
+func gcasmLNgcasmFwdFn485(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn486(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn486(a0, a1, a2, a3)
+func gcasmFwdFn485(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn485(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn495 anydoc-go/core/p1.Fn495
-func gcasmLNgcasmFwdFn495(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn487 anydoc-go/core/p1.Fn487
+func gcasmLNgcasmFwdFn487(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn495(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn495(a0, a1)
+func gcasmFwdFn487(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn487(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn496 anydoc-go/core/p1.Fn496
-func gcasmLNgcasmFwdFn496(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn490 anydoc-go/core/p1.Fn490
+func gcasmLNgcasmFwdFn490(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn496(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn496(a0, a1)
+func gcasmFwdFn490(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn490(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn499 anydoc-go/core/p1.Fn499
+func gcasmLNgcasmFwdFn499(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn499(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn499(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5 anydoc-go/core/p1.Fn5
@@ -1444,39 +1436,25 @@ func gcasmFwdFn5(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn5(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn504 anydoc-go/core/p1.Fn504
-func gcasmLNgcasmFwdFn504(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn500 anydoc-go/core/p1.Fn500
+func gcasmLNgcasmFwdFn500(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn504(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn504(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn505 anydoc-go/core/p1.Fn505
-func gcasmLNgcasmFwdFn505(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn505(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn505(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn506 anydoc-go/core/p1.Fn506
-func gcasmLNgcasmFwdFn506(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn506(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn506(a0, a1, a2, a3, a4)
+func gcasmFwdFn500(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn500(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn508 anydoc-go/core/p1.Fn508
-func gcasmLNgcasmFwdFn508(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn508(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn508(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn508(a0, a1, a2)
+func gcasmFwdFn508(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn508(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn509 anydoc-go/core/p1.Fn509
-func gcasmLNgcasmFwdFn509(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn509(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn509(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn509(a0, a1, a2)
+func gcasmFwdFn509(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn509(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn51 anydoc-go/core/p1.Fn51
@@ -1487,59 +1465,73 @@ func gcasmFwdFn51(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 }
 
 //go:linkname gcasmLNgcasmFwdFn510 anydoc-go/core/p1.Fn510
-func gcasmLNgcasmFwdFn510(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn510(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn510(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn510(a0, a1, a2, a3)
+func gcasmFwdFn510(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn510(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn512 anydoc-go/core/p1.Fn512
-func gcasmLNgcasmFwdFn512(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn512(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn512(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn512(a0, a1, a2, a3)
+func gcasmFwdFn512(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn512(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn513 anydoc-go/core/p1.Fn513
-func gcasmLNgcasmFwdFn513(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn513(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn513(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn513(a0, a1)
+func gcasmFwdFn513(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn513(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn514 anydoc-go/core/p1.Fn514
+func gcasmLNgcasmFwdFn514(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn514(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn514(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn516 anydoc-go/core/p1.Fn516
-func gcasmLNgcasmFwdFn516(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn516(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn516(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn516(a0, a1, a2, a3)
+func gcasmFwdFn516(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn516(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn519 anydoc-go/core/p1.Fn519
-func gcasmLNgcasmFwdFn519(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn517 anydoc-go/core/p1.Fn517
+func gcasmLNgcasmFwdFn517(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn519(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn519(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn517(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn517(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn524 anydoc-go/core/p1.Fn524
-func gcasmLNgcasmFwdFn524(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn520 anydoc-go/core/p1.Fn520
+func gcasmLNgcasmFwdFn520(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn524(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn524(a0, a1)
+func gcasmFwdFn520(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn520(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn530 anydoc-go/core/p1.Fn530
-func gcasmLNgcasmFwdFn530(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn523 anydoc-go/core/p1.Fn523
+func gcasmLNgcasmFwdFn523(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn530(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn530(a0, a1)
+func gcasmFwdFn523(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn523(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn531 anydoc-go/core/p1.Fn531
-func gcasmLNgcasmFwdFn531(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn528 anydoc-go/core/p1.Fn528
+func gcasmLNgcasmFwdFn528(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn531(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn531(a0, a1)
+func gcasmFwdFn528(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn528(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn534 anydoc-go/core/p1.Fn534
+func gcasmLNgcasmFwdFn534(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn534(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn534(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn535 anydoc-go/core/p1.Fn535
@@ -1549,144 +1541,137 @@ func gcasmFwdFn535(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn535(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn536 anydoc-go/core/p1.Fn536
-func gcasmLNgcasmFwdFn536(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn539 anydoc-go/core/p1.Fn539
+func gcasmLNgcasmFwdFn539(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn536(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn536(a0, a1, a2)
+func gcasmFwdFn539(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn539(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn537 anydoc-go/core/p1.Fn537
-func gcasmLNgcasmFwdFn537(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn540 anydoc-go/core/p1.Fn540
+func gcasmLNgcasmFwdFn540(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn537(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn537(a0, a1)
+func gcasmFwdFn540(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn540(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn538 anydoc-go/core/p1.Fn538
-func gcasmLNgcasmFwdFn538(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn541 anydoc-go/core/p1.Fn541
+func gcasmLNgcasmFwdFn541(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn538(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn538(a0, a1, a2, a3)
+func gcasmFwdFn541(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn541(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn542 anydoc-go/core/p1.Fn542
-func gcasmLNgcasmFwdFn542(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn542(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn542(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn542(a0, a1, a2, a3, a4)
+func gcasmFwdFn542(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn542(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn544 anydoc-go/core/p1.Fn544
-func gcasmLNgcasmFwdFn544(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32)
+//go:linkname gcasmLNgcasmFwdFn546 anydoc-go/core/p1.Fn546
+func gcasmLNgcasmFwdFn546(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn544(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) {
-	gcasmLNgcasmFwdFn544(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
-}
-
-//go:linkname gcasmLNgcasmFwdFn545 anydoc-go/core/p1.Fn545
-func gcasmLNgcasmFwdFn545(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn545(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn545(a0, a1)
+func gcasmFwdFn546(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn546(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn548 anydoc-go/core/p1.Fn548
-func gcasmLNgcasmFwdFn548(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn548(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32)
 
-func gcasmFwdFn548(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn548(a0, a1, a2, a3)
+func gcasmFwdFn548(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) {
+	gcasmLNgcasmFwdFn548(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 }
 
 //go:linkname gcasmLNgcasmFwdFn549 anydoc-go/core/p1.Fn549
-func gcasmLNgcasmFwdFn549(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn549(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn549(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn549(a0, a1, a2, a3, a4)
+func gcasmFwdFn549(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn549(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn550 anydoc-go/core/p1.Fn550
-func gcasmLNgcasmFwdFn550(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn552 anydoc-go/core/p1.Fn552
+func gcasmLNgcasmFwdFn552(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn550(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn550(a0, a1, a2, a3, a4)
+func gcasmFwdFn552(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn552(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn551 anydoc-go/core/p1.Fn551
-func gcasmLNgcasmFwdFn551(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn553 anydoc-go/core/p1.Fn553
+func gcasmLNgcasmFwdFn553(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn551(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn551(a0, a1)
+func gcasmFwdFn553(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn553(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn558 anydoc-go/core/p1.Fn558
-func gcasmLNgcasmFwdFn558(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn554 anydoc-go/core/p1.Fn554
+func gcasmLNgcasmFwdFn554(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn558(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn558(a0, a1)
+func gcasmFwdFn554(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn554(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn559 anydoc-go/core/p1.Fn559
-func gcasmLNgcasmFwdFn559(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn555 anydoc-go/core/p1.Fn555
+func gcasmLNgcasmFwdFn555(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn559(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn559(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn560 anydoc-go/core/p1.Fn560
-func gcasmLNgcasmFwdFn560(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn560(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn560(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn561 anydoc-go/core/p1.Fn561
-func gcasmLNgcasmFwdFn561(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn561(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn561(a0, a1)
+func gcasmFwdFn555(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn555(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn562 anydoc-go/core/p1.Fn562
-func gcasmLNgcasmFwdFn562(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+func gcasmLNgcasmFwdFn562(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn562(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn562(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn562(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn562(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn563 anydoc-go/core/p1.Fn563
-func gcasmLNgcasmFwdFn563(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+func gcasmLNgcasmFwdFn563(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn563(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn563(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn563(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn563(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn564 anydoc-go/core/p1.Fn564
-func gcasmLNgcasmFwdFn564(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn564(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn564(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn564(a0, a1, a2, a3, a4)
+func gcasmFwdFn564(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn564(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn565 anydoc-go/core/p1.Fn565
+func gcasmLNgcasmFwdFn565(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn565(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn565(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn566 anydoc-go/core/p1.Fn566
-func gcasmLNgcasmFwdFn566(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn566(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn566(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn566(a0, a1)
+func gcasmFwdFn566(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn566(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn577 anydoc-go/core/p1.Fn577
-func gcasmLNgcasmFwdFn577(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn567 anydoc-go/core/p1.Fn567
+func gcasmLNgcasmFwdFn567(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn577(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn577(a0, a1)
+func gcasmFwdFn567(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn567(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn578 anydoc-go/core/p1.Fn578
-func gcasmLNgcasmFwdFn578(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn568 anydoc-go/core/p1.Fn568
+func gcasmLNgcasmFwdFn568(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn578(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn578(a0, a1, a2)
+func gcasmFwdFn568(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn568(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn570 anydoc-go/core/p1.Fn570
+func gcasmLNgcasmFwdFn570(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn570(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn570(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn58 anydoc-go/core/p1.Fn58
@@ -1697,31 +1682,24 @@ func gcasmFwdFn58(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn581 anydoc-go/core/p1.Fn581
-func gcasmLNgcasmFwdFn581(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn581(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn581(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn581(a0, a1, a2)
+func gcasmFwdFn581(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn581(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn584 anydoc-go/core/p1.Fn584
-func gcasmLNgcasmFwdFn584(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn582 anydoc-go/core/p1.Fn582
+func gcasmLNgcasmFwdFn582(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn584(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn584(a0, a1)
+func gcasmFwdFn582(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn582(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn585 anydoc-go/core/p1.Fn585
-func gcasmLNgcasmFwdFn585(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn585(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn585(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn585(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn586 anydoc-go/core/p1.Fn586
-func gcasmLNgcasmFwdFn586(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn586(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn586(a0, a1)
+func gcasmFwdFn585(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn585(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn588 anydoc-go/core/p1.Fn588
@@ -1732,136 +1710,143 @@ func gcasmFwdFn588(a0 *base.Module, a1 int32) {
 }
 
 //go:linkname gcasmLNgcasmFwdFn589 anydoc-go/core/p1.Fn589
-func gcasmLNgcasmFwdFn589(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn589(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn589(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn589(a0, a1, a2)
+func gcasmFwdFn589(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn589(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn591 anydoc-go/core/p1.Fn591
-func gcasmLNgcasmFwdFn591(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn590 anydoc-go/core/p1.Fn590
+func gcasmLNgcasmFwdFn590(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn591(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn591(a0, a1)
+func gcasmFwdFn590(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn590(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn592 anydoc-go/core/p1.Fn592
-func gcasmLNgcasmFwdFn592(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn592(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn592(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn592(a0, a1, a2, a3, a4)
+func gcasmFwdFn592(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn592(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn593 anydoc-go/core/p1.Fn593
-func gcasmLNgcasmFwdFn593(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn593(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn593(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn593(a0, a1, a2, a3)
+func gcasmFwdFn593(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn593(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn598 anydoc-go/core/p1.Fn598
-func gcasmLNgcasmFwdFn598(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn595 anydoc-go/core/p1.Fn595
+func gcasmLNgcasmFwdFn595(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn598(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn598(a0, a1, a2, a3, a4)
+func gcasmFwdFn595(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn595(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn599 anydoc-go/core/p1.Fn599
-func gcasmLNgcasmFwdFn599(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn596 anydoc-go/core/p1.Fn596
+func gcasmLNgcasmFwdFn596(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn599(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn599(a0, a1)
+func gcasmFwdFn596(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn596(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn597 anydoc-go/core/p1.Fn597
+func gcasmLNgcasmFwdFn597(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn597(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn597(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn602 anydoc-go/core/p1.Fn602
-func gcasmLNgcasmFwdFn602(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn602(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn602(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn602(a0, a1)
+func gcasmFwdFn602(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn602(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn604 anydoc-go/core/p1.Fn604
-func gcasmLNgcasmFwdFn604(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn603 anydoc-go/core/p1.Fn603
+func gcasmLNgcasmFwdFn603(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn604(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn604(a0, a1)
+func gcasmFwdFn603(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn603(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn606 anydoc-go/core/p1.Fn606
-func gcasmLNgcasmFwdFn606(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn606(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn606(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn606(a0, a1, a2)
+func gcasmFwdFn606(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn606(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn607 anydoc-go/core/p1.Fn607
-func gcasmLNgcasmFwdFn607(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn608 anydoc-go/core/p1.Fn608
+func gcasmLNgcasmFwdFn608(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn607(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn607(a0, a1, a2, a3, a4)
+func gcasmFwdFn608(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn608(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn609 anydoc-go/core/p1.Fn609
-func gcasmLNgcasmFwdFn609(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn610 anydoc-go/core/p1.Fn610
+func gcasmLNgcasmFwdFn610(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn609(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn609(a0, a1, a2, a3)
+func gcasmFwdFn610(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn610(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn614 anydoc-go/core/p1.Fn614
-func gcasmLNgcasmFwdFn614(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn611 anydoc-go/core/p1.Fn611
+func gcasmLNgcasmFwdFn611(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn614(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn614(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn611(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn611(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn616 anydoc-go/core/p1.Fn616
-func gcasmLNgcasmFwdFn616(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn613 anydoc-go/core/p1.Fn613
+func gcasmLNgcasmFwdFn613(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn616(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn616(a0, a1, a2, a3)
+func gcasmFwdFn613(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn613(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn617 anydoc-go/core/p1.Fn617
-func gcasmLNgcasmFwdFn617(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn618 anydoc-go/core/p1.Fn618
+func gcasmLNgcasmFwdFn618(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn617(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn617(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn62 anydoc-go/core/p1.Fn62
-func gcasmLNgcasmFwdFn62(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn62(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn62(a0, a1, a2, a3)
+func gcasmFwdFn618(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn618(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn620 anydoc-go/core/p1.Fn620
-func gcasmLNgcasmFwdFn620(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn620(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn620(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn620(a0, a1)
+func gcasmFwdFn620(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn620(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn623 anydoc-go/core/p1.Fn623
-func gcasmLNgcasmFwdFn623(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn621 anydoc-go/core/p1.Fn621
+func gcasmLNgcasmFwdFn621(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn623(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn623(a0, a1)
+func gcasmFwdFn621(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn621(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn625 anydoc-go/core/p1.Fn625
-func gcasmLNgcasmFwdFn625(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn624 anydoc-go/core/p1.Fn624
+func gcasmLNgcasmFwdFn624(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn625(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn625(a0, a1)
+func gcasmFwdFn624(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn624(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn626 anydoc-go/core/p1.Fn626
-func gcasmLNgcasmFwdFn626(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn627 anydoc-go/core/p1.Fn627
+func gcasmLNgcasmFwdFn627(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn626(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn626(a0, a1)
+func gcasmFwdFn627(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn627(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn629 anydoc-go/core/p1.Fn629
+func gcasmLNgcasmFwdFn629(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn629(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn629(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn63 anydoc-go/core/p1.Fn63
@@ -1871,32 +1856,11 @@ func gcasmFwdFn63(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn63(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn636 anydoc-go/core/p1.Fn636
-func gcasmLNgcasmFwdFn636(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn630 anydoc-go/core/p1.Fn630
+func gcasmLNgcasmFwdFn630(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn636(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn636(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn637 anydoc-go/core/p1.Fn637
-func gcasmLNgcasmFwdFn637(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn637(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn637(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn638 anydoc-go/core/p1.Fn638
-func gcasmLNgcasmFwdFn638(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
-
-func gcasmFwdFn638(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn638(a0, a1, a2, a3, a4, a5, a6)
-}
-
-//go:linkname gcasmLNgcasmFwdFn639 anydoc-go/core/p1.Fn639
-func gcasmLNgcasmFwdFn639(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
-
-func gcasmFwdFn639(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn639(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn630(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn630(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn64 anydoc-go/core/p1.Fn64
@@ -1906,32 +1870,39 @@ func gcasmFwdFn64(a0 *base.Module, a1 int64, a2 int64, a3 int32) int64 {
 	return gcasmLNgcasmFwdFn64(a0, a1, a2, a3)
 }
 
+//go:linkname gcasmLNgcasmFwdFn641 anydoc-go/core/p1.Fn641
+func gcasmLNgcasmFwdFn641(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn641(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn641(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn642 anydoc-go/core/p1.Fn642
+func gcasmLNgcasmFwdFn642(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn642(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn642(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn643 anydoc-go/core/p1.Fn643
+func gcasmLNgcasmFwdFn643(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+
+func gcasmFwdFn643(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn643(a0, a1, a2, a3, a4, a5, a6)
+}
+
 //go:linkname gcasmLNgcasmFwdFn644 anydoc-go/core/p1.Fn644
-func gcasmLNgcasmFwdFn644(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn644(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
 
-func gcasmFwdFn644(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn644(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn645 anydoc-go/core/p1.Fn645
-func gcasmLNgcasmFwdFn645(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
-
-func gcasmFwdFn645(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn645(a0, a1, a2, a3, a4, a5, a6, a7)
-}
-
-//go:linkname gcasmLNgcasmFwdFn647 anydoc-go/core/p1.Fn647
-func gcasmLNgcasmFwdFn647(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
-
-func gcasmFwdFn647(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn647(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn644(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
+	gcasmLNgcasmFwdFn644(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn649 anydoc-go/core/p1.Fn649
-func gcasmLNgcasmFwdFn649(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn649(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn649(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn649(a0, a1)
+func gcasmFwdFn649(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn649(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn65 anydoc-go/core/p1.Fn65
@@ -1941,60 +1912,46 @@ func gcasmFwdFn65(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn65(a0, a1, a2, a3)
 }
 
+//go:linkname gcasmLNgcasmFwdFn650 anydoc-go/core/p1.Fn650
+func gcasmLNgcasmFwdFn650(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
+
+func gcasmFwdFn650(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
+	gcasmLNgcasmFwdFn650(a0, a1, a2, a3, a4, a5, a6, a7)
+}
+
 //go:linkname gcasmLNgcasmFwdFn652 anydoc-go/core/p1.Fn652
-func gcasmLNgcasmFwdFn652(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+func gcasmLNgcasmFwdFn652(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn652(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn652(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn652(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn652(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn661 anydoc-go/core/p1.Fn661
-func gcasmLNgcasmFwdFn661(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn654 anydoc-go/core/p1.Fn654
+func gcasmLNgcasmFwdFn654(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn661(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn661(a0, a1)
+func gcasmFwdFn654(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn654(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn664 anydoc-go/core/p1.Fn664
-func gcasmLNgcasmFwdFn664(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn657 anydoc-go/core/p1.Fn657
+func gcasmLNgcasmFwdFn657(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn664(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn664(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn665 anydoc-go/core/p1.Fn665
-func gcasmLNgcasmFwdFn665(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn665(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn665(a0, a1, a2, a3)
+func gcasmFwdFn657(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn657(a0, a1, a2, a3, a4, a5, a6)
 }
 
 //go:linkname gcasmLNgcasmFwdFn666 anydoc-go/core/p1.Fn666
-func gcasmLNgcasmFwdFn666(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn666(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn666(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn666(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn667 anydoc-go/core/p1.Fn667
-func gcasmLNgcasmFwdFn667(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn667(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn667(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn668 anydoc-go/core/p1.Fn668
-func gcasmLNgcasmFwdFn668(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn668(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn668(a0, a1, a2)
+func gcasmFwdFn666(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn666(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn669 anydoc-go/core/p1.Fn669
-func gcasmLNgcasmFwdFn669(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn669(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn669(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn669(a0, a1, a2, a3)
+func gcasmFwdFn669(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn669(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn670 anydoc-go/core/p1.Fn670
@@ -2005,80 +1962,94 @@ func gcasmFwdFn670(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn671 anydoc-go/core/p1.Fn671
-func gcasmLNgcasmFwdFn671(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn671(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn671(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn671(a0, a1, a2, a3)
+func gcasmFwdFn671(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn671(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn672 anydoc-go/core/p1.Fn672
+func gcasmLNgcasmFwdFn672(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn672(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn672(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn673 anydoc-go/core/p1.Fn673
+func gcasmLNgcasmFwdFn673(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn673(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn673(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn674 anydoc-go/core/p1.Fn674
+func gcasmLNgcasmFwdFn674(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn674(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn674(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn675 anydoc-go/core/p1.Fn675
+func gcasmLNgcasmFwdFn675(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn675(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn675(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn676 anydoc-go/core/p1.Fn676
-func gcasmLNgcasmFwdFn676(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn676(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn676(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn676(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn677 anydoc-go/core/p1.Fn677
-func gcasmLNgcasmFwdFn677(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn677(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn677(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn680 anydoc-go/core/p1.Fn680
-func gcasmLNgcasmFwdFn680(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn680(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn680(a0, a1, a2)
+func gcasmFwdFn676(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn676(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn681 anydoc-go/core/p1.Fn681
-func gcasmLNgcasmFwdFn681(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn681(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn681(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn681(a0, a1, a2)
+func gcasmFwdFn681(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn681(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn683 anydoc-go/core/p1.Fn683
-func gcasmLNgcasmFwdFn683(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32, a12 int32, a13 int32, a14 int32, a15 int32) int32
+//go:linkname gcasmLNgcasmFwdFn682 anydoc-go/core/p1.Fn682
+func gcasmLNgcasmFwdFn682(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn683(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32, a12 int32, a13 int32, a14 int32, a15 int32) int32 {
-	return gcasmLNgcasmFwdFn683(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
+func gcasmFwdFn682(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn682(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn685 anydoc-go/core/p1.Fn685
+func gcasmLNgcasmFwdFn685(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn685(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn685(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn686 anydoc-go/core/p1.Fn686
-func gcasmLNgcasmFwdFn686(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+func gcasmLNgcasmFwdFn686(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn686(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn686(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn686(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn686(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn692 anydoc-go/core/p1.Fn692
-func gcasmLNgcasmFwdFn692(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn688 anydoc-go/core/p1.Fn688
+func gcasmLNgcasmFwdFn688(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32, a12 int32, a13 int32, a14 int32, a15 int32) int32
 
-func gcasmFwdFn692(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn692(a0, a1)
+func gcasmFwdFn688(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32, a12 int32, a13 int32, a14 int32, a15 int32) int32 {
+	return gcasmLNgcasmFwdFn688(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
 }
 
-//go:linkname gcasmLNgcasmFwdFn695 anydoc-go/core/p1.Fn695
-func gcasmLNgcasmFwdFn695(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn691 anydoc-go/core/p1.Fn691
+func gcasmLNgcasmFwdFn691(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn695(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn695(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn696 anydoc-go/core/p1.Fn696
-func gcasmLNgcasmFwdFn696(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn696(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn696(a0, a1, a2, a3)
+func gcasmFwdFn691(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn691(a0, a1, a2, a3, a4, a5, a6)
 }
 
 //go:linkname gcasmLNgcasmFwdFn697 anydoc-go/core/p1.Fn697
-func gcasmLNgcasmFwdFn697(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn697(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn697(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn697(a0, a1, a2)
+func gcasmFwdFn697(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn697(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7 anydoc-go/core/p1.Fn7
@@ -2088,11 +2059,25 @@ func gcasmFwdFn7(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn7(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn707 anydoc-go/core/p1.Fn707
-func gcasmLNgcasmFwdFn707(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn700 anydoc-go/core/p1.Fn700
+func gcasmLNgcasmFwdFn700(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn707(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn707(a0, a1, a2, a3)
+func gcasmFwdFn700(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn700(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn701 anydoc-go/core/p1.Fn701
+func gcasmLNgcasmFwdFn701(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn701(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn701(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn702 anydoc-go/core/p1.Fn702
+func gcasmLNgcasmFwdFn702(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn702(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn702(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn71 anydoc-go/core/p1.Fn71
@@ -2102,137 +2087,123 @@ func gcasmFwdFn71(a0 *base.Module, a1 int64, a2 int64, a3 int32, a4 int32) int64
 	return gcasmLNgcasmFwdFn71(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn710 anydoc-go/core/p1.Fn710
-func gcasmLNgcasmFwdFn710(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn712 anydoc-go/core/p1.Fn712
+func gcasmLNgcasmFwdFn712(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn710(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn710(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn711 anydoc-go/core/p1.Fn711
-func gcasmLNgcasmFwdFn711(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64
-
-func gcasmFwdFn711(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64 {
-	return gcasmLNgcasmFwdFn711(a0, a1, a2, a3, a4)
+func gcasmFwdFn712(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn712(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn715 anydoc-go/core/p1.Fn715
-func gcasmLNgcasmFwdFn715(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn715(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn715(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn715(a0, a1, a2)
+func gcasmFwdFn715(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn715(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn717 anydoc-go/core/p1.Fn717
-func gcasmLNgcasmFwdFn717(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn716 anydoc-go/core/p1.Fn716
+func gcasmLNgcasmFwdFn716(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64
 
-func gcasmFwdFn717(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn717(a0, a1, a2)
+func gcasmFwdFn716(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64 {
+	return gcasmLNgcasmFwdFn716(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn727 anydoc-go/core/p1.Fn727
-func gcasmLNgcasmFwdFn727(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn720 anydoc-go/core/p1.Fn720
+func gcasmLNgcasmFwdFn720(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn727(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn727(a0, a1, a2)
+func gcasmFwdFn720(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn720(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn730 anydoc-go/core/p1.Fn730
-func gcasmLNgcasmFwdFn730(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn722 anydoc-go/core/p1.Fn722
+func gcasmLNgcasmFwdFn722(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn730(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn730(a0, a1, a2, a3)
+func gcasmFwdFn722(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn722(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn731 anydoc-go/core/p1.Fn731
-func gcasmLNgcasmFwdFn731(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn732 anydoc-go/core/p1.Fn732
+func gcasmLNgcasmFwdFn732(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn731(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn731(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn733 anydoc-go/core/p1.Fn733
-func gcasmLNgcasmFwdFn733(a0 *base.Module, a1 int32, a2 int32) int64
-
-func gcasmFwdFn733(a0 *base.Module, a1 int32, a2 int32) int64 {
-	return gcasmLNgcasmFwdFn733(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn734 anydoc-go/core/p1.Fn734
-func gcasmLNgcasmFwdFn734(a0 *base.Module, a1 int64, a2 int32) int64
-
-func gcasmFwdFn734(a0 *base.Module, a1 int64, a2 int32) int64 {
-	return gcasmLNgcasmFwdFn734(a0, a1, a2)
+func gcasmFwdFn732(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn732(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn735 anydoc-go/core/p1.Fn735
-func gcasmLNgcasmFwdFn735(a0 *base.Module, a1 int32, a2 int32) int64
+func gcasmLNgcasmFwdFn735(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn735(a0 *base.Module, a1 int32, a2 int32) int64 {
-	return gcasmLNgcasmFwdFn735(a0, a1, a2)
+func gcasmFwdFn735(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn735(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn747 anydoc-go/core/p1.Fn747
-func gcasmLNgcasmFwdFn747(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64)
+//go:linkname gcasmLNgcasmFwdFn736 anydoc-go/core/p1.Fn736
+func gcasmLNgcasmFwdFn736(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn747(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) {
-	gcasmLNgcasmFwdFn747(a0, a1, a2, a3, a4)
+func gcasmFwdFn736(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn736(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn748 anydoc-go/core/p1.Fn748
-func gcasmLNgcasmFwdFn748(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn738 anydoc-go/core/p1.Fn738
+func gcasmLNgcasmFwdFn738(a0 *base.Module, a1 int32, a2 int32) int64
 
-func gcasmFwdFn748(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn748(a0, a1, a2, a3)
+func gcasmFwdFn738(a0 *base.Module, a1 int32, a2 int32) int64 {
+	return gcasmLNgcasmFwdFn738(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn749 anydoc-go/core/p1.Fn749
-func gcasmLNgcasmFwdFn749(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn739 anydoc-go/core/p1.Fn739
+func gcasmLNgcasmFwdFn739(a0 *base.Module, a1 int64, a2 int32) int64
 
-func gcasmFwdFn749(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn749(a0, a1, a2, a3)
+func gcasmFwdFn739(a0 *base.Module, a1 int64, a2 int32) int64 {
+	return gcasmLNgcasmFwdFn739(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn755 anydoc-go/core/p1.Fn755
-func gcasmLNgcasmFwdFn755(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn740 anydoc-go/core/p1.Fn740
+func gcasmLNgcasmFwdFn740(a0 *base.Module, a1 int32, a2 int32) int64
 
-func gcasmFwdFn755(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn755(a0, a1, a2, a3)
+func gcasmFwdFn740(a0 *base.Module, a1 int32, a2 int32) int64 {
+	return gcasmLNgcasmFwdFn740(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn757 anydoc-go/core/p1.Fn757
-func gcasmLNgcasmFwdFn757(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn752 anydoc-go/core/p1.Fn752
+func gcasmLNgcasmFwdFn752(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64)
 
-func gcasmFwdFn757(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn757(a0, a1, a2)
+func gcasmFwdFn752(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) {
+	gcasmLNgcasmFwdFn752(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn758 anydoc-go/core/p1.Fn758
-func gcasmLNgcasmFwdFn758(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn753 anydoc-go/core/p1.Fn753
+func gcasmLNgcasmFwdFn753(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn758(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn758(a0, a1)
+func gcasmFwdFn753(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn753(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn764 anydoc-go/core/p1.Fn764
-func gcasmLNgcasmFwdFn764(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn754 anydoc-go/core/p1.Fn754
+func gcasmLNgcasmFwdFn754(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn764(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn764(a0, a1, a2)
+func gcasmFwdFn754(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn754(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn765 anydoc-go/core/p1.Fn765
-func gcasmLNgcasmFwdFn765(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn760 anydoc-go/core/p1.Fn760
+func gcasmLNgcasmFwdFn760(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn765(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn765(a0, a1, a2)
+func gcasmFwdFn760(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn760(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn766 anydoc-go/core/p1.Fn766
-func gcasmLNgcasmFwdFn766(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn762 anydoc-go/core/p1.Fn762
+func gcasmLNgcasmFwdFn762(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn766(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn766(a0, a1, a2, a3, a4)
+func gcasmFwdFn762(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn762(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn763 anydoc-go/core/p1.Fn763
+func gcasmLNgcasmFwdFn763(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn763(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn763(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn769 anydoc-go/core/p1.Fn769
@@ -2242,39 +2213,39 @@ func gcasmFwdFn769(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn769(a0, a1, a2)
 }
 
+//go:linkname gcasmLNgcasmFwdFn770 anydoc-go/core/p1.Fn770
+func gcasmLNgcasmFwdFn770(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn770(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn770(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn771 anydoc-go/core/p1.Fn771
+func gcasmLNgcasmFwdFn771(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn771(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn771(a0, a1, a2, a3, a4)
+}
+
 //go:linkname gcasmLNgcasmFwdFn774 anydoc-go/core/p1.Fn774
-func gcasmLNgcasmFwdFn774(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+func gcasmLNgcasmFwdFn774(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn774(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn774(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn775 anydoc-go/core/p1.Fn775
-func gcasmLNgcasmFwdFn775(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn775(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn775(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn776 anydoc-go/core/p1.Fn776
-func gcasmLNgcasmFwdFn776(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn776(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn776(a0, a1, a2, a3)
+func gcasmFwdFn774(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn774(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn779 anydoc-go/core/p1.Fn779
-func gcasmLNgcasmFwdFn779(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn779(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn779(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn779(a0, a1, a2, a3)
+func gcasmFwdFn779(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn779(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn780 anydoc-go/core/p1.Fn780
-func gcasmLNgcasmFwdFn780(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn780(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn780(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn780(a0, a1, a2, a3, a4)
+func gcasmFwdFn780(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn780(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn781 anydoc-go/core/p1.Fn781
@@ -2284,39 +2255,46 @@ func gcasmFwdFn781(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn781(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn787 anydoc-go/core/p1.Fn787
-func gcasmLNgcasmFwdFn787(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn784 anydoc-go/core/p1.Fn784
+func gcasmLNgcasmFwdFn784(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn787(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn787(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn784(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn784(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn790 anydoc-go/core/p1.Fn790
-func gcasmLNgcasmFwdFn790(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn785 anydoc-go/core/p1.Fn785
+func gcasmLNgcasmFwdFn785(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn790(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn790(a0, a1, a2)
+func gcasmFwdFn785(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn785(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn791 anydoc-go/core/p1.Fn791
-func gcasmLNgcasmFwdFn791(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn786 anydoc-go/core/p1.Fn786
+func gcasmLNgcasmFwdFn786(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn791(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn791(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn786(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn786(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn792 anydoc-go/core/p1.Fn792
-func gcasmLNgcasmFwdFn792(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn792(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn792(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn792(a0, a1, a2, a3, a4)
+func gcasmFwdFn792(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn792(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn793 anydoc-go/core/p1.Fn793
-func gcasmLNgcasmFwdFn793(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn795 anydoc-go/core/p1.Fn795
+func gcasmLNgcasmFwdFn795(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn793(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn793(a0, a1, a2, a3, a4)
+func gcasmFwdFn795(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn795(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn796 anydoc-go/core/p1.Fn796
+func gcasmLNgcasmFwdFn796(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+
+func gcasmFwdFn796(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn796(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn797 anydoc-go/core/p1.Fn797
@@ -2324,6 +2302,13 @@ func gcasmLNgcasmFwdFn797(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int3
 
 func gcasmFwdFn797(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
 	gcasmLNgcasmFwdFn797(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn798 anydoc-go/core/p1.Fn798
+func gcasmLNgcasmFwdFn798(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn798(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn798(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8 anydoc-go/core/p1.Fn8
@@ -2334,31 +2319,38 @@ func gcasmFwdFn8(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
 }
 
 //go:linkname gcasmLNgcasmFwdFn802 anydoc-go/core/p1.Fn802
-func gcasmLNgcasmFwdFn802(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn802(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn802(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn802(a0, a1, a2, a3)
+func gcasmFwdFn802(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn802(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn809 anydoc-go/core/p1.Fn809
-func gcasmLNgcasmFwdFn809(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn807 anydoc-go/core/p1.Fn807
+func gcasmLNgcasmFwdFn807(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn809(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn809(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn807(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn807(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn813 anydoc-go/core/p1.Fn813
-func gcasmLNgcasmFwdFn813(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn813(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn813(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn813(a0, a1, a2)
+func gcasmFwdFn813(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn813(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn818 anydoc-go/core/p1.Fn818
-func gcasmLNgcasmFwdFn818(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn817 anydoc-go/core/p1.Fn817
+func gcasmLNgcasmFwdFn817(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn818(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn818(a0, a1)
+func gcasmFwdFn817(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn817(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn822 anydoc-go/core/p1.Fn822
+func gcasmLNgcasmFwdFn822(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn822(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn822(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn84 anydoc-go/core/p1.Fn84
@@ -2741,23 +2733,23 @@ func Fn34(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn48 anydoc-go/core/p1.Fn48
 func Fn48(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn505 anydoc-go/core/p1.Fn505
-func Fn505(m *base.Module, l0 int32)
+//go:linkname Fn509 anydoc-go/core/p1.Fn509
+func Fn509(m *base.Module, l0 int32)
 
 //go:linkname Fn51 anydoc-go/core/p1.Fn51
 func Fn51(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 
-//go:linkname Fn645 anydoc-go/core/p1.Fn645
-func Fn645(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn650 anydoc-go/core/p1.Fn650
+func Fn650(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
 
 //go:linkname Fn7 anydoc-go/core/p1.Fn7
 func Fn7(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn809 anydoc-go/core/p1.Fn809
-func Fn809(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-
 //go:linkname Fn813 anydoc-go/core/p1.Fn813
-func Fn813(m *base.Module, l0 int32, l1 int32)
+func Fn813(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+
+//go:linkname Fn817 anydoc-go/core/p1.Fn817
+func Fn817(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn868 anydoc-go/core/p1.Fn868
 func Fn868(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
@@ -2769,7 +2761,7 @@ func Fn981(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 // Per-function pure fallbacks (signatures ABIInternal cannot
 // register-assign).
 
-func Fn653(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32, l9 int32, l10 int32) {
+func Fn658(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32, l9 int32, l10 int32) {
 	mBase := m.M
 	_ = mBase
 	var v12 int32
@@ -6891,28 +6883,28 @@ func Fn653(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 	}
 L1:
 	;
-	Fn34(m, int32(1274992), int32(93), int32(1275040))
+	Fn34(m, int32(1274096), int32(93), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L2:
 	;
-	Fn34(m, int32(1274928), int32(93), int32(1274976))
+	Fn34(m, int32(1274032), int32(93), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L3:
 	;
-	Fn34(m, int32(1274992), int32(93), int32(1275040))
+	Fn34(m, int32(1274096), int32(93), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L4:
 	;
-	Fn34(m, int32(1274928), int32(93), int32(1274976))
+	Fn34(m, int32(1274032), int32(93), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -6947,7 +6939,7 @@ L7:
 L8:
 	;
 	v6990 = int32(0)
-	Fn127(m, v6990, int32(2), v6990, int32(1081816))
+	Fn127(m, v6990, int32(2), v6990, int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -6976,7 +6968,7 @@ L11:
 	}
 L12:
 	;
-	Fn127(m, int32(0), int32(2), int32(1), int32(1081816))
+	Fn127(m, int32(0), int32(2), int32(1), int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -7000,7 +6992,7 @@ L14:
 	}
 L15:
 	;
-	Fn127(m, int32(2), v55, l2, int32(1090552))
+	Fn127(m, int32(2), v55, l2, int32(1089636))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -7172,7 +7164,7 @@ L32:
 	}
 L33:
 	;
-	Fn34(m, int32(1081565), int32(87), int32(1082264))
+	Fn34(m, int32(1080649), int32(87), int32(1081348))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -7234,7 +7226,7 @@ L39:
 	}
 L40:
 	;
-	Fn34(m, int32(1081565), int32(87), int32(1090188))
+	Fn34(m, int32(1080649), int32(87), int32(1089272))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -7252,14 +7244,14 @@ L41:
 L42:
 	;
 	v5394 = int32(0)
-	Fn127(m, int32(1), v5394, v5394, int32(1082532))
+	Fn127(m, int32(1), v5394, v5394, int32(1081616))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L43:
 	;
-	Fn127(m, int32(0), int32(2), v4451, int32(1081816))
+	Fn127(m, int32(0), int32(2), v4451, int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -7353,35 +7345,35 @@ L53:
 	}
 L54:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1081876))
+	Fn127(m, int32(0), int32(2), v149, int32(1080960))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L55:
 	;
-	Fn127(m, int32(0), int32(2), v209, int32(1081816))
+	Fn127(m, int32(0), int32(2), v209, int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L56:
 	;
-	Fn127(m, int32(0), int32(2), v213, int32(1081816))
+	Fn127(m, int32(0), int32(2), v213, int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L57:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1081952))
+	Fn127(m, int32(0), int32(2), v149, int32(1081036))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L58:
 	;
-	Fn127(m, int32(6), int32(8), v149, int32(1081968))
+	Fn127(m, int32(6), int32(8), v149, int32(1081052))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -7392,41 +7384,41 @@ L59:
 	v2318 = v2316 - int32(32)
 	m.G0 = v2318
 	*(*int32)(unsafe.Add(mBase, uint32(v2318)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v2318))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v2318)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v2318))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v2318)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v2318)+8)) = v36 + int32(95)
 	v2326 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v2318)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v2326)%64) | base.I64_extend_i32_u(v2318+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v2318)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v2326)%64) | base.I64_extend_i32_u(v2318)
-	Fn34(m, int32(1052553), v2318+int32(16), int32(1082016))
+	Fn34(m, int32(1052553), v2318+int32(16), int32(1081100))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L60:
 	;
-	Fn127(m, int32(8), int32(10), v149, int32(1081984))
+	Fn127(m, int32(8), int32(10), v149, int32(1081068))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L61:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1082032))
+	Fn127(m, int32(0), int32(2), v149, int32(1081116))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L62:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1082072))
+	Fn127(m, int32(0), int32(2), v149, int32(1081156))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L63:
 	;
-	Fn127(m, int32(1), v1686, v1685, int32(1091064))
+	Fn127(m, int32(1), v1686, v1685, int32(1090148))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -7609,7 +7601,7 @@ L89:
 	goto L90
 L90:
 	;
-	Fn809(m, v164+int32(4), v173, v174, v185, v158, v158)
+	Fn813(m, v164+int32(4), v173, v174, v185, v158, v158)
 	mBase = m.M
 	v187 = *(*int32)(unsafe.Add(mBase, uint32(v164)+4))
 	if v187 != int32(1) {
@@ -7651,7 +7643,7 @@ L94:
 	}
 L95:
 	;
-	v216 = int32(1081892)
+	v216 = int32(1080976)
 	v217 = int32(4)
 	v218 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v147))))
 	if base.Ui32(l8) <= base.Ui32(v218) {
@@ -7850,7 +7842,7 @@ L121:
 	goto L122
 L122:
 	;
-	Fn809(m, v292+int32(4), v301, v302, v313, v287, v287)
+	Fn813(m, v292+int32(4), v301, v302, v313, v287, v287)
 	mBase = m.M
 	v315 = *(*int32)(unsafe.Add(mBase, uint32(v292)+4))
 	if v315 != int32(1) {
@@ -7968,7 +7960,7 @@ L140:
 	goto L141
 L141:
 	;
-	Fn809(m, v350+int32(4), v359, v360, v371, v344, v344)
+	Fn813(m, v350+int32(4), v359, v360, v371, v344, v344)
 	mBase = m.M
 	v373 = *(*int32)(unsafe.Add(mBase, uint32(v350)+4))
 	if v373 != int32(1) {
@@ -7994,7 +7986,7 @@ L143:
 	}
 L144:
 	;
-	Fn813(m, v234<<(uint(v392)%32)&int32(65535), v36+int32(28))
+	Fn817(m, v234<<(uint(v392)%32)&int32(65535), v36+int32(28))
 	mBase = m.M
 	if v234&int32(1) == int32(0) {
 		goto L162
@@ -8082,7 +8074,7 @@ L158:
 	goto L159
 L159:
 	;
-	Fn809(m, v408+int32(4), v417, v418, v429, v402, v402)
+	Fn813(m, v408+int32(4), v417, v418, v429, v402, v402)
 	mBase = m.M
 	v431 = *(*int32)(unsafe.Add(mBase, uint32(v408)+4))
 	if v431 != int32(1) {
@@ -8111,7 +8103,7 @@ L162:
 	v514 = v233 + int32(1)
 	*(*uint16)(unsafe.Add(mBase, uint32(v36)+48)) = uint16(v514)
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = v96
-	v523 = Fn51(m, v36+int32(28), int32(1081896), int32(1052562), v36+int32(64))
+	v523 = Fn51(m, v36+int32(28), int32(1080980), int32(1052562), v36+int32(64))
 	mBase = m.M
 	if v523 != 0 {
 		goto L180
@@ -8200,7 +8192,7 @@ L176:
 	goto L177
 L177:
 	;
-	Fn809(m, v470+int32(4), v479, v480, v491, v464, v464)
+	Fn813(m, v470+int32(4), v479, v480, v491, v464, v464)
 	mBase = m.M
 	v493 = *(*int32)(unsafe.Add(mBase, uint32(v470)+4))
 	if v493 != int32(1) {
@@ -8230,13 +8222,13 @@ L180:
 	v539 = v537 - int32(32)
 	m.G0 = v539
 	*(*int32)(unsafe.Add(mBase, uint32(v539)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v539))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v539)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v539))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v539)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v539)+8)) = v36 + int32(95)
 	v547 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v539)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v547)%64) | base.I64_extend_i32_u(v539+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v539)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v547)%64) | base.I64_extend_i32_u(v539)
-	Fn34(m, int32(1052553), v539+int32(16), int32(1081936))
+	Fn34(m, int32(1052553), v539+int32(16), int32(1081020))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -8361,7 +8353,7 @@ L195:
 L196:
 	;
 	v625 = int32(4)
-	v626 = int32(1081892)
+	v626 = int32(1080976)
 	v627 = *(*int32)(unsafe.Add(mBase, uint32(v36)+28))
 	v628 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
 	if base.Ui32(int32(3)) < base.Ui32(v627-v628) {
@@ -8466,7 +8458,7 @@ L211:
 	goto L212
 L212:
 	;
-	Fn809(m, v643+int32(4), v652, v653, v664, v638, v638)
+	Fn813(m, v643+int32(4), v652, v653, v664, v638, v638)
 	mBase = m.M
 	v666 = *(*int32)(unsafe.Add(mBase, uint32(v643)+4))
 	if v666 != int32(1) {
@@ -8581,7 +8573,7 @@ L229:
 	goto L230
 L230:
 	;
-	Fn809(m, v704+int32(4), v713, v714, v725, v698, v698)
+	Fn813(m, v704+int32(4), v713, v714, v725, v698, v698)
 	mBase = m.M
 	v727 = *(*int32)(unsafe.Add(mBase, uint32(v704)+4))
 	if v727 != int32(1) {
@@ -8682,7 +8674,7 @@ L245:
 	goto L246
 L246:
 	;
-	Fn809(m, v756+int32(4), v765, v766, v777, v750, v750)
+	Fn813(m, v756+int32(4), v765, v766, v777, v750, v750)
 	mBase = m.M
 	v779 = *(*int32)(unsafe.Add(mBase, uint32(v756)+4))
 	if v779 != int32(1) {
@@ -8710,12 +8702,12 @@ L249:
 	;
 	v800 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v129)+7)))
 	v802 = v36 + int32(28)
-	Fn813(m, v800, v802)
+	Fn817(m, v800, v802)
 	mBase = m.M
 	v804 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v129)+3)))
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+48)) = v804 + int32(1)
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = v101
-	v815 = Fn51(m, v802, int32(1081896), int32(1068479), v36+int32(64))
+	v815 = Fn51(m, v802, int32(1080980), int32(1067570), v36+int32(64))
 	mBase = m.M
 	if v815 != 0 {
 		goto L59
@@ -8733,12 +8725,12 @@ L251:
 	;
 	v818 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v129)+9)))
 	v820 = v36 + int32(28)
-	Fn813(m, v818, v820)
+	Fn817(m, v818, v820)
 	mBase = m.M
 	v822 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v129)+5)))
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+48)) = v822 + int32(1)
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = v101
-	v833 = Fn51(m, v820, int32(1081896), int32(1048733), v36+int32(64))
+	v833 = Fn51(m, v820, int32(1080980), int32(1048733), v36+int32(64))
 	mBase = m.M
 	if v833 != 0 {
 		goto L252
@@ -8751,13 +8743,13 @@ L252:
 	v849 = v847 - int32(32)
 	m.G0 = v849
 	*(*int32)(unsafe.Add(mBase, uint32(v849)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v849))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v849)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v849))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v849)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v849)+8)) = v36 + int32(95)
 	v857 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v849)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v857)%64) | base.I64_extend_i32_u(v849+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v849)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v857)%64) | base.I64_extend_i32_u(v849)
-	Fn34(m, int32(1052553), v849+int32(16), int32(1082000))
+	Fn34(m, int32(1052553), v849+int32(16), int32(1081084))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -8882,7 +8874,7 @@ L267:
 L268:
 	;
 	v935 = int32(4)
-	v936 = int32(1081892)
+	v936 = int32(1080976)
 	v937 = *(*int32)(unsafe.Add(mBase, uint32(v36)+28))
 	v938 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
 	if base.Ui32(int32(3)) < base.Ui32(v937-v938) {
@@ -8987,7 +8979,7 @@ L283:
 	goto L284
 L284:
 	;
-	Fn809(m, v953+int32(4), v962, v963, v974, v948, v948)
+	Fn813(m, v953+int32(4), v962, v963, v974, v948, v948)
 	mBase = m.M
 	v976 = *(*int32)(unsafe.Add(mBase, uint32(v953)+4))
 	if v976 != int32(1) {
@@ -9103,7 +9095,7 @@ L301:
 	goto L302
 L302:
 	;
-	Fn809(m, v1014+int32(4), v1023, v1024, v1035, v1008, v1008)
+	Fn813(m, v1014+int32(4), v1023, v1024, v1035, v1008, v1008)
 	mBase = m.M
 	v1037 = *(*int32)(unsafe.Add(mBase, uint32(v1014)+4))
 	if v1037 != int32(1) {
@@ -9210,7 +9202,7 @@ L317:
 	goto L318
 L318:
 	;
-	Fn809(m, v1068+int32(4), v1077, v1078, v1089, v1063, v1063)
+	Fn813(m, v1068+int32(4), v1077, v1078, v1089, v1063, v1063)
 	mBase = m.M
 	v1091 = *(*int32)(unsafe.Add(mBase, uint32(v1068)+4))
 	if v1091 != int32(1) {
@@ -9236,7 +9228,7 @@ L320:
 	}
 L321:
 	;
-	Fn127(m, int32(6), v149, v149, int32(1082056))
+	Fn127(m, int32(6), v149, v149, int32(1081140))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -9361,7 +9353,7 @@ L335:
 L336:
 	;
 	v1187 = int32(4)
-	v1188 = int32(1081892)
+	v1188 = int32(1080976)
 	v1189 = *(*int32)(unsafe.Add(mBase, uint32(v36)+28))
 	v1190 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
 	if base.Ui32(int32(3)) < base.Ui32(v1189-v1190) {
@@ -9466,7 +9458,7 @@ L351:
 	goto L352
 L352:
 	;
-	Fn809(m, v1205+int32(4), v1214, v1215, v1226, v1200, v1200)
+	Fn813(m, v1205+int32(4), v1214, v1215, v1226, v1200, v1200)
 	mBase = m.M
 	v1228 = *(*int32)(unsafe.Add(mBase, uint32(v1205)+4))
 	if v1228 != int32(1) {
@@ -9582,7 +9574,7 @@ L369:
 	goto L370
 L370:
 	;
-	Fn809(m, v1266+int32(4), v1275, v1276, v1287, v1260, v1260)
+	Fn813(m, v1266+int32(4), v1275, v1276, v1287, v1260, v1260)
 	mBase = m.M
 	v1289 = *(*int32)(unsafe.Add(mBase, uint32(v1266)+4))
 	if v1289 != int32(1) {
@@ -9689,7 +9681,7 @@ L385:
 	goto L386
 L386:
 	;
-	Fn809(m, v1320+int32(4), v1329, v1330, v1341, v1315, v1315)
+	Fn813(m, v1320+int32(4), v1329, v1330, v1341, v1315, v1315)
 	mBase = m.M
 	v1343 = *(*int32)(unsafe.Add(mBase, uint32(v1320)+4))
 	if v1343 != int32(1) {
@@ -9715,7 +9707,7 @@ L388:
 	}
 L389:
 	;
-	Fn127(m, int32(10), v149, v149, int32(1082088))
+	Fn127(m, int32(10), v149, v149, int32(1081172))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -9799,7 +9791,7 @@ L399:
 	}
 L400:
 	;
-	Fn127(m, int32(4), v149, v149, int32(1082104))
+	Fn127(m, int32(4), v149, v149, int32(1081188))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -9827,7 +9819,7 @@ L404:
 	v1439 = *(*int32)(unsafe.Add(mBase, uint32(v36)+20))
 	v1440 = int32(3)
 	*(*uint8)(unsafe.Add(mBase, uint32(v36)+64)) = uint8(v1440)
-	Fn505(m, v36+int32(64))
+	Fn509(m, v36+int32(64))
 	mBase = m.M
 	v1445 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
 	v1446 = *(*int32)(unsafe.Add(mBase, uint32(v36)+32))
@@ -9846,7 +9838,7 @@ L405:
 	}
 L406:
 	;
-	Fn34(m, int32(1081473), int32(89), int32(1082120))
+	Fn34(m, int32(1080557), int32(89), int32(1081204))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -9877,7 +9869,7 @@ L412:
 	v1474 = *(*int32)(unsafe.Add(mBase, uint32(v36)+20))
 	v1475 = int32(3)
 	*(*uint8)(unsafe.Add(mBase, uint32(v36)+64)) = uint8(v1475)
-	Fn505(m, v36+int32(64))
+	Fn509(m, v36+int32(64))
 	mBase = m.M
 	v1480 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
 	v1481 = *(*int32)(unsafe.Add(mBase, uint32(v36)+32))
@@ -9896,7 +9888,7 @@ L413:
 	}
 L414:
 	;
-	Fn34(m, int32(1081473), int32(89), int32(1082136))
+	Fn34(m, int32(1080557), int32(89), int32(1081220))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -9927,7 +9919,7 @@ L420:
 	v1507 = *(*int32)(unsafe.Add(mBase, uint32(v36)+20))
 	v1508 = int32(3)
 	*(*uint8)(unsafe.Add(mBase, uint32(v36)+64)) = uint8(v1508)
-	Fn505(m, v36+int32(64))
+	Fn509(m, v36+int32(64))
 	mBase = m.M
 	v1513 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
 	v1514 = *(*int32)(unsafe.Add(mBase, uint32(v36)+32))
@@ -9946,7 +9938,7 @@ L421:
 	}
 L422:
 	;
-	Fn34(m, int32(1081473), int32(89), int32(1082152))
+	Fn34(m, int32(1080557), int32(89), int32(1081236))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10175,7 +10167,7 @@ L456:
 	goto L457
 L457:
 	;
-	Fn809(m, v1640+int32(4), v1649, v1650, v1661, v1634, v1634)
+	Fn813(m, v1640+int32(4), v1649, v1650, v1661, v1634, v1634)
 	mBase = m.M
 	v1663 = *(*int32)(unsafe.Add(mBase, uint32(v1640)+4))
 	if v1663 != int32(1) {
@@ -10210,7 +10202,7 @@ L460:
 	v1771 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v1764)+24)) = v1771 | base.I64_extend_i32_u(v1764+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v1764)+16)) = v1771 | base.I64_extend_i32_u(v1764+int32(12))
-	Fn34(m, int32(1049806), v1764+int32(16), int32(1082168))
+	Fn34(m, int32(1049806), v1764+int32(16), int32(1081252))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10227,7 +10219,7 @@ L461:
 L462:
 	;
 	v1694 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v129)+2)))
-	Fn645(m, v36+int32(8), l9, v129+int32(3), v1686, v1686, v36+int32(28), v1694&int32(1))
+	Fn650(m, v36+int32(8), l9, v129+int32(3), v1686, v1686, v36+int32(28), v1694&int32(1))
 	mBase = m.M
 	v1698 = *(*int32)(unsafe.Add(mBase, uint32(v36)+28))
 	v1699 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
@@ -10315,7 +10307,7 @@ L475:
 	goto L476
 L476:
 	;
-	Fn809(m, v1709+int32(4), v1718, v1719, v1730, v1703, v1703)
+	Fn813(m, v1709+int32(4), v1718, v1719, v1730, v1703, v1703)
 	mBase = m.M
 	v1732 = *(*int32)(unsafe.Add(mBase, uint32(v1709)+4))
 	if v1732 != int32(1) {
@@ -10346,7 +10338,7 @@ L479:
 	goto L24
 L481:
 	;
-	Fn127(m, int32(5), v149, v149, int32(1082184))
+	Fn127(m, int32(5), v149, v149, int32(1081268))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10366,14 +10358,14 @@ L483:
 	goto L24
 L484:
 	;
-	Fn127(m, int32(0), int32(2), v1802, int32(1082232))
+	Fn127(m, int32(0), int32(2), v1802, int32(1081316))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L485:
 	;
-	Fn127(m, int32(2), v1802, v1802, int32(1082296))
+	Fn127(m, int32(2), v1802, v1802, int32(1081380))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10427,7 +10419,7 @@ L492:
 	v1820 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v1813)+24)) = v1820 | base.I64_extend_i32_u(v1813+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v1813)+16)) = v1820 | base.I64_extend_i32_u(v1813+int32(12))
-	Fn34(m, int32(1049806), v1813+int32(16), int32(1082200))
+	Fn34(m, int32(1049806), v1813+int32(16), int32(1081284))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10451,7 +10443,7 @@ L493:
 	}
 L495:
 	;
-	Fn127(m, int32(2), v1802, v1802, int32(1082216))
+	Fn127(m, int32(2), v1802, v1802, int32(1081300))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10480,7 +10472,7 @@ L498:
 	}
 L499:
 	;
-	Fn127(m, v1855, v1802, v1802, int32(1082248))
+	Fn127(m, v1855, v1802, v1802, int32(1081332))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10511,7 +10503,7 @@ L503:
 	v1868 = *(*int32)(unsafe.Add(mBase, uint32(v36)+20))
 	v1869 = int32(3)
 	*(*uint8)(unsafe.Add(mBase, uint32(v36)+64)) = uint8(v1869)
-	Fn505(m, v36+int32(64))
+	Fn509(m, v36+int32(64))
 	mBase = m.M
 	v1874 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
 	v1875 = *(*int32)(unsafe.Add(mBase, uint32(v36)+32))
@@ -10532,7 +10524,7 @@ L505:
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+68)) = v1942
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+64)) = v1941
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+48)) = v79 | base.I64_extend_i32_u(v36+int32(64))
-	v1954 = Fn51(m, v36+int32(28), int32(1081896), int32(1067291), v36+int32(48))
+	v1954 = Fn51(m, v36+int32(28), int32(1080980), int32(1066382), v36+int32(48))
 	mBase = m.M
 	if v1954 != 0 {
 		goto L529
@@ -10633,7 +10625,7 @@ L519:
 	v1920 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v1913)+24)) = v1920 | base.I64_extend_i32_u(v1913+int32(12))
 	*(*int64)(unsafe.Add(mBase, uint32(v1913)+16)) = v1920 | base.I64_extend_i32_u(v1913+int32(8))
-	Fn34(m, int32(1067546), v1913+int32(16), int32(1082264))
+	Fn34(m, int32(1066637), v1913+int32(16), int32(1081348))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10682,13 +10674,13 @@ L529:
 	v2003 = v2001 - int32(32)
 	m.G0 = v2003
 	*(*int32)(unsafe.Add(mBase, uint32(v2003)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v2003))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v2003)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v2003))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v2003)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v2003)+8)) = v36 + int32(95)
 	v2011 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v2003)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v2011)%64) | base.I64_extend_i32_u(v2003+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v2003)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v2011)%64) | base.I64_extend_i32_u(v2003)
-	Fn34(m, int32(1052553), v2003+int32(16), int32(1082280))
+	Fn34(m, int32(1052553), v2003+int32(16), int32(1081364))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10725,14 +10717,14 @@ L533:
 	goto L531
 L534:
 	;
-	Fn2(m, int32(1274992), int32(46), int32(1275040))
+	Fn2(m, int32(1274096), int32(46), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L535:
 	;
-	Fn2(m, int32(1274928), int32(46), int32(1274976))
+	Fn2(m, int32(1274032), int32(46), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10784,7 +10776,7 @@ L545:
 	v2032 = *(*int32)(unsafe.Add(mBase, uint32(v36)+20))
 	v2033 = int32(3)
 	*(*uint8)(unsafe.Add(mBase, uint32(v36)+64)) = uint8(v2033)
-	Fn505(m, v36+int32(64))
+	Fn509(m, v36+int32(64))
 	mBase = m.M
 	if v1802 == int32(0) {
 		goto L546
@@ -10802,7 +10794,7 @@ L546:
 	v2267 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v2260)+24)) = v2267 | base.I64_extend_i32_u(v2260+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v2260)+16)) = v2267 | base.I64_extend_i32_u(v2260+int32(12))
-	Fn34(m, int32(1049806), v2260+int32(16), int32(1082312))
+	Fn34(m, int32(1049806), v2260+int32(16), int32(1081396))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10825,7 +10817,7 @@ L548:
 L549:
 	;
 	*(*int32)(unsafe.Add(mBase, uint32(l0)+8)) = int32(16)
-	*(*int32)(unsafe.Add(mBase, uint32(l0)+4)) = int32(1082360)
+	*(*int32)(unsafe.Add(mBase, uint32(l0)+4)) = int32(1081444)
 	*(*uint8)(unsafe.Add(mBase, uint32(l0)+1)) = uint8(v2040)
 	v2048 = int32(4)
 	*(*uint8)(unsafe.Add(mBase, uint32(l0))) = uint8(v2048)
@@ -10841,7 +10833,7 @@ L550:
 	v2238 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v2231)+24)) = v2238 | base.I64_extend_i32_u(v2231+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v2231)+16)) = v2238 | base.I64_extend_i32_u(v2231+int32(12))
-	Fn34(m, int32(1049806), v2231+int32(16), int32(1082328))
+	Fn34(m, int32(1049806), v2231+int32(16), int32(1081412))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -10901,7 +10893,7 @@ L557:
 	}
 L558:
 	;
-	Fn34(m, int32(1081473), int32(89), int32(1082344))
+	Fn34(m, int32(1080557), int32(89), int32(1081428))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -11004,7 +10996,7 @@ L576:
 	goto L577
 L577:
 	;
-	Fn809(m, v2133+int32(4), v2142, v2143, v2154, v2127, v2127)
+	Fn813(m, v2133+int32(4), v2142, v2143, v2154, v2127, v2127)
 	mBase = m.M
 	v2156 = *(*int32)(unsafe.Add(mBase, uint32(v2133)+4))
 	if v2156 != int32(1) {
@@ -11070,7 +11062,7 @@ L590:
 L591:
 	;
 	*(*int32)(unsafe.Add(mBase, uint32(l0)+8)) = int32(3)
-	*(*int32)(unsafe.Add(mBase, uint32(l0)+4)) = int32(1090504)
+	*(*int32)(unsafe.Add(mBase, uint32(l0)+4)) = int32(1089588)
 	*(*uint8)(unsafe.Add(mBase, uint32(l0)+1)) = uint8(v150)
 	v2375 = int32(4)
 	*(*uint8)(unsafe.Add(mBase, uint32(l0))) = uint8(v2375)
@@ -11086,7 +11078,7 @@ L592:
 	*(*uint8)(unsafe.Add(mBase, uint32(v36)+64)) = uint8(v2388)
 	v2395 = (v150 + int32(-3)) & int32(255) << (uint(v2384) % 32)
 	v2396 = *(*int32)(unsafe.Add(mBase, uint32(v2395)+uint32(_consts[382])))
-	Fn505(m, v36+int32(64))
+	Fn509(m, v36+int32(64))
 	mBase = m.M
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+44)) = v2396
 	v2401 = *(*int32)(unsafe.Add(mBase, uint32(v2395)+uint32(_consts[383])))
@@ -11105,21 +11097,21 @@ L593:
 	goto L28
 L594:
 	;
-	Fn34(m, int32(1081565), int32(87), int32(1090520))
+	Fn34(m, int32(1080649), int32(87), int32(1089604))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L595:
 	;
-	Fn34(m, int32(1274992), int32(93), int32(1275040))
+	Fn34(m, int32(1274096), int32(93), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L596:
 	;
-	Fn34(m, int32(1274928), int32(93), int32(1274976))
+	Fn34(m, int32(1274032), int32(93), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -11134,7 +11126,7 @@ L598:
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+48)) = v2464
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+72)) = v79 | v82
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = base.I64_extend_i32_u(int32(1))<<(uint(v78)%64) | v90
-	v2478 = Fn51(m, v36+int32(28), int32(1081896), int32(1048599), v36+int32(64))
+	v2478 = Fn51(m, v36+int32(28), int32(1080980), int32(1048599), v36+int32(64))
 	mBase = m.M
 	if v2478 != 0 {
 		goto L622
@@ -11235,7 +11227,7 @@ L612:
 	v2443 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v2436)+24)) = v2443 | base.I64_extend_i32_u(v2436+int32(12))
 	*(*int64)(unsafe.Add(mBase, uint32(v2436)+16)) = v2443 | base.I64_extend_i32_u(v2436+int32(8))
-	Fn34(m, int32(1067546), v2436+int32(16), int32(1090520))
+	Fn34(m, int32(1066637), v2436+int32(16), int32(1089604))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -11284,13 +11276,13 @@ L622:
 	v2510 = v2508 - int32(32)
 	m.G0 = v2510
 	*(*int32)(unsafe.Add(mBase, uint32(v2510)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v2510))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v2510)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v2510))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v2510)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v2510)+8)) = v36 + int32(95)
 	v2518 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v2510)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v2518)%64) | base.I64_extend_i32_u(v2510+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v2510)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v2518)%64) | base.I64_extend_i32_u(v2510)
-	Fn34(m, int32(1052553), v2510+int32(16), int32(1090536))
+	Fn34(m, int32(1052553), v2510+int32(16), int32(1089620))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -11509,7 +11501,7 @@ L659:
 	goto L660
 L660:
 	;
-	Fn809(m, v2624+int32(4), v2633, v2634, v2645, v2619, v2619)
+	Fn813(m, v2624+int32(4), v2633, v2634, v2645, v2619, v2619)
 	mBase = m.M
 	v2647 = *(*int32)(unsafe.Add(mBase, uint32(v2624)+4))
 	if v2647 != int32(1) {
@@ -11535,7 +11527,7 @@ L662:
 	}
 L663:
 	;
-	Fn127(m, int32(6), v149, v149, int32(1090488))
+	Fn127(m, int32(6), v149, v149, int32(1089572))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -11704,7 +11696,7 @@ L686:
 	goto L687
 L687:
 	;
-	Fn809(m, v2742+int32(4), v2751, v2752, v2763, v2737, v2737)
+	Fn813(m, v2742+int32(4), v2751, v2752, v2763, v2737, v2737)
 	mBase = m.M
 	v2765 = *(*int32)(unsafe.Add(mBase, uint32(v2742)+4))
 	if v2765 != int32(1) {
@@ -11730,7 +11722,7 @@ L689:
 	}
 L690:
 	;
-	Fn127(m, v70, v149, v149, int32(1090460))
+	Fn127(m, v70, v149, v149, int32(1089544))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -11899,7 +11891,7 @@ L713:
 	goto L714
 L714:
 	;
-	Fn809(m, v2856+int32(4), v2865, v2866, v2877, v2851, v2851)
+	Fn813(m, v2856+int32(4), v2865, v2866, v2877, v2851, v2851)
 	mBase = m.M
 	v2879 = *(*int32)(unsafe.Add(mBase, uint32(v2856)+4))
 	if v2879 != int32(1) {
@@ -11925,7 +11917,7 @@ L716:
 	}
 L717:
 	;
-	Fn127(m, v73, v149, v149, int32(1090444))
+	Fn127(m, v73, v149, v149, int32(1089528))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12013,13 +12005,13 @@ L728:
 	v3347 = v3345 - int32(32)
 	m.G0 = v3347
 	*(*int32)(unsafe.Add(mBase, uint32(v3347)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v3347))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v3347)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v3347))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v3347)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v3347)+8)) = v36 + int32(95)
 	v3355 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v3347)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v3355)%64) | base.I64_extend_i32_u(v3347+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v3347)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v3355)%64) | base.I64_extend_i32_u(v3347)
-	Fn34(m, int32(1052553), v3347+int32(16), int32(1090428))
+	Fn34(m, int32(1052553), v3347+int32(16), int32(1089512))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12035,7 +12027,7 @@ L729:
 	v3323 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v3316)+24)) = v3323 | base.I64_extend_i32_u(v3316+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v3316)+16)) = v3323 | base.I64_extend_i32_u(v3316+int32(12))
-	Fn34(m, int32(1049806), v3316+int32(16), int32(1090396))
+	Fn34(m, int32(1049806), v3316+int32(16), int32(1089480))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12051,28 +12043,28 @@ L730:
 	v3294 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v3287)+24)) = v3294 | base.I64_extend_i32_u(v3287+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v3287)+16)) = v3294 | base.I64_extend_i32_u(v3287+int32(12))
-	Fn34(m, int32(1049806), v3287+int32(16), int32(1090380))
+	Fn34(m, int32(1049806), v3287+int32(16), int32(1089464))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L731:
 	;
-	Fn127(m, int32(2), int32(4), v149, int32(1090364))
+	Fn127(m, int32(2), int32(4), v149, int32(1089448))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L732:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1090348))
+	Fn127(m, int32(0), int32(2), v149, int32(1089432))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L733:
 	;
-	Fn127(m, int32(6), int32(8), v149, int32(1090300))
+	Fn127(m, int32(6), int32(8), v149, int32(1089384))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12083,20 +12075,20 @@ L734:
 	v3242 = v3240 - int32(32)
 	m.G0 = v3242
 	*(*int32)(unsafe.Add(mBase, uint32(v3242)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v3242))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v3242)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v3242))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v3242)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v3242)+8)) = v36 + int32(95)
 	v3250 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v3242)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v3250)%64) | base.I64_extend_i32_u(v3242+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v3242)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v3250)%64) | base.I64_extend_i32_u(v3242)
-	Fn34(m, int32(1052553), v3242+int32(16), int32(1090332))
+	Fn34(m, int32(1052553), v3242+int32(16), int32(1089416))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L735:
 	;
-	Fn127(m, int32(4), int32(6), v149, int32(1090284))
+	Fn127(m, int32(4), int32(6), v149, int32(1089368))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12194,7 +12186,7 @@ L750:
 	goto L751
 L751:
 	;
-	Fn809(m, v2972+int32(4), v2981, v2982, v2993, v2966, v2966)
+	Fn813(m, v2972+int32(4), v2981, v2982, v2993, v2966, v2966)
 	mBase = m.M
 	v2995 = *(*int32)(unsafe.Add(mBase, uint32(v2972)+4))
 	if v2995 != int32(1) {
@@ -12222,12 +12214,12 @@ L754:
 	;
 	v3016 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v129)+5)))
 	v3018 = v36 + int32(28)
-	Fn813(m, v3016, v3018)
+	Fn817(m, v3016, v3018)
 	mBase = m.M
 	v3020 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v129)+1)))
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+48)) = v3020 + int32(1)
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = v101
-	v3031 = Fn51(m, v3018, int32(1081896), int32(1068479), v36+int32(64))
+	v3031 = Fn51(m, v3018, int32(1080980), int32(1067570), v36+int32(64))
 	mBase = m.M
 	if v3031 != 0 {
 		goto L734
@@ -12245,12 +12237,12 @@ L756:
 	;
 	v3034 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v129)+7)))
 	v3036 = v36 + int32(28)
-	Fn813(m, v3034, v3036)
+	Fn817(m, v3034, v3036)
 	mBase = m.M
 	v3038 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v129)+3)))
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+48)) = v3038 + int32(1)
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = v101
-	v3049 = Fn51(m, v3036, int32(1081896), int32(1048733), v36+int32(64))
+	v3049 = Fn51(m, v3036, int32(1080980), int32(1048733), v36+int32(64))
 	mBase = m.M
 	if v3049 != 0 {
 		goto L757
@@ -12263,13 +12255,13 @@ L757:
 	v3065 = v3063 - int32(32)
 	m.G0 = v3065
 	*(*int32)(unsafe.Add(mBase, uint32(v3065)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v3065))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v3065)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v3065))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v3065)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v3065)+8)) = v36 + int32(95)
 	v3073 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v3065)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v3073)%64) | base.I64_extend_i32_u(v3065+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v3065)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v3073)%64) | base.I64_extend_i32_u(v3065)
-	Fn34(m, int32(1052553), v3065+int32(16), int32(1090316))
+	Fn34(m, int32(1052553), v3065+int32(16), int32(1089400))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12330,10 +12322,10 @@ L765:
 	*(*uint8)(unsafe.Add(mBase, uint32(v3159+v3114))) = uint8(v3161)
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+36)) = v3114 + int32(1)
 	v3167 = v36 + int32(28)
-	Fn813(m, v3112, v3167)
+	Fn817(m, v3112, v3167)
 	mBase = m.M
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = v100 | v90
-	v3176 = Fn51(m, v3167, int32(1081896), int32(1068479), v36+int32(64))
+	v3176 = Fn51(m, v3167, int32(1080980), int32(1067570), v36+int32(64))
 	mBase = m.M
 	if v3176 != 0 {
 		goto L728
@@ -12406,7 +12398,7 @@ L777:
 	goto L778
 L778:
 	;
-	Fn809(m, v3124+int32(4), v3133, v3134, v3145, v3118, v3118)
+	Fn813(m, v3124+int32(4), v3133, v3134, v3145, v3118, v3118)
 	mBase = m.M
 	v3147 = *(*int32)(unsafe.Add(mBase, uint32(v3124)+4))
 	if v3147 != int32(1) {
@@ -12433,10 +12425,10 @@ L780:
 L781:
 	;
 	v3178 = v36 + int32(28)
-	Fn813(m, v3111, v3178)
+	Fn817(m, v3111, v3178)
 	mBase = m.M
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = v101
-	v3187 = Fn51(m, v3178, int32(1081896), int32(1048733), v36+int32(64))
+	v3187 = Fn51(m, v3178, int32(1080980), int32(1048733), v36+int32(64))
 	mBase = m.M
 	if v3187 != 0 {
 		goto L782
@@ -12449,13 +12441,13 @@ L782:
 	v3203 = v3201 - int32(32)
 	m.G0 = v3203
 	*(*int32)(unsafe.Add(mBase, uint32(v3203)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v3203))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v3203)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v3203))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v3203)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v3203)+8)) = v36 + int32(95)
 	v3211 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v3203)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v3211)%64) | base.I64_extend_i32_u(v3203+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v3203)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v3211)%64) | base.I64_extend_i32_u(v3203)
-	Fn34(m, int32(1052553), v3203+int32(16), int32(1090412))
+	Fn34(m, int32(1052553), v3203+int32(16), int32(1089496))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12539,14 +12531,14 @@ L797:
 	}
 L798:
 	;
-	Fn34(m, int32(1274992), int32(93), int32(1275040))
+	Fn34(m, int32(1274096), int32(93), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L799:
 	;
-	Fn34(m, int32(1274928), int32(93), int32(1274976))
+	Fn34(m, int32(1274032), int32(93), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12562,28 +12554,28 @@ L800:
 	v4261 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v4254)+24)) = v4261 | base.I64_extend_i32_u(v4254+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v4254)+16)) = v4261 | base.I64_extend_i32_u(v4254+int32(12))
-	Fn34(m, int32(1049806), v4254+int32(16), int32(1090268))
+	Fn34(m, int32(1049806), v4254+int32(16), int32(1089352))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L801:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1081816))
+	Fn127(m, int32(0), int32(2), v149, int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L802:
 	;
-	Fn34(m, int32(1274992), int32(93), int32(1275040))
+	Fn34(m, int32(1274096), int32(93), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L803:
 	;
-	Fn34(m, int32(1274928), int32(93), int32(1274976))
+	Fn34(m, int32(1274032), int32(93), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12599,7 +12591,7 @@ L804:
 	v4212 = base.I64_extend_i32_u(v4198) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v4205)+24)) = v4212 | base.I64_extend_i32_u(v4205+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v4205)+16)) = v4212 | base.I64_extend_i32_u(v4205+int32(12))
-	Fn34(m, int32(1049806), v4205+int32(16), int32(1090252))
+	Fn34(m, int32(1049806), v4205+int32(16), int32(1089336))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12615,14 +12607,14 @@ L805:
 	v4183 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v4176)+24)) = v4183 | base.I64_extend_i32_u(v4176+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v4176)+16)) = v4183 | base.I64_extend_i32_u(v4176+int32(12))
-	Fn34(m, int32(1049806), v4176+int32(16), int32(1090236))
+	Fn34(m, int32(1049806), v4176+int32(16), int32(1089320))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L806:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1081816))
+	Fn127(m, int32(0), int32(2), v149, int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -12669,7 +12661,7 @@ L811:
 	}
 L812:
 	;
-	Fn813(m, v3433&int32(63)<<(uint(int32(8))%32)|v3438, v36+int32(28))
+	Fn817(m, v3433&int32(63)<<(uint(int32(8))%32)|v3438, v36+int32(28))
 	mBase = m.M
 	v3499 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v129)+4)))
 	if v3499&int32(64) != 0 {
@@ -12759,7 +12751,7 @@ L826:
 	goto L827
 L827:
 	;
-	Fn809(m, v3453+int32(4), v3462, v3463, v3474, v3447, v3447)
+	Fn813(m, v3453+int32(4), v3462, v3463, v3474, v3447, v3447)
 	mBase = m.M
 	v3476 = *(*int32)(unsafe.Add(mBase, uint32(v3453)+4))
 	if v3476 != int32(1) {
@@ -12879,7 +12871,7 @@ L844:
 	goto L845
 L845:
 	;
-	Fn809(m, v3513+int32(4), v3522, v3523, v3534, v3507, v3507)
+	Fn813(m, v3513+int32(4), v3522, v3523, v3534, v3507, v3507)
 	mBase = m.M
 	v3536 = *(*int32)(unsafe.Add(mBase, uint32(v3513)+4))
 	if v3536 != int32(1) {
@@ -12943,7 +12935,7 @@ L852:
 	*(*int32)(unsafe.Add(mBase, uint32(v3570)+8)) = v3683
 	*(*int32)(unsafe.Add(mBase, uint32(v3570)+4)) = v3680
 	*(*int32)(unsafe.Add(mBase, uint32(v3570))) = v3678
-	v3688 = Fn51(m, v3570, int32(1068692), v3559, v3561)
+	v3688 = Fn51(m, v3570, int32(1067784), v3559, v3561)
 	mBase = m.M
 	if v3688 == v3683 {
 		goto L849
@@ -13073,7 +13065,7 @@ L870:
 	goto L852
 L871:
 	;
-	Fn48(m, int32(1068732), int32(86), v3570+int32(15), int32(1068716), int32(1068820))
+	Fn48(m, int32(1067824), int32(86), v3570+int32(15), int32(1067808), int32(1067912))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -13170,7 +13162,7 @@ L886:
 	goto L887
 L887:
 	;
-	Fn809(m, v3722+int32(4), v3731, v3732, v3743, v3717, v3717)
+	Fn813(m, v3722+int32(4), v3731, v3732, v3743, v3717, v3717)
 	mBase = m.M
 	v3745 = *(*int32)(unsafe.Add(mBase, uint32(v3722)+4))
 	if v3745 != int32(1) {
@@ -13285,7 +13277,7 @@ L903:
 	}
 L904:
 	;
-	Fn813(m, v3807, v36+int32(28))
+	Fn817(m, v3807, v36+int32(28))
 	mBase = m.M
 	if v3808 < int32(0) {
 		goto L922
@@ -13374,7 +13366,7 @@ L918:
 	goto L919
 L919:
 	;
-	Fn809(m, v3822+int32(4), v3831, v3832, v3843, v3816, v3816)
+	Fn813(m, v3822+int32(4), v3831, v3832, v3843, v3816, v3816)
 	mBase = m.M
 	v3845 = *(*int32)(unsafe.Add(mBase, uint32(v3822)+4))
 	if v3845 != int32(1) {
@@ -13494,7 +13486,7 @@ L936:
 	goto L937
 L937:
 	;
-	Fn809(m, v3881+int32(4), v3890, v3891, v3902, v3875, v3875)
+	Fn813(m, v3881+int32(4), v3890, v3891, v3902, v3875, v3875)
 	mBase = m.M
 	v3904 = *(*int32)(unsafe.Add(mBase, uint32(v3881)+4))
 	if v3904 != int32(1) {
@@ -13558,7 +13550,7 @@ L944:
 	*(*int32)(unsafe.Add(mBase, uint32(v3938)+8)) = v4051
 	*(*int32)(unsafe.Add(mBase, uint32(v3938)+4)) = v4048
 	*(*int32)(unsafe.Add(mBase, uint32(v3938))) = v4046
-	v4056 = Fn51(m, v3938, int32(1068692), v3927, v3929)
+	v4056 = Fn51(m, v3938, int32(1067784), v3927, v3929)
 	mBase = m.M
 	if v4056 == v4051 {
 		goto L941
@@ -13688,7 +13680,7 @@ L962:
 	goto L944
 L963:
 	;
-	Fn48(m, int32(1068732), int32(86), v3938+int32(15), int32(1068716), int32(1068820))
+	Fn48(m, int32(1067824), int32(86), v3938+int32(15), int32(1067808), int32(1067912))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -13785,7 +13777,7 @@ L978:
 	goto L979
 L979:
 	;
-	Fn809(m, v4090+int32(4), v4099, v4100, v4111, v4085, v4085)
+	Fn813(m, v4090+int32(4), v4099, v4100, v4111, v4085, v4085)
 	mBase = m.M
 	v4113 = *(*int32)(unsafe.Add(mBase, uint32(v4090)+4))
 	if v4113 != int32(1) {
@@ -13881,7 +13873,7 @@ L993:
 	goto L24
 L1001:
 	;
-	Fn127(m, int32(0), int32(4), v149, int32(1090220))
+	Fn127(m, int32(0), int32(4), v149, int32(1089304))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -13996,7 +13988,7 @@ L1013:
 L1014:
 	;
 	v4354 = int32(5)
-	v4355 = int32(1082048)
+	v4355 = int32(1081132)
 	v4356 = *(*int32)(unsafe.Add(mBase, uint32(v36)+28))
 	v4357 = *(*int32)(unsafe.Add(mBase, uint32(v36)+36))
 	if base.Ui32(int32(4)) < base.Ui32(v4356-v4357) {
@@ -14100,7 +14092,7 @@ L1029:
 	goto L1030
 L1030:
 	;
-	Fn809(m, v4371+int32(4), v4380, v4381, v4392, v4366, v4366)
+	Fn813(m, v4371+int32(4), v4380, v4381, v4392, v4366, v4366)
 	mBase = m.M
 	v4394 = *(*int32)(unsafe.Add(mBase, uint32(v4371)+4))
 	if v4394 != int32(1) {
@@ -14138,7 +14130,7 @@ L1034:
 	goto L24
 L1035:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1081816))
+	Fn127(m, int32(0), int32(2), v149, int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -14153,7 +14145,7 @@ L1036:
 	}
 L1037:
 	;
-	v4459 = v4432 + int32(1082548)
+	v4459 = v4432 + int32(1081632)
 	v4461 = v126 + int32(-3)
 	v4462 = v129 + int32(3)
 	v4463 = v4432
@@ -14208,7 +14200,7 @@ L1045:
 	v4746 = int32(10)
 	*(*uint8)(unsafe.Add(mBase, uint32(v36)+64)) = uint8(v4746)
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+68)) = v4463
-	Fn505(m, v36+int32(64))
+	Fn509(m, v36+int32(64))
 	mBase = m.M
 	v4753 = v4463 << (uint(int32(3)) % 32)
 	v4754 = *(*int32)(unsafe.Add(mBase, uint32(v4753)+uint32(_consts[380])))
@@ -14564,7 +14556,7 @@ L1091:
 	goto L1092
 L1092:
 	;
-	Fn809(m, v4767+int32(4), v4776, v4777, v4788, v4762, v4762)
+	Fn813(m, v4767+int32(4), v4776, v4777, v4788, v4762, v4762)
 	mBase = m.M
 	v4790 = *(*int32)(unsafe.Add(mBase, uint32(v4767)+4))
 	if v4790 != int32(1) {
@@ -14683,7 +14675,7 @@ L1110:
 	goto L1111
 L1111:
 	;
-	Fn809(m, v4827+int32(4), v4836, v4837, v4848, v4822, v4822)
+	Fn813(m, v4827+int32(4), v4836, v4837, v4848, v4822, v4822)
 	mBase = m.M
 	v4850 = *(*int32)(unsafe.Add(mBase, uint32(v4827)+4))
 	if v4850 != int32(1) {
@@ -14758,7 +14750,7 @@ L1121:
 	v4901 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v4894)+24)) = v4901 | base.I64_extend_i32_u(v4894+int32(12))
 	*(*int64)(unsafe.Add(mBase, uint32(v4894)+16)) = v4901 | base.I64_extend_i32_u(v4894+int32(8))
-	Fn34(m, int32(1067546), v4894+int32(16), int32(1090188))
+	Fn34(m, int32(1066637), v4894+int32(16), int32(1089272))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -14924,7 +14916,7 @@ L1145:
 	v5084 = int32(10)
 	*(*uint8)(unsafe.Add(mBase, uint32(v36)+64)) = uint8(v5084)
 	*(*int32)(unsafe.Add(mBase, uint32(v36)+68)) = v4463
-	Fn505(m, v36+int32(64))
+	Fn509(m, v36+int32(64))
 	mBase = m.M
 	v5091 = v4463 << (uint(int32(3)) % 32)
 	v5092 = *(*int32)(unsafe.Add(mBase, uint32(v5091)+uint32(_consts[380])))
@@ -14969,14 +14961,14 @@ L1149:
 	goto L1147
 L1150:
 	;
-	Fn2(m, int32(1274992), int32(46), int32(1275040))
+	Fn2(m, int32(1274096), int32(46), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L1151:
 	;
-	Fn2(m, int32(1274928), int32(46), int32(1274976))
+	Fn2(m, int32(1274032), int32(46), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -15035,14 +15027,14 @@ L1160:
 	goto L28
 L1161:
 	;
-	Fn2(m, int32(1274992), int32(46), int32(1275040))
+	Fn2(m, int32(1274096), int32(46), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L1162:
 	;
-	Fn2(m, int32(1274928), int32(46), int32(1274976))
+	Fn2(m, int32(1274032), int32(46), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -15177,7 +15169,7 @@ L1184:
 	goto L1185
 L1185:
 	;
-	Fn809(m, v5105+int32(4), v5114, v5115, v5126, v5100, v5100)
+	Fn813(m, v5105+int32(4), v5114, v5115, v5126, v5100, v5100)
 	mBase = m.M
 	v5128 = *(*int32)(unsafe.Add(mBase, uint32(v5105)+4))
 	if v5128 != int32(1) {
@@ -15293,7 +15285,7 @@ L1203:
 	goto L1204
 L1204:
 	;
-	Fn809(m, v5163+int32(4), v5172, v5173, v5184, v5157, v5157)
+	Fn813(m, v5163+int32(4), v5172, v5173, v5184, v5157, v5157)
 	mBase = m.M
 	v5186 = *(*int32)(unsafe.Add(mBase, uint32(v5163)+4))
 	if v5186 != int32(1) {
@@ -15319,7 +15311,7 @@ L1206:
 	}
 L1207:
 	;
-	Fn868(m, v4924, v4923, v5243, v5242, int32(1090204))
+	Fn868(m, v4924, v4923, v5243, v5242, int32(1089288))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -15506,7 +15498,7 @@ L1237:
 	goto L1238
 L1238:
 	;
-	Fn809(m, v5272+int32(4), v5281, v5282, v5293, v5267, v5267)
+	Fn813(m, v5272+int32(4), v5281, v5282, v5293, v5267, v5267)
 	mBase = m.M
 	v5295 = *(*int32)(unsafe.Add(mBase, uint32(v5272)+4))
 	if v5295 != int32(1) {
@@ -15625,7 +15617,7 @@ L1256:
 	goto L1257
 L1257:
 	;
-	Fn809(m, v5330+int32(4), v5339, v5340, v5351, v5324, v5324)
+	Fn813(m, v5330+int32(4), v5339, v5340, v5351, v5324, v5324)
 	mBase = m.M
 	v5353 = *(*int32)(unsafe.Add(mBase, uint32(v5330)+4))
 	if v5353 != int32(1) {
@@ -15829,7 +15821,7 @@ L1293:
 	goto L1294
 L1294:
 	;
-	Fn809(m, v5466+int32(4), v5475, v5476, v5487, v5460, v5460)
+	Fn813(m, v5466+int32(4), v5475, v5476, v5487, v5460, v5460)
 	mBase = m.M
 	v5489 = *(*int32)(unsafe.Add(mBase, uint32(v5466)+4))
 	if v5489 != int32(1) {
@@ -15855,28 +15847,28 @@ L1296:
 	}
 L1297:
 	;
-	Fn34(m, int32(1274992), int32(93), int32(1275040))
+	Fn34(m, int32(1274096), int32(93), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L1298:
 	;
-	Fn34(m, int32(1274928), int32(93), int32(1274976))
+	Fn34(m, int32(1274032), int32(93), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L1299:
 	;
-	Fn34(m, int32(1274992), int32(93), int32(1275040))
+	Fn34(m, int32(1274096), int32(93), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L1300:
 	;
-	Fn34(m, int32(1274928), int32(93), int32(1274976))
+	Fn34(m, int32(1274032), int32(93), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -16148,7 +16140,7 @@ L1345:
 	goto L1346
 L1346:
 	;
-	Fn809(m, v5660+int32(4), v5669, v5670, v5681, v5655, v5655)
+	Fn813(m, v5660+int32(4), v5669, v5670, v5681, v5655, v5655)
 	mBase = m.M
 	v5683 = *(*int32)(unsafe.Add(mBase, uint32(v5660)+4))
 	if v5683 != int32(1) {
@@ -16174,7 +16166,7 @@ L1348:
 	}
 L1349:
 	;
-	Fn127(m, int32(7), v149, v149, int32(1082516))
+	Fn127(m, int32(7), v149, v149, int32(1081600))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -16258,7 +16250,7 @@ L1359:
 	}
 L1360:
 	;
-	Fn127(m, int32(0), int32(8), v149, int32(1081848))
+	Fn127(m, int32(0), int32(8), v149, int32(1080932))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -16268,7 +16260,7 @@ L1361:
 	v5767 = *(*int64)(unsafe.Add(mBase, uint32(v147)))
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+48)) = v5767
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = base.I64_extend_i32_u(int32(76))<<(uint(v78)%64) | v82
-	v5776 = Fn51(m, v36+int32(28), int32(1081896), int32(1052562), v36+int32(64))
+	v5776 = Fn51(m, v36+int32(28), int32(1080980), int32(1052562), v36+int32(64))
 	mBase = m.M
 	if v5776 != 0 {
 		goto L1362
@@ -16281,13 +16273,13 @@ L1362:
 	v5792 = v5790 - int32(32)
 	m.G0 = v5792
 	*(*int32)(unsafe.Add(mBase, uint32(v5792)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v5792))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v5792)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v5792))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v5792)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v5792)+8)) = v36 + int32(95)
 	v5800 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v5792)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v5800)%64) | base.I64_extend_i32_u(v5792+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v5792)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v5800)%64) | base.I64_extend_i32_u(v5792)
-	Fn34(m, int32(1052553), v5792+int32(16), int32(1082488))
+	Fn34(m, int32(1052553), v5792+int32(16), int32(1081572))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -16372,7 +16364,7 @@ L1373:
 	}
 L1374:
 	;
-	Fn127(m, int32(0), int32(2), v149, int32(1081816))
+	Fn127(m, int32(0), int32(2), v149, int32(1080900))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -16382,7 +16374,7 @@ L1375:
 	v5870 = int32(*(*uint16)(unsafe.Add(mBase, uint32(v147))))
 	*(*uint16)(unsafe.Add(mBase, uint32(v36)+48)) = uint16(v5870)
 	*(*int64)(unsafe.Add(mBase, uint32(v36)+64)) = v96
-	v5879 = Fn51(m, v36+int32(28), int32(1081896), int32(1052562), v36+int32(64))
+	v5879 = Fn51(m, v36+int32(28), int32(1080980), int32(1052562), v36+int32(64))
 	mBase = m.M
 	if v5879 != 0 {
 		goto L1376
@@ -16395,13 +16387,13 @@ L1376:
 	v5895 = v5893 - int32(32)
 	m.G0 = v5895
 	*(*int32)(unsafe.Add(mBase, uint32(v5895)+4)) = int32(43)
-	*(*int32)(unsafe.Add(mBase, uint32(v5895))) = int32(1285424)
-	*(*int32)(unsafe.Add(mBase, uint32(v5895)+12)) = int32(1081920)
+	*(*int32)(unsafe.Add(mBase, uint32(v5895))) = int32(1284528)
+	*(*int32)(unsafe.Add(mBase, uint32(v5895)+12)) = int32(1081004)
 	*(*int32)(unsafe.Add(mBase, uint32(v5895)+8)) = v36 + int32(95)
 	v5903 = int64(32)
 	*(*int64)(unsafe.Add(mBase, uint32(v5895)+24)) = base.I64_extend_i32_u(int32(9))<<(uint(v5903)%64) | base.I64_extend_i32_u(v5895+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v5895)+16)) = base.I64_extend_i32_u(int32(10))<<(uint(v5903)%64) | base.I64_extend_i32_u(v5895)
-	Fn34(m, int32(1052553), v5895+int32(16), int32(1082472))
+	Fn34(m, int32(1052553), v5895+int32(16), int32(1081556))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -16494,7 +16486,7 @@ L1388:
 	v6055 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v6048)+24)) = v6055 | base.I64_extend_i32_u(v6048+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v6048)+16)) = v6055 | base.I64_extend_i32_u(v6048+int32(12))
-	Fn34(m, int32(1049806), v6048+int32(16), int32(1082444))
+	Fn34(m, int32(1049806), v6048+int32(16), int32(1081528))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -16600,7 +16592,7 @@ L1405:
 	goto L1406
 L1406:
 	;
-	Fn809(m, v5988+int32(4), v5997, v5998, v6009, v5983, v5983)
+	Fn813(m, v5988+int32(4), v5997, v5998, v6009, v5983, v5983)
 	mBase = m.M
 	v6011 = *(*int32)(unsafe.Add(mBase, uint32(v5988)+4))
 	if v6011 != int32(1) {
@@ -16643,11 +16635,11 @@ L1410:
 	}
 L1411:
 	;
-	v6031 = int32(1082465)
+	v6031 = int32(1081549)
 	goto L1413
 L1412:
 	;
-	v6031 = int32(1082460)
+	v6031 = int32(1081544)
 	goto L1413
 L1413:
 	;
@@ -16806,7 +16798,7 @@ L1432:
 	;
 	v6152 = int32(4)
 	*(*int32)(unsafe.Add(mBase, uint32(l0)+8)) = v6152
-	*(*int32)(unsafe.Add(mBase, uint32(l0)+4)) = int32(1082440)
+	*(*int32)(unsafe.Add(mBase, uint32(l0)+4)) = int32(1081524)
 	*(*uint8)(unsafe.Add(mBase, uint32(l0)+1)) = uint8(v6118)
 	*(*uint8)(unsafe.Add(mBase, uint32(l0))) = uint8(v6152)
 	goto L28
@@ -16821,7 +16813,7 @@ L1433:
 	v6137 = base.I64_extend_i32_u(int32(3)) << (uint(int64(32)) % 64)
 	*(*int64)(unsafe.Add(mBase, uint32(v6130)+24)) = v6137 | base.I64_extend_i32_u(v6130+int32(8))
 	*(*int64)(unsafe.Add(mBase, uint32(v6130)+16)) = v6137 | base.I64_extend_i32_u(v6130+int32(12))
-	Fn34(m, int32(1049806), v6130+int32(16), int32(1082376))
+	Fn34(m, int32(1049806), v6130+int32(16), int32(1081460))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -16935,7 +16927,7 @@ L1448:
 	goto L1449
 L1449:
 	;
-	Fn809(m, v6172+int32(4), v6181, v6182, v6193, v6167, v6167)
+	Fn813(m, v6172+int32(4), v6181, v6182, v6193, v6167, v6167)
 	mBase = m.M
 	v6195 = *(*int32)(unsafe.Add(mBase, uint32(v6172)+4))
 	if v6195 != int32(1) {
@@ -17048,7 +17040,7 @@ L1465:
 	goto L1466
 L1466:
 	;
-	Fn809(m, v6235+int32(4), v6244, v6245, v6256, v6230, v6230)
+	Fn813(m, v6235+int32(4), v6244, v6245, v6256, v6230, v6230)
 	mBase = m.M
 	v6258 = *(*int32)(unsafe.Add(mBase, uint32(v6235)+4))
 	if v6258 != int32(1) {
@@ -17161,7 +17153,7 @@ L1482:
 	goto L1483
 L1483:
 	;
-	Fn809(m, v6298+int32(4), v6307, v6308, v6319, v6293, v6293)
+	Fn813(m, v6298+int32(4), v6307, v6308, v6319, v6293, v6293)
 	mBase = m.M
 	v6321 = *(*int32)(unsafe.Add(mBase, uint32(v6298)+4))
 	if v6321 != int32(1) {
@@ -17274,7 +17266,7 @@ L1499:
 	goto L1500
 L1500:
 	;
-	Fn809(m, v6361+int32(4), v6370, v6371, v6382, v6356, v6356)
+	Fn813(m, v6361+int32(4), v6370, v6371, v6382, v6356, v6356)
 	mBase = m.M
 	v6384 = *(*int32)(unsafe.Add(mBase, uint32(v6361)+4))
 	if v6384 != int32(1) {
@@ -17387,7 +17379,7 @@ L1516:
 	goto L1517
 L1517:
 	;
-	Fn809(m, v6424+int32(4), v6433, v6434, v6445, v6419, v6419)
+	Fn813(m, v6424+int32(4), v6433, v6434, v6445, v6419, v6419)
 	mBase = m.M
 	v6447 = *(*int32)(unsafe.Add(mBase, uint32(v6424)+4))
 	if v6447 != int32(1) {
@@ -17500,7 +17492,7 @@ L1533:
 	goto L1534
 L1534:
 	;
-	Fn809(m, v6487+int32(4), v6496, v6497, v6508, v6482, v6482)
+	Fn813(m, v6487+int32(4), v6496, v6497, v6508, v6482, v6482)
 	mBase = m.M
 	v6510 = *(*int32)(unsafe.Add(mBase, uint32(v6487)+4))
 	if v6510 != int32(1) {
@@ -17608,7 +17600,7 @@ L1550:
 	goto L1551
 L1551:
 	;
-	Fn809(m, v6550+int32(4), v6559, v6560, v6571, v6545, v6545)
+	Fn813(m, v6550+int32(4), v6559, v6560, v6571, v6545, v6545)
 	mBase = m.M
 	v6573 = *(*int32)(unsafe.Add(mBase, uint32(v6550)+4))
 	if v6573 != int32(1) {
@@ -17721,7 +17713,7 @@ L1567:
 	goto L1568
 L1568:
 	;
-	Fn809(m, v6609+int32(4), v6618, v6619, v6630, v6604, v6604)
+	Fn813(m, v6609+int32(4), v6618, v6619, v6630, v6604, v6604)
 	mBase = m.M
 	v6632 = *(*int32)(unsafe.Add(mBase, uint32(v6609)+4))
 	if v6632 != int32(1) {
@@ -17827,7 +17819,7 @@ L1585:
 	goto L1586
 L1586:
 	;
-	Fn809(m, v6679+int32(4), v6688, v6689, v6700, v6673, v6673)
+	Fn813(m, v6679+int32(4), v6688, v6689, v6700, v6673, v6673)
 	mBase = m.M
 	v6702 = *(*int32)(unsafe.Add(mBase, uint32(v6679)+4))
 	if v6702 != int32(1) {
@@ -17940,7 +17932,7 @@ L1603:
 	goto L1604
 L1604:
 	;
-	Fn809(m, v6738+int32(4), v6747, v6748, v6759, v6732, v6732)
+	Fn813(m, v6738+int32(4), v6747, v6748, v6759, v6732, v6732)
 	mBase = m.M
 	v6761 = *(*int32)(unsafe.Add(mBase, uint32(v6738)+4))
 	if v6761 != int32(1) {
@@ -18041,7 +18033,7 @@ L1619:
 	goto L1620
 L1620:
 	;
-	Fn809(m, v6792+int32(4), v6801, v6802, v6813, v6786, v6786)
+	Fn813(m, v6792+int32(4), v6801, v6802, v6813, v6786, v6786)
 	mBase = m.M
 	v6815 = *(*int32)(unsafe.Add(mBase, uint32(v6792)+4))
 	if v6815 != int32(1) {
@@ -18088,14 +18080,14 @@ L1625:
 	}
 L1626:
 	;
-	Fn34(m, int32(1274992), int32(93), int32(1275040))
+	Fn34(m, int32(1274096), int32(93), int32(1274144))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
 	}
 L1627:
 	;
-	Fn34(m, int32(1274928), int32(93), int32(1274976))
+	Fn34(m, int32(1274032), int32(93), int32(1274080))
 	mBase = m.M
 	base.Wasm_trap_unreachable()
 	for {
@@ -18214,7 +18206,7 @@ L1649:
 	goto L1650
 L1650:
 	;
-	Fn809(m, v6924+int32(4), v6933, v6934, v6945, v6918, v6918)
+	Fn813(m, v6924+int32(4), v6933, v6934, v6945, v6918, v6918)
 	mBase = m.M
 	v6947 = *(*int32)(unsafe.Add(mBase, uint32(v6924)+4))
 	if v6947 != int32(1) {
@@ -18389,212 +18381,212 @@ var Fn215_jt2876 [12]uint64
 func Fn224_jtpc() unsafe.Pointer
 
 var Fn224_jt172 [8]uint64
-func Fn271_jtpc() unsafe.Pointer
+func Fn275_jtpc() unsafe.Pointer
 
-var Fn271_jt640 [30]uint64
-func Fn347_jtpc() unsafe.Pointer
+var Fn275_jt640 [30]uint64
+func Fn351_jtpc() unsafe.Pointer
 
-var Fn347_jt3020 [44]uint64
-func Fn357_jtpc() unsafe.Pointer
+var Fn351_jt3020 [44]uint64
+func Fn361_jtpc() unsafe.Pointer
 
-var Fn357_jt524 [9]uint64
-var Fn357_jt31804 [9]uint64
-func Fn358_jtpc() unsafe.Pointer
+var Fn361_jt524 [9]uint64
+var Fn361_jt31480 [9]uint64
+func Fn362_jtpc() unsafe.Pointer
 
-var Fn358_jt1356 [10]uint64
-var Fn358_jt2596 [10]uint64
-var Fn358_jt2820 [10]uint64
-var Fn358_jt3028 [10]uint64
-var Fn358_jt3260 [10]uint64
-func Fn365_jtpc() unsafe.Pointer
+var Fn362_jt1560 [10]uint64
+var Fn362_jt2692 [10]uint64
+var Fn362_jt2860 [10]uint64
+var Fn362_jt3044 [10]uint64
+var Fn362_jt3212 [10]uint64
+func Fn369_jtpc() unsafe.Pointer
 
-var Fn365_jt47260 [9]uint64
-var Fn365_jt51528 [10]uint64
-var Fn365_jt59496 [9]uint64
-var Fn365_jt70408 [8]uint64
-var Fn365_jt71184 [8]uint64
-func Fn517_jtpc() unsafe.Pointer
+var Fn369_jt47792 [9]uint64
+var Fn369_jt52068 [10]uint64
+var Fn369_jt60096 [9]uint64
+var Fn369_jt71052 [8]uint64
+var Fn369_jt71828 [8]uint64
+func Fn521_jtpc() unsafe.Pointer
 
-var Fn517_jt2476 [8]uint64
-func Fn520_jtpc() unsafe.Pointer
+var Fn521_jt11344 [8]uint64
+func Fn524_jtpc() unsafe.Pointer
 
-var Fn520_jt416 [11]uint64
-func Fn523_jtpc() unsafe.Pointer
+var Fn524_jt416 [11]uint64
+func Fn527_jtpc() unsafe.Pointer
 
-var Fn523_jt544 [8]uint64
-var Fn523_jt1964 [8]uint64
-var Fn523_jt4736 [10]uint64
-var Fn523_jt5960 [9]uint64
-var Fn523_jt6152 [10]uint64
-var Fn523_jt6740 [10]uint64
-var Fn523_jt12196 [10]uint64
-func Fn533_jtpc() unsafe.Pointer
+var Fn527_jt544 [8]uint64
+var Fn527_jt1964 [8]uint64
+var Fn527_jt4776 [10]uint64
+var Fn527_jt6028 [9]uint64
+var Fn527_jt6220 [10]uint64
+var Fn527_jt6808 [10]uint64
+var Fn527_jt12280 [10]uint64
+func Fn537_jtpc() unsafe.Pointer
 
-var Fn533_jt1572 [10]uint64
-func Fn555_jtpc() unsafe.Pointer
+var Fn537_jt1584 [10]uint64
+func Fn559_jtpc() unsafe.Pointer
 
-var Fn555_jt12348 [31]uint64
-func Fn587_jtpc() unsafe.Pointer
+var Fn559_jt12240 [31]uint64
+func Fn591_jtpc() unsafe.Pointer
 
-var Fn587_jt8160 [11]uint64
-var Fn587_jt10496 [8]uint64
-var Fn587_jt11620 [8]uint64
-var Fn587_jt19776 [8]uint64
-var Fn587_jt25956 [8]uint64
-var Fn587_jt27244 [10]uint64
-var Fn587_jt34372 [8]uint64
-var Fn587_jt34532 [10]uint64
-func Fn601_jtpc() unsafe.Pointer
+var Fn591_jt8192 [11]uint64
+var Fn591_jt10280 [8]uint64
+var Fn591_jt14452 [8]uint64
+var Fn591_jt19864 [8]uint64
+var Fn591_jt26072 [8]uint64
+var Fn591_jt27360 [10]uint64
+var Fn591_jt33884 [8]uint64
+var Fn591_jt34060 [10]uint64
+func Fn605_jtpc() unsafe.Pointer
 
-var Fn601_jt436 [125]uint64
-func Fn603_jtpc() unsafe.Pointer
+var Fn605_jt436 [125]uint64
+func Fn607_jtpc() unsafe.Pointer
 
-var Fn603_jt4672 [9]uint64
-var Fn603_jt10200 [10]uint64
-var Fn603_jt12128 [9]uint64
-var Fn603_jt33356 [8]uint64
-var Fn603_jt36984 [10]uint64
-var Fn603_jt42148 [8]uint64
-func Fn613_jtpc() unsafe.Pointer
+var Fn607_jt4700 [9]uint64
+var Fn607_jt10232 [10]uint64
+var Fn607_jt12044 [9]uint64
+var Fn607_jt33536 [8]uint64
+var Fn607_jt37164 [10]uint64
+var Fn607_jt42328 [8]uint64
+func Fn617_jtpc() unsafe.Pointer
 
-var Fn613_jt1980 [11]uint64
-var Fn613_jt5020 [8]uint64
-func Fn650_jtpc() unsafe.Pointer
+var Fn617_jt2812 [8]uint64
+var Fn617_jt3964 [11]uint64
+func Fn655_jtpc() unsafe.Pointer
 
-var Fn650_jt88 [14]uint64
-func Fn659_jtpc() unsafe.Pointer
+var Fn655_jt88 [14]uint64
+func Fn664_jtpc() unsafe.Pointer
 
-var Fn659_jt2300 [8]uint64
-func Fn660_jtpc() unsafe.Pointer
+var Fn664_jt2300 [8]uint64
+func Fn665_jtpc() unsafe.Pointer
 
-var Fn660_jt4792 [8]uint64
-var Fn660_jt5148 [8]uint64
-var Fn660_jt8468 [10]uint64
-func Fn662_jtpc() unsafe.Pointer
+var Fn665_jt3892 [8]uint64
+var Fn665_jt4248 [8]uint64
+var Fn665_jt8460 [10]uint64
+func Fn667_jtpc() unsafe.Pointer
 
-var Fn662_jt80 [10]uint64
-func Fn663_jtpc() unsafe.Pointer
+var Fn667_jt80 [10]uint64
+func Fn668_jtpc() unsafe.Pointer
 
-var Fn663_jt1844 [8]uint64
-var Fn663_jt2652 [8]uint64
-var Fn663_jt7336 [8]uint64
-var Fn663_jt39816 [8]uint64
-var Fn663_jt40700 [8]uint64
-var Fn663_jt43080 [10]uint64
-var Fn663_jt56668 [10]uint64
-func Fn767_jtpc() unsafe.Pointer
+var Fn668_jt1840 [8]uint64
+var Fn668_jt2648 [8]uint64
+var Fn668_jt25064 [8]uint64
+var Fn668_jt34048 [8]uint64
+var Fn668_jt34924 [8]uint64
+var Fn668_jt37304 [10]uint64
+var Fn668_jt56528 [10]uint64
+func Fn772_jtpc() unsafe.Pointer
 
-var Fn767_jt1244 [17]uint64
+var Fn772_jt1244 [17]uint64
 func Fn903_jtpc() unsafe.Pointer
 
 var Fn903_jt80 [10]uint64
 
 func init() {
 	gcasmJTInit(Fn19_jtpc(), []gcasmJTSpec{
-		{tab: Fn19_jt76[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x1, 0x1, 0x8}, sigs: []uint64{0x4fb80d4d71de, 0x56b715c596dd, 0x87be73af4e78, 0x94be821c2ab7, 0x5a9eb0b1eb29, 0xf3e98ba31515, 0xc6b715d0df89, 0xbeb715d6f09f, 0x3aceb7ac3b02}},
+		{tab: Fn19_jt76[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x1, 0x1, 0x8}, sigs: []uint64{0x4fb80d4d71de, 0xd2b715c280ba, 0x87be73af4e78, 0x94be821c2ab7, 0x999eb46a10b1, 0xf7e98bab7066, 0xbab715d6e9d3, 0x4eb715d3fc78, 0x4aceb7b4aab7}},
 	})
 	gcasmJTInit(Fn215_jtpc(), []gcasmJTSpec{
 		{tab: Fn215_jt344[:], entries: []uint16{0x0, 0x1, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa}, sigs: []uint64{0x6c3ea27a9594, 0x643ea27a87fc, 0xec3ea27da4eb, 0xec3ea28c181e, 0x583ea28f0579, 0x193e89ec9f8b, 0x113e89ec91f3, 0xd3e89ea5550, 0x913e89e74cc5, 0xd3e89e436a2, 0x193e89f8dce7}},
 		{tab: Fn215_jt2876[:], entries: []uint16{0x0, 0x1, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa}, sigs: []uint64{0xbecadfb01722, 0x97cadbc8d7f2, 0x9fcadbc8e58a, 0x23cadbcbfbad, 0xfcadbc3852c, 0x8fcadbc69483, 0x8fcadbd507b6, 0x97cadbd5154e, 0x93cadbd74459, 0x9bcadbcefd6c, 0x23cadbe08d8e}},
 	})
 	gcasmJTInit(Fn224_jtpc(), []gcasmJTSpec{
-		{tab: Fn224_jt172[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x273ebdbe24c7, 0xb8d2e498367, 0xed3ec7f2f6f2, 0xae3eaf739618, 0x1a3eaf681040, 0x3c3ee08f5962, 0x383ee080df63, 0xcd8d37468712}},
+		{tab: Fn224_jt172[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x273ebdbe24c7, 0xa074d77451ce, 0xed3ec7f2f6f2, 0xae3eaf739618, 0x1a3eaf681040, 0x3c3ee08f5962, 0x383ee080df63, 0x1574e5c10f88}},
 	})
-	gcasmJTInit(Fn271_jtpc(), []gcasmJTSpec{
-		{tab: Fn271_jt640[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d}, sigs: []uint64{0x9eb7a9ca9b5f, 0xf70c992aac1d, 0x5e0cc5444ee9, 0xdaf4e53e446a, 0x91f4aef7f464, 0xf9fb683353cd, 0xcafb6468ed6b, 0x1ffb5f1b76cb, 0x22714ee099b0, 0x3a714ee916fd, 0x36714ee6da5a, 0x21250892f6f1, 0x9d250895ff7c, 0x3d251c2d247f, 0xfa2df7ed72aa, 0xf62df80a5244, 0x1a1591877e47, 0x3d1596e04b2b, 0xce15b9892eb8, 0x8915bd614331, 0x121e8474ae3d, 0x861e846f54ab, 0x3f39dfac6290, 0xcf1e809f9b83, 0x661e71429b3b, 0x2f1e6be157d6, 0x41e68256b73, 0x68c239238fcd, 0xe968613ae3a8, 0x61686137c6b9}},
+	gcasmJTInit(Fn275_jtpc(), []gcasmJTSpec{
+		{tab: Fn275_jt640[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d}, sigs: []uint64{0x4aec4dfe7b03, 0x28c3fe778f49, 0x17c3dd26692d, 0x64a938bbf066, 0x33a95169d560, 0x43b20a6c7e89, 0x2cb20519e4b7, 0xf1b1ffe3f41f, 0xad124a0e4b83, 0x2d124a0b3c2c, 0x351249fcd691, 0xda9a5a4774ad, 0x569a5a4a7d38, 0x269a46b88233, 0xf3a2ab8cb546, 0x7a2aba9bda8, 0xb3886ee077c3, 0x5e8872c6e43f, 0xf78846ab0b9c, 0x9a884bddc415, 0xab9161cda7b9, 0x2f9161df310f, 0x8c61d1425dee, 0x88915ce255bf, 0xcf917567e2df, 0xb8917034654a, 0x8d916ad954f7, 0x827900b77431, 0xc50957298b42, 0x490957180f84}},
 	})
-	gcasmJTInit(Fn347_jtpc(), []gcasmJTSpec{
-		{tab: Fn347_jt3020[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 0x4, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x4, 0x13, 0x14, 0x4, 0x1, 0x4, 0x4, 0x15, 0x16, 0x17, 0x18, 0x0, 0x19, 0x1, 0x1, 0x4, 0x1a, 0x1b, 0x1c, 0x1d, 0x0, 0x1e, 0x1f, 0x18}, sigs: []uint64{0x246bc1897732, 0x216bd0fa51d7, 0x9e6bdf4d3bd7, 0x9e6bdf5baf0a, 0x156bd1067acf, 0xbc6bd63f58c2, 0xc06bd6419565, 0x346bd62dc8a0, 0x4c6bd63645ed, 0xb86bd64ffb00, 0x406bd65317ef, 0xe76bda0bee2f, 0xef6bda0bfbc7, 0x736bda009eb7, 0xe76bd9fd7afc, 0x636bd9fa64d9, 0xf36bda209474, 0x6e6bcc099f7f, 0x7e6bcc01662a, 0x766bcc015892, 0xea6bcc045385, 0x766bcbfb39e4, 0xf66bcbfe493b, 0xe66bcbf5d986, 0xc36bc6c8663b, 0x116bd0f1e222, 0x216bd108c50a, 0xa46bc1843204, 0x246bc187415b, 0x2c6bc18984ca, 0x286bc195bb5a, 0xbb6bc6c858a3}},
+	gcasmJTInit(Fn351_jtpc(), []gcasmJTSpec{
+		{tab: Fn351_jt3020[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 0x4, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x4, 0x13, 0x14, 0x4, 0x1, 0x4, 0x4, 0x15, 0x16, 0x17, 0x18, 0x0, 0x19, 0x1, 0x1, 0x4, 0x1a, 0x1b, 0x1c, 0x1d, 0x0, 0x1e, 0x1f, 0x18}, sigs: []uint64{0x908a95736c1, 0x3808ad29f1a8, 0x7708c5b9fb8c, 0x7b08c5ab8f25, 0xa408ad1e6bd0, 0xa908bcf6b049, 0x2908bcf3a0f2, 0x2108bcf15d83, 0xb508bce8517a, 0x2508bce526f3, 0x2108bce2ea50, 0x7e08b7b8865c, 0x8608b7b893f4, 0x8a08b7ac5d64, 0xa08b7af6cbb, 0x9208b7b289aa, 0x8e08b7a40fab, 0x6708b2769594, 0xdb08b27faf35, 0xe308b27fbccd, 0x5308b27c9246, 0x6308b28501fb, 0xdf08b281ebd8, 0xd308b25c9c89, 0x5a08a4182c88, 0x2c08ad3231c9, 0x3c08ad4914b1, 0x9108a95c8987, 0x508a95965cc, 0x108a9572929, 0x9508a962af01, 0x5208a4181ef0}},
 	})
-	gcasmJTInit(Fn357_jtpc(), []gcasmJTSpec{
-		{tab: Fn357_jt524[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xe65e196bd639, 0x625e1968c016, 0x765e19713697, 0x665e196ee590, 0x765e198e1cfd, 0x6d5e0a06663c, 0xf15e0a097c5f, 0x7d5e0a0ca01a, 0x7d5e0a0ed5f1}},
-		{tab: Fn357_jt31804[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0x1d97f1183069, 0x9086223f9ca7, 0x9d86454a9076, 0xa6865385eda2, 0x6fb8de07ecdc, 0xb39ea14c6972, 0x2fd999dbdf39, 0xd2bb5d37c2ba, 0x30d9a7f1f3e2}},
+	gcasmJTInit(Fn361_jtpc(), []gcasmJTSpec{
+		{tab: Fn361_jt524[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0x824e6e6db388, 0x64e6e70c9ab, 0x8a4e6e73dfce, 0xfa4e6e76d3f5, 0x24e6e624fac, 0xb4e7c7871ed, 0x874e7c755bca, 0xf34e7c7e67d3, 0x734e7c7b587c}},
+		{tab: Fn361_jt31480[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0x7090f98d8679, 0x20819abe6640, 0x5b81a002ca0b, 0xaa81b89f2c7b, 0x55ba8fcfff76, 0x2bb1a7031d62, 0x9d57c00c1af7, 0x9d6dd1cfc6cd, 0x1b4ee981bd64}},
 	})
-	gcasmJTInit(Fn358_jtpc(), []gcasmJTSpec{
-		{tab: Fn358_jt1356[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x2, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xf49e117cc9e9, 0x709e116b4093, 0xd0a6f14bba6e, 0xa39e16a74241, 0x9b9e16b5a7dc, 0x5ba6e1aa4e9a, 0x50a6f148ab17, 0x4fa6e195a855, 0x53a6e18d5a9c}},
-		{tab: Fn358_jt2596[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x2, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xf866e350b09b, 0x2766e89d5487, 0xf866e352e672, 0x1f66e89d46ef, 0xa366e89a3e64, 0x9766e897f429, 0xe866e358e9f0, 0xf066e35f1636, 0x6866e336be5c}},
-		{tab: Fn358_jt2820[:], entries: []uint16{0x0, 0x1, 0x1, 0x2, 0x3, 0x1, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x8692d69fb23b, 0xeb92d16f3d31, 0x1292d69cb748, 0x9692d699aebd, 0x8e92d6976b4e, 0xe792d15e8d5b, 0x5b92d163be25, 0xef92d1525d97}},
-		{tab: Fn358_jt3028[:], entries: []uint16{0x0, 0x1, 0x1, 0x2, 0x3, 0x1, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x72b9b7632bca, 0xe2b9b75dcb6c, 0x1db9bc93bc04, 0x21b9bc854f9d, 0x19b9bc854205, 0x62b9b760dac3, 0x11b9bc9bfc25, 0x9b9bc99b8b6}},
-		{tab: Fn358_jt3260[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xf74ed22badfb, 0x634ed23d0e89, 0xa24ed76492ba, 0xf54eb46aeb15, 0x714eb46df3a0, 0xa84eb99b88e7, 0x1c4eb9a6d85f, 0x8a4ed76a88a0, 0x964ed75c29d1, 0x1e4ed7617c97}},
+	gcasmJTInit(Fn362_jtpc(), []gcasmJTSpec{
+		{tab: Fn362_jt1560[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xc7e4b2a6593c, 0xd3e4b2ac8c4e, 0x5ae4a49bca6b, 0xd5dbdd96d95e, 0x49dbdd854270, 0x19e4bd0fc769, 0xa5e4bd38260f, 0x4ae4a4a1cde9, 0x56e4a4a41824, 0x5ee4a4aa446a}},
+		{tab: Fn362_jt2692[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x2, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xb263717f0fd, 0x832637042b04, 0xae263c4e924d, 0x5826332b583b, 0x5c2633317db5, 0x3d25f25f8d22, 0x2e263c53d77b, 0xa6263c424759, 0x9e263c48586f}},
+		{tab: Fn362_jt2860[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x2, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xc82a5e35c9ac, 0xd62a40b12499, 0x542a5e3b233e, 0xf92a45aae9c6, 0x7d2a45996e08, 0x882142f9421c, 0x252a593f13d6, 0xa52a593c047f, 0xad2a5933bd92}},
+		{tab: Fn362_jt3044[:], entries: []uint16{0x0, 0x1, 0x1, 0x2, 0x3, 0x1, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x7760bfb846a5, 0x56721257277, 0xc460bab6eb43, 0x5860babc526d, 0x46671bc11223, 0x816721225c54, 0x46671bcf8556, 0xca671bd29b79}},
+		{tab: Fn362_jt3212[:], entries: []uint16{0x0, 0x1, 0x1, 0x2, 0x3, 0x1, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xe5eb3f94b206, 0x6deb3f833d14, 0x1cf44ae45c70, 0xa8f44af5f35e, 0x18eb4352e1d8, 0x75eb3f89695a, 0xedeb3f77d938, 0x1ceb43615bd7}},
 	})
-	gcasmJTInit(Fn365_jtpc(), []gcasmJTSpec{
-		{tab: Fn365_jt47260[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0x472eb320ac6d, 0x3b2eb33d7e6f, 0xde2eb6f64de3, 0xc2eaddc48a2, 0x102eade4a3f3, 0x9c2eade7c7ae, 0x182eadf0eee7, 0x1c2eadf32b8a, 0x932e9e6e8420}},
-		{tab: Fn365_jt51528[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x7770b2ad89bc, 0xfc70c1151335, 0x470c106ad9a, 0xc970bbd2f2d9, 0x5570bbd61694, 0x3a707c5ef995, 0x32707c7bd263, 0x1f7077293f5d, 0x9b70773abb1b, 0xc6614476ec77}},
-		{tab: Fn365_jt59496[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0x8fa84243463d, 0x8ba84234cc3e, 0xfba84237c065, 0x92a833e4f861, 0xfea833d97289, 0x2a833fc7e69, 0x7ea833f96846, 0xd3a82e9b489c, 0x67a82ea6ce74}},
-		{tab: Fn365_jt70408[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x6efb23ac2514, 0x66fb23ba8aaf, 0x1dfb278a43d7, 0x8dfb277ec4cb, 0x20fb192bf5fb, 0x10fb19238646, 0xb3fb1e6ad0a0, 0xb7fb1e5c6439}},
-		{tab: Fn365_jt71184[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x80cb81547fe3, 0x98cb814e89fd, 0x10cb815ffeef, 0x8cb81579cd2, 0x4cb813aafa0, 0xf1cb7c15ac0a, 0xd9cb7c1ba1f0, 0xe1cb7c21ce36}},
+	gcasmJTInit(Fn369_jtpc(), []gcasmJTSpec{
+		{tab: Fn369_jt47792[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0x898084c0d328, 0x98084c61856, 0x998084c942dd, 0x5d77b8bf06cb, 0xe977b8b9d601, 0xe577b8b3b087, 0xb277b4f7b68c, 0xb677b4fddc06, 0x3a77b4ec6048}},
+		{tab: Fn369_jt52068[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x3ba4ac82623c, 0x7aa4b1e9d1e7, 0xe6a4b1c39b80, 0x8da4b5a7cb59, 0x40a4ba987db1, 0xb8a4baa9f2a3, 0x5fa4bfe2d096, 0x73a4bfda9e0d, 0x9ea4c518c7fa, 0xf3d74e7f20ca}},
+		{tab: Fn369_jt60096[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xbec0852882cd, 0xbec0851a0f9a, 0x26c0851cf629, 0x50c07a851840, 0x79c09dad2209, 0x5c09da1d291, 0x81c09d9ebc6e, 0x89c09da4e8b4, 0x5c09d935f5e}},
+		{tab: Fn369_jt71052[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x559b2ebed9db, 0x2a9b2982e5c5, 0xa69b2985ee50, 0xfb9b243877b0, 0xff9b242a0b49, 0x609b1ef7599c, 0xd89b1eee1dff, 0x319b1b249eb5}},
+		{tab: Fn369_jt71828[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xfe8ab116cca8, 0x768ab11c043e, 0xfe8ab1253fdb, 0x198ab64c86e0, 0x1d8ab65b00df, 0x2d8ab654fd61, 0x9d8ab66664bb, 0x7ea515fdc24c}},
 	})
-	gcasmJTInit(Fn517_jtpc(), []gcasmJTSpec{
-		{tab: Fn517_jt2476[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xd6474134130d, 0x4a5fb99c7e7b, 0xb5ffc1c1b8b4, 0xc8e4da91c5d9, 0x4b178572981b, 0x13d4e43e1f3, 0x4401d0af7ea4, 0x1d7f6208b7a8}},
+	gcasmJTInit(Fn521_jtpc(), []gcasmJTSpec{
+		{tab: Fn521_jt11344[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xff8373851f1a, 0x71953bd58061, 0x741fbd64fca, 0xbade74f286cf, 0xecc3cb5253d0, 0x3f203b1d1acc, 0x3b04a059793e, 0x54f59ae1dd84}},
 	})
-	gcasmJTInit(Fn520_jtpc(), []gcasmJTSpec{
-		{tab: Fn520_jt416[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x6, 0x5, 0x4}, sigs: []uint64{0xaba87a5fe265, 0xe2a87e2437b1, 0x20a888b088f6, 0xfb2db97f973d, 0x433f035336ab, 0xec3eea831885, 0x76369e4b557a, 0x642d7a1a0394}},
+	gcasmJTInit(Fn524_jtpc(), []gcasmJTSpec{
+		{tab: Fn524_jt416[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x6, 0x5, 0x4}, sigs: []uint64{0x8b8d8b37d799, 0xca8d906dcefd, 0x88d9a9d4e62, 0xcdad1d540cb6, 0x49bf0356cb48, 0xb2bf12e15b00, 0x23b61aacf514, 0x1ead539ca02b}},
 	})
-	gcasmJTInit(Fn523_jtpc(), []gcasmJTSpec{
-		{tab: Fn523_jt544[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xc948642956b8, 0xc14864232a72, 0x1e4860620679, 0x1a48606a5432, 0xff485b2626c7, 0xfb485b34932e, 0x584855ded5a1, 0xcc4855d35d61}},
-		{tab: Fn523_jt1964[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xdeca065e6050, 0x11afa834d064, 0x11afa83aef12, 0x9afa84335ff, 0x15afa8496911, 0xa8afad79d083, 0xc0afad73da9d, 0x38afad854f8f}},
-		{tab: Fn523_jt4736[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xa55453ffb9f8, 0x295453fcb16d, 0x295453dfcb07, 0xa4544429b222, 0x3054442cd5dd, 0x1c5444269533, 0x2454443515fe, 0xac54442fde68, 0xb4544440950a, 0x205444438265}},
-		{tab: Fn523_jt5960[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xf6496d10a403, 0xa4ae80e17605, 0x3b93d3bc2f48, 0x624066a55365, 0x5d40583ea36c, 0xe5405850338e, 0x84405c08fc36, 0x18405c252b18, 0x9f409cf3e38c}},
-		{tab: Fn523_jt6152[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xdc7d228abcef, 0x587d22626be1, 0xd77d141dee48, 0xe37d1424215a, 0x5f7d14295fbc, 0x5b7d142f779e, 0xd77d1434b600, 0x27d196236e3, 0x867d195cf881, 0x8a7d196da857}},
-		{tab: Fn523_jt6740[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x6c3a1ee331db, 0xe03a1ee62cce, 0x643a1eeb78c8, 0xe83a1eee8eeb, 0x453a67574bb9, 0xc13a67543596, 0xcd3a675c9e7f, 0xd13a674bfc41, 0x4d3a6748e61e, 0x413a6751263f}},
-		{tab: Fn523_jt12196[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xf099fdc8c237, 0x5c99fdcbaf92, 0xdc99fdcebee9, 0xdc99fdba2d08, 0xe099fdc05282, 0xe899fdc295f1, 0xd899fddd2b50, 0xdc99fddf67f3, 0x8f9a0309e717, 0x1b9a0304b64d}},
+	gcasmJTInit(Fn527_jtpc(), []gcasmJTSpec{
+		{tab: Fn527_jt544[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xbf4773bcc4ec, 0xbf47739fde86, 0xa4476e6c5a25, 0x10476e5e9e76, 0xfd476aa2dadb, 0x71476a999872, 0xe473d62e54d, 0x8a473d6e425d}},
+		{tab: Fn527_jt1964[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xdf7cf765065c, 0x8a650b9b9a68, 0x2650ba0d1fe, 0xfa650b925133, 0xe650b9891dd, 0xa96510dfce9f, 0xb96510d9cb21, 0x296510d46ac3}},
+		{tab: Fn527_jt4776[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x9d09c156348c, 0xac09b1a34cfa, 0x1c09b19dec9c, 0x1c09b1ae95a6, 0xa009b1b1abc9, 0xb409b1abaf17, 0xac09b1ba14b2, 0xdb09b6e79c61, 0xcb09b6ed9fdf, 0x4709b6ea89bc}},
+		{tab: Fn527_jt6028[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0x57d6cec178c7, 0xdfdd61473690, 0x8edd6680221b, 0xd1cdf84351c4, 0x45cdf8402e09, 0xf0cdfd7f3176, 0x4bce160f6aee, 0xcbce15fde864, 0x6ace1afcebf3}},
+		{tab: Fn527_jt6220[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xf00d8de94639, 0x700d8dd7c3af, 0x800d8dddfd8d, 0x700d8dfac8c3, 0x970d9322242c, 0xa70d931c20ae, 0x170d9316c050, 0x170d9310a1a2, 0xa70d93390714, 0x2e0d83b6b0b1}},
+		{tab: Fn527_jt6808[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xada117586870, 0x31a1175b7e93, 0xbda1175264f2, 0x39a1174d18f8, 0xbda117502f1b, 0x31a11746ecb2, 0xb1a11749fc09, 0xe0a11c460b71, 0xe4a11c4c30eb, 0x5ca11c4913fc}},
+		{tab: Fn527_jt12280[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x5b2a02db8189, 0x8a2a07d790f1, 0x8e2a07ddb66b, 0x62a07da997c, 0x162a07e30931, 0x122a07e0cc8e, 0xe2a07e91a47, 0x122a07ef3fc1, 0x8e2a07ec299e, 0xb92a0d1be058}},
 	})
-	gcasmJTInit(Fn533_jtpc(), []gcasmJTSpec{
-		{tab: Fn533_jt1572[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x1791aafa6368, 0x7591b599c9ee, 0xaa919d0ef0d4, 0xf39197cda32c, 0x39197b92c7b, 0x8a795eb0dff4, 0xd47968dc8ae6, 0x507968d73eec, 0xd07968da4e43, 0xd07968e8c176}},
+	gcasmJTInit(Fn537_jtpc(), []gcasmJTSpec{
+		{tab: Fn537_jt1584[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x982afbda6f02, 0x4f2b011bbcaa, 0x722b04f6b7b2, 0xa12b0a32b294, 0x82434352778b, 0xe43434d46c1, 0xd0434d7bf372, 0xd0434d821220, 0xe4434d8a88a1, 0x64434d87794a}},
 	})
-	gcasmJTInit(Fn555_jtpc(), []gcasmJTSpec{
-		{tab: Fn555_jt12348[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x1, 0x4, 0x5, 0x1, 0x6, 0x7, 0x8, 0x5, 0x5, 0x5, 0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x1}, sigs: []uint64{0x5e5039fb106d, 0x67688672f605, 0xe1502bae451b, 0x51502ba4fbe6, 0xdd502ba81fa1, 0x85fb6457eec, 0xc9502b9fa920, 0x6d59322a312b, 0xf95932273638, 0x145fb65c5b08, 0xc75fbb8cf8da, 0xbf5fbb8ceb42, 0x335fbb8fe635, 0xbf5fbb86cc94, 0xa35fa6cb9f0a, 0x505f8e49e65d, 0x5d68a42d85d9, 0x6568a42b5d9a, 0x5568a43396ef, 0xe968a430a994, 0xed68a4223d2d, 0xe568a4222f95, 0x6568a41f203e, 0xbe689ef4b57e, 0x2a689ef7a2d9}},
+	gcasmJTInit(Fn559_jtpc(), []gcasmJTSpec{
+		{tab: Fn559_jt12240[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x1, 0x4, 0x5, 0x1, 0x6, 0x7, 0x8, 0x5, 0x5, 0x5, 0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x1}, sigs: []uint64{0xd2b3ed35f3f4, 0x17ddbee21459, 0x27b3e9603082, 0x9bb3e9632b75, 0x97b3e9655a80, 0xc4e6993f2607, 0x1fb3e968776f, 0xa1b3cb8de446, 0xa9b3cb8df1de, 0xcce69955fb57, 0xc4e69955edbf, 0xc8e69953beb4, 0x9de6956c78b8, 0x25e6956f95a7, 0xf9e680bca172, 0xe672b50d94, 0x59e66d7c2fa1, 0xd5e66d687074, 0xd5e66d6aa64b, 0x5de66d6dc33a, 0x55e66d6db5a2, 0xc9e66d70b095, 0xd5e66d5c3318, 0x5de66d5f5007, 0x50dda665b53e}},
 	})
-	gcasmJTInit(Fn587_jtpc(), []gcasmJTSpec{
-		{tab: Fn587_jt8160[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa}, sigs: []uint64{0x2b386e0028cd, 0x843868c980b1, 0x633847847cc1, 0xd231f46d4a46, 0xca31f45674f6, 0x8931f95e036a, 0xc31e9ea196e, 0x7c31e9d0272f, 0x3331ef2e5b3d, 0x7e3207bc43ae, 0xb875e35e1d4b}},
-		{tab: Fn587_jt10496[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x1e26fe0c7817, 0x8626fe00eb73, 0x8e26fe23fe1f, 0xf270dda1038, 0x97270dceb9f4, 0xd8270895b339, 0x702708a13fdd, 0x6827087e2d31}},
-		{tab: Fn587_jt11620[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xde98f4771f67, 0xce98f47f58bc, 0xce98f4627256, 0x8598f9be708d, 0x8198f9c09f98, 0x8598f9affd5a, 0xd98f9a6dced, 0x8c98afca189c}},
-		{tab: Fn587_jt19776[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xfa4364c4508a, 0x11431af318dd, 0x9431b017e78, 0x2c432028d315, 0xb84320344b55, 0xf5751bb3520b, 0xe9751bbf7b03, 0xc7520f542d3}},
-		{tab: Fn587_jt25956[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x2488e318bce2, 0x95a11da4ec5b, 0x21a11db0649b, 0x1da11d8d58bb, 0x7aa11862f4c7, 0xeea1186e443f, 0xeaa118490288, 0xf3a126654377}},
-		{tab: Fn587_jt27244[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x5e5c4d80b41e, 0xca5c4d5847e0, 0xf55c5141c3b3, 0x895c513ca081, 0x8d5c514d5057, 0x15c5147f6c5, 0x55c512b172b, 0x5c5c69c9bd0a, 0xd05c69c46378, 0x545c69d5ecce}},
-		{tab: Fn587_jt34372[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xf4c73e3de0dd, 0xc7c71c9e2c80, 0xa4cd969328e1, 0x79cd9148c198, 0x52cd8d7c32f7, 0x37cdd5cb264e, 0x90cdd1fdbe2d, 0xd7d6a222b7f9}},
-		{tab: Fn587_jt34532[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x5788f0acb89, 0x1788f10e36b, 0x8d788eff7545, 0xc7880baf7ac, 0x87880c10f8e, 0x847880af8638, 0x107880b4dfca, 0xc7880d1bf64, 0x3778848dabc7, 0x3b78848793e5}},
+	gcasmJTInit(Fn591_jtpc(), []gcasmJTSpec{
+		{tab: Fn591_jt8192[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa}, sigs: []uint64{0xec500c375ff1, 0x98501fce9958, 0xa74fd766940e, 0x9a49845277b6, 0xd9498816da9a, 0x494988309679, 0xdc497a1175c7, 0x83497f58c6ed, 0x76496f911de6, 0x76496f82aab3, 0x4c33b28024e1}},
+		{tab: Fn591_jt10280[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x86f17f8c3324, 0x4bf17a395c26, 0x4bf17a28b31c, 0xdbf17a2e137a, 0x53f17a4dfb9f, 0x24f1765e5a52, 0x3cf1766cf64d, 0xa4f1767212b3}},
+		{tab: Fn591_jt14452[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x5fe39bb6889e, 0x6e3a0e947e3, 0x8ee3a0f4b957, 0x86e3a100e91b, 0xb5e3a4b6bd9c, 0x2de3a4ab4c28, 0x5ce3aa004499, 0x64e3aa0c8f8d}},
+		{tab: Fn591_jt19864[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xa2e7798293ad, 0xefe7744fc004, 0x6be7745b1d14, 0x33105ea9d80a, 0x9f105e9e5232, 0x7c1059688a62, 0xf8105973e772, 0x8410597f5fb2}},
+		{tab: Fn591_jt26072[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xb5d53051b856, 0xd8d535854a4f, 0x6cd53590d027, 0x58d535655492, 0x6bd525bac851, 0x63d525c30f3e, 0x96d52af6bc67, 0xad52b020bdf}},
+		{tab: Fn591_jt27360[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x657bcecf9690, 0x657bceec7cf6, 0xc87babc9ccbf, 0xd87babd0069d, 0x587babd54bcb, 0x487babdb4f49, 0x587babe18927, 0x6f7bb108c960, 0x6f7bb102aab2, 0xef7bb1142d3c}},
+		{tab: Fn591_jt33884[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xfc6057062244, 0xb3249f3975cf, 0x662d9638870a, 0x6f2db90152bc, 0x4c2db3f6e485, 0xd6368a89a435, 0x5d367b1e158a, 0x703680518c53}},
+		{tab: Fn591_jt34060[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xe4a306fcb328, 0x64a306eb309e, 0x2da301c3ba05, 0x3da301bdb687, 0xbda301cf3911, 0xada301c8ff33, 0xbda301ac33fd, 0x2a2fc7952bc, 0x12a2fc734f3e, 0x82a2fc6deee0}},
 	})
-	gcasmJTInit(Fn601_jtpc(), []gcasmJTSpec{
-		{tab: Fn601_jt436[:], entries: []uint16{0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0x1, 0x1, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x1, 0x1, 0x1, 0x14, 0x15, 0x16, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1, 0x1, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x1, 0x1, 0x1, 0x14, 0x15, 0x16, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1, 0x1, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x1, 0x1, 0x1, 0x14, 0x15, 0x16, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x17, 0x18, 0x19, 0x1a, 0x1b}, sigs: []uint64{0xf2c00ef54dbd, 0xa3126cd2bef4, 0xb3c00b035b69, 0x1840f76f4dd2, 0x1a4113db629e, 0x3529299d4709, 0xf52902bf9187, 0x532f9e3c5649, 0x5e592b502a8c, 0x4624f9b757d, 0x314a0bf5ff13, 0x1b52b80f4046, 0xe752deb02e09, 0xfd49ce0aaae2, 0xad49e1515691, 0x2a49f115d511, 0x1a49f11e0e66, 0x705ba6142d99, 0x64740b0290ca, 0x366b226d3edf, 0x2c8554b63a7b, 0x727c6c23e383, 0xd87c75266988, 0xb294bdaeadd3, 0xcb8e4ceabb97, 0x94e8ef31fb2d, 0xdefaa565ec5e, 0xc5032bfb03e6}},
+	gcasmJTInit(Fn605_jtpc(), []gcasmJTSpec{
+		{tab: Fn605_jt436[:], entries: []uint16{0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0x1, 0x1, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x1, 0x1, 0x1, 0x14, 0x15, 0x16, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1, 0x1, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x1, 0x1, 0x1, 0x14, 0x15, 0x16, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1, 0x1, 0xe, 0xf, 0x10, 0x11, 0x12, 0x13, 0x1, 0x1, 0x1, 0x14, 0x15, 0x16, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x17, 0x18, 0x19, 0x1a, 0x1b}, sigs: []uint64{0x8abe887000c1, 0xb8c92129517d, 0xebbe8339663d, 0xb1eb9d9848f6, 0x3bebbb4796ea, 0x56d3cf97e6d5, 0xad3a916eecf, 0x45da4078cd0f, 0x83c20b33fc54, 0x9cae1b84205, 0xb6b29e666f76, 0x894b5803a1f8, 0x6c4b36704627, 0x9242749e1b2b, 0xf6425fdfde4a, 0x97424757f28b, 0x45ca71578eb, 0xd153aea3f9b0, 0x3129ffe535fc, 0x2e211b1424f9, 0x1e3bf5705c07, 0x7732fd41ec01, 0x7932df97f79f, 0x708f3560f0a3, 0x308655ba79f4, 0x18e0fd0e56cc, 0x93f2d5073e11, 0x49fb838fc26b}},
 	})
-	gcasmJTInit(Fn603_jtpc(), []gcasmJTSpec{
-		{tab: Fn603_jt4672[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xdfe4aaacd59a, 0xae4b00e049b, 0x76e4b0027ec3, 0x8ae4afee0ede, 0x21e4661bfdb1, 0x99e466251e1e, 0x4ce46b57f1c7, 0xc0e46b63413f, 0xcce46b5b011e}},
-		{tab: Fn603_jt10200[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x607b5697f962, 0x787b56a6955d, 0x607b56ac8b43, 0xe87b56b1de09, 0xcd7b51b5f09d, 0xb97b51afaff3, 0xc17b51a14a58, 0x397b519bf792, 0x3e7b5fb21307, 0x467b5fa9cc1a}},
-		{tab: Fn603_jt12128[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xc1385556cd57, 0x393855517a91, 0x3d385576bc48, 0x5c385aaa4775, 0x68385ab2b05e, 0x58385aac7680, 0x68385a8fab4a, 0x87385e76dce2, 0x93385e7d0ff4}},
-		{tab: Fn603_jt33356[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xc0ae47f16913, 0x51ae565b3cc7, 0xcdae5655f0cd, 0x4dae564cc2c8, 0x3dae56445313, 0x9aae5119ef1f, 0x9eae510b82b8, 0x22ae5110ceb2}},
-		{tab: Fn603_jt36984[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x68be59036d57, 0xd8be58f7ee4b, 0xd4be58e9744c, 0xb9be55254e94, 0xc1be551d07a7, 0xa6be63247989, 0xb6be634799cd, 0x7fbe5de88c3f, 0xfbe5e027e7e, 0xacbe455b6fb6}},
-		{tab: Fn603_jt42148[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xa0ebf87609cb, 0x93ebea092d8c, 0x23ebea14ac98, 0x23ebea20e9f4, 0x42ebef4837c5, 0xd2ebef53b6d1, 0x8dec07d62036, 0xdec07e18412}},
+	gcasmJTInit(Fn607_jtpc(), []gcasmJTSpec{
+		{tab: Fn607_jt4700[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0x408b0ff40218, 0x3c8b100038a8, 0xb48b0fe03553, 0x338b0195990c, 0xc78b01a11ee4, 0xb78b01b59595, 0xda8b06e308e0, 0x628b06d9e873, 0xe3937f11b467}},
+		{tab: Fn607_jt10232[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x6e11f8237d88, 0x7a11f82be671, 0x6e11f848b873, 0xad11fd6e06cd, 0xa511fd67da87, 0x1d11fd6287c1, 0x2111fd87c978, 0xac11ee0579e1, 0xb011edf70d7a, 0x2811edf1bab4}},
+		{tab: Fn607_jt12044[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8}, sigs: []uint64{0xee3e888213df, 0x7e3e8887743d, 0xc73e838847e6, 0xc73e8386120f, 0xc33e837fec95, 0xbf3e83717296, 0x983e7e43f87f, 0x203e7e3ec0e9, 0x243e7e4d3ae8}},
+		{tab: Fn607_jt33536[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xf266179e3e2b, 0xf666178fd1c4, 0xef6625a5d8d5, 0x5f6625a8ccfc, 0x6f6625a093a7, 0xe36625ba5652, 0x3066205c2910, 0x3c66206ce67e}},
+		{tab: Fn607_jt37164[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x591238a536d7, 0xf0123dcd5090, 0xf0123ddbc3c3, 0xa712431d116b, 0xab12430ea504, 0x8e12200bea8a, 0x7e1220180cb6, 0xb1122547d108, 0x25122550eaa9, 0xe0122a923f1d}},
+		{tab: Fn607_jt42328[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x42a00fc6eb9f, 0xc2a00fbb87c3, 0x55a001710d78, 0xc5a001658e6c, 0x84a00549e70d, 0xf4a005552fb9, 0xf4a005322aa5, 0x779ff6f3d286}},
 	})
-	gcasmJTInit(Fn613_jtpc(), []gcasmJTSpec{
-		{tab: Fn613_jt1980[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa}, sigs: []uint64{0x6dcd6d32d03b, 0xf0b5342cb2bf, 0x78b53412e948, 0x27b5396ed9e7, 0x51b52ef1ac8d, 0xf7bba4f0db5b, 0xc8bb9fbd34fe, 0x40bb9fc6556b, 0xc0bb9fcb9a99, 0x99bb9a709112, 0xa49af729ada6}},
-		{tab: Fn613_jt5020[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x4f16145146dd, 0x5c27e33d9300, 0x7027e343d3aa, 0x732822a63600, 0x732822958cf6, 0x2a2827e54dd1, 0x2a2827d6da9e, 0xf781d850dd26}},
+	gcasmJTInit(Fn617_jtpc(), []gcasmJTSpec{
+		{tab: Fn617_jt2812[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x6a5b9dda983f, 0x9b31e9d54f4d, 0x1a31a15de220, 0x3231a16c7e1b, 0xcd31a52d947c, 0xd931a535fd65, 0x762b49619789, 0xf62b495014ff}},
+		{tab: Fn617_jt3964[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa}, sigs: []uint64{0x3c64414c0572, 0xc864414f292d, 0x5f4c55b71384, 0x574c559a1f86, 0x144c3d20d68e, 0x6254b19ede5e, 0xe654b1a1f481, 0x5b54bfe03f08, 0xdf54bfdd367d, 0x3854baa4588a, 0xde3a4ca585e4}},
 	})
-	gcasmJTInit(Fn650_jtpc(), []gcasmJTSpec{
-		{tab: Fn650_jt88[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 0xd}, sigs: []uint64{0xa33305ab1304, 0x4f32decd3b86, 0x34b2c339bb4d, 0x47b27acdd3f8, 0x26c48ce1da05, 0xa5c47eb42424, 0xdbc47470d7fa, 0x76c479590d05, 0xd9dc460f5900, 0x12dc2ec88bc2, 0xa3d5bde49631, 0xd9ee2d531417, 0x1eee28601e50, 0x76e55c10d392}},
+	gcasmJTInit(Fn655_jtpc(), []gcasmJTSpec{
+		{tab: Fn655_jt88[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 0xd}, sigs: []uint64{0xfd038ef4bffd, 0xc503b705059d, 0xf20bc2f8c261, 0x3f0bbdc5eeb8, 0xd9fc8b0d68c0, 0x3afc8743f70e, 0x9ffc823edb9d, 0x74fc7cf47454, 0xc0263102e47f, 0xcb2ca1e3fa4d, 0xa62ccda3c62c, 0xa21dd15d129b, 0xf71dcc1e0f2e, 0xb71da5380527}},
 	})
-	gcasmJTInit(Fn659_jtpc(), []gcasmJTSpec{
-		{tab: Fn659_jt2300[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xbb847bf23cc3, 0xbb847bec1e15, 0x208476ab0001, 0x248476bbafd7, 0xf98472d23404, 0xf58472ef139e, 0x42846d9f598f, 0xf84684ec600}},
+	gcasmJTInit(Fn664_jtpc(), []gcasmJTSpec{
+		{tab: Fn664_jt2300[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xbe90c04a7b27, 0xbe90c05b2431, 0xd390e357b265, 0x4790e35258d3, 0x2c90de0e2b68, 0xa890ddfca212, 0x590d8c3caeb, 0x6290d4fc8844}},
 	})
-	gcasmJTInit(Fn660_jtpc(), []gcasmJTSpec{
-		{tab: Fn660_jt4792[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xa2f2c1290770, 0x351a2d91b2d9, 0xb91a2d8655c9, 0xc51a2d77f6fa, 0x9a1a284a7617, 0xe1a2836a952, 0xcf1a0fbf9cfd, 0xcb1a0fcbd38d}},
-		{tab: Fn660_jt5148[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xaad7ee6802d4, 0x22d7ee62b00e, 0x87d7e9323b04, 0x83d7e92c158a, 0x7bd7e93a7b25, 0x83d7e91da257, 0xccd7e3f0e690, 0xc8d7e3f93449}},
-		{tab: Fn660_jt8468[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x531c5be83450, 0x21c6114e27f, 0xfe1c6112a5dc, 0x121c610ca92a, 0x821c61097ea3, 0x21c61043975, 0x921c612c9ee7, 0xe1c612988c4, 0xa51c64ea9859, 0xa91c64e24aa0}},
+	gcasmJTInit(Fn665_jtpc(), []gcasmJTSpec{
+		{tab: Fn665_jt3892[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xbc6ef761d71, 0xab893c0ee24c, 0x5289411c66a6, 0xe6894127ec7e, 0x989465b7e77, 0x189464cfdac, 0xe08924b99b0f, 0xdc8924c80776}},
+		{tab: Fn665_jt4248[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xe9c75ef4ec0b, 0x61c75ecc9431, 0xb6c75b13b725, 0x42c75b0e865b, 0x2ac75affea60, 0xc2c75b285d6a, 0x37c7696cc69f, 0x2fc769646482}},
+		{tab: Fn665_jt8460[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x9aa96cbfdb0e, 0x9ea96cd08ae4, 0xe3a968ea0338, 0x63a968ef4866, 0x73a968f58244, 0xf3a968f8919b, 0x67a968fdc265, 0xe3a96900caf0, 0x70a977455ced, 0x58a9774b52d3}},
 	})
-	gcasmJTInit(Fn662_jtpc(), []gcasmJTSpec{
-		{tab: Fn662_jt80[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xa6887a3b1a1b, 0x1ae7d002cbfa, 0x79f5ac8c4f42, 0x66feadd7bf7c, 0x1ffe954ffc85, 0xf307a222ed8d, 0xb4cc29aa3dd3, 0x5dd50457dd39, 0xc4d4e15838e2, 0x97ddee2b29ea}},
+	gcasmJTInit(Fn667_jtpc(), []gcasmJTSpec{
+		{tab: Fn667_jt80[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x5ed30980e178, 0x1f992b04185d, 0x97f97c0a02f1, 0x10f0973bfa79, 0x3ce7b78c33c9, 0x6de7dab44b2a, 0x4523390a494b, 0xf21a68ffebaa, 0xa411f48419b1, 0x7b11d2f0a97c}},
 	})
-	gcasmJTInit(Fn663_jtpc(), []gcasmJTSpec{
-		{tab: Fn663_jt1844[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x8ed8f4edb0a3, 0x26d8f4dc56e1, 0xf7d8efaecf32, 0xf7d8efac995b, 0xfbd8efbd4931, 0xefd8ef97f9e2, 0x52e1c1457f7a, 0xcae1c1402cb4}},
-		{tab: Fn663_jt2652[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x774617ada058, 0x8b4617d91bed, 0xae461d00708a, 0xa6461d0ed625, 0xae461d15026b, 0x26461cecaa91, 0x254648d1ee87, 0x114648d7eb39}},
-		{tab: Fn663_jt7336[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x217c85ffce7f, 0x3e7ca78ad5cb, 0x707c9e6882d1, 0xbd7c994c76e0, 0xa37c68253b56, 0x6d64344cce51, 0x8b6429bafab2, 0x5e64425a7345}},
-		{tab: Fn663_jt39816[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xbb8aa4558a7d, 0x5a8aa98e5ad8, 0x63ed62198779, 0xb4ed5e4c11c0, 0x41ed6c462de7, 0x9aed6757c5ca, 0x8aed6740e2e2, 0xcfed4ebe797d}},
-		{tab: Fn663_jt40700[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0xcc3e7f3376d0, 0xd03e7f41f0cf, 0xe03e7f3bed51, 0x503e7f4d54ab, 0xdf3ebea46789, 0xf33ebe9e6ad7, 0x633ebea77dac, 0x633ebe8a9746}},
-		{tab: Fn663_jt43080[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x3cb889f79fc4, 0x81b884b64b50, 0x92b892f1b614, 0x57b88dbbc57c, 0x94b875394e7f, 0x61b8716456f5, 0xeab87f60a227, 0xc7b87a75502d, 0xf8b861ea7047, 0xf0b861d39af7}},
-		{tab: Fn663_jt56668[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xce68f1febad9, 0xaf68eca3beea, 0x366074721f3c, 0xb260747b4675, 0x2e607469bd1f, 0xae607489b2dc, 0x556079b65373, 0xe56079b12975, 0x596079a7e70c, 0xd56079a29b12}},
+	gcasmJTInit(Fn668_jtpc(), []gcasmJTSpec{
+		{tab: Fn668_jt1840[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x25ca25ef264f, 0x25ca260e428c, 0x4cca29ca2823, 0x5cca29c424a5, 0x50ca29bbbbbc, 0xccca29b66fc2, 0xc1e26458943f, 0x51e264536a41}},
+		{tab: Fn668_jt2648[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x211fdddfd868, 0x211fddf08172, 0xd01fe31af9ca, 0xbc1fe320f67c, 0xc81fe318b65b, 0xc01fe3358f29, 0x671fe8622fc0, 0xe31fe86b56f9}},
+		{tab: Fn668_jt25064[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x559e9ead5734, 0x179ea8f095c6, 0x9d9e8b247c9c, 0xd09e9062b421, 0x7f9e95a3f431, 0x899ec6b44cd3, 0xb1b70535705f, 0x7bb70e3281a2}},
+		{tab: Fn668_jt34048[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x782767a4afc8, 0x93276ce6a75c, 0xd991611f8db1, 0xf09166449813, 0xaf916b8c1201, 0x2b916ba5e244, 0x4e916f6a1594, 0xfd91749ce271}},
+		{tab: Fn668_jt34924[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7}, sigs: []uint64{0x596fec7402e0, 0xe16fec7955a6, 0xe96fec9649a4, 0x5066d698beb5, 0x5c66d692b46b, 0x4466d6841870, 0xdc66d6ac8b7a, 0xfb66dbd9f7f9}},
+		{tab: Fn668_jt37304[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xf83107715ae4, 0x6d3115d2aa7f, 0xe13115b8bf0c, 0x463111e93578, 0x37311ff6da6c, 0x1c311ac12034, 0x91312a94044f, 0xde31254c9ec5, 0xc4f87dbfe2b2, 0xe7f882fbc930}},
+		{tab: Fn668_jt56528[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0x58781593f6a0, 0xe07815994966, 0x626f401f4991, 0xde6f4022521c, 0x6a6f4027abae, 0x6a6f40361ee1, 0x6d6f30ae7c84, 0xed6f30b3c1b2, 0x656f30bce21f, 0xf16f30c23bb1}},
 	})
-	gcasmJTInit(Fn767_jtpc(), []gcasmJTSpec{
-		{tab: Fn767_jt1244[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x4, 0x7, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x8, 0x9}, sigs: []uint64{0xbac0341eecdc, 0x71c039603a84, 0xb4ceff46d498, 0xe3cf04a80a65, 0xb736bd060d, 0x36a546362f8b, 0x87a5425e2f76, 0xd0a5773520d3, 0x2d9ef302fdc2, 0x7b9efd99f493}},
+	gcasmJTInit(Fn772_jtpc(), []gcasmJTSpec{
+		{tab: Fn772_jt1244[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x4, 0x7, 0x4, 0x4, 0x4, 0x4, 0x4, 0x4, 0x8, 0x9}, sigs: []uint64{0xcdc8ff8896e, 0xb7dc9522fafa, 0x72cd26e92c62, 0x9cd2c280dd3, 0x87b2e50a28ce, 0xa9c438f80bd4, 0x2dc43918085d, 0x3ec45aa2fb45, 0x4fbbc48862d3, 0x75bbbb8b3660}},
 	})
 	gcasmJTInit(Fn903_jtpc(), []gcasmJTSpec{
 		{tab: Fn903_jt80[:], entries: []uint16{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9}, sigs: []uint64{0xd790e99818fb, 0x53d194ef532, 0xf3cfd05f9de, 0xbcb74069d1e, 0x79a1f6521a2a, 0xa5a84d4f9df1, 0x43b9a13834fd, 0xb5877e299c09, 0x7b877521421a, 0x6b8775297b6f}},
