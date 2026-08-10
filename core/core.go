@@ -22,7 +22,7 @@ func New() *base.Module {
 	m.G0 = int32(1048576)
 	InitElemSeg_0_0(m)
 	InitElemSeg_1_0(m)
-	m.DataEnd = 1293520
+	m.DataEnd = 1292944
 	initData_0(m)
 	return m
 }
@@ -42,7 +42,7 @@ func NewWithMemory(memory []byte, memSize uint64) *base.Module {
 	m.G0 = int32(1048576)
 	InitElemSeg_0_0(m)
 	InitElemSeg_1_0(m)
-	m.DataEnd = 1293520
+	m.DataEnd = 1292944
 	return m
 }
 func NewFromSnapshot(memory []byte, memSize uint64, globals []uint64) *base.Module {
@@ -61,24 +61,24 @@ func NewFromSnapshot(memory []byte, memSize uint64, globals []uint64) *base.Modu
 	m.G0 = int32(1048576)
 	InitElemSeg_0_0(m)
 	InitElemSeg_1_0(m)
-	m.DataEnd = 1293520
+	m.DataEnd = 1292944
 	base.RestoreGlobals(m, globals)
 	return m
 }
 func initData_0(m *base.Module) {
-	copy(m.Memory[1048576:], wasm2goData_data_bin[0:244944])
+	copy(m.Memory[1048576:], wasm2goData_data_bin[0:244368])
 }
 func AnydocAlloc(m *base.Module, l0 int32) int32 {
-	return Fn16(m, l0)
+	return Fn17(m, l0)
 }
 func AnydocAssets(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32 {
-	return Fn17(m, l0, l1, l2, l3, l4, l5)
+	return Fn18(m, l0, l1, l2, l3, l4, l5)
 }
 func AnydocFree(m *base.Module, l0 int32, l1 int32) {
-	Fn22(m, l0, l1)
+	Fn23(m, l0, l1)
 }
 func AnydocToMarkdown(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32 {
-	return Fn23(m, l0, l1, l2, l3, l4, l5)
+	return Fn24(m, l0, l1, l2, l3, l4, l5)
 }
 func Memory(m *base.Module) []byte {
 	return m.Memory

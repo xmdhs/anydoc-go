@@ -1,16 +1,16 @@
 # anydoc-go: anydoc via goccy/wasm2go + a Go CLI
 
-anydoc（Rust 文档→Markdown 库）的 C-ABI wasm 用 [goccy/wasm2go]（AOT 编译器：
-生成 amd64/arm64 汇编 + 纯 Go 回退）编译成 Go 源码，再由一个 Go CLI 把任意
-文档（docx/pptx/xlsx/ods/odp/epub/doc/odt/rtf/csv；pdf 被 stub 剔除，见
+anydoc（Rust 文档→Markdown 库）的 C-ABI wasm 用 [goccy/wasm2go] 的 `-pure`
+模式编译成纯 Go 源码，再由一个 Go CLI 把任意文档
+（docx/pptx/xlsx/ods/odp/epub/doc/odt/rtf/csv；pdf 被 stub 剔除，见
 「架构」）转成 GitHub-Flavored Markdown。
 
 独立仓库：第三方代码只放在 `third-party/`（不提交），其余全部自足。
 
 ```
 cabi/            Rust cdylib：C ABI 导出 anydoc 核心库（避开 wasm-bindgen JS 依赖）
-core/            goccy-wasm2go 生成产物（core.go + base/ + p0/ + p1/ + data.bin，
-                 随仓库提交；amd64/arm64 双架构 asm + 纯 Go 回退）
+core/            goccy-wasm2go -pure 生成产物（core.go + base/ + p0/ + p1/ + data.bin，
+                 随仓库提交；纯 Go，无 asm bundle）
 third-party/     build.sh fetch 拉取的第三方仓库：anydoc、goccy-wasm2go（git 工作树）
 patches/         本地 crate 替换：web-time（去 wasm-bindgen 依赖）、pdf-inspector stub
 tools/           辅助脚本（split_gen.py 已不再使用——goccy 自带多包拆分）
@@ -35,9 +35,9 @@ main.go + cabi/src/lib.rs
         │ cargo build --release --target wasm32-unknown-unknown（zig cc 提供宿主链接器）
         ▼
 anydoc_cabi.wasm（≈1.7MB；pdf-inspector 被本地 stub patch 剔除）
-        │ goccy-wasm2go -pkg core -import anydoc-go/core -out-dir core
+        │ goccy-wasm2go -pure -pkg core -import anydoc-go/core -out-dir core
         ▼
-core/core.go + base/ + p0/ + p1/ + data.bin（≈64MB，984 函数）
+core/core.go + base/ + p0/ + p1/ + data.bin（≈25MB，纯 Go）
         │ go build -p 2 -trimpath -ldflags="-s -w"
         ▼
 bin/anydoc（≈8MB static ELF）
@@ -51,8 +51,8 @@ bin/anydoc（≈8MB static ELF）
 - **PDF 被 stub 剔除**（重要）：anydoc 新版把 pdf-inspector 移入普通依赖
   （非 optional feature），`default-features = false` 裁不掉。cabi 用
   `[patch.crates-io]` 把它替换为本地 stub（patches/pdf-inspector，85 行），
-  依赖闭包 129 个 crate 全部消失：wasm 7.2→1.7MB、生成物 37→64MB 中
-  pdf 相关代码为零。pdf 输入报 unsupported（"no extractable text"）。
+  依赖闭包 129 个 crate 全部消失：wasm 7.2→1.7MB、纯 Go 生成物约 25MB
+  中 pdf 相关代码为零。pdf 输入报 unsupported（"no extractable text"）。
   stub 接口即 anydoc 用到的 `PdfError`/`process_pdf_mem`/`PdfProcessResult`
   （map_error 穷尽匹配，接口漂移会编译失败提醒）。恢复 pdf：删掉
   cabi/Cargo.toml 里的 patch 行并重建即可。
@@ -61,26 +61,23 @@ bin/anydoc（≈8MB static ELF）
 
 C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 rustc
 的宿主链接器——本机没有 gcc/clang）。有系统 cc 的环境直接用系统工具链，
-无需 zig。goccy 翻译器内部会跑一次 `go build` 抓取 asm，需要
-`GOCACHE`/`GOPATH` 可写（build.sh 已默认指到项目内缓存）。
+无需 zig。goccy 的 `-pure` 翻译不生成 asm bundle 和架构 build tags，
+只需 `GOCACHE`/`GOPATH` 可写（build.sh 已默认指到项目内缓存）。
 
 ```bash
 ./build.sh fetch    # 首次 & 更新：拉取第三方仓库并应用本地 patch
                     #   anydoc 默认取语义排序的最新 tag；goccy 默认固定已验证 revision
 ./build.sh wasm     # cargo → anydoc_cabi.wasm（-simd128）
-./build.sh cli      # goccy-wasm2go → core/ → go build（生成约 6-7 分钟，仅 wasm 变更后重跑）
+./build.sh cli      # goccy-wasm2go -pure → core/ → go build（仅 wasm 变更后重跑）
 ./build.sh test     # 单元测试（见「验证」）
 ./build.sh build    # wasm + cli 全流程（默认）
 ```
 
-注意：`cli` 步骤的 goccy 翻译是构建耗时大头（2 核机约 6-7 分钟，内部要
-为 984 个函数跑 SSA + 抓 amd64/arm64 asm）；core/ 随仓库提交，日常改
-main.go/lib 只跑 `go build` 即可，无需重新翻译。`third-party/` 不入库，
-`build.sh fetch` 会应用 `patches/` 中的 anydoc 与 goccy patch；goccy 的
-ARM64 frame 重写 patch 专门处理 `anydoc-go` 这类带连字符的 import path，
-并保留 `buf-1024(SP)` 的负偏移。生成输入 wasm 位于 `target/`，不提交。
-main 上影响生成结果的提交会由 `.github/workflows/generate-core.yml` 重新执行
-wasm→Go 全流程并把完整 `core/`（包括 ARM64 asm）提交回仓库。
+注意：`core/` 随仓库提交，日常改 `main.go`/`lib` 只跑 `go build` 即可，
+无需重新翻译。`third-party/` 不入库，`build.sh fetch` 会应用 `patches/`
+中的 anydoc 与 goccy patch。生成输入 wasm 位于 `target/`，不提交；main
+上影响生成结果的提交会由 `.github/workflows/generate-core.yml` 重新执行
+wasm→纯 Go 全流程并把完整 `core/` 提交回仓库。
 
 ## 工具链对比：与原生静态库
 
@@ -106,10 +103,10 @@ wasm→Go 全流程并把完整 `core/`（包括 ARM64 asm）提交回仓库。
 - 但 native 路线代价大：最终二进制**动态链接 glibc**、依赖 cgo/zig 工具链、
   `libanydoc_cabi.a` 用 `panic=unwind` 宿主配置编（还要链 unwind 库）、且无
   长驻实例复用。本仓库选 goccy：**全静态、纯 Go 构建、行为与快照逐字节一致**。
-- 相对上一代 ncruces 纯 Go 翻译：goccy 快约 1.6-2×、最终二进制 12.5→8.4MB；
-  代价是生成物大（64MB）、翻译耗时长（≈6-7 分钟）、无发布 tag。SIMD 已显式
-  关闭（`wasm_step` 的 `-C target-feature=-simd128`）：文档转换是标量/字符串
-  主导，实测 SIMD 开启反而慢 3-4 倍。
+- 相对上一代 ncruces 纯 Go 翻译：goccy 路线历史实测快约 1.6-2×、最终二进制
+  12.5→8.4MB；当前使用 `-pure` 后生成物约 25MB，且不包含 asm bundle。SIMD
+  已显式关闭（`wasm_step` 的 `-C target-feature=-simd128`）：文档转换是标量/
+  字符串主导，实测 SIMD 开启反而慢 3-4 倍。
 
 ## 用法
 
