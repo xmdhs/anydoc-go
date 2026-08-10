@@ -63,6 +63,14 @@ jobs:
       - name: Fetch third-party repos and apply patches
         run: ./build.sh fetch
 
+      # gcasm 的 TestA64Fixtures 需要 wat2wasm 把 .wat fixture 编译成 .wasm；
+      # ubuntu runner 镜像默认没有 wabt，缺了它会整组 FAIL（见 a64fixture_test.go）。
+      - name: Install wabt (wat2wasm for gcasm fixtures)
+        run: |
+          set -euxo pipefail
+          sudo apt-get update
+          sudo apt-get install -y wabt
+
       - name: Run goccy ARM64 assembler gates
         working-directory: third-party/goccy-wasm2go
         env:
