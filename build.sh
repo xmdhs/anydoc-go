@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# anydoc-go 构建管线（goccy 分支）：
+# anydoc-go 构建管线：
 #   fetch: 拉取/刷新第三方仓库（third-party/anydoc、third-party/goccy-wasm2go），
 #          URL 可用 ANYDOC_REPO / GOCCY2GO_REPO 覆盖
 #   wasm:  cargo → target/<arch>/release/anydoc_cabi.wasm（依赖 third-party/anydoc）

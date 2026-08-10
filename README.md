@@ -1,14 +1,9 @@
-# anydoc-go（goccy 分支）: anydoc via goccy/wasm2go + a Go CLI
+# anydoc-go: anydoc via goccy/wasm2go + a Go CLI
 
 anydoc（Rust 文档→Markdown 库）的 C-ABI wasm 用 [goccy/wasm2go]（AOT 编译器：
 生成 amd64/arm64 汇编 + 纯 Go 回退）编译成 Go 源码，再由一个 Go CLI 把任意
 文档（docx/pptx/xlsx/ods/odp/epub/doc/odt/rtf/csv；pdf 被 stub 剔除，见
 「架构」）转成 GitHub-Flavored Markdown。
-
-> 与 main 分支（[ncruces/wasm2go] 纯 Go 翻译）的区别：goccy 把 wasm 真正编译
-> 成宿主汇编，转换快约 1.6-2×，二进制约 5/8 体积；局限是生成物约 64MB、
-> 一次生成耗时长（≈6-7 分钟），且 goccy 至今没有 tag 只跟 main。详细对比见
-> 「工具链对比」。
 
 独立仓库：第三方代码只放在 `third-party/`（不提交），其余全部自足。
 
@@ -78,27 +73,38 @@ C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 ru
 ./build.sh build    # wasm + cli 全流程（默认）
 ```
 
-注意：`cli` 步骤的 goccy 翻译是本分支耗时大头（2 核机约 6-7 分钟，内部要
+注意：`cli` 步骤的 goccy 翻译是构建耗时大头（2 核机约 6-7 分钟，内部要
 为 984 个函数跑 SSA + 抓 amd64/arm64 asm）；core/ 随仓库提交，日常改
 main.go/lib 只跑 `go build` 即可，无需重新翻译。
 
-## 工具链对比（why goccy）
+## 工具链对比：与原生静态库
 
-同一份 wasm 分别在 ncruces（main 分支）与 goccy（本分支）下实测，本机
-（AMD GX-215JJ，2 核）中位耗时（ms）：
+除 wasm→Go（goccy）路线外，还有一条原生路线：cabi 直接编成宿主静态库
+（`target-static/release/libanydoc_cabi.a`，导出同一套 C ABI），由 Go 用 cgo
+链接（`CC=zig cc`，需 `-lunwind -lm`）。本机（AMD GX-215JJ，2 核）中位耗时
+（ms）对比：
 
-| 输入 | ncruces | goccy（本分支） |
+| 输入 | goccy（本仓库） | native 静态库 |
 | --- | ---: | ---: |
-| book.epub | 2.41 | 1.17 |
-| pres.pptx | 6.17 | 3.36 |
-| sheet.ods | 3.19 | 1.71 |
-| text.docx | 7.08 | 4.65 |
-| 2MB CSV | 623 | 321 |
+| book.epub | 1.17 | 1.08 |
+| pres.pptx | 3.36 | 3.22 |
+| sheet.ods | 1.71 | 1.51 |
+| text.docx | 4.65 | 3.74 |
+| sheet.csv | 0.54 | 0.39 |
+| 2MB CSV | 321 | 371 |
 
-结论：goccy 快约 1.3-2×（CSV/大文件约 1.9×），最终二进制 7.8MB vs 12.5MB。
-代价：① 生成物大（64MB vs 9.7MB）且翻译时间长；② 无发布 tag；③ 做不了
-ncruces 的 `-embed` 单文件（多包结构）；④ SIMD 开启反而慢——本分支已在
-`wasm_step` 显式关闭。
+结论：
+
+- **小样本（zip/XML/zlib 主导）native 比 goccy 再快约 8-25%**；**大 CSV 相反，
+  goccy 快 16%**（flat 数据无 XML 开销时，cgo 跨语言边界与每次调用重复拷贝
+  的代价占了上风）。
+- 但 native 路线代价大：最终二进制**动态链接 glibc**、依赖 cgo/zig 工具链、
+  `libanydoc_cabi.a` 用 `panic=unwind` 宿主配置编（还要链 unwind 库）、且无
+  长驻实例复用。本仓库选 goccy：**全静态、纯 Go 构建、行为与快照逐字节一致**。
+- 相对上一代 ncruces 纯 Go 翻译：goccy 快约 1.6-2×、最终二进制 12.5→8.4MB；
+  代价是生成物大（64MB）、翻译耗时长（≈6-7 分钟）、无发布 tag。SIMD 已显式
+  关闭（`wasm_step` 的 `-C target-feature=-simd128`）：文档转换是标量/字符串
+  主导，实测 SIMD 开启反而慢 3-4 倍。
 
 ## 用法
 
