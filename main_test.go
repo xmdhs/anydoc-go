@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	anydoc "anydoc-go/lib"
+	anydoc "github.com/xmdhs/anydoc-go/lib"
 )
 
 func readFile(t *testing.T, path string) []byte {

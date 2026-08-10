@@ -42,12 +42,11 @@ latest_tag() {
 fetch() {
     # 第三方仓库位于 anydoc-go 自己的 third-party/ 下（.gitignore 排除，
     # 不随本仓库提交）。anydoc 默认跟最新发布 tag；goccy 固定到已验证
-    # revision，避免 ARM64 patch 随 upstream/main 漂移。
+    # revision，确保生成器版本稳定。
     fetch_one anydoc "${ANYDOC_REPO}" "${ANYDOC_DIR}" "${ANYDOC_REF}"
     fetch_one goccy  "${GOCCY_REPO}"  "${GOCCY_DIR}"  "${GOCCY_REF}"
     require_repos
     apply_anydoc_patch
-    apply_goccy_patch
     echo "third-party repos ready:"
     git -C "${ANYDOC_DIR}" rev-parse HEAD
     git -C "${GOCCY_DIR}" rev-parse HEAD
@@ -96,9 +95,8 @@ require_repos() {
 }
 
 # 应用本地 patch（第三方仓库不提交任何改动；CI fresh clone 后必须有同一
-# patch 才能构建出 asset:// 占位和修复后的 ARM64 asm）。
+# patch 才能构建出 asset:// 占位）。
 ANYDOC_PATCH="${ROOT}/patches/anydoc-asset-placeholder.patch"
-GOCCY_PATCH="${ROOT}/patches/goccy-wasm2go-arm64-frame.patch"
 apply_patch_once() {
     local repo="$1" patch="$2" name="$3"
     if git -C "${repo}" apply --check "${patch}" 2>/dev/null; then
@@ -117,10 +115,6 @@ apply_anydoc_patch() {
     apply_patch_once "${ANYDOC_DIR}" "${ANYDOC_PATCH}" anydoc
 }
 
-apply_goccy_patch() {
-    apply_patch_once "${GOCCY_DIR}" "${GOCCY_PATCH}" goccy
-}
-
 wasm_step() {
     require_repos
     apply_anydoc_patch
@@ -133,7 +127,6 @@ wasm_step() {
 
 cli_step() {
     require_repos
-    apply_goccy_patch
     [ -f "${WASM}" ] || { echo "missing wasm — run: $0 wasm" >&2; exit 2; }
     # bin/ 不入库；每次在 patch 后重建，避免 ignored 的旧 translator 绕过补丁。
     echo "building goccy-wasm2go → ${ROOT}/bin/goccy-wasm2go"
@@ -142,7 +135,7 @@ cli_step() {
     # -pure 禁止生成 asm bundle 和架构 build tags，保持跨平台纯 Go 构建；
     # 整目录进 core/，不需要 split_gen 拆文件。
     rm -rf "${ROOT}/core"
-    "${ROOT}/bin/goccy-wasm2go" -pure -i "${WASM}" -pkg core -import anydoc-go/core \
+    "${ROOT}/bin/goccy-wasm2go" -pure -i "${WASM}" -pkg core -import github.com/xmdhs/anydoc-go/core \
         -out-dir "${ROOT}/core"
     cd "${ROOT}"
     go build -p 2 -trimpath -ldflags="-s -w" -o "${ROOT}/bin/anydoc" .

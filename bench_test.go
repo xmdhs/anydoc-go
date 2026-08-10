@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	anydoc "anydoc-go/lib"
+	anydoc "github.com/xmdhs/anydoc-go/lib"
 )
 
 // BenchmarkConvert 用仓库样本逐文件转换，单次转换（每轮）从创建 converter

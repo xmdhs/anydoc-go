@@ -1,5 +1,6 @@
 // anydoc converts documents (docx, pptx, xlsx, csv, pdf, ...) to
-// GitHub-Flavored Markdown. The conversion core lives in the anydoc-go/lib
+// GitHub-Flavored Markdown. The conversion core lives in the
+// github.com/xmdhs/anydoc-go/lib
 // package (封装 wasm2go 生成的 core 包)；本文件只是命令行入口。
 //
 // Usage:
@@ -19,7 +20,7 @@ import (
 	"regexp"
 	"strings"
 
-	anydoc "anydoc-go/lib" // 包的内部名也是 anydoc；别名保证可读
+	anydoc "github.com/xmdhs/anydoc-go/lib" // 包的内部名也是 anydoc；别名保证可读
 )
 
 func main() {

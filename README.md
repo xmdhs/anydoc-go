@@ -35,7 +35,7 @@ main.go + cabi/src/lib.rs
         │ cargo build --release --target wasm32-unknown-unknown（zig cc 提供宿主链接器）
         ▼
 anydoc_cabi.wasm（≈1.7MB；pdf-inspector 被本地 stub patch 剔除）
-        │ goccy-wasm2go -pure -pkg core -import anydoc-go/core -out-dir core
+        │ goccy-wasm2go -pure -pkg core -import github.com/xmdhs/anydoc-go/core -out-dir core
         ▼
 core/core.go + base/ + p0/ + p1/ + data.bin（≈25MB，纯 Go）
         │ go build -p 2 -trimpath -ldflags="-s -w"
@@ -75,7 +75,7 @@ C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 ru
 
 注意：`core/` 随仓库提交，日常改 `main.go`/`lib` 只跑 `go build` 即可，
 无需重新翻译。`third-party/` 不入库，`build.sh fetch` 会应用 `patches/`
-中的 anydoc 与 goccy patch。生成输入 wasm 位于 `target/`，不提交；main
+中的 anydoc patch。生成输入 wasm 位于 `target/`，不提交；main
 上影响生成结果的提交会由 `.github/workflows/generate-core.yml` 重新执行
 wasm→纯 Go 全流程并把完整 `core/` 提交回仓库。
 
@@ -144,7 +144,7 @@ import (
     "fmt"
     "log"
 
-    "anydoc-go/lib"
+    lib "github.com/xmdhs/anydoc-go/lib"
 )
 
 conv := lib.NewConverter() // 创建成本约 1ms 级，长期复用
@@ -165,7 +165,7 @@ md, err = func() (string, error) {
 }()
 ```
 
-导入路径随 module 名（当前为本地 `anydoc-go`，发布时改为真实仓库路径）。
+导入路径为 `github.com/xmdhs/anydoc-go`，可直接从仓库导入。
 
 ## 验证
 

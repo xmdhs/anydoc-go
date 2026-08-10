@@ -20,8 +20,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	core "anydoc-go/core"
-	corebase "anydoc-go/core/base"
+	core "github.com/xmdhs/anydoc-go/core"
+	corebase "github.com/xmdhs/anydoc-go/core/base"
 )
 
 // ConvertError 是一次转换失败的结构化错误。Code 是稳定机器可读的标识，
