@@ -112,7 +112,12 @@ apply_patch_once() {
 }
 
 apply_anydoc_patch() {
-    apply_patch_once "${ANYDOC_DIR}" "${ANYDOC_PATCH}" anydoc
+    for patch in "${ROOT}"/patches/*.patch; do
+        [ -f "${patch}" ] || continue
+        local pname
+        pname="$(basename "${patch}")"
+        apply_patch_once "${ANYDOC_DIR}" "${patch}" "${pname}"
+    done
 }
 
 wasm_step() {
@@ -138,12 +143,17 @@ cli_step() {
     "${ROOT}/bin/goccy-wasm2go" -pure -i "${WASM}" -pkg core -import github.com/xmdhs/anydoc-go/core \
         -out-dir "${ROOT}/core"
     cd "${ROOT}"
-    go build -p 2 -trimpath -ldflags="-s -w" -o "${ROOT}/bin/anydoc" .
+    # 启用 anydoc_convert：core 由 wasm2go 用 -import github.com/xmdhs/anydoc-go/core
+    # 重建后含 AnydocConvert 导出，此时 -tags anydoc_convert 编译合并路径
+    # （一次解析取 md + 资产）。无该符号的环境不要带此 tag。
+    go build -p 2 -trimpath -ldflags="-s -w" -tags anydoc_convert -o "${ROOT}/bin/anydoc" .
 }
 
 test_step() {
     cd "${ROOT}"
-    go test -p 1 -trimpath -ldflags="-s -w" -v ./...
+    # 与 cli_step 同开关：重建出 AnydocConvert 后，单测执行为合并解析变体
+    # （assets_merge.go），验证 --imgs 单次解析路径。
+    go test -p 1 -trimpath -ldflags="-s -w" -tags anydoc_convert -v ./...
 }
 
 case "${1:-build}" in

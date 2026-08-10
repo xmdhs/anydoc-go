@@ -1,0 +1,13 @@
+diff --git a/src/lib.rs b/src/lib.rs
+index efba6ff..7d2807a 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -16,7 +16,7 @@ mod shared;
+ 
+ pub use error::ConvertError;
+ 
+-use render::markdown::document_to_markdown;
++pub use render::markdown::document_to_markdown;
+ 
+ use std::path::Path;
+ 

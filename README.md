@@ -167,6 +167,15 @@ md, err = func() (string, error) {
 
 导入路径为 `github.com/xmdhs/anydoc-go`，可直接从仓库导入。
 
+**资产合并解析（--imgs）**：当 core 含合并导出 `anydoc_convert` 时，`--imgs`
+走 `Converter.ConvertWithAssets`/`ConvertFileWithAssets` **一次解析**同时拿到
+Markdown 与资产（同一 `Document` 同源，`asset://<id>` 与 `Assets[id].ID` 一一
+对应，避免第二次 wasm 解析）。合并路径由 `anydoc_convert` build tag 门控：
+CI 重建出 core 后用 `-tags anydoc_convert` 构建即启用；无 tag 的默认构建等价
+回退到两次解析（`ConvertFile`+`ExtractAssets`）。两条路径产出的 markdown/
+资产一致。无论哪条路径，`asset://<id>` 占位都以**顺序消费**方式替换为
+`imgs/...`，占位 ID 不在提取结果中时**显式报错**（不再用全文正则扫描）。
+
 ## 验证
 
 单元测试（`./build.sh test`，标准 go test）：

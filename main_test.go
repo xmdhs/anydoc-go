@@ -4,6 +4,7 @@
 package main
 
 import (
+	"fmt"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -52,13 +53,9 @@ func TestConvertMatchesExpected(t *testing.T) {
 func TestExtractAssetsCLI(t *testing.T) {
 	conv := anydoc.NewConverter()
 	dir := t.TempDir()
-	md0, err := conv.ConvertBytes(readFile(t, "testdata/fixtures/docx/in-image.docx"), "")
+	md, err := convertFileWithAssets(conv, "testdata/fixtures/docx/in-image.docx", "", dir)
 	if err != nil {
-		t.Fatalf("convert: %v", err)
-	}
-	md, err := extractAssets(conv, "testdata/fixtures/docx/in-image.docx", "", md0, dir)
-	if err != nil {
-		t.Fatalf("extractAssets: %v", err)
+		t.Fatalf("convertFileWithAssets: %v", err)
 	}
 	// 名称为 <stem>-<id>.png；各输入独立 imgs/ 目录，无需防覆盖。
 	entries, err := os.ReadDir(dir)
@@ -159,19 +156,64 @@ func TestRewriteAssetRefs(t *testing.T) {
 		"asset://31": "imgs/doc-31.png",
 	}
 	md := "![alt-3](asset://3) and ![alt-31](asset://31)"
-	got := rewriteAssetRefs(md, refs)
+	got, err := rewriteAssetRefs(md, refs)
+	if err != nil {
+		t.Fatalf("rewriteAssetRefs: %v", err)
+	}
 	want := "![alt-3](imgs/doc-3.png) and ![alt-31](imgs/doc-31.png)"
 	if got != want {
 		t.Errorf("rewriteAssetRefs:\n got %q\nwant %q", got, want)
 	}
 }
 
-func TestRewriteAssetRefsUnknownID(t *testing.T) {
-	// 未在映射中的占位原样保留，不 panic、不吞文本。
+func TestRewriteAssetRefsMissingID(t *testing.T) {
+	// 未在映射中的占位必须报错，而不是静默保留（否则产物里是坏链接）。
 	md := "![x](asset://99)"
-	got := rewriteAssetRefs(md, map[string]string{"asset://1": "imgs/a.png"})
+	if _, err := rewriteAssetRefs(md, map[string]string{"asset://1": "imgs/a.png"}); err == nil {
+		t.Error("missing asset id should error, not silently keep placeholder")
+	}
+}
+
+func TestWriteAssetRefsOrderIndependent(t *testing.T) {
+	// 资产按乱序给出（模拟多图、非按渲染顺序），引用必须仍按 asset://<ID>
+	// 精确配对（顺序消费依赖的是"占位在 md 里的出现"与 ID，而非资产列表
+	// 顺序）。这同时锁住「asset://<id> 与 Assets[id].ID 一一对应」的不变量。
+	md := "![b](asset://1) ![a](asset://0)"
+	assets := []anydoc.Asset{
+		{ID: 1, MediaType: "image/png", Bytes: []byte("png-1")},
+		{ID: 0, MediaType: "image/png", Bytes: []byte("png-0")},
+	}
+	dir := t.TempDir()
+	out, err := writeAssetRefs(md, assets, dir, "doc")
+	if err != nil {
+		t.Fatalf("writeAssetRefs: %v", err)
+	}
+	for _, want := range []string{"imgs/doc-0.png", "imgs/doc-1.png"} {
+		if !strings.Contains(out, want) {
+			t.Errorf("output missing %q: %q", want, out)
+		}
+	}
+	// 字节按各自 ID 落盘正确。
+	for _, a := range assets {
+		b, err := os.ReadFile(filepath.Join(dir, fmt.Sprintf("doc-%d.png", a.ID)))
+		if err != nil {
+			t.Fatalf("asset %d not written: %v", a.ID, err)
+		}
+		if string(b) != string(a.Bytes) {
+			t.Errorf("asset %d bytes mismatch: got %d bytes", a.ID, len(b))
+		}
+	}
+}
+
+func TestRewriteAssetRefsNonNumericPrefix(t *testing.T) {
+	// "asset://" 后不是数字时不当作占位，原样保留、不误吞正文。
+	md := "text asset://abc and asset://"
+	got, err := rewriteAssetRefs(md, map[string]string{})
+	if err != nil {
+		t.Fatalf("non-numeric placeholder should not error: %v", err)
+	}
 	if got != md {
-		t.Errorf("unknown id should stay intact: got %q", got)
+		t.Errorf("non-numeric prefix should stay intact: got %q", got)
 	}
 }
 

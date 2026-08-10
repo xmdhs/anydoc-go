@@ -211,6 +211,15 @@ pub extern "C" fn anydoc_assets(
         Err(err) => return fail(&format!("{err}"), code_of(&err), out_len, out_code),
     };
 
+    store_bytes(&serialize_assets(&document), out_len)
+}
+
+/// Serialize a document's assets into the stream format shared by
+/// [`anydoc_assets`] and [`anydoc_convert`] (little-endian):
+/// `u32 count`, then per asset `u32 id`, `u32 type_len` + bytes,
+/// `u32 bytes_len` + bytes. `id` is the index into `Document::assets`, so it
+/// matches the `asset://<id>` placeholder the renderer writes.
+fn serialize_assets(document: &anydoc::model::Document) -> Vec<u8> {
     let mut buf: Vec<u8> = Vec::new();
     push_u32(&mut buf, document.assets.len() as u32);
     for asset in &document.assets {
@@ -221,7 +230,83 @@ pub extern "C" fn anydoc_assets(
         push_u32(&mut buf, asset.bytes.len() as u32);
         buf.extend_from_slice(&asset.bytes);
     }
-    store_bytes(&buf, out_len)
+    buf
+}
+
+/// Convert a document to Markdown and return its embedded assets in one
+/// wasm call (single `to_document` parse), so a host can avoid a second
+/// parse to fetch assets (`--imgs`). Same input/fmt protocol as
+/// [`anydoc_to_markdown`]; `md` is the Markdown (or error message on
+/// `out_code != 0`), `assets` is the serialized asset stream (see
+/// [`serialize_assets`]) on success and NULL on failure. Release both
+/// buffers with `anydoc_free(ptr, len)` using their reported lengths.
+///
+/// Requires anydoc's `document_to_markdown` to be part of its public API —
+/// enabled by the local patch `patches/anydoc-render-pub.patch`.
+#[unsafe(no_mangle)]
+pub extern "C" fn anydoc_convert(
+    input: *const u8,
+    input_len: usize,
+    fmt: *const u8,
+    fmt_len: usize,
+    out_md: *mut *mut u8,
+    out_md_len: *mut usize,
+    out_assets: *mut *mut u8,
+    out_assets_len: *mut usize,
+    out_code: *mut u32,
+) {
+    // SAFETY: caller-provided out slots; we always initialize them first.
+    unsafe {
+        *out_code = ERR_OK;
+        *out_md_len = 0;
+        *out_assets_len = 0;
+        *out_md = ptr::null_mut();
+        *out_assets = ptr::null_mut();
+    }
+
+    if input_len > 0 && input.is_null() {
+        // SAFETY: out_md slot.
+        unsafe { *out_md = fail("invalid input pointer", ERR_OTHER, out_md_len, out_code) }
+        return;
+    }
+    // SAFETY: input_len bytes of valid memory when input_len > 0 (or NULL).
+    let input_bytes = unsafe { slice::from_raw_parts(input, input_len) };
+
+    let format = match resolve_format(fmt, fmt_len) {
+        Ok(format) => format,
+        Err((msg, code)) => {
+            // SAFETY: out_md slot.
+            unsafe { *out_md = fail(&msg, code, out_md_len, out_code) }
+            return;
+        }
+    };
+
+    let document = match anydoc::to_document(input_bytes, format) {
+        Ok(document) => document,
+        Err(err) => {
+            // SAFETY: out_md slot.
+            unsafe { *out_md = fail(&format!("{err}"), code_of(&err), out_md_len, out_code) }
+            return;
+        }
+    };
+
+    // Single parse now yields both outputs; `md` and `assets` share the same
+    // `Document`, so `asset://<id>` in `md` and `Assets[id].ID` are identical.
+    let md = anydoc::document_to_markdown(&document);
+    let assets = serialize_assets(&document);
+
+    // SAFETY: both out slots; store_bytes returns the freshly allocated
+    // buffer (NULL when empty).
+    let md_ptr = store_bytes(md.as_bytes(), out_md_len);
+    let assets_ptr = store_bytes(&assets, out_assets_len);
+    unsafe {
+        *out_md = md_ptr;
+        *out_assets = assets_ptr;
+    }
+    if md_ptr.is_null() && !md.is_empty() {
+        // SAFETY: out_code slot.
+        unsafe { *out_code = ERR_RESOURCE_LIMIT }
+    }
 }
 
 /// Copy `bytes` into a fresh 8-byte-aligned allocation; `*out_len` receives

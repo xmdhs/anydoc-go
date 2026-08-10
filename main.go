@@ -14,10 +14,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"net/url"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strings"
 
 	anydoc "github.com/xmdhs/anydoc-go/lib" // 包的内部名也是 anydoc；别名保证可读
@@ -66,21 +64,19 @@ func main() {
 
 	failed := false
 	for _, file := range files {
-		md, err := conv.ConvertFile(file, *format)
+		// --imgs 时顺带取内嵌资产落盘并重写引用（convertFileWithAssets 按
+		// anydoc_convert tag 可能是两次解析，也可能是一次合并解析）。
+		var md string
+		var err error
+		if *imgs {
+			md, err = convertFileWithAssets(conv, file, *format, filepath.Join(filepath.Dir(file), "imgs"))
+		} else {
+			md, err = conv.ConvertFile(file, *format)
+		}
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "anydoc: %s: %v\n", file, err)
 			failed = true
 			continue
-		}
-		// 图片导出：--imgs 时导出到输入文件同目录的 imgs/（引用相对该目录）；
-		// 否则不导出，占位原样保留。
-		if *imgs {
-			md, err = extractAssets(conv, file, *format, md, filepath.Join(filepath.Dir(file), "imgs"))
-			if err != nil {
-				fmt.Fprintf(os.Stderr, "anydoc: %s: %v\n", file, err)
-				failed = true
-				continue
-			}
 		}
 		switch {
 		case *stdout || *output == "-":
@@ -105,68 +101,45 @@ func main() {
 	}
 }
 
-// extractAssets 把文档内嵌资产写入 dir（文件名 <stem>-<ID>.<ext>），并把
-// markdown 里的 asset://<ID> 占位替换为相对引用（ref 为固定 imgs/ 目录，
-// 与输入文件同级的 imgs/）。
-// 与 ConvertFile 相同的格式兜底（显式 -f → 内容自动检测 → 路径扩展名）。
-// 不同输入各自导到自己的 imgs/，无跨输入覆盖。
-func extractAssets(conv *anydoc.Converter, file, format, md, dir string) (string, error) {
-	data, err := os.ReadFile(file)
-	if err != nil {
-		return md, err
-	}
-	formats := []string{format}
-	if format == "" {
-		if ext := strings.TrimPrefix(filepath.Ext(file), "."); ext != "" {
-			formats = append(formats, ext)
-		}
-	}
-	var assets []anydoc.Asset
-	for _, f := range formats {
-		if assets, err = conv.ExtractAssets(data, f); err == nil {
-			break
-		}
-	}
-	if err != nil {
-		return md, err
-	}
-	if err := os.MkdirAll(dir, 0o755); err != nil {
-		return md, err
-	}
-	// 各输入导出到自己的 imgs/，无跨输入覆盖；重复转换幂等（覆盖自己）。
-	stem := strings.TrimSuffix(filepath.Base(file), filepath.Ext(file))
-	refs := make(map[string]string, len(assets))
-	for _, a := range assets {
-		name := fmt.Sprintf("%s-%d.%s", stem, a.ID, assetExt(a.MediaType))
-		if err := os.WriteFile(filepath.Join(dir, name), a.Bytes, 0o644); err != nil {
-			return md, err
-		}
-		// markdown 引用固定用 `/` 分隔（跨平台，且 filepath.Join 在 Windows
-		// 会产生 `\` 导致无法解析）；文件名按 URL 路径段做百分号编码
-		// 转成 %XX，保证 `![alt](imgs/xxx.png)` 可被解析。
-		refs[fmt.Sprintf("asset://%d", a.ID)] = "imgs/" + url.PathEscape(name)
-	}
-	md = rewriteAssetRefs(md, refs)
-	return md, nil
-}
+// convertFileWithAssets 与资产落盘/引用实现分文件，按 anydoc_convert build
+// tag 切换（见 asset_common.go / assets_fallback.go / assets_merge.go）。
 
-// assetRefRe 匹配 `asset://<id>` 占位（id 为纯数字）。
+// rewriteAssetRefs 把 md 里的 `asset://<id>` 占位替换为 refs 中对应引用。
 //
-// 不能用 strings.ReplaceAll 逐个替换：它是子串替换，asset://3 会误吞
-// asset://31 的前缀，把后者替换成 imgs/<stem>-3.png 再残留一个 `1`，产生
-// 末尾"多 1"的坏引用。这里一次正则整体替换，先建 ID→引用 映射再整串匹配
-// 替换，长短 ID 互不干扰。
-var assetRefRe = regexp.MustCompile(`asset://\d+`)
-
-// rewriteAssetRefs 把 md 里的 `asset://<id>` 占位替换为 refs 中对应引用；
-// 未在映射中的占位原样保留。
-func rewriteAssetRefs(md string, refs map[string]string) string {
-	return assetRefRe.ReplaceAllStringFunc(md, func(ph string) string {
-		if ref, ok := refs[ph]; ok {
-			return ref
+// 顺序消费 + 显式报错，替代旧的全文正则扫描（regexp `asset://\d+`）：
+//   - 不打正则、不做子串 ReplaceAll，因此 `asset://3` 不会误吞 `asset://31`
+//     （按"asset://" 后一整段连续数字取 ID）；
+//   - `asset://<id>` 后必须是连续十进制数字，否则按字面保留；
+//   - 占位 ID 在 refs 中缺失时**返回错误**而非静默保留——未导出资产却留有
+//     占位引用意味着产物里有坏链接，应当显式失败而非产出污染 markdown。
+func rewriteAssetRefs(md string, refs map[string]string) (string, error) {
+	var sb strings.Builder
+	rest := md
+	for {
+		idx := strings.Index(rest, "asset://")
+		if idx < 0 {
+			sb.WriteString(rest)
+			return sb.String(), nil
 		}
-		return ph
-	})
+		sb.WriteString(rest[:idx])
+		// rest 从首个非 "asset://" 前缀的字符开始，读一整段数字作为 ID。
+		rest = rest[idx+len("asset://"):]
+		j := 0
+		for j < len(rest) && rest[j] >= '0' && rest[j] <= '9' {
+			j++
+		}
+		if j == 0 { // "asset://" 后不是数字：按字面保留
+			sb.WriteString("asset://")
+			continue
+		}
+		idStr := rest[:j]
+		ref, ok := refs["asset://"+idStr]
+		if !ok {
+			return "", fmt.Errorf("asset placeholder asset://%s not among extracted assets", idStr)
+		}
+		sb.WriteString(ref)
+		rest = rest[j:]
+	}
 }
 
 // assetExt 从 media type 推导文件扩展名：image/* 取子类型字母数字，
