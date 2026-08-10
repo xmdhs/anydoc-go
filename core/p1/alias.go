@@ -8,88 +8,88 @@ import (
 func Fn4(m *base.Module, l0 int32)
 //go:linkname Fn11 anydoc-go/core/p0.Fn11
 func Fn11(m *base.Module, l0 int32) int32
-//go:linkname Fn63 anydoc-go/core/p0.Fn63
-func Fn63(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn65 anydoc-go/core/p0.Fn65
-func Fn65(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn69 anydoc-go/core/p0.Fn69
-func Fn69(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn76 anydoc-go/core/p0.Fn76
-func Fn76(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn78 anydoc-go/core/p0.Fn78
-func Fn78(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn82 anydoc-go/core/p0.Fn82
-func Fn82(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn83 anydoc-go/core/p0.Fn83
-func Fn83(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn104 anydoc-go/core/p0.Fn104
-func Fn104(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn111 anydoc-go/core/p0.Fn111
-func Fn111(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn120 anydoc-go/core/p0.Fn120
-func Fn120(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn127 anydoc-go/core/p0.Fn127
-func Fn127(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn132 anydoc-go/core/p0.Fn132
-func Fn132(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn137 anydoc-go/core/p0.Fn137
-func Fn137(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn66 anydoc-go/core/p0.Fn66
+func Fn66(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn68 anydoc-go/core/p0.Fn68
+func Fn68(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn72 anydoc-go/core/p0.Fn72
+func Fn72(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn79 anydoc-go/core/p0.Fn79
+func Fn79(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn81 anydoc-go/core/p0.Fn81
+func Fn81(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn85 anydoc-go/core/p0.Fn85
+func Fn85(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn86 anydoc-go/core/p0.Fn86
+func Fn86(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn107 anydoc-go/core/p0.Fn107
+func Fn107(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn114 anydoc-go/core/p0.Fn114
+func Fn114(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn123 anydoc-go/core/p0.Fn123
+func Fn123(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn130 anydoc-go/core/p0.Fn130
+func Fn130(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn135 anydoc-go/core/p0.Fn135
+func Fn135(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 //go:linkname Fn140 anydoc-go/core/p0.Fn140
-func Fn140(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn145 anydoc-go/core/p0.Fn145
-func Fn145(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn152 anydoc-go/core/p0.Fn152
-func Fn152(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn167 anydoc-go/core/p0.Fn167
-func Fn167(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn195 anydoc-go/core/p0.Fn195
-func Fn195(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn207 anydoc-go/core/p0.Fn207
-func Fn207(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn213 anydoc-go/core/p0.Fn213
-func Fn213(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn140(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn143 anydoc-go/core/p0.Fn143
+func Fn143(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn148 anydoc-go/core/p0.Fn148
+func Fn148(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn155 anydoc-go/core/p0.Fn155
+func Fn155(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn170 anydoc-go/core/p0.Fn170
+func Fn170(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn198 anydoc-go/core/p0.Fn198
+func Fn198(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn210 anydoc-go/core/p0.Fn210
+func Fn210(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn215 anydoc-go/core/p0.Fn215
-func Fn215(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn246 anydoc-go/core/p0.Fn246
-func Fn246(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn259 anydoc-go/core/p0.Fn259
-func Fn259(m *base.Module, l0 int32)
-//go:linkname Fn269 anydoc-go/core/p0.Fn269
-func Fn269(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-//go:linkname Fn334 anydoc-go/core/p0.Fn334
-func Fn334(m *base.Module, l0 int32)
-//go:linkname Fn344 anydoc-go/core/p0.Fn344
-func Fn344(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn411 anydoc-go/core/p0.Fn411
-func Fn411(m *base.Module, l0 int32)
-//go:linkname Fn424 anydoc-go/core/p0.Fn424
-func Fn424(m *base.Module, l0 int32)
-//go:linkname Fn436 anydoc-go/core/p0.Fn436
-func Fn436(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn439 anydoc-go/core/p0.Fn439
-func Fn439(m *base.Module, l0 int32)
-//go:linkname Fn441 anydoc-go/core/p0.Fn441
-func Fn441(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn463 anydoc-go/core/p0.Fn463
-func Fn463(m *base.Module, l0 int32)
-//go:linkname Fn478 anydoc-go/core/p0.Fn478
-func Fn478(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn505 anydoc-go/core/p0.Fn505
-func Fn505(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn545 anydoc-go/core/p0.Fn545
-func Fn545(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn565 anydoc-go/core/p0.Fn565
-func Fn565(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn566 anydoc-go/core/p0.Fn566
-func Fn566(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn577 anydoc-go/core/p0.Fn577
-func Fn577(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn622 anydoc-go/core/p0.Fn622
-func Fn622(m *base.Module, l0 int32)
-//go:linkname Fn743 anydoc-go/core/p0.Fn743
-func Fn743(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn798 anydoc-go/core/p0.Fn798
-func Fn798(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn215(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn217 anydoc-go/core/p0.Fn217
+func Fn217(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn248 anydoc-go/core/p0.Fn248
+func Fn248(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn261 anydoc-go/core/p0.Fn261
+func Fn261(m *base.Module, l0 int32)
+//go:linkname Fn275 anydoc-go/core/p0.Fn275
+func Fn275(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn340 anydoc-go/core/p0.Fn340
+func Fn340(m *base.Module, l0 int32)
+//go:linkname Fn350 anydoc-go/core/p0.Fn350
+func Fn350(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn417 anydoc-go/core/p0.Fn417
+func Fn417(m *base.Module, l0 int32)
+//go:linkname Fn430 anydoc-go/core/p0.Fn430
+func Fn430(m *base.Module, l0 int32)
+//go:linkname Fn442 anydoc-go/core/p0.Fn442
+func Fn442(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn445 anydoc-go/core/p0.Fn445
+func Fn445(m *base.Module, l0 int32)
+//go:linkname Fn447 anydoc-go/core/p0.Fn447
+func Fn447(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn469 anydoc-go/core/p0.Fn469
+func Fn469(m *base.Module, l0 int32)
+//go:linkname Fn484 anydoc-go/core/p0.Fn484
+func Fn484(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn511 anydoc-go/core/p0.Fn511
+func Fn511(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn551 anydoc-go/core/p0.Fn551
+func Fn551(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn571 anydoc-go/core/p0.Fn571
+func Fn571(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn572 anydoc-go/core/p0.Fn572
+func Fn572(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn583 anydoc-go/core/p0.Fn583
+func Fn583(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn628 anydoc-go/core/p0.Fn628
+func Fn628(m *base.Module, l0 int32)
+//go:linkname Fn749 anydoc-go/core/p0.Fn749
+func Fn749(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn804 anydoc-go/core/p0.Fn804
+func Fn804(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 //go:linkname Fn845 anydoc-go/core/p0.Fn845
 func Fn845(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64) int32
 //go:linkname Fn876 anydoc-go/core/p0.Fn876
