@@ -151,7 +151,6 @@ jobs:
           path: core
           if-no-files-found: error
           retention-days: 3
-          archive: false
 
       - name: Upload wasm input
         uses: actions/upload-artifact@v7
