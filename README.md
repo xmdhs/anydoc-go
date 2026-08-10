@@ -65,8 +65,8 @@ C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 ru
 `GOCACHE`/`GOPATH` 可写（build.sh 已默认指到项目内缓存）。
 
 ```bash
-./build.sh fetch    # 首次 & 更新：拉取 third-party/anydoc、third-party/goccy-wasm2go
-                    #   anydoc 默认取语义排序的最新 tag；goccy 跟 main（无 tag）
+./build.sh fetch    # 首次 & 更新：拉取第三方仓库并应用本地 patch
+                    #   anydoc 默认取语义排序的最新 tag；goccy 默认固定已验证 revision
 ./build.sh wasm     # cargo → anydoc_cabi.wasm（-simd128）
 ./build.sh cli      # goccy-wasm2go → core/ → go build（生成约 6-7 分钟，仅 wasm 变更后重跑）
 ./build.sh test     # 单元测试（见「验证」）
@@ -75,7 +75,12 @@ C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 ru
 
 注意：`cli` 步骤的 goccy 翻译是构建耗时大头（2 核机约 6-7 分钟，内部要
 为 984 个函数跑 SSA + 抓 amd64/arm64 asm）；core/ 随仓库提交，日常改
-main.go/lib 只跑 `go build` 即可，无需重新翻译。
+main.go/lib 只跑 `go build` 即可，无需重新翻译。`third-party/` 不入库，
+`build.sh fetch` 会应用 `patches/` 中的 anydoc 与 goccy patch；goccy 的
+ARM64 frame 重写 patch 专门处理 `anydoc-go` 这类带连字符的 import path，
+并保留 `buf-1024(SP)` 的负偏移。生成输入 wasm 位于 `target/`，不提交。
+main 上影响生成结果的提交会由 `.github/workflows/generate-core.yml` 重新执行
+wasm→Go 全流程并把完整 `core/`（包括 ARM64 asm）提交回仓库。
 
 ## 工具链对比：与原生静态库
 

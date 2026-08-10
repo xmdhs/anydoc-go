@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # anydoc-go 构建管线：
-#   fetch: 拉取/刷新第三方仓库（third-party/anydoc、third-party/goccy-wasm2go），
-#          URL 可用 ANYDOC_REPO / GOCCY2GO_REPO 覆盖
+#   fetch: 拉取/刷新第三方仓库并应用本地 patch
+#          URL 可用 ANYDOC_REPO / GOCCY_REPO 覆盖，版本可用 ANYDOC_REF / GOCCY_REF 覆盖
 #   wasm:  cargo → target/<arch>/release/anydoc_cabi.wasm（依赖 third-party/anydoc）
 #   cli:   goccy-wasm2go → core/ → go build → bin/anydoc
 #   test:  go test ./...
@@ -28,7 +28,9 @@ GOCCY_DIR="${ROOT}/third-party/goccy-wasm2go"
 ANYDOC_REPO="${ANYDOC_REPO:-https://github.com/firecrawl/anydoc}"
 GOCCY_REPO="${GOCCY_REPO:-https://github.com/goccy/wasm2go}"
 
-FETCH_REF="${FETCH_REF:-}"           # 显式指定分支/标签（默认见 fetch_one）
+FETCH_REF="${FETCH_REF:-}"           # 同时覆盖两个第三方仓库（兼容旧用法）
+ANYDOC_REF="${ANYDOC_REF:-}"         # 空值：取最新 semver tag
+GOCCY_REF="${GOCCY_REF:-f30ec292fd4ea1737263c30ed97157e4593796db}"
 WASM="${CARGO_TARGET_DIR}/wasm32-unknown-unknown/release/anydoc_cabi.wasm"
 
 # 语义化版本排序的最新 tag（v0.1.9 > v0.1.10 > v0.2.0）。
@@ -39,17 +41,21 @@ latest_tag() {
 
 fetch() {
     # 第三方仓库位于 anydoc-go 自己的 third-party/ 下（.gitignore 排除，
-    # 不随本仓库提交）。anydoc 只跟最新发布 tag（避免 main 的不稳定代码，
-    # 也便于我们以 tag 为准复现构建）；goccy-wasm2go 跟 main。
-    # fetch 只做 fetch/checkout/ff-only pull，有本地改动且冲突时不强推。
-    fetch_one anydoc   "${ANYDOC_REPO}"   "${ANYDOC_DIR}"
-    fetch_one goccy    "${GOCCY_REPO}"    "${GOCCY_DIR}"
-    echo "third-party repos ready:" "${ANYDOC_DIR}" "${GOCCY_DIR}"
+    # 不随本仓库提交）。anydoc 默认跟最新发布 tag；goccy 固定到已验证
+    # revision，避免 ARM64 patch 随 upstream/main 漂移。
+    fetch_one anydoc "${ANYDOC_REPO}" "${ANYDOC_DIR}" "${ANYDOC_REF}"
+    fetch_one goccy  "${GOCCY_REPO}"  "${GOCCY_DIR}"  "${GOCCY_REF}"
+    require_repos
+    apply_anydoc_patch
+    apply_goccy_patch
+    echo "third-party repos ready:"
+    git -C "${ANYDOC_DIR}" rev-parse HEAD
+    git -C "${GOCCY_DIR}" rev-parse HEAD
 }
 
 fetch_one() {
-    local name="$1" url="$2" dir="$3"
-    local ref="${FETCH_REF}"
+    local name="$1" url="$2" dir="$3" requested_ref="${4:-}"
+    local ref="${FETCH_REF:-${requested_ref}}"
     if [ -z "${ref}" ]; then
         if [ "${name}" = "anydoc" ]; then
             ref="$(latest_tag "${url}")" || true
@@ -64,14 +70,24 @@ fetch_one() {
         git clone -q "${url}" "${dir}"
     else
         echo "updating ${name} → ${dir}"
-        git -C "${dir}" fetch -q origin || true
-        git -C "${dir}" fetch -q --tags origin || true
     fi
-    # tag/branch 统一走 checkout；branch 再 ff-only pull 追平远端。
-    git -C "${dir}" checkout -q "${ref}" \
-        || git -C "${dir}" fetch -q origin tag "${ref}" \
-        || echo "warn: checkout ${ref} 失败（本地改动冲突？）" >&2
-    git -C "${dir}" pull -q --ff-only origin "${ref}" || true
+
+    # 先 fetch 精确目标，再以 detached HEAD 构建。这样 branch、tag、SHA
+    # 都走同一条路径；目标发生变化而工作树有本地 patch 时直接失败，
+    # 不会静默继续使用旧版本。
+    git -C "${dir}" fetch -q --tags origin
+    git -C "${dir}" fetch -q origin "${ref}"
+    local target current
+    target="$(git -C "${dir}" rev-parse FETCH_HEAD^{commit})"
+    current="$(git -C "${dir}" rev-parse HEAD 2>/dev/null || true)"
+    if [ "${current}" != "${target}" ]; then
+        if ! git -C "${dir}" diff --quiet || ! git -C "${dir}" diff --cached --quiet; then
+            echo "error: ${name} has local changes; cannot switch ${ref}" >&2
+            exit 2
+        fi
+        git -C "${dir}" checkout -q --detach "${target}"
+    fi
+    echo "${name}: ${target}"
 }
 
 require_repos() {
@@ -80,19 +96,29 @@ require_repos() {
 }
 
 # 应用本地 patch（第三方仓库不提交任何改动；CI fresh clone 后必须有同一
-# patch 才能构建出 asset:// 占位）。
+# patch 才能构建出 asset:// 占位和修复后的 ARM64 asm）。
 ANYDOC_PATCH="${ROOT}/patches/anydoc-asset-placeholder.patch"
-apply_anydoc_patch() {
-    if grep -q 'asset://' "${ANYDOC_DIR}/src/render/markdown/inline.rs" 2>/dev/null; then
-        echo "anydoc patch already applied"
-        return
-    fi
-    if ! git -C "${ANYDOC_DIR}" apply --check "${ANYDOC_PATCH}" 2>/dev/null; then
-        echo "error: anydoc patch no longer applies — regenerate ${ANYDOC_PATCH} (升级 anydoc tag 后常见)" >&2
+GOCCY_PATCH="${ROOT}/patches/goccy-wasm2go-arm64-frame.patch"
+apply_patch_once() {
+    local repo="$1" patch="$2" name="$3"
+    if git -C "${repo}" apply --check "${patch}" 2>/dev/null; then
+        git -C "${repo}" apply "${patch}"
+        echo "applied ${name} patch"
+    elif git -C "${repo}" apply --reverse --check "${patch}" 2>/dev/null; then
+        echo "${name} patch already applied"
+    else
+        echo "error: ${name} patch does not apply to $(git -C "${repo}" rev-parse HEAD)" >&2
+        echo "       update ${patch} for this third-party revision" >&2
         exit 2
     fi
-    git -C "${ANYDOC_DIR}" apply "${ANYDOC_PATCH}"
-    echo "applied ${ANYDOC_PATCH}"
+}
+
+apply_anydoc_patch() {
+    apply_patch_once "${ANYDOC_DIR}" "${ANYDOC_PATCH}" anydoc
+}
+
+apply_goccy_patch() {
+    apply_patch_once "${GOCCY_DIR}" "${GOCCY_PATCH}" goccy
 }
 
 wasm_step() {
@@ -106,12 +132,12 @@ wasm_step() {
 }
 
 cli_step() {
+    require_repos
+    apply_goccy_patch
     [ -f "${WASM}" ] || { echo "missing wasm — run: $0 wasm" >&2; exit 2; }
-    # bin/ 不入库；缺失时自动从 third-party/goccy-wasm2go 构建（CI 也需要）。
-    if [ ! -x "${ROOT}/bin/goccy-wasm2go" ]; then
-        echo "building goccy-wasm2go → ${ROOT}/bin/goccy-wasm2go"
-        (cd "${GOCCY_DIR}" && go build -o "${ROOT}/bin/goccy-wasm2go" ./cmd/wasm2go)
-    fi
+    # bin/ 不入库；每次在 patch 后重建，避免 ignored 的旧 translator 绕过补丁。
+    echo "building goccy-wasm2go → ${ROOT}/bin/goccy-wasm2go"
+    (cd "${GOCCY_DIR}" && go build -o "${ROOT}/bin/goccy-wasm2go" ./cmd/wasm2go)
     # goccy AOT 生成多包 core（core.go + base/ + p0/ + p1/ + data.bin），
     # 整目录进 core/，不需要 split_gen 拆文件；生成耗时长（内部跑 go build
     # 抓 asm），但只发生在 wasm 变更后。
