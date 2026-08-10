@@ -1,0 +1,213 @@
+# 从 Rust wasm 重新生成并提交 goccy/wasm2go 的完整 core/ 产物。
+# 该 workflow 只在可信 main 上运行；不响应 PR，避免不可信代码拿到写权限。
+name: Regenerate core
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "cabi/**"
+      - "cabi/Cargo.lock"
+      - "patches/**"
+      - "build.sh"
+      - "go.mod"
+      - ".github/workflows/generate-core.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regenerate-core-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  ANYDOC_REF: v0.1.7
+  GOCCY_REF: f30ec292fd4ea1737263c30ed97157e4593796db
+
+jobs:
+  generate:
+    if: github.ref == 'refs/heads/main'
+    name: wasm -> Go -> core
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      RUSTUP_HOME: /home/runner/.rustup
+      CARGO_HOME: /home/runner/.cargo
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+
+      - name: Setup Rust (wasm32 target)
+        uses: dtolnay/rust-toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+
+      - name: Cache cargo, Go, and generator artifacts
+        uses: actions/cache@v6
+        with:
+          path: |
+            /home/runner/.cargo
+            target/
+            .go-cache/
+            .gopath/
+          key: anydoc-core-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('cabi/Cargo.lock', 'go.mod', 'build.sh', 'patches/*.patch') }}
+          restore-keys: |
+            anydoc-core-${{ runner.os }}-${{ runner.arch }}-
+
+      - name: Fetch pinned third-party revisions
+        run: |
+          ./build.sh fetch
+          printf 'anydoc: '
+          git -C third-party/anydoc rev-parse HEAD
+          printf 'goccy: '
+          git -C third-party/goccy-wasm2go rev-parse HEAD
+
+      - name: Run patched goccy ARM64 gates
+        working-directory: third-party/goccy-wasm2go
+        env:
+          GOCACHE: ${{ github.workspace }}/.go-cache
+          GOPATH: ${{ github.workspace }}/.gopath
+        run: |
+          go test ./internal/gcasm \
+            -run 'TestA64(RewriteSlotsHyphenatedImport|Spill|Gate0|Fixtures)' \
+            -count=1 -v
+
+      - name: Build wasm and regenerate Go core
+        run: ./build.sh build
+
+      - name: Validate generated core
+        run: |
+          set -euxo pipefail
+          test -s target/wasm32-unknown-unknown/release/anydoc_cabi.wasm
+          test -s core/p0/arm64.s
+          test -s core/p1/arm64.s
+          if grep -RInE 'anydoc-.*\((FP|RSP)\)' core/p0 core/p1; then
+            echo 'malformed hyphenated frame operand remains in generated ARM64 asm' >&2
+            exit 1
+          fi
+          git diff --check
+          git status --porcelain --untracked-files=all
+          while IFS= read -r line; do
+            path="${line:3}"
+            case "$path" in
+              core/*) ;;
+              "") ;;
+              *) echo "unexpected generated change: $line" >&2; exit 1 ;;
+            esac
+          done < <(git status --porcelain --untracked-files=all)
+
+      - name: Run root tests
+        run: ./build.sh test
+
+      - name: Smoke test regenerated CLI
+        run: |
+          ./bin/anydoc -s testdata/fixtures/docx/text.docx > /tmp/smoke.md
+          diff /tmp/smoke.md testdata/expected/docx/text.md
+
+      - name: Verify all target builds
+        run: |
+          set -euxo pipefail
+          build() {
+            os=$1 arch=$2
+            if [ "$arch" = amd64 ]; then
+              CGO_ENABLED=0 GOAMD64=v2 GOOS=$os GOARCH=$arch go build \
+                -trimpath -o "/tmp/anydoc-${os}-${arch}" .
+            else
+              CGO_ENABLED=0 GOOS=$os GOARCH=$arch go build \
+                -trimpath -o "/tmp/anydoc-${os}-${arch}" .
+            fi
+          }
+          build linux amd64
+          build linux arm64
+          build windows amd64
+          build windows arm64
+          build darwin amd64
+          build darwin arm64
+
+      - name: Upload regenerated core
+        uses: actions/upload-artifact@v7
+        with:
+          name: generated-core-${{ github.sha }}
+          path: core
+          if-no-files-found: error
+          retention-days: 3
+          archive: false
+
+      - name: Upload wasm input
+        uses: actions/upload-artifact@v7
+        with:
+          name: generated-wasm-${{ github.sha }}
+          path: target/wasm32-unknown-unknown/release/anydoc_cabi.wasm
+          if-no-files-found: error
+          retention-days: 3
+          archive: false
+
+  commit:
+    if: needs.generate.result == 'success' && github.ref == 'refs/heads/main'
+    name: Commit regenerated core
+    needs: generate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout exact source revision
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Remove checked-in core before artifact restore
+        run: rm -rf core
+
+      - name: Download regenerated core
+        uses: actions/download-artifact@v7
+        with:
+          name: generated-core-${{ github.sha }}
+          path: core
+
+      - name: Validate commit scope
+        run: |
+          set -euxo pipefail
+          test -s core/p0/arm64.s
+          test -s core/p1/arm64.s
+          git diff --check
+          while IFS= read -r line; do
+            path="${line:3}"
+            case "$path" in
+              core/*) ;;
+              "") ;;
+              *) echo "unexpected commit change: $line" >&2; exit 1 ;;
+            esac
+          done < <(git status --porcelain --untracked-files=all)
+
+      - name: Commit and fast-forward push core
+        run: |
+          set -euxo pipefail
+          git fetch origin main
+          base=$(git rev-parse HEAD)
+          remote=$(git rev-parse origin/main)
+          if [ "$base" != "$remote" ]; then
+            echo "main advanced while core was generating; refusing to overwrite it" >&2
+            exit 1
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A core
+          if git diff --cached --quiet; then
+            echo 'core is already up to date'
+            exit 0
+          fi
+          git commit -m 'chore: regenerate core [generated]'
+          git push origin HEAD:main
