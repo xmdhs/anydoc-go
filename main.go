@@ -13,6 +13,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"net/url"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -140,9 +141,9 @@ func extractAssets(conv *anydoc.Converter, file, format, md, dir string) (string
 			return md, err
 		}
 		// markdown 引用固定用 `/` 分隔（跨平台，且 filepath.Join 在 Windows
-		// 会产生 `\` 导致无法解析）；文件名做百分号编码，空格等不安全字符
+		// 会产生 `\` 导致无法解析）；文件名按 URL 路径段做百分号编码
 		// 转成 %XX，保证 `![alt](imgs/xxx.png)` 可被解析。
-		refs[fmt.Sprintf("asset://%d", a.ID)] = "imgs/" + mdURL(name)
+		refs[fmt.Sprintf("asset://%d", a.ID)] = "imgs/" + url.PathEscape(name)
 	}
 	md = rewriteAssetRefs(md, refs)
 	return md, nil
@@ -165,26 +166,6 @@ func rewriteAssetRefs(md string, refs map[string]string) string {
 		}
 		return ph
 	})
-}
-
-// mdURL 对 markdown 图片引用的文件名做百分号编码：只保留 RFC3986 unreserved
-// 字符（A-Za-z0-9-._~），其余（空格、非 ASCII、`#` 等）编码为 %XX。保证
-// `![alt](imgs/…png)` 里的路径可被 markdown 解析器识别，不与空格/特殊字符冲突。
-func mdURL(s string) string {
-	const hex = "0123456789ABCDEF"
-	var b strings.Builder
-	for i := 0; i < len(s); i++ {
-		c := s[i]
-		if (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') ||
-			(c >= '0' && c <= '9') || c == '-' || c == '_' || c == '.' || c == '~' {
-			b.WriteByte(c)
-			continue
-		}
-		b.WriteByte('%')
-		b.WriteByte(hex[c>>4])
-		b.WriteByte(hex[c&0x0f])
-	}
-	return b.String()
 }
 
 // assetExt 从 media type 推导文件扩展名：image/* 取子类型字母数字，

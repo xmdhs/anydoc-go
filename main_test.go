@@ -4,6 +4,7 @@
 package main
 
 import (
+	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
@@ -174,16 +175,16 @@ func TestRewriteAssetRefsUnknownID(t *testing.T) {
 	}
 }
 
-func TestMdURL(t *testing.T) {
+func TestURLPathEscape(t *testing.T) {
 	cases := []struct{ in, want string }{
-		{"doc-3.png", "doc-3.png"},                       // 仅 unreserved 保持原样
-		{"my report-1.png", "my%20report-1.png"},         // 空格 → %20
-		{"图-2.png", "%E5%9B%BE-2.png"},                  // 非 ASCII → %XX
-		{"keep._~-x.png", "keep._~-x.png"},               // 运算符等子集保持
+		{"doc-3.png", "doc-3.png"},               // 仅 unreserved 保持原样
+		{"my report-1.png", "my%20report-1.png"}, // 空格 → %20
+		{"图-2.png", "%E5%9B%BE-2.png"},           // 非 ASCII → %XX
+		{"keep._~-x.png", "keep._~-x.png"},       // 运算符等子集保持
 	}
 	for _, c := range cases {
-		if got := mdURL(c.in); got != c.want {
-			t.Errorf("mdURL(%q) = %q, want %q", c.in, got, c.want)
+		if got := url.PathEscape(c.in); got != c.want {
+			t.Errorf("url.PathEscape(%q) = %q, want %q", c.in, got, c.want)
 		}
 	}
 }
