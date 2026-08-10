@@ -69,16 +69,19 @@ func initData_0(m *base.Module) {
 	copy(m.Memory[1048576:], wasm2goData_data_bin[0:244944])
 }
 func AnydocAlloc(m *base.Module, l0 int32) int32 {
-	return Fn16(m, l0)
+	return Fn17(m, l0)
 }
 func AnydocAssets(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32 {
-	return Fn17(m, l0, l1, l2, l3, l4, l5)
+	return Fn18(m, l0, l1, l2, l3, l4, l5)
+}
+func AnydocConvert(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32) {
+	Fn23(m, l0, l1, l2, l3, l4, l5, l6, l7, l8)
 }
 func AnydocFree(m *base.Module, l0 int32, l1 int32) {
-	Fn22(m, l0, l1)
+	Fn25(m, l0, l1)
 }
 func AnydocToMarkdown(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32 {
-	return Fn23(m, l0, l1, l2, l3, l4, l5)
+	return Fn26(m, l0, l1, l2, l3, l4, l5)
 }
 func Memory(m *base.Module) []byte {
 	return m.Memory
