@@ -74,35 +74,15 @@ jobs:
           printf 'goccy: '
           git -C third-party/goccy-wasm2go rev-parse HEAD
 
-      # gcasm 的 TestA64Fixtures 需要 wat2wasm 把 .wat fixture 编译成 .wasm；
-      # ubuntu runner 镜像默认没有 wabt，缺了它会整组 FAIL（见 a64fixture_test.go）。
-      - name: Install wabt (wat2wasm for gcasm fixtures)
-        run: |
-          set -euxo pipefail
-          sudo apt-get update
-          sudo apt-get install -y wabt
-
-      - name: Run patched goccy ARM64 gates
-        working-directory: third-party/goccy-wasm2go
-        env:
-          GOCACHE: ${{ github.workspace }}/.go-cache
-          GOPATH: ${{ github.workspace }}/.gopath
-        run: |
-          go test ./internal/gcasm \
-            -run 'TestA64(RewriteSlotsHyphenatedImport|Spill|Gate0|Fixtures)' \
-            -count=1 -v
-
-      - name: Build wasm and regenerate Go core
+      - name: Build wasm and regenerate pure Go core
         run: ./build.sh build
 
-      - name: Validate generated core
+      - name: Validate generated pure Go core
         run: |
           set -euxo pipefail
           test -s target/wasm32-unknown-unknown/release/anydoc_cabi.wasm
-          test -s core/p0/arm64.s
-          test -s core/p1/arm64.s
-          if grep -RInE 'anydoc-.*\((FP|RSP)\)' core/p0 core/p1; then
-            echo 'malformed hyphenated frame operand remains in generated ARM64 asm' >&2
+          if find core -type f \( -name '*.s' -o -name 'decls_*.go' \) -print -quit | grep -q .; then
+            echo 'pure generation unexpectedly emitted asm artifacts' >&2
             exit 1
           fi
           git diff --check
@@ -129,13 +109,8 @@ jobs:
           set -euxo pipefail
           build() {
             os=$1 arch=$2
-            if [ "$arch" = amd64 ]; then
-              CGO_ENABLED=0 GOAMD64=v2 GOOS=$os GOARCH=$arch go build \
-                -trimpath -o "/tmp/anydoc-${os}-${arch}" .
-            else
-              CGO_ENABLED=0 GOOS=$os GOARCH=$arch go build \
-                -trimpath -o "/tmp/anydoc-${os}-${arch}" .
-            fi
+            CGO_ENABLED=0 GOOS=$os GOARCH=$arch go build \
+              -trimpath -o "/tmp/anydoc-${os}-${arch}" .
           }
           build linux amd64
           build linux arm64
@@ -184,11 +159,13 @@ jobs:
           name: generated-core-${{ github.sha }}
           path: core
 
-      - name: Validate commit scope
+      - name: Validate pure core commit scope
         run: |
           set -euxo pipefail
-          test -s core/p0/arm64.s
-          test -s core/p1/arm64.s
+          if find core -type f \( -name '*.s' -o -name 'decls_*.go' \) -print -quit | grep -q .; then
+            echo 'pure generation unexpectedly emitted asm artifacts' >&2
+            exit 1
+          fi
           git diff --check
           while IFS= read -r line; do
             path="${line:3}"

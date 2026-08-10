@@ -138,11 +138,11 @@ cli_step() {
     # bin/ 不入库；每次在 patch 后重建，避免 ignored 的旧 translator 绕过补丁。
     echo "building goccy-wasm2go → ${ROOT}/bin/goccy-wasm2go"
     (cd "${GOCCY_DIR}" && go build -o "${ROOT}/bin/goccy-wasm2go" ./cmd/wasm2go)
-    # goccy AOT 生成多包 core（core.go + base/ + p0/ + p1/ + data.bin），
-    # 整目录进 core/，不需要 split_gen 拆文件；生成耗时长（内部跑 go build
-    # 抓 asm），但只发生在 wasm 变更后。
+    # goccy 生成纯 Go 多包 core（core.go + base/ + p0/ + p1/ + data.bin）。
+    # -pure 禁止生成 asm bundle 和架构 build tags，保持跨平台纯 Go 构建；
+    # 整目录进 core/，不需要 split_gen 拆文件。
     rm -rf "${ROOT}/core"
-    "${ROOT}/bin/goccy-wasm2go" -i "${WASM}" -pkg core -import anydoc-go/core \
+    "${ROOT}/bin/goccy-wasm2go" -pure -i "${WASM}" -pkg core -import anydoc-go/core \
         -out-dir "${ROOT}/core"
     cd "${ROOT}"
     go build -p 2 -trimpath -ldflags="-s -w" -o "${ROOT}/bin/anydoc" .
