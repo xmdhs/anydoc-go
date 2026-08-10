@@ -109,10 +109,10 @@ jobs:
           set -euxo pipefail
           build() {
             os=$1 arch=$2
-            # 与 cli_step 同为 anydoc_convert tag：验证合并解析路径在所有目标
-            # 平台均可编译（core 由本 workflew 重建，已含 AnydocConvert）。
+            # core 由本 workflow 重建，已含 AnydocConvert：默认构建即验证
+            # 合并解析路径在所有目标平台可编译。
             CGO_ENABLED=0 GOOS=$os GOARCH=$arch go build \
-              -trimpath -tags anydoc_convert -o "/tmp/anydoc-${os}-${arch}" .
+              -trimpath -o "/tmp/anydoc-${os}-${arch}" .
           }
           build linux amd64
           build linux arm64

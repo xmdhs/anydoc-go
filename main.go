@@ -26,7 +26,6 @@ func main() {
 		output = flag.String("o", "", "write Markdown to `file` (single input only; `-` = stdout)")
 		stdout = flag.Bool("s", false, "print Markdown to stdout (works with multiple inputs)")
 		format = flag.String("f", "", "force input `format` by extension (docx, csv, pdf, ...); default auto-detect")
-		imgs   = flag.Bool("imgs", false, "write embedded assets into <input dir>/imgs")
 	)
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: anydoc [options] <file|glob>...\n\n")
@@ -64,15 +63,15 @@ func main() {
 
 	failed := false
 	for _, file := range files {
-		// --imgs 时顺带取内嵌资产落盘并重写引用（convertFileWithAssets 按
-		// anydoc_convert tag 可能是两次解析，也可能是一次合并解析）。
-		var md string
-		var err error
-		if *imgs {
-			md, err = convertFileWithAssets(conv, file, *format, filepath.Join(filepath.Dir(file), "imgs"))
-		} else {
-			md, err = conv.ConvertFile(file, *format)
+		// 默认即导出内嵌资产：落盘到 md 输出旁的 imgs/ 并重写引用
+		// （convertFileWithAssets 一次合并解析，md 与资产同源于一个 Document）。
+		// 默认输出（<input>.md 同目录）与 -o 时资产目录跟随 md 位置，引用相对
+		// md 始终成立；-s（stdout）没有输出位置基准，资产落在输入目录的 imgs/。
+		dir := filepath.Join(filepath.Dir(file), "imgs")
+		if *output != "" && *output != "-" {
+			dir = filepath.Join(filepath.Dir(*output), "imgs")
 		}
+		md, err := convertFileWithAssets(conv, file, *format, dir)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "anydoc: %s: %v\n", file, err)
 			failed = true
@@ -101,8 +100,8 @@ func main() {
 	}
 }
 
-// convertFileWithAssets 与资产落盘/引用实现分文件，按 anydoc_convert build
-// tag 切换（见 asset_common.go / assets_fallback.go / assets_merge.go）。
+// convertFileWithAssets 与资产落盘/引用实现分文件（asset_common.go 的
+// writeAssetRefs / fileStem，assets_merge.go 的变体实现）。
 
 // rewriteAssetRefs 把 md 里的 `asset://<id>` 占位替换为 refs 中对应引用。
 //

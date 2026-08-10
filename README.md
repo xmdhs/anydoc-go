@@ -17,7 +17,8 @@ tools/           辅助脚本（split_gen.py 已不再使用——goccy 自带�
 bin/             goccy-wasm2go 翻译器 + 最终 anydoc 二进制
 target/          cargo 编译目录（.gitignore 排除）
 testdata/        单元测试样本（fixtures/ 复制自 anydoc + expected/ 快照期望）
-main.go          唯一手写 Go 入口（package main）
+main.go          手写 Go CLI 入口；资产落盘/引用重写为 asset_common.go +
+                 assets_merge.go（package main）
 build.sh         构建管线：fetch / wasm / cli / test / build
 ```
 
@@ -117,17 +118,19 @@ bin/anydoc -s report.docx           # 输出到 stdout（可多个输入）
 bin/anydoc -o out.md report.docx    # 指定单个输出文件
 bin/anydoc -o - a.docx              # 与 -s 等价
 bin/anydoc -f docx weird.bin          # 强制定制解析
-bin/anydoc --imgs "docs/*.docx"        # 图片导出到每个输入旁的 imgs/
 ```
 
-**内嵌图片**（docx/pptx 等容器内的图片字节不会出现在 markdown 里——本地
-patch 渲染为 `![alt](asset://<id>)` 占位，`<id>` 即资产下标）：
-- **默认不导出**：md 里保留 `asset://` 占位；
-- `--imgs`：`<stem>-<id>.<ext>` 写入**输入文件同目录的 `imgs/`**，md
-  引用替换为相对 `imgs/` 路径；各输入独立目录无跨输入覆盖，重复转换
-  幂等；
+**内嵌图片默认导出**：docx/pptx 等容器内的图片字节不会出现在 markdown
+里——本地 patch 渲染为 `![alt](asset://<id>)` 占位（`<id>` 即资产下标），
+转换时以 `<stem>-<id>.<ext>` 写到 md 输出旁的 `imgs/`，md 引用替换为相对
+`imgs/` 路径：
+- 默认输出（`<input>.md` 同目录）与 `-o out.md`：`imgs/` 位于 md 文件所在
+  目录，引用始终成立；`-s`（stdout）没有输出位置基准，资产落在输入目录的
+  `imgs/`，引用按输入目录相对路径计算；
+- 各输入独立目录无跨输入覆盖，重复转换幂等；无内嵌资产时不创建目录；
 - 扩展名由 media type 派生，其余一律 `bin`。
-- 库 API 对应 `Converter.ExtractAssets`（返回 `ID/MediaType/Bytes`）。
+- 库 API 对应 `Converter.ExtractAssets`（返回 `ID/MediaType/Bytes`）与合并
+  解析 `Converter.ConvertWithAssets`；两者 id 语义一致。
 
 格式识别优先级：`-f` 显式 > 文件内容自动检测 > **路径扩展名兜底**（CSV 等
 无签名格式直接转换，无需再传 `-f`）。字节流 API（`ConvertBytes`）没有路径
@@ -167,14 +170,12 @@ md, err = func() (string, error) {
 
 导入路径为 `github.com/xmdhs/anydoc-go`，可直接从仓库导入。
 
-**资产合并解析（--imgs）**：当 core 含合并导出 `anydoc_convert` 时，`--imgs`
-走 `Converter.ConvertWithAssets`/`ConvertFileWithAssets` **一次解析**同时拿到
-Markdown 与资产（同一 `Document` 同源，`asset://<id>` 与 `Assets[id].ID` 一一
-对应，避免第二次 wasm 解析）。合并路径由 `anydoc_convert` build tag 门控：
-CI 重建出 core 后用 `-tags anydoc_convert` 构建即启用；无 tag 的默认构建等价
-回退到两次解析（`ConvertFile`+`ExtractAssets`）。两条路径产出的 markdown/
-资产一致。无论哪条路径，`asset://<id>` 占位都以**顺序消费**方式替换为
-`imgs/...`，占位 ID 不在提取结果中时**显式报错**（不再用全文正则扫描）。
+**资产合并解析**：`Converter.ConvertWithAssets`/`ConvertFileWithAssets`
+**一次解析**同时拿到 Markdown 与资产（core 常驻 wasm 的 `anydoc_convert`
+合并导出，同一 `Document` 同源，`asset://<id>` 与 `Assets[id].ID` 一一对应，
+避免第二次 wasm 解析）。CLI 转换默认导出资产，`asset://<id>` 占位以
+**顺序消费**方式替换为 `imgs/...`，占位 ID 不在提取结果中时**显式报错**
+（不做全文正则扫描）。`Converter.ExtractAssets` 保留以独立提取资产。
 
 ## 验证
 
@@ -187,7 +188,7 @@ CI 重建出 core 后用 `-tags anydoc_convert` 构建即启用；无 tag 的默
   与官方快照不同，已手工更新 docx/doc/epub 三个文件）逐字节比对；
 - **TestExtractAssets**：手工构造的 in-image.docx（1×1 PNG）→ markdown
   含 `asset://0` 占位、`ExtractAssets` 取回原始 PNG 字节；CLI 集成用例
-  验证 `--imgs` 落盘 + 引用重写；
+  验证默认导出时落盘 + 引用重写；
 - **TestReuseModuleIsStateless**：同一模块连续转换结果一致；
 - **TestErrors**：encrypted / malformed / 未识别格式 / CSV 需要 -f /
   PDF 报 unsupported（stub 剔除后不解析）。

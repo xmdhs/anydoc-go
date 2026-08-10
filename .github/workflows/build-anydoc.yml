@@ -91,6 +91,8 @@ jobs:
           mkdir -p dist
           build() {
             os=$1 arch=$2 ext=$3
+            # 默认构建即合并解析路径（core 常驻 AnydocConvert），发布产物与
+            # ./build.sh test 验证的是同一代码路径。
             CGO_ENABLED=0 GOOS=$os GOARCH=$arch go build \
               -trimpath -ldflags="-s -w" -o "dist/anydoc-${os}-${arch}${ext}" .
           }
