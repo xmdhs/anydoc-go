@@ -105,23 +105,6 @@ jobs:
           ./bin/anydoc -s testdata/fixtures/docx/text.docx > /tmp/smoke.md
           diff /tmp/smoke.md testdata/expected/docx/text.md
 
-      - name: Verify all target builds
-        run: |
-          set -euxo pipefail
-          build() {
-            os=$1 arch=$2
-            # core 由本 workflow 重建，已含 AnydocConvert：默认构建即验证
-            # 合并解析路径在所有目标平台可编译。
-            CGO_ENABLED=0 GOOS=$os GOARCH=$arch go build \
-              -trimpath -o "/tmp/anydoc-${os}-${arch}" .
-          }
-          build linux amd64
-          build linux arm64
-          build windows amd64
-          build windows arm64
-          build darwin amd64
-          build darwin arm64
-
       - name: Upload regenerated core
         uses: actions/upload-artifact@v7
         with:

@@ -107,51 +107,11 @@ jobs:
           build darwin arm64 ""
           file dist/*
 
-      - name: Upload linux/amd64 artifact
+      - name: Upload cross-platform binaries
         uses: actions/upload-artifact@v7
         with:
-          name: anydoc-linux-amd64
-          path: dist/anydoc-linux-amd64
-          retention-days: 3
-          archive: false
-
-      - name: Upload linux/arm64 artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: anydoc-linux-arm64
-          path: dist/anydoc-linux-arm64
-          retention-days: 3
-          archive: false
-
-      - name: Upload windows/amd64 artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: anydoc-windows-amd64
-          path: dist/anydoc-windows-amd64.exe
-          retention-days: 3
-          archive: false
-
-      - name: Upload windows/arm64 artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: anydoc-windows-arm64
-          path: dist/anydoc-windows-arm64.exe
-          retention-days: 3
-          archive: false
-
-      - name: Upload darwin/amd64 artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: anydoc-darwin-amd64
-          path: dist/anydoc-darwin-amd64
-          retention-days: 3
-          archive: false
-
-      - name: Upload darwin/arm64 artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: anydoc-darwin-arm64
-          path: dist/anydoc-darwin-arm64
+          name: anydoc-binaries
+          path: dist/*
           retention-days: 3
           archive: false
 
