@@ -113,7 +113,7 @@ jobs:
           name: anydoc-binaries
           path: dist/*
           retention-days: 3
-          archive: false
+          # 多文件上传必须打包归档（archive: false 只允许单文件）；产物以 zip 提供
 
       - name: Create GitHub Release
         if: github.event_name == 'workflow_dispatch' && inputs.version != ''

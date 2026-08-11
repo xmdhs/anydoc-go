@@ -148,42 +148,114 @@ func fileStem(file string) string {
 	return strings.TrimSuffix(filepath.Base(file), filepath.Ext(file))
 }
 
-// rewriteAssetRefs 把 md 里的 `asset://<id>` 占位替换为 refs 中对应引用。
+// rewriteAssetRefs 把 md 图片链接里的 `asset://<id>` 占位替换为 refs 中对应引用。
 //
-// 顺序消费 + 显式报错，替代旧的全文正则扫描（regexp `asset://\d+`）：
-//   - 不打正则、不做子串 ReplaceAll，因此 `asset://3` 不会误吞 `asset://31`
-//     （按"asset://" 后一整段连续数字取 ID）；
-//   - `asset://<id>` 后必须是连续十进制数字，否则按字面保留；
-//   - 占位 ID 在 refs 中缺失时**返回错误**而非静默保留——未导出资产却留有
-//     占位引用意味着产物里有坏链接，应当显式失败而非产出污染 markdown。
+// 只有"真实 markdown 图片链接"里恰好形如 `asset://<连续数字>` 的 dest 才当作
+// 占位处理，其余一律按字面保留，替代旧的全文字符串扫描（`strings.Index(…, "asset://")`）：
+//   - 正文、代码、URL 里出现的 `asset://123` 不再是占位，不会被误改写，也不会
+//     （在 ID 缺失时）误报错——只有出现在 `![alt](…)` 的 dest 位置才被识别；
+//   - 整段解析图片链接结构（含 alt 转义与括号配对），占位 ID 取 dest 里一整段
+//     连续十进制数字，且必须紧贴 `)` 结束，故 `asset://3` 不会误吞 `asset://31` 前缀；
+//   - 真正的占位 ID 在 refs 中缺失时**返回错误**而非静默保留——未导出资产却
+//     留有占位引用意味着产物里有坏链接，应显式失败而非产出污染 markdown。
 func rewriteAssetRefs(md string, refs map[string]string) (string, error) {
 	var sb strings.Builder
 	rest := md
 	for {
-		idx := strings.Index(rest, "asset://")
+		idx := strings.Index(rest, "![")
 		if idx < 0 {
 			sb.WriteString(rest)
 			return sb.String(), nil
 		}
 		sb.WriteString(rest[:idx])
-		// rest 从首个非 "asset://" 前缀的字符开始，读一整段数字作为 ID。
-		rest = rest[idx+len("asset://"):]
-		j := 0
-		for j < len(rest) && rest[j] >= '0' && rest[j] <= '9' {
-			j++
-		}
-		if j == 0 { // "asset://" 后不是数字：按字面保留
-			sb.WriteString("asset://")
+		destStart, destEnd, ok := parseImageLink(rest[idx:])
+		if !ok { // 不是完整图片链接：`![` 按字面保留，继续扫后面的
+			sb.WriteString("![")
+			rest = rest[idx+len("!["):]
 			continue
 		}
-		idStr := rest[:j]
-		ref, ok := refs["asset://"+idStr]
-		if !ok {
-			return "", fmt.Errorf("asset placeholder asset://%s not among extracted assets", idStr)
+		// 逐字节复制图片链接前缀（`![alt](`），保持原文其余不动，仅替换 dest。
+		sb.WriteString(rest[idx : idx+destStart])
+		dest := rest[idx+destStart : idx+destEnd]
+		if idStr, isAsset := assetPlaceholderID(dest); isAsset {
+			ref, ok := refs["asset://"+idStr]
+			if !ok {
+				return "", fmt.Errorf("asset placeholder asset://%s not among extracted assets", idStr)
+			}
+			sb.WriteString(ref)
+		} else { // 普通图片 dest（真实路径等）：原样保留
+			sb.WriteString(dest)
 		}
-		sb.WriteString(ref)
-		rest = rest[j:]
+		sb.WriteString(")")
+		rest = rest[idx+destEnd+1:]
 	}
+}
+
+// parseImageLink 解析以 `![` 开头的图片链接 `![alt](dest)`，返回 dest 在 s 中的
+// 起止下标（不含包裹括号）。非图片链接（alt 未闭合、`]` 后非 `(`、dest 未闭合）
+// 返回 ok=false，调用方应把 `![` 按字面保留。
+func parseImageLink(s string) (destStart, destEnd int, ok bool) {
+	i := len("![")
+	depth := 0
+	for i < len(s) {
+		switch c := s[i]; {
+		case c == '\\': // alt 内转义：跳过下一个字符
+			i += 2
+		case c == '[':
+			depth++
+			i++
+		case c == ']':
+			if depth == 0 {
+				goto labelDone
+			}
+			depth--
+			i++
+		default:
+			i++
+		}
+	}
+	return 0, 0, false
+labelDone:
+	if i+1 >= len(s) || s[i+1] != '(' {
+		return 0, 0, false
+	}
+	destStart = i + 2
+	i = destStart
+	depth = 0
+	for i < len(s) {
+		switch c := s[i]; {
+		case c == '\\': // dest 内转义：跳过下一个字符
+			i += 2
+		case c == '(':
+			depth++
+			i++
+		case c == ')':
+			if depth == 0 {
+				return destStart, i, true
+			}
+			depth--
+			i++
+		default:
+			i++
+		}
+	}
+	return 0, 0, false // dest 未闭合：不是图片链接
+}
+
+// assetPlaceholderID 若 dest 恰好是 `asset://<连续数字>` 则返回其数字 ID；
+// 否则返回 isAsset=false，示意该 dest 不是资产占位。
+func assetPlaceholderID(dest string) (string, bool) {
+	const prefix = "asset://"
+	if len(dest) <= len(prefix) || dest[:len(prefix)] != prefix {
+		return "", false
+	}
+	digits := dest[len(prefix):]
+	for _, r := range digits {
+		if r < '0' || r > '9' {
+			return "", false
+		}
+	}
+	return digits, true
 }
 
 // assetExt 从 media type 推导文件扩展名：image/* 取子类型字母数字，

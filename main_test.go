@@ -217,6 +217,48 @@ func TestRewriteAssetRefsNonNumericPrefix(t *testing.T) {
 	}
 }
 
+func TestRewriteAssetRefsKeepsPlainImage(t *testing.T) {
+	// 普通图片链接（dest 非 asset://）原样保留，不被误改写。
+	md := "![photo](images/photo.png) and ![alt-3](asset://3)"
+	refs := map[string]string{"asset://3": "imgs/doc-3.png"}
+	got, err := rewriteAssetRefs(md, refs)
+	if err != nil {
+		t.Fatalf("rewriteAssetRefs: %v", err)
+	}
+	want := "![photo](images/photo.png) and ![alt-3](imgs/doc-3.png)"
+	if got != want {
+		t.Errorf("rewriteAssetRefs:\n got %q\nwant %q", got, want)
+	}
+}
+
+func TestRewriteAssetRefsLiteralPrefixUntouched(t *testing.T) {
+	// 正文/非图片上下文里的 `asset://<数字>` 不是占位：保留原文且不报错
+	// （旧实现会把它当占位，缺失即整份转换失败或误改写）。
+	md := "prose mentions asset://99 and asset://3 here"
+	got, err := rewriteAssetRefs(md, map[string]string{"asset://3": "imgs/doc-3.png"})
+	if err != nil {
+		t.Fatalf("literal asset:// text should not error: %v", err)
+	}
+	if got != md {
+		t.Errorf("literal asset:// should stay intact: got %q", got)
+	}
+}
+
+func TestRewriteAssetRefsEscapedAlt(t *testing.T) {
+	// alt 含未转义括号、转义 `\]`、以及内嵌子图片链接时，仍能正确配对
+	// 外层 `](dest)` 而只重写 dest 里的 asset 占位。
+	md := `![a \[literal\] (paren) recursed![?](img)](asset://3) tail`
+	refs := map[string]string{"asset://3": "imgs/doc-3.png"}
+	got, err := rewriteAssetRefs(md, refs)
+	if err != nil {
+		t.Fatalf("rewriteAssetRefs: %v", err)
+	}
+	want := `![a \[literal\] (paren) recursed![?](img)](imgs/doc-3.png) tail`
+	if got != want {
+		t.Errorf("rewriteAssetRefs:\n got %q\nwant %q", got, want)
+	}
+}
+
 func TestURLPathEscape(t *testing.T) {
 	cases := []struct{ in, want string }{
 		{"doc-3.png", "doc-3.png"},               // 仅 unreserved 保持原样
