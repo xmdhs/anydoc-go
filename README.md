@@ -17,8 +17,7 @@ tools/           辅助脚本（split_gen.py 已不再使用——goccy 自带�
 bin/             goccy-wasm2go 翻译器 + 最终 anydoc 二进制
 target/          cargo 编译目录（.gitignore 排除）
 testdata/        单元测试样本（fixtures/ 复制自 anydoc + expected/ 快照期望）
-main.go          手写 Go CLI 入口；资产落盘/引用重写为 asset_common.go +
-                 assets_merge.go（package main）
+main.go          唯一手写 Go 入口（package main）
 build.sh         构建管线：fetch / wasm / cli / test / build
 ```
 
@@ -67,7 +66,7 @@ C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 ru
 
 ```bash
 ./build.sh fetch    # 首次 & 更新：拉取第三方仓库并应用本地 patch
-                    #   anydoc 默认取语义排序的最新 tag；goccy 默认固定已验证 revision
+                    #   anydoc 默认锁定已验证 tag（v0.1.8，见 ANYDOC_REF）；goccy 固定已验证 revision
 ./build.sh wasm     # cargo → anydoc_cabi.wasm（-simd128）
 ./build.sh cli      # goccy-wasm2go -pure → core/ → go build（仅 wasm 变更后重跑）
 ./build.sh test     # 单元测试（见「验证」）
@@ -118,17 +117,18 @@ bin/anydoc -s report.docx           # 输出到 stdout（可多个输入）
 bin/anydoc -o out.md report.docx    # 指定单个输出文件
 bin/anydoc -o - a.docx              # 与 -s 等价
 bin/anydoc -f docx weird.bin          # 强制定制解析
+bin/anydoc --imgs "docs/*.docx"        # 顺带导出内嵌图片到 imgs/
 ```
 
-**内嵌图片默认导出**：docx/pptx 等容器内的图片字节不会出现在 markdown
-里——本地 patch 渲染为 `![alt](asset://<id>)` 占位（`<id>` 即资产下标），
-转换时以 `<stem>-<id>.<ext>` 写到 md 输出旁的 `imgs/`，md 引用替换为相对
-`imgs/` 路径：
-- 默认输出（`<input>.md` 同目录）与 `-o out.md`：`imgs/` 位于 md 文件所在
-  目录，引用始终成立；`-s`（stdout）没有输出位置基准，资产落在输入目录的
-  `imgs/`，引用按输入目录相对路径计算；
-- 各输入独立目录无跨输入覆盖，重复转换幂等；无内嵌资产时不创建目录；
-- 扩展名由 media type 派生，其余一律 `bin`。
+**内嵌图片**（docx/pptx 等容器内的图片字节不会出现在 markdown 里——本地
+patch 渲染为 `![alt](asset://<id>)` 占位，`<id>` 即资产下标）：
+- **默认不导出**：md 里保留 `asset://` 占位；
+- `--imgs`：以 `<stem>-<id>.<ext>` 写入 md 输出旁的 `imgs/`，md 引用替换为
+  相对 `imgs/` 路径。默认输出（`<input>.md` 同目录）与 `-o out.md`：
+  `imgs/` 位于 md 文件所在目录，引用始终成立；`-s`（stdout）没有输出位置
+  基准，资产落在输入目录的 `imgs/`，引用按输入目录相对路径计算；
+- 各输入独立目录无跨输入覆盖，重复转换幂等；扩展名由 media type 派生，
+  其余一律 `bin`。
 - 库 API 对应 `Converter.ExtractAssets`（返回 `ID/MediaType/Bytes`）与合并
   解析 `Converter.ConvertWithAssets`；两者 id 语义一致。
 
@@ -173,7 +173,7 @@ md, err = func() (string, error) {
 **资产合并解析**：`Converter.ConvertWithAssets`/`ConvertFileWithAssets`
 **一次解析**同时拿到 Markdown 与资产（core 常驻 wasm 的 `anydoc_convert`
 合并导出，同一 `Document` 同源，`asset://<id>` 与 `Assets[id].ID` 一一对应，
-避免第二次 wasm 解析）。CLI 转换默认导出资产，`asset://<id>` 占位以
+避免第二次 wasm 解析，CLI 的 `--imgs` 即走此路径）。`asset://<id>` 占位以
 **顺序消费**方式替换为 `imgs/...`，占位 ID 不在提取结果中时**显式报错**
 （不做全文正则扫描）。`Converter.ExtractAssets` 保留以独立提取资产。
 
@@ -188,7 +188,7 @@ md, err = func() (string, error) {
   与官方快照不同，已手工更新 docx/doc/epub 三个文件）逐字节比对；
 - **TestExtractAssets**：手工构造的 in-image.docx（1×1 PNG）→ markdown
   含 `asset://0` 占位、`ExtractAssets` 取回原始 PNG 字节；CLI 集成用例
-  验证默认导出时落盘 + 引用重写；
+  验证 `--imgs` 落盘 + 引用重写；
 - **TestReuseModuleIsStateless**：同一模块连续转换结果一致；
 - **TestErrors**：encrypted / malformed / 未识别格式 / CSV 需要 -f /
   PDF 报 unsupported（stub 剔除后不解析）。

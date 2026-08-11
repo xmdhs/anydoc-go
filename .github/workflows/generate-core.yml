@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  ANYDOC_REF: v0.1.7
+  ANYDOC_REF: v0.1.8
   GOCCY_REF: f30ec292fd4ea1737263c30ed97157e4593796db
 
 jobs:
@@ -91,6 +91,7 @@ jobs:
             path="${line:3}"
             case "$path" in
               core/*) ;;
+              cabi/Cargo.lock) ;; # cargo 依 fetch 版本重新解析；随 core 一起提交
               "") ;;
               *) echo "unexpected generated change: $line" >&2; exit 1 ;;
             esac
@@ -173,6 +174,7 @@ jobs:
             path="${line:3}"
             case "$path" in
               core/*) ;;
+              cabi/Cargo.lock) ;;
               "") ;;
               *) echo "unexpected commit change: $line" >&2; exit 1 ;;
             esac
@@ -190,7 +192,7 @@ jobs:
           fi
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -A core
+          git add -A core cabi/Cargo.lock
           if git diff --cached --quiet; then
             echo 'core is already up to date'
             exit 0

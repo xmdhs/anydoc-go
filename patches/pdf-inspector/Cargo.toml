@@ -1,6 +1,6 @@
 [package]
 name = "pdf-inspector"
-version = "0.1.7"
+version = "0.1.8"
 edition = "2021"
 description = "本地 patch：pdf-inspector 的 stub（pdf 解析未编入构建，调用返回无可提取文本）"
 

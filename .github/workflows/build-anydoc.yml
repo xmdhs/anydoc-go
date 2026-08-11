@@ -30,6 +30,9 @@ jobs:
       # CI 上改用 runner 的 home，避免污染工作区并方便 actions/cache。
       RUSTUP_HOME: /home/runner/.rustup
       CARGO_HOME: /home/runner/.cargo
+      # 与 generate-core.yml 同锁 anydoc 版本：patches/（pdf-inspector stub
+      # 版本号、源码 patch）只对 v0.1.8 验证过，build.sh 默认值与此一致。
+      ANYDOC_REF: v0.1.8
     steps:
       - name: Checkout
         uses: actions/checkout@v7
