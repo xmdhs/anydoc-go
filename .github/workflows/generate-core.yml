@@ -153,6 +153,11 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 0
 
+      - name: Setup Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+
       - name: Remove checked-in core before artifact restore
         run: rm -rf core
 
@@ -179,6 +184,15 @@ jobs:
               *) echo "unexpected commit change: $line" >&2; exit 1 ;;
             esac
           done < <(git status --porcelain --untracked-files=all)
+
+      # 推送前最后防线：以将要提交的产物（下载的 core + 源码）编译 CLI
+      # 并跑测试。generate job 的验证在其自己的工作区进行，这里用提交物
+      # 再验一遍——CLI 编译或测试失败则本 job 失败，commit/push 不执行。
+      - name: Verify CLI builds and tests with the artifact core
+        run: |
+          set -euxo pipefail
+          go build ./...
+          go test -p 1 ./...
 
       - name: Commit and fast-forward push core
         run: |
