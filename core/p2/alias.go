@@ -4,18 +4,12 @@ import (
 	base "github.com/xmdhs/anydoc-go/core/base"
 	_ "unsafe"
 )
-//go:linkname Fn0 github.com/xmdhs/anydoc-go/core/p4.Fn0
-func Fn0(m *base.Module, l0 int32)
 //go:linkname Fn1 github.com/xmdhs/anydoc-go/core/p4.Fn1
 func Fn1(m *base.Module, l0 int32)
 //go:linkname Fn2 github.com/xmdhs/anydoc-go/core/p5.Fn2
 func Fn2(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3 github.com/xmdhs/anydoc-go/core/p4.Fn3
-func Fn3(m *base.Module, l0 int32)
 //go:linkname Fn7 github.com/xmdhs/anydoc-go/core/p5.Fn7
 func Fn7(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn9 github.com/xmdhs/anydoc-go/core/p4.Fn9
-func Fn9(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn10 github.com/xmdhs/anydoc-go/core/p4.Fn10
 func Fn10(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn12 github.com/xmdhs/anydoc-go/core/p5.Fn12
@@ -24,987 +18,1075 @@ func Fn12(m *base.Module)
 func Fn14(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn16 github.com/xmdhs/anydoc-go/core/p4.Fn16
 func Fn16(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn20 github.com/xmdhs/anydoc-go/core/p1.Fn20
-func Fn20(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 //go:linkname Fn22 github.com/xmdhs/anydoc-go/core/p5.Fn22
 func Fn22(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn24 github.com/xmdhs/anydoc-go/core/p1.Fn24
-func Fn24(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn27 github.com/xmdhs/anydoc-go/core/p5.Fn27
-func Fn27(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 //go:linkname Fn28 github.com/xmdhs/anydoc-go/core/p5.Fn28
-func Fn28(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn29 github.com/xmdhs/anydoc-go/core/p5.Fn29
-func Fn29(m *base.Module, l0 int32)
-//go:linkname Fn33 github.com/xmdhs/anydoc-go/core/p4.Fn33
-func Fn33(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn34 github.com/xmdhs/anydoc-go/core/p3.Fn34
-func Fn34(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn35 github.com/xmdhs/anydoc-go/core/p4.Fn35
-func Fn35(m *base.Module, l0 int32)
-//go:linkname Fn36 github.com/xmdhs/anydoc-go/core/p4.Fn36
-func Fn36(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn37 github.com/xmdhs/anydoc-go/core/p4.Fn37
-func Fn37(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn38 github.com/xmdhs/anydoc-go/core/p5.Fn38
-func Fn38(m *base.Module, l0 int32)
-//go:linkname Fn39 github.com/xmdhs/anydoc-go/core/p4.Fn39
-func Fn39(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn40 github.com/xmdhs/anydoc-go/core/p1.Fn40
-func Fn40(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn41 github.com/xmdhs/anydoc-go/core/p4.Fn41
-func Fn41(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn42 github.com/xmdhs/anydoc-go/core/p5.Fn42
-func Fn42(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn44 github.com/xmdhs/anydoc-go/core/p5.Fn44
-func Fn44(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn55 github.com/xmdhs/anydoc-go/core/p3.Fn55
-func Fn55(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn61 github.com/xmdhs/anydoc-go/core/p3.Fn61
-func Fn61(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn64 github.com/xmdhs/anydoc-go/core/p5.Fn64
-func Fn64(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn67 github.com/xmdhs/anydoc-go/core/p5.Fn67
-func Fn67(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
-//go:linkname Fn71 github.com/xmdhs/anydoc-go/core/p4.Fn71
-func Fn71(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn72 github.com/xmdhs/anydoc-go/core/p5.Fn72
-func Fn72(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn77 github.com/xmdhs/anydoc-go/core/p5.Fn77
-func Fn77(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn81 github.com/xmdhs/anydoc-go/core/p5.Fn81
-func Fn81(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn82 github.com/xmdhs/anydoc-go/core/p4.Fn82
-func Fn82(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn84 github.com/xmdhs/anydoc-go/core/p5.Fn84
-func Fn84(m *base.Module)
-//go:linkname Fn91 github.com/xmdhs/anydoc-go/core/p5.Fn91
-func Fn91(m *base.Module, l0 int32)
-//go:linkname Fn92 github.com/xmdhs/anydoc-go/core/p5.Fn92
-func Fn92(m *base.Module, l0 int32)
-//go:linkname Fn93 github.com/xmdhs/anydoc-go/core/p5.Fn93
-func Fn93(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn97 github.com/xmdhs/anydoc-go/core/p5.Fn97
-func Fn97(m *base.Module, l0 int32)
-//go:linkname Fn101 github.com/xmdhs/anydoc-go/core/p5.Fn101
-func Fn101(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn107 github.com/xmdhs/anydoc-go/core/p5.Fn107
-func Fn107(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn116 github.com/xmdhs/anydoc-go/core/p4.Fn116
-func Fn116(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
-//go:linkname Fn118 github.com/xmdhs/anydoc-go/core/p5.Fn118
-func Fn118(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn120 github.com/xmdhs/anydoc-go/core/p4.Fn120
-func Fn120(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn178 github.com/xmdhs/anydoc-go/core/p4.Fn178
-func Fn178(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn181 github.com/xmdhs/anydoc-go/core/p4.Fn181
-func Fn181(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn207 github.com/xmdhs/anydoc-go/core/p5.Fn207
-func Fn207(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn208 github.com/xmdhs/anydoc-go/core/p5.Fn208
-func Fn208(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn209 github.com/xmdhs/anydoc-go/core/p4.Fn209
-func Fn209(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn211 github.com/xmdhs/anydoc-go/core/p3.Fn211
-func Fn211(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn217 github.com/xmdhs/anydoc-go/core/p4.Fn217
-func Fn217(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn233 github.com/xmdhs/anydoc-go/core/p4.Fn233
-func Fn233(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn240 github.com/xmdhs/anydoc-go/core/p4.Fn240
-func Fn240(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn241 github.com/xmdhs/anydoc-go/core/p4.Fn241
-func Fn241(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn243 github.com/xmdhs/anydoc-go/core/p4.Fn243
-func Fn243(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn253 github.com/xmdhs/anydoc-go/core/p4.Fn253
-func Fn253(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn262 github.com/xmdhs/anydoc-go/core/p4.Fn262
-func Fn262(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn263 github.com/xmdhs/anydoc-go/core/p4.Fn263
-func Fn263(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
-//go:linkname Fn264 github.com/xmdhs/anydoc-go/core/p4.Fn264
-func Fn264(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn269 github.com/xmdhs/anydoc-go/core/p5.Fn269
-func Fn269(m *base.Module, l0 int64, l1 int64, l2 int32) int64
-//go:linkname Fn273 github.com/xmdhs/anydoc-go/core/p3.Fn273
-func Fn273(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn277 github.com/xmdhs/anydoc-go/core/p4.Fn277
-func Fn277(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn279 github.com/xmdhs/anydoc-go/core/p5.Fn279
-func Fn279(m *base.Module, l0 int64, l1 int64, l2 int32) int64
-//go:linkname Fn283 github.com/xmdhs/anydoc-go/core/p4.Fn283
-func Fn283(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn291 github.com/xmdhs/anydoc-go/core/p5.Fn291
-func Fn291(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn312 github.com/xmdhs/anydoc-go/core/p5.Fn312
-func Fn312(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn314 github.com/xmdhs/anydoc-go/core/p3.Fn314
-func Fn314(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn28(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn35 github.com/xmdhs/anydoc-go/core/p5.Fn35
+func Fn35(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn36 github.com/xmdhs/anydoc-go/core/p3.Fn36
+func Fn36(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn42 github.com/xmdhs/anydoc-go/core/p3.Fn42
+func Fn42(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn45 github.com/xmdhs/anydoc-go/core/p5.Fn45
+func Fn45(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn48 github.com/xmdhs/anydoc-go/core/p5.Fn48
+func Fn48(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
+//go:linkname Fn52 github.com/xmdhs/anydoc-go/core/p4.Fn52
+func Fn52(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn53 github.com/xmdhs/anydoc-go/core/p5.Fn53
+func Fn53(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn58 github.com/xmdhs/anydoc-go/core/p5.Fn58
+func Fn58(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn62 github.com/xmdhs/anydoc-go/core/p5.Fn62
+func Fn62(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn63 github.com/xmdhs/anydoc-go/core/p4.Fn63
+func Fn63(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn65 github.com/xmdhs/anydoc-go/core/p5.Fn65
+func Fn65(m *base.Module)
+//go:linkname Fn74 github.com/xmdhs/anydoc-go/core/p5.Fn74
+func Fn74(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn78 github.com/xmdhs/anydoc-go/core/p5.Fn78
+func Fn78(m *base.Module, l0 int32)
+//go:linkname Fn82 github.com/xmdhs/anydoc-go/core/p5.Fn82
+func Fn82(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn88 github.com/xmdhs/anydoc-go/core/p5.Fn88
+func Fn88(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn97 github.com/xmdhs/anydoc-go/core/p4.Fn97
+func Fn97(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn99 github.com/xmdhs/anydoc-go/core/p5.Fn99
+func Fn99(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn101 github.com/xmdhs/anydoc-go/core/p4.Fn101
+func Fn101(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn159 github.com/xmdhs/anydoc-go/core/p4.Fn159
+func Fn159(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn162 github.com/xmdhs/anydoc-go/core/p4.Fn162
+func Fn162(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn188 github.com/xmdhs/anydoc-go/core/p5.Fn188
+func Fn188(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn189 github.com/xmdhs/anydoc-go/core/p5.Fn189
+func Fn189(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn190 github.com/xmdhs/anydoc-go/core/p4.Fn190
+func Fn190(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn192 github.com/xmdhs/anydoc-go/core/p3.Fn192
+func Fn192(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn198 github.com/xmdhs/anydoc-go/core/p4.Fn198
+func Fn198(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn199 github.com/xmdhs/anydoc-go/core/p5.Fn199
+func Fn199(m *base.Module, l0 int32)
+//go:linkname Fn215 github.com/xmdhs/anydoc-go/core/p4.Fn215
+func Fn215(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn222 github.com/xmdhs/anydoc-go/core/p4.Fn222
+func Fn222(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn223 github.com/xmdhs/anydoc-go/core/p4.Fn223
+func Fn223(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn225 github.com/xmdhs/anydoc-go/core/p4.Fn225
+func Fn225(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn235 github.com/xmdhs/anydoc-go/core/p4.Fn235
+func Fn235(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn244 github.com/xmdhs/anydoc-go/core/p4.Fn244
+func Fn244(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn245 github.com/xmdhs/anydoc-go/core/p5.Fn245
+func Fn245(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
+//go:linkname Fn246 github.com/xmdhs/anydoc-go/core/p4.Fn246
+func Fn246(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn251 github.com/xmdhs/anydoc-go/core/p5.Fn251
+func Fn251(m *base.Module, l0 int64, l1 int64, l2 int32) int64
+//go:linkname Fn255 github.com/xmdhs/anydoc-go/core/p4.Fn255
+func Fn255(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn259 github.com/xmdhs/anydoc-go/core/p4.Fn259
+func Fn259(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn261 github.com/xmdhs/anydoc-go/core/p5.Fn261
+func Fn261(m *base.Module, l0 int64, l1 int64, l2 int32) int64
+//go:linkname Fn265 github.com/xmdhs/anydoc-go/core/p4.Fn265
+func Fn265(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn271 github.com/xmdhs/anydoc-go/core/p3.Fn271
+func Fn271(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn280 github.com/xmdhs/anydoc-go/core/p5.Fn280
+func Fn280(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn294 github.com/xmdhs/anydoc-go/core/p5.Fn294
+func Fn294(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn296 github.com/xmdhs/anydoc-go/core/p3.Fn296
+func Fn296(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn301 github.com/xmdhs/anydoc-go/core/p4.Fn301
+func Fn301(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn302 github.com/xmdhs/anydoc-go/core/p1.Fn302
+func Fn302(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn304 github.com/xmdhs/anydoc-go/core/p4.Fn304
+func Fn304(m *base.Module, l0 int32)
+//go:linkname Fn305 github.com/xmdhs/anydoc-go/core/p4.Fn305
+func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn307 github.com/xmdhs/anydoc-go/core/p5.Fn307
+func Fn307(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn308 github.com/xmdhs/anydoc-go/core/p3.Fn308
+func Fn308(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn310 github.com/xmdhs/anydoc-go/core/p3.Fn310
+func Fn310(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn312 github.com/xmdhs/anydoc-go/core/p4.Fn312
+func Fn312(m *base.Module, l0 int32) int32
+//go:linkname Fn313 github.com/xmdhs/anydoc-go/core/p5.Fn313
+func Fn313(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn314 github.com/xmdhs/anydoc-go/core/p4.Fn314
+func Fn314(m *base.Module, l0 int32)
+//go:linkname Fn317 github.com/xmdhs/anydoc-go/core/p5.Fn317
+func Fn317(m *base.Module, l0 int32)
+//go:linkname Fn318 github.com/xmdhs/anydoc-go/core/p5.Fn318
+func Fn318(m *base.Module, l0 int32)
 //go:linkname Fn319 github.com/xmdhs/anydoc-go/core/p4.Fn319
-func Fn319(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn320 github.com/xmdhs/anydoc-go/core/p1.Fn320
-func Fn320(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn322 github.com/xmdhs/anydoc-go/core/p4.Fn322
-func Fn322(m *base.Module, l0 int32)
+func Fn319(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn320 github.com/xmdhs/anydoc-go/core/p4.Fn320
+func Fn320(m *base.Module, l0 int32, l1 int32)
 //go:linkname Fn324 github.com/xmdhs/anydoc-go/core/p5.Fn324
-func Fn324(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn325 github.com/xmdhs/anydoc-go/core/p3.Fn325
-func Fn325(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn327 github.com/xmdhs/anydoc-go/core/p3.Fn327
-func Fn327(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn329 github.com/xmdhs/anydoc-go/core/p4.Fn329
-func Fn329(m *base.Module, l0 int32) int32
-//go:linkname Fn330 github.com/xmdhs/anydoc-go/core/p5.Fn330
-func Fn330(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn331 github.com/xmdhs/anydoc-go/core/p4.Fn331
-func Fn331(m *base.Module, l0 int32)
-//go:linkname Fn334 github.com/xmdhs/anydoc-go/core/p4.Fn334
-func Fn334(m *base.Module, l0 int32)
-//go:linkname Fn335 github.com/xmdhs/anydoc-go/core/p4.Fn335
+func Fn324(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn335 github.com/xmdhs/anydoc-go/core/p5.Fn335
 func Fn335(m *base.Module, l0 int32)
-//go:linkname Fn339 github.com/xmdhs/anydoc-go/core/p5.Fn339
-func Fn339(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn352 github.com/xmdhs/anydoc-go/core/p3.Fn352
-func Fn352(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn354 github.com/xmdhs/anydoc-go/core/p3.Fn354
-func Fn354(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn356 github.com/xmdhs/anydoc-go/core/p5.Fn356
-func Fn356(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn357 github.com/xmdhs/anydoc-go/core/p3.Fn357
-func Fn357(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn360 github.com/xmdhs/anydoc-go/core/p4.Fn360
-func Fn360(m *base.Module, l0 int32)
-//go:linkname Fn362 github.com/xmdhs/anydoc-go/core/p4.Fn362
-func Fn362(m *base.Module, l0 int32)
-//go:linkname Fn364 github.com/xmdhs/anydoc-go/core/p4.Fn364
-func Fn364(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn366 github.com/xmdhs/anydoc-go/core/p5.Fn366
-func Fn366(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn367 github.com/xmdhs/anydoc-go/core/p4.Fn367
-func Fn367(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn399 github.com/xmdhs/anydoc-go/core/p4.Fn399
-func Fn399(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn403 github.com/xmdhs/anydoc-go/core/p1.Fn403
-func Fn403(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn404 github.com/xmdhs/anydoc-go/core/p4.Fn404
-func Fn404(m *base.Module, l0 int32)
-//go:linkname Fn405 github.com/xmdhs/anydoc-go/core/p4.Fn405
-func Fn405(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
-//go:linkname Fn406 github.com/xmdhs/anydoc-go/core/p5.Fn406
-func Fn406(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn437 github.com/xmdhs/anydoc-go/core/p4.Fn437
-func Fn437(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn438 github.com/xmdhs/anydoc-go/core/p4.Fn438
-func Fn438(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
-//go:linkname Fn440 github.com/xmdhs/anydoc-go/core/p4.Fn440
-func Fn440(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn441 github.com/xmdhs/anydoc-go/core/p4.Fn441
-func Fn441(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn442 github.com/xmdhs/anydoc-go/core/p4.Fn442
-func Fn442(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn443 github.com/xmdhs/anydoc-go/core/p4.Fn443
-func Fn443(m *base.Module, l0 int32)
-//go:linkname Fn447 github.com/xmdhs/anydoc-go/core/p1.Fn447
-func Fn447(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-//go:linkname Fn449 github.com/xmdhs/anydoc-go/core/p5.Fn449
-func Fn449(m *base.Module, l0 int32) int32
-//go:linkname Fn450 github.com/xmdhs/anydoc-go/core/p5.Fn450
-func Fn450(m *base.Module, l0 int32)
-//go:linkname Fn456 github.com/xmdhs/anydoc-go/core/p4.Fn456
-func Fn456(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn465 github.com/xmdhs/anydoc-go/core/p4.Fn465
-func Fn465(m *base.Module, l0 int32, l1 int32, l2 int64)
+//go:linkname Fn338 github.com/xmdhs/anydoc-go/core/p3.Fn338
+func Fn338(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn340 github.com/xmdhs/anydoc-go/core/p3.Fn340
+func Fn340(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn342 github.com/xmdhs/anydoc-go/core/p5.Fn342
+func Fn342(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn343 github.com/xmdhs/anydoc-go/core/p3.Fn343
+func Fn343(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn346 github.com/xmdhs/anydoc-go/core/p5.Fn346
+func Fn346(m *base.Module, l0 int32)
+//go:linkname Fn348 github.com/xmdhs/anydoc-go/core/p4.Fn348
+func Fn348(m *base.Module, l0 int32)
+//go:linkname Fn350 github.com/xmdhs/anydoc-go/core/p4.Fn350
+func Fn350(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn352 github.com/xmdhs/anydoc-go/core/p5.Fn352
+func Fn352(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn353 github.com/xmdhs/anydoc-go/core/p4.Fn353
+func Fn353(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn385 github.com/xmdhs/anydoc-go/core/p5.Fn385
+func Fn385(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn387 github.com/xmdhs/anydoc-go/core/p4.Fn387
+func Fn387(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn391 github.com/xmdhs/anydoc-go/core/p1.Fn391
+func Fn391(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn392 github.com/xmdhs/anydoc-go/core/p5.Fn392
+func Fn392(m *base.Module, l0 int32)
+//go:linkname Fn393 github.com/xmdhs/anydoc-go/core/p5.Fn393
+func Fn393(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
+//go:linkname Fn394 github.com/xmdhs/anydoc-go/core/p5.Fn394
+func Fn394(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn426 github.com/xmdhs/anydoc-go/core/p4.Fn426
+func Fn426(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn427 github.com/xmdhs/anydoc-go/core/p5.Fn427
+func Fn427(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
+//go:linkname Fn429 github.com/xmdhs/anydoc-go/core/p4.Fn429
+func Fn429(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn430 github.com/xmdhs/anydoc-go/core/p5.Fn430
+func Fn430(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn431 github.com/xmdhs/anydoc-go/core/p4.Fn431
+func Fn431(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn432 github.com/xmdhs/anydoc-go/core/p4.Fn432
+func Fn432(m *base.Module, l0 int32)
+//go:linkname Fn436 github.com/xmdhs/anydoc-go/core/p1.Fn436
+func Fn436(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn438 github.com/xmdhs/anydoc-go/core/p5.Fn438
+func Fn438(m *base.Module, l0 int32) int32
+//go:linkname Fn439 github.com/xmdhs/anydoc-go/core/p5.Fn439
+func Fn439(m *base.Module, l0 int32)
+//go:linkname Fn445 github.com/xmdhs/anydoc-go/core/p4.Fn445
+func Fn445(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn454 github.com/xmdhs/anydoc-go/core/p4.Fn454
+func Fn454(m *base.Module, l0 int32, l1 int32, l2 int64)
+//go:linkname Fn457 github.com/xmdhs/anydoc-go/core/p5.Fn457
+func Fn457(m *base.Module, l0 int32) int32
+//go:linkname Fn458 github.com/xmdhs/anydoc-go/core/p4.Fn458
+func Fn458(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn460 github.com/xmdhs/anydoc-go/core/p4.Fn460
+func Fn460(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn462 github.com/xmdhs/anydoc-go/core/p5.Fn462
+func Fn462(m *base.Module, l0 int32)
+//go:linkname Fn463 github.com/xmdhs/anydoc-go/core/p5.Fn463
+func Fn463(m *base.Module, l0 int32)
+//go:linkname Fn467 github.com/xmdhs/anydoc-go/core/p5.Fn467
+func Fn467(m *base.Module, l0 int32)
 //go:linkname Fn468 github.com/xmdhs/anydoc-go/core/p5.Fn468
-func Fn468(m *base.Module, l0 int32) int32
-//go:linkname Fn469 github.com/xmdhs/anydoc-go/core/p4.Fn469
-func Fn469(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
-//go:linkname Fn471 github.com/xmdhs/anydoc-go/core/p4.Fn471
-func Fn471(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn473 github.com/xmdhs/anydoc-go/core/p5.Fn473
-func Fn473(m *base.Module, l0 int32)
+func Fn468(m *base.Module, l0 int32)
 //go:linkname Fn474 github.com/xmdhs/anydoc-go/core/p5.Fn474
 func Fn474(m *base.Module, l0 int32)
-//go:linkname Fn478 github.com/xmdhs/anydoc-go/core/p5.Fn478
-func Fn478(m *base.Module, l0 int32)
-//go:linkname Fn479 github.com/xmdhs/anydoc-go/core/p5.Fn479
-func Fn479(m *base.Module, l0 int32)
-//go:linkname Fn485 github.com/xmdhs/anydoc-go/core/p5.Fn485
-func Fn485(m *base.Module, l0 int32)
-//go:linkname Fn491 github.com/xmdhs/anydoc-go/core/p5.Fn491
-func Fn491(m *base.Module, l0 int32)
-//go:linkname Fn494 github.com/xmdhs/anydoc-go/core/p3.Fn494
-func Fn494(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn495 github.com/xmdhs/anydoc-go/core/p4.Fn495
-func Fn495(m *base.Module, l0 int32)
-//go:linkname Fn496 github.com/xmdhs/anydoc-go/core/p3.Fn496
-func Fn496(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn497 github.com/xmdhs/anydoc-go/core/p4.Fn497
-func Fn497(m *base.Module, l0 int32)
-//go:linkname Fn501 github.com/xmdhs/anydoc-go/core/p5.Fn501
-func Fn501(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn503 github.com/xmdhs/anydoc-go/core/p4.Fn503
-func Fn503(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn515 github.com/xmdhs/anydoc-go/core/p5.Fn515
-func Fn515(m *base.Module, l0 int32)
-//go:linkname Fn522 github.com/xmdhs/anydoc-go/core/p3.Fn522
-func Fn522(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn523 github.com/xmdhs/anydoc-go/core/p4.Fn523
-func Fn523(m *base.Module, l0 int32)
+//go:linkname Fn480 github.com/xmdhs/anydoc-go/core/p5.Fn480
+func Fn480(m *base.Module, l0 int32)
+//go:linkname Fn483 github.com/xmdhs/anydoc-go/core/p3.Fn483
+func Fn483(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn484 github.com/xmdhs/anydoc-go/core/p4.Fn484
+func Fn484(m *base.Module, l0 int32)
+//go:linkname Fn485 github.com/xmdhs/anydoc-go/core/p3.Fn485
+func Fn485(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn486 github.com/xmdhs/anydoc-go/core/p4.Fn486
+func Fn486(m *base.Module, l0 int32)
+//go:linkname Fn490 github.com/xmdhs/anydoc-go/core/p5.Fn490
+func Fn490(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn492 github.com/xmdhs/anydoc-go/core/p4.Fn492
+func Fn492(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn504 github.com/xmdhs/anydoc-go/core/p5.Fn504
+func Fn504(m *base.Module, l0 int32)
+//go:linkname Fn511 github.com/xmdhs/anydoc-go/core/p3.Fn511
+func Fn511(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn512 github.com/xmdhs/anydoc-go/core/p5.Fn512
+func Fn512(m *base.Module, l0 int32)
+//go:linkname Fn536 github.com/xmdhs/anydoc-go/core/p5.Fn536
+func Fn536(m *base.Module, l0 int32)
+//go:linkname Fn542 github.com/xmdhs/anydoc-go/core/p4.Fn542
+func Fn542(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn544 github.com/xmdhs/anydoc-go/core/p3.Fn544
+func Fn544(m *base.Module, l0 int32)
 //go:linkname Fn546 github.com/xmdhs/anydoc-go/core/p4.Fn546
-func Fn546(m *base.Module, l0 int32)
-//go:linkname Fn552 github.com/xmdhs/anydoc-go/core/p4.Fn552
-func Fn552(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn546(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn550 github.com/xmdhs/anydoc-go/core/p5.Fn550
+func Fn550(m *base.Module, l0 int32)
+//go:linkname Fn555 github.com/xmdhs/anydoc-go/core/p4.Fn555
+func Fn555(m *base.Module, l0 int32, l1 int32) int32
 //go:linkname Fn556 github.com/xmdhs/anydoc-go/core/p4.Fn556
 func Fn556(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn557 github.com/xmdhs/anydoc-go/core/p3.Fn557
+func Fn557(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn558 github.com/xmdhs/anydoc-go/core/p3.Fn558
+func Fn558(m *base.Module, l0 int32)
 //go:linkname Fn560 github.com/xmdhs/anydoc-go/core/p4.Fn560
-func Fn560(m *base.Module, l0 int32)
-//go:linkname Fn565 github.com/xmdhs/anydoc-go/core/p4.Fn565
-func Fn565(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn566 github.com/xmdhs/anydoc-go/core/p4.Fn566
-func Fn566(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn567 github.com/xmdhs/anydoc-go/core/p3.Fn567
-func Fn567(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn568 github.com/xmdhs/anydoc-go/core/p3.Fn568
-func Fn568(m *base.Module, l0 int32)
-//go:linkname Fn570 github.com/xmdhs/anydoc-go/core/p4.Fn570
-func Fn570(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn571 github.com/xmdhs/anydoc-go/core/p4.Fn571
-func Fn571(m *base.Module, l0 int32)
-//go:linkname Fn572 github.com/xmdhs/anydoc-go/core/p1.Fn572
-func Fn572(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn573 github.com/xmdhs/anydoc-go/core/p1.Fn573
-func Fn573(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn584 github.com/xmdhs/anydoc-go/core/p5.Fn584
-func Fn584(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn586 github.com/xmdhs/anydoc-go/core/p4.Fn586
-func Fn586(m *base.Module, l0 int32)
-//go:linkname Fn588 github.com/xmdhs/anydoc-go/core/p4.Fn588
-func Fn588(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn589 github.com/xmdhs/anydoc-go/core/p3.Fn589
-func Fn589(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn611 github.com/xmdhs/anydoc-go/core/p4.Fn611
-func Fn611(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn622 github.com/xmdhs/anydoc-go/core/p5.Fn622
-func Fn622(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn625 github.com/xmdhs/anydoc-go/core/p4.Fn625
-func Fn625(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn638 github.com/xmdhs/anydoc-go/core/p4.Fn638
-func Fn638(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn560(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn561 github.com/xmdhs/anydoc-go/core/p5.Fn561
+func Fn561(m *base.Module, l0 int32)
+//go:linkname Fn562 github.com/xmdhs/anydoc-go/core/p1.Fn562
+func Fn562(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn563 github.com/xmdhs/anydoc-go/core/p1.Fn563
+func Fn563(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn567 github.com/xmdhs/anydoc-go/core/p4.Fn567
+func Fn567(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn568 github.com/xmdhs/anydoc-go/core/p4.Fn568
+func Fn568(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn569 github.com/xmdhs/anydoc-go/core/p5.Fn569
+func Fn569(m *base.Module, l0 int32)
+//go:linkname Fn579 github.com/xmdhs/anydoc-go/core/p4.Fn579
+func Fn579(m *base.Module, l0 int32)
+//go:linkname Fn580 github.com/xmdhs/anydoc-go/core/p4.Fn580
+func Fn580(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn590 github.com/xmdhs/anydoc-go/core/p5.Fn590
+func Fn590(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn592 github.com/xmdhs/anydoc-go/core/p5.Fn592
+func Fn592(m *base.Module, l0 int32)
+//go:linkname Fn593 github.com/xmdhs/anydoc-go/core/p4.Fn593
+func Fn593(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn594 github.com/xmdhs/anydoc-go/core/p3.Fn594
+func Fn594(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn598 github.com/xmdhs/anydoc-go/core/p3.Fn598
+func Fn598(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn616 github.com/xmdhs/anydoc-go/core/p4.Fn616
+func Fn616(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn627 github.com/xmdhs/anydoc-go/core/p5.Fn627
+func Fn627(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn630 github.com/xmdhs/anydoc-go/core/p4.Fn630
+func Fn630(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 //go:linkname Fn643 github.com/xmdhs/anydoc-go/core/p4.Fn643
-func Fn643(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn646 github.com/xmdhs/anydoc-go/core/p4.Fn646
-func Fn646(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn660 github.com/xmdhs/anydoc-go/core/p4.Fn660
-func Fn660(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32)
-//go:linkname Fn664 github.com/xmdhs/anydoc-go/core/p4.Fn664
-func Fn664(m *base.Module, l0 int32)
-//go:linkname Fn665 github.com/xmdhs/anydoc-go/core/p4.Fn665
-func Fn665(m *base.Module, l0 int32)
-//go:linkname Fn668 github.com/xmdhs/anydoc-go/core/p4.Fn668
-func Fn668(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn672 github.com/xmdhs/anydoc-go/core/p4.Fn672
-func Fn672(m *base.Module, l0 int32, l1 int32)
+func Fn643(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn648 github.com/xmdhs/anydoc-go/core/p4.Fn648
+func Fn648(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn651 github.com/xmdhs/anydoc-go/core/p5.Fn651
+func Fn651(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn665 github.com/xmdhs/anydoc-go/core/p5.Fn665
+func Fn665(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32)
+//go:linkname Fn669 github.com/xmdhs/anydoc-go/core/p5.Fn669
+func Fn669(m *base.Module, l0 int32)
+//go:linkname Fn670 github.com/xmdhs/anydoc-go/core/p4.Fn670
+func Fn670(m *base.Module, l0 int32)
 //go:linkname Fn673 github.com/xmdhs/anydoc-go/core/p4.Fn673
-func Fn673(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn674 github.com/xmdhs/anydoc-go/core/p3.Fn674
-func Fn674(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn690 github.com/xmdhs/anydoc-go/core/p5.Fn690
-func Fn690(m *base.Module, l0 int32)
+func Fn673(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn677 github.com/xmdhs/anydoc-go/core/p4.Fn677
+func Fn677(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn678 github.com/xmdhs/anydoc-go/core/p4.Fn678
+func Fn678(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn679 github.com/xmdhs/anydoc-go/core/p3.Fn679
+func Fn679(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn695 github.com/xmdhs/anydoc-go/core/p5.Fn695
+func Fn695(m *base.Module, l0 int32)
+//go:linkname Fn701 github.com/xmdhs/anydoc-go/core/p4.Fn701
+func Fn701(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn702 github.com/xmdhs/anydoc-go/core/p4.Fn702
+func Fn702(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn712 github.com/xmdhs/anydoc-go/core/p4.Fn712
+func Fn712(m *base.Module, l0 int32)
+//go:linkname Fn713 github.com/xmdhs/anydoc-go/core/p4.Fn713
+func Fn713(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 //go:linkname Fn714 github.com/xmdhs/anydoc-go/core/p4.Fn714
-func Fn714(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn716 github.com/xmdhs/anydoc-go/core/p5.Fn716
-func Fn716(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn714(m *base.Module, l0 int32)
+//go:linkname Fn717 github.com/xmdhs/anydoc-go/core/p4.Fn717
+func Fn717(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 //go:linkname Fn718 github.com/xmdhs/anydoc-go/core/p4.Fn718
-func Fn718(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn721 github.com/xmdhs/anydoc-go/core/p3.Fn721
-func Fn721(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn730 github.com/xmdhs/anydoc-go/core/p4.Fn730
-func Fn730(m *base.Module, l0 int32)
-//go:linkname Fn731 github.com/xmdhs/anydoc-go/core/p4.Fn731
-func Fn731(m *base.Module, l0 int32, l1 int32) int32
+func Fn718(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn719 github.com/xmdhs/anydoc-go/core/p5.Fn719
+func Fn719(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn720 github.com/xmdhs/anydoc-go/core/p3.Fn720
+func Fn720(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn721 github.com/xmdhs/anydoc-go/core/p5.Fn721
+func Fn721(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn722 github.com/xmdhs/anydoc-go/core/p4.Fn722
+func Fn722(m *base.Module, l0 int32)
+//go:linkname Fn723 github.com/xmdhs/anydoc-go/core/p4.Fn723
+func Fn723(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn726 github.com/xmdhs/anydoc-go/core/p3.Fn726
+func Fn726(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn735 github.com/xmdhs/anydoc-go/core/p5.Fn735
+func Fn735(m *base.Module, l0 int32)
 //go:linkname Fn736 github.com/xmdhs/anydoc-go/core/p4.Fn736
-func Fn736(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn738 github.com/xmdhs/anydoc-go/core/p3.Fn738
-func Fn738(m *base.Module, l0 int32, l1 float64, l2 int32)
-//go:linkname Fn739 github.com/xmdhs/anydoc-go/core/p3.Fn739
-func Fn739(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32)
-//go:linkname Fn744 github.com/xmdhs/anydoc-go/core/p4.Fn744
-func Fn744(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn747 github.com/xmdhs/anydoc-go/core/p4.Fn747
-func Fn747(m *base.Module, l0 int32, l1 int32)
+func Fn736(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn741 github.com/xmdhs/anydoc-go/core/p4.Fn741
+func Fn741(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn743 github.com/xmdhs/anydoc-go/core/p3.Fn743
+func Fn743(m *base.Module, l0 int32, l1 float64, l2 int32)
+//go:linkname Fn744 github.com/xmdhs/anydoc-go/core/p3.Fn744
+func Fn744(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32)
 //go:linkname Fn749 github.com/xmdhs/anydoc-go/core/p4.Fn749
-func Fn749(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn751 github.com/xmdhs/anydoc-go/core/p4.Fn751
-func Fn751(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn752 github.com/xmdhs/anydoc-go/core/p4.Fn752
-func Fn752(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn758 github.com/xmdhs/anydoc-go/core/p4.Fn758
-func Fn758(m *base.Module, l0 int32)
-//go:linkname Fn759 github.com/xmdhs/anydoc-go/core/p4.Fn759
-func Fn759(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn793 github.com/xmdhs/anydoc-go/core/p5.Fn793
-func Fn793(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn815 github.com/xmdhs/anydoc-go/core/p4.Fn815
-func Fn815(m *base.Module, l0 int32)
-//go:linkname Fn818 github.com/xmdhs/anydoc-go/core/p3.Fn818
-func Fn818(m *base.Module, l0 int32)
-//go:linkname Fn821 github.com/xmdhs/anydoc-go/core/p4.Fn821
-func Fn821(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn822 github.com/xmdhs/anydoc-go/core/p4.Fn822
-func Fn822(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn824 github.com/xmdhs/anydoc-go/core/p4.Fn824
-func Fn824(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn826 github.com/xmdhs/anydoc-go/core/p5.Fn826
-func Fn826(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn831 github.com/xmdhs/anydoc-go/core/p4.Fn831
-func Fn831(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn832 github.com/xmdhs/anydoc-go/core/p4.Fn832
-func Fn832(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int64) int64
+func Fn749(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn752 github.com/xmdhs/anydoc-go/core/p5.Fn752
+func Fn752(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn754 github.com/xmdhs/anydoc-go/core/p4.Fn754
+func Fn754(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn756 github.com/xmdhs/anydoc-go/core/p5.Fn756
+func Fn756(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn757 github.com/xmdhs/anydoc-go/core/p4.Fn757
+func Fn757(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn763 github.com/xmdhs/anydoc-go/core/p5.Fn763
+func Fn763(m *base.Module, l0 int32)
+//go:linkname Fn764 github.com/xmdhs/anydoc-go/core/p4.Fn764
+func Fn764(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn798 github.com/xmdhs/anydoc-go/core/p5.Fn798
+func Fn798(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn820 github.com/xmdhs/anydoc-go/core/p4.Fn820
+func Fn820(m *base.Module, l0 int32)
+//go:linkname Fn823 github.com/xmdhs/anydoc-go/core/p4.Fn823
+func Fn823(m *base.Module, l0 int32)
+//go:linkname Fn826 github.com/xmdhs/anydoc-go/core/p4.Fn826
+func Fn826(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn827 github.com/xmdhs/anydoc-go/core/p4.Fn827
+func Fn827(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn829 github.com/xmdhs/anydoc-go/core/p4.Fn829
+func Fn829(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn831 github.com/xmdhs/anydoc-go/core/p5.Fn831
+func Fn831(m *base.Module, l0 int32, l1 int32) int32
 //go:linkname Fn836 github.com/xmdhs/anydoc-go/core/p4.Fn836
-func Fn836(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn839 github.com/xmdhs/anydoc-go/core/p4.Fn839
-func Fn839(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn849 github.com/xmdhs/anydoc-go/core/p3.Fn849
-func Fn849(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn856 github.com/xmdhs/anydoc-go/core/p4.Fn856
-func Fn856(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn859 github.com/xmdhs/anydoc-go/core/p4.Fn859
-func Fn859(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn866 github.com/xmdhs/anydoc-go/core/p3.Fn866
-func Fn866(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn867 github.com/xmdhs/anydoc-go/core/p1.Fn867
-func Fn867(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn869 github.com/xmdhs/anydoc-go/core/p0.Fn869
-func Fn869(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn942 github.com/xmdhs/anydoc-go/core/p4.Fn942
-func Fn942(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn943 github.com/xmdhs/anydoc-go/core/p3.Fn943
-func Fn943(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn946 github.com/xmdhs/anydoc-go/core/p4.Fn946
-func Fn946(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn947 github.com/xmdhs/anydoc-go/core/p3.Fn947
-func Fn947(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn949 github.com/xmdhs/anydoc-go/core/p4.Fn949
-func Fn949(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn950 github.com/xmdhs/anydoc-go/core/p4.Fn950
-func Fn950(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn836(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn837 github.com/xmdhs/anydoc-go/core/p4.Fn837
+func Fn837(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int64) int64
+//go:linkname Fn841 github.com/xmdhs/anydoc-go/core/p4.Fn841
+func Fn841(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn844 github.com/xmdhs/anydoc-go/core/p4.Fn844
+func Fn844(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn854 github.com/xmdhs/anydoc-go/core/p3.Fn854
+func Fn854(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn861 github.com/xmdhs/anydoc-go/core/p4.Fn861
+func Fn861(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn864 github.com/xmdhs/anydoc-go/core/p4.Fn864
+func Fn864(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn874 github.com/xmdhs/anydoc-go/core/p3.Fn874
+func Fn874(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn877 github.com/xmdhs/anydoc-go/core/p4.Fn877
+func Fn877(m *base.Module, l0 int32)
+//go:linkname Fn882 github.com/xmdhs/anydoc-go/core/p4.Fn882
+func Fn882(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn884 github.com/xmdhs/anydoc-go/core/p5.Fn884
+func Fn884(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn894 github.com/xmdhs/anydoc-go/core/p4.Fn894
+func Fn894(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn895 github.com/xmdhs/anydoc-go/core/p1.Fn895
+func Fn895(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn897 github.com/xmdhs/anydoc-go/core/p4.Fn897
+func Fn897(m *base.Module, l0 int32, l1 int32)
 //go:linkname Fn970 github.com/xmdhs/anydoc-go/core/p4.Fn970
-func Fn970(m *base.Module, l0 int32)
-//go:linkname Fn986 github.com/xmdhs/anydoc-go/core/p4.Fn986
-func Fn986(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn991 github.com/xmdhs/anydoc-go/core/p4.Fn991
-func Fn991(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1004 github.com/xmdhs/anydoc-go/core/p4.Fn1004
-func Fn1004(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1060 github.com/xmdhs/anydoc-go/core/p4.Fn1060
-func Fn1060(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1061 github.com/xmdhs/anydoc-go/core/p4.Fn1061
-func Fn1061(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1063 github.com/xmdhs/anydoc-go/core/p4.Fn1063
-func Fn1063(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
-//go:linkname Fn1064 github.com/xmdhs/anydoc-go/core/p4.Fn1064
-func Fn1064(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1093 github.com/xmdhs/anydoc-go/core/p4.Fn1093
-func Fn1093(m *base.Module, l0 int32)
-//go:linkname Fn1103 github.com/xmdhs/anydoc-go/core/p4.Fn1103
-func Fn1103(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1106 github.com/xmdhs/anydoc-go/core/p4.Fn1106
-func Fn1106(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1107 github.com/xmdhs/anydoc-go/core/p4.Fn1107
-func Fn1107(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1109 github.com/xmdhs/anydoc-go/core/p5.Fn1109
-func Fn1109(m *base.Module, l0 int32)
-//go:linkname Fn1114 github.com/xmdhs/anydoc-go/core/p4.Fn1114
-func Fn1114(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1115 github.com/xmdhs/anydoc-go/core/p4.Fn1115
-func Fn1115(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1118 github.com/xmdhs/anydoc-go/core/p3.Fn1118
-func Fn1118(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1119 github.com/xmdhs/anydoc-go/core/p4.Fn1119
-func Fn1119(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1123 github.com/xmdhs/anydoc-go/core/p5.Fn1123
-func Fn1123(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn1126 github.com/xmdhs/anydoc-go/core/p5.Fn1126
-func Fn1126(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1127 github.com/xmdhs/anydoc-go/core/p5.Fn1127
-func Fn1127(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1128 github.com/xmdhs/anydoc-go/core/p4.Fn1128
-func Fn1128(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1131 github.com/xmdhs/anydoc-go/core/p4.Fn1131
-func Fn1131(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1137 github.com/xmdhs/anydoc-go/core/p5.Fn1137
-func Fn1137(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1138 github.com/xmdhs/anydoc-go/core/p4.Fn1138
-func Fn1138(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1139 github.com/xmdhs/anydoc-go/core/p4.Fn1139
-func Fn1139(m *base.Module, l0 int32, l1 int32) int32
+func Fn970(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn971 github.com/xmdhs/anydoc-go/core/p3.Fn971
+func Fn971(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn974 github.com/xmdhs/anydoc-go/core/p4.Fn974
+func Fn974(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn975 github.com/xmdhs/anydoc-go/core/p3.Fn975
+func Fn975(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn977 github.com/xmdhs/anydoc-go/core/p4.Fn977
+func Fn977(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn978 github.com/xmdhs/anydoc-go/core/p4.Fn978
+func Fn978(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn998 github.com/xmdhs/anydoc-go/core/p4.Fn998
+func Fn998(m *base.Module, l0 int32)
+//go:linkname Fn1014 github.com/xmdhs/anydoc-go/core/p4.Fn1014
+func Fn1014(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1019 github.com/xmdhs/anydoc-go/core/p4.Fn1019
+func Fn1019(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1032 github.com/xmdhs/anydoc-go/core/p4.Fn1032
+func Fn1032(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1071 github.com/xmdhs/anydoc-go/core/p4.Fn1071
+func Fn1071(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1109 github.com/xmdhs/anydoc-go/core/p4.Fn1109
+func Fn1109(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1110 github.com/xmdhs/anydoc-go/core/p4.Fn1110
+func Fn1110(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1112 github.com/xmdhs/anydoc-go/core/p5.Fn1112
+func Fn1112(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
+//go:linkname Fn1120 github.com/xmdhs/anydoc-go/core/p3.Fn1120
+func Fn1120(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1125 github.com/xmdhs/anydoc-go/core/p3.Fn1125
+func Fn1125(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1140 github.com/xmdhs/anydoc-go/core/p4.Fn1140
+func Fn1140(m *base.Module, l0 int32)
 //go:linkname Fn1141 github.com/xmdhs/anydoc-go/core/p5.Fn1141
-func Fn1141(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1142 github.com/xmdhs/anydoc-go/core/p5.Fn1142
-func Fn1142(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1143 github.com/xmdhs/anydoc-go/core/p4.Fn1143
-func Fn1143(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1152 github.com/xmdhs/anydoc-go/core/p3.Fn1152
-func Fn1152(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1153 github.com/xmdhs/anydoc-go/core/p3.Fn1153
-func Fn1153(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1154 github.com/xmdhs/anydoc-go/core/p4.Fn1154
-func Fn1154(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1155 github.com/xmdhs/anydoc-go/core/p4.Fn1155
-func Fn1155(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1157 github.com/xmdhs/anydoc-go/core/p4.Fn1157
-func Fn1157(m *base.Module, l0 int32)
-//go:linkname Fn1158 github.com/xmdhs/anydoc-go/core/p4.Fn1158
-func Fn1158(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1160 github.com/xmdhs/anydoc-go/core/p3.Fn1160
-func Fn1160(m *base.Module, l0 int32, l1 int64)
-//go:linkname Fn1162 github.com/xmdhs/anydoc-go/core/p1.Fn1162
-func Fn1162(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1164 github.com/xmdhs/anydoc-go/core/p4.Fn1164
-func Fn1164(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1165 github.com/xmdhs/anydoc-go/core/p4.Fn1165
-func Fn1165(m *base.Module, l0 int32)
-//go:linkname Fn1171 github.com/xmdhs/anydoc-go/core/p4.Fn1171
-func Fn1171(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1175 github.com/xmdhs/anydoc-go/core/p4.Fn1175
-func Fn1175(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn1141(m *base.Module, l0 int32)
+//go:linkname Fn1146 github.com/xmdhs/anydoc-go/core/p4.Fn1146
+func Fn1146(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1147 github.com/xmdhs/anydoc-go/core/p4.Fn1147
+func Fn1147(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1148 github.com/xmdhs/anydoc-go/core/p4.Fn1148
+func Fn1148(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1150 github.com/xmdhs/anydoc-go/core/p4.Fn1150
+func Fn1150(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1166 github.com/xmdhs/anydoc-go/core/p4.Fn1166
+func Fn1166(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1169 github.com/xmdhs/anydoc-go/core/p3.Fn1169
+func Fn1169(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1170 github.com/xmdhs/anydoc-go/core/p5.Fn1170
+func Fn1170(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn1171 github.com/xmdhs/anydoc-go/core/p5.Fn1171
+func Fn1171(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1172 github.com/xmdhs/anydoc-go/core/p5.Fn1172
+func Fn1172(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1173 github.com/xmdhs/anydoc-go/core/p4.Fn1173
+func Fn1173(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn1176 github.com/xmdhs/anydoc-go/core/p4.Fn1176
-func Fn1176(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1178 github.com/xmdhs/anydoc-go/core/p4.Fn1178
-func Fn1178(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1179 github.com/xmdhs/anydoc-go/core/p4.Fn1179
-func Fn1179(m *base.Module, l0 int32, l1 int32)
+func Fn1176(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1179 github.com/xmdhs/anydoc-go/core/p5.Fn1179
+func Fn1179(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1182 github.com/xmdhs/anydoc-go/core/p5.Fn1182
+func Fn1182(m *base.Module, l0 int32, l1 int32) int32
 //go:linkname Fn1183 github.com/xmdhs/anydoc-go/core/p4.Fn1183
-func Fn1183(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1190 github.com/xmdhs/anydoc-go/core/p5.Fn1190
-func Fn1190(m *base.Module, l0 int32) int32
-//go:linkname Fn1191 github.com/xmdhs/anydoc-go/core/p4.Fn1191
-func Fn1191(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1192 github.com/xmdhs/anydoc-go/core/p3.Fn1192
-func Fn1192(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1199 github.com/xmdhs/anydoc-go/core/p3.Fn1199
-func Fn1199(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1207 github.com/xmdhs/anydoc-go/core/p4.Fn1207
-func Fn1207(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1226 github.com/xmdhs/anydoc-go/core/p5.Fn1226
-func Fn1226(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1228 github.com/xmdhs/anydoc-go/core/p3.Fn1228
-func Fn1228(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1232 github.com/xmdhs/anydoc-go/core/p4.Fn1232
-func Fn1232(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1235 github.com/xmdhs/anydoc-go/core/p5.Fn1235
-func Fn1235(m *base.Module, l0 int32)
+func Fn1183(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1184 github.com/xmdhs/anydoc-go/core/p5.Fn1184
+func Fn1184(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1186 github.com/xmdhs/anydoc-go/core/p5.Fn1186
+func Fn1186(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1187 github.com/xmdhs/anydoc-go/core/p5.Fn1187
+func Fn1187(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1188 github.com/xmdhs/anydoc-go/core/p4.Fn1188
+func Fn1188(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1195 github.com/xmdhs/anydoc-go/core/p3.Fn1195
+func Fn1195(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1196 github.com/xmdhs/anydoc-go/core/p3.Fn1196
+func Fn1196(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1197 github.com/xmdhs/anydoc-go/core/p4.Fn1197
+func Fn1197(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1200 github.com/xmdhs/anydoc-go/core/p4.Fn1200
+func Fn1200(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1202 github.com/xmdhs/anydoc-go/core/p3.Fn1202
+func Fn1202(m *base.Module, l0 int32, l1 int64)
+//go:linkname Fn1205 github.com/xmdhs/anydoc-go/core/p4.Fn1205
+func Fn1205(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1206 github.com/xmdhs/anydoc-go/core/p5.Fn1206
+func Fn1206(m *base.Module, l0 int32)
+//go:linkname Fn1209 github.com/xmdhs/anydoc-go/core/p5.Fn1209
+func Fn1209(m *base.Module) int32
+//go:linkname Fn1212 github.com/xmdhs/anydoc-go/core/p4.Fn1212
+func Fn1212(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1216 github.com/xmdhs/anydoc-go/core/p4.Fn1216
+func Fn1216(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1217 github.com/xmdhs/anydoc-go/core/p4.Fn1217
+func Fn1217(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1219 github.com/xmdhs/anydoc-go/core/p4.Fn1219
+func Fn1219(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1220 github.com/xmdhs/anydoc-go/core/p4.Fn1220
+func Fn1220(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1224 github.com/xmdhs/anydoc-go/core/p4.Fn1224
+func Fn1224(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1225 github.com/xmdhs/anydoc-go/core/p5.Fn1225
+func Fn1225(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1227 github.com/xmdhs/anydoc-go/core/p4.Fn1227
+func Fn1227(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1228 github.com/xmdhs/anydoc-go/core/p5.Fn1228
+func Fn1228(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1230 github.com/xmdhs/anydoc-go/core/p4.Fn1230
+func Fn1230(m *base.Module, l0 int32)
 //go:linkname Fn1238 github.com/xmdhs/anydoc-go/core/p4.Fn1238
-func Fn1238(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1241 github.com/xmdhs/anydoc-go/core/p3.Fn1241
-func Fn1241(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1279 github.com/xmdhs/anydoc-go/core/p3.Fn1279
-func Fn1279(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn1238(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1239 github.com/xmdhs/anydoc-go/core/p3.Fn1239
+func Fn1239(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1246 github.com/xmdhs/anydoc-go/core/p3.Fn1246
+func Fn1246(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1254 github.com/xmdhs/anydoc-go/core/p4.Fn1254
+func Fn1254(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1275 github.com/xmdhs/anydoc-go/core/p4.Fn1275
+func Fn1275(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1276 github.com/xmdhs/anydoc-go/core/p5.Fn1276
+func Fn1276(m *base.Module)
+//go:linkname Fn1277 github.com/xmdhs/anydoc-go/core/p5.Fn1277
+func Fn1277(m *base.Module)
+//go:linkname Fn1278 github.com/xmdhs/anydoc-go/core/p4.Fn1278
+func Fn1278(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1281 github.com/xmdhs/anydoc-go/core/p4.Fn1281
+func Fn1281(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1282 github.com/xmdhs/anydoc-go/core/p5.Fn1282
+func Fn1282(m *base.Module, l0 int32)
+//go:linkname Fn1283 github.com/xmdhs/anydoc-go/core/p3.Fn1283
+func Fn1283(m *base.Module, l0 int32, l1 int32)
 //go:linkname Fn1286 github.com/xmdhs/anydoc-go/core/p4.Fn1286
-func Fn1286(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1289 github.com/xmdhs/anydoc-go/core/p4.Fn1289
-func Fn1289(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1305 github.com/xmdhs/anydoc-go/core/p4.Fn1305
-func Fn1305(m *base.Module, l0 int32)
-//go:linkname Fn1306 github.com/xmdhs/anydoc-go/core/p4.Fn1306
-func Fn1306(m *base.Module, l0 int32)
-//go:linkname Fn1308 github.com/xmdhs/anydoc-go/core/p1.Fn1308
-func Fn1308(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1309 github.com/xmdhs/anydoc-go/core/p3.Fn1309
-func Fn1309(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1310 github.com/xmdhs/anydoc-go/core/p4.Fn1310
-func Fn1310(m *base.Module, l0 int32)
-//go:linkname Fn1345 github.com/xmdhs/anydoc-go/core/p4.Fn1345
-func Fn1345(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1371 github.com/xmdhs/anydoc-go/core/p4.Fn1371
-func Fn1371(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
-//go:linkname Fn1375 github.com/xmdhs/anydoc-go/core/p5.Fn1375
-func Fn1375(m *base.Module, l0 int64, l1 int64, l2 int32) int64
-//go:linkname Fn1376 github.com/xmdhs/anydoc-go/core/p4.Fn1376
-func Fn1376(m *base.Module, l0 int32, l1 int32) int32
+func Fn1286(m *base.Module, l0 int32)
+//go:linkname Fn1290 github.com/xmdhs/anydoc-go/core/p5.Fn1290
+func Fn1290(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1292 github.com/xmdhs/anydoc-go/core/p3.Fn1292
+func Fn1292(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1296 github.com/xmdhs/anydoc-go/core/p4.Fn1296
+func Fn1296(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1299 github.com/xmdhs/anydoc-go/core/p5.Fn1299
+func Fn1299(m *base.Module, l0 int32)
+//go:linkname Fn1302 github.com/xmdhs/anydoc-go/core/p4.Fn1302
+func Fn1302(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1305 github.com/xmdhs/anydoc-go/core/p3.Fn1305
+func Fn1305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1346 github.com/xmdhs/anydoc-go/core/p3.Fn1346
+func Fn1346(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1352 github.com/xmdhs/anydoc-go/core/p4.Fn1352
+func Fn1352(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1353 github.com/xmdhs/anydoc-go/core/p4.Fn1353
+func Fn1353(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1354 github.com/xmdhs/anydoc-go/core/p4.Fn1354
+func Fn1354(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1357 github.com/xmdhs/anydoc-go/core/p4.Fn1357
+func Fn1357(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1358 github.com/xmdhs/anydoc-go/core/p4.Fn1358
+func Fn1358(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1369 github.com/xmdhs/anydoc-go/core/p3.Fn1369
+func Fn1369(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1372 github.com/xmdhs/anydoc-go/core/p4.Fn1372
+func Fn1372(m *base.Module, l0 int32)
+//go:linkname Fn1373 github.com/xmdhs/anydoc-go/core/p4.Fn1373
+func Fn1373(m *base.Module, l0 int32)
+//go:linkname Fn1374 github.com/xmdhs/anydoc-go/core/p4.Fn1374
+func Fn1374(m *base.Module, l0 int32)
+//go:linkname Fn1376 github.com/xmdhs/anydoc-go/core/p5.Fn1376
+func Fn1376(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1377 github.com/xmdhs/anydoc-go/core/p4.Fn1377
+func Fn1377(m *base.Module, l0 int32)
 //go:linkname Fn1382 github.com/xmdhs/anydoc-go/core/p4.Fn1382
-func Fn1382(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1385 github.com/xmdhs/anydoc-go/core/p4.Fn1385
-func Fn1385(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn1382(m *base.Module, l0 int32)
+//go:linkname Fn1385 github.com/xmdhs/anydoc-go/core/p3.Fn1385
+func Fn1385(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 //go:linkname Fn1386 github.com/xmdhs/anydoc-go/core/p4.Fn1386
-func Fn1386(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1387 github.com/xmdhs/anydoc-go/core/p4.Fn1387
-func Fn1387(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn1386(m *base.Module, l0 int32)
+//go:linkname Fn1388 github.com/xmdhs/anydoc-go/core/p5.Fn1388
+func Fn1388(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1391 github.com/xmdhs/anydoc-go/core/p4.Fn1391
+func Fn1391(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1392 github.com/xmdhs/anydoc-go/core/p4.Fn1392
+func Fn1392(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn1393 github.com/xmdhs/anydoc-go/core/p4.Fn1393
-func Fn1393(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1395 github.com/xmdhs/anydoc-go/core/p4.Fn1395
-func Fn1395(m *base.Module, l0 int32)
-//go:linkname Fn1396 github.com/xmdhs/anydoc-go/core/p4.Fn1396
-func Fn1396(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1398 github.com/xmdhs/anydoc-go/core/p3.Fn1398
-func Fn1398(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1402 github.com/xmdhs/anydoc-go/core/p3.Fn1402
-func Fn1402(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1411 github.com/xmdhs/anydoc-go/core/p5.Fn1411
-func Fn1411(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1430 github.com/xmdhs/anydoc-go/core/p4.Fn1430
-func Fn1430(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1435 github.com/xmdhs/anydoc-go/core/p5.Fn1435
-func Fn1435(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1449 github.com/xmdhs/anydoc-go/core/p5.Fn1449
-func Fn1449(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1454 github.com/xmdhs/anydoc-go/core/p5.Fn1454
-func Fn1454(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1458 github.com/xmdhs/anydoc-go/core/p5.Fn1458
-func Fn1458(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1459 github.com/xmdhs/anydoc-go/core/p4.Fn1459
-func Fn1459(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1463 github.com/xmdhs/anydoc-go/core/p5.Fn1463
-func Fn1463(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1464 github.com/xmdhs/anydoc-go/core/p4.Fn1464
-func Fn1464(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1474 github.com/xmdhs/anydoc-go/core/p5.Fn1474
-func Fn1474(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1475 github.com/xmdhs/anydoc-go/core/p4.Fn1475
-func Fn1475(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1491 github.com/xmdhs/anydoc-go/core/p5.Fn1491
-func Fn1491(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1497 github.com/xmdhs/anydoc-go/core/p5.Fn1497
-func Fn1497(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1498 github.com/xmdhs/anydoc-go/core/p4.Fn1498
-func Fn1498(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1526 github.com/xmdhs/anydoc-go/core/p5.Fn1526
-func Fn1526(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1527 github.com/xmdhs/anydoc-go/core/p4.Fn1527
-func Fn1527(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1530 github.com/xmdhs/anydoc-go/core/p4.Fn1530
-func Fn1530(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn1532 github.com/xmdhs/anydoc-go/core/p5.Fn1532
-func Fn1532(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1533 github.com/xmdhs/anydoc-go/core/p4.Fn1533
-func Fn1533(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1537 github.com/xmdhs/anydoc-go/core/p5.Fn1537
-func Fn1537(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1538 github.com/xmdhs/anydoc-go/core/p4.Fn1538
-func Fn1538(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1542 github.com/xmdhs/anydoc-go/core/p5.Fn1542
-func Fn1542(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1543 github.com/xmdhs/anydoc-go/core/p4.Fn1543
-func Fn1543(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn1393(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1394 github.com/xmdhs/anydoc-go/core/p3.Fn1394
+func Fn1394(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1447 github.com/xmdhs/anydoc-go/core/p5.Fn1447
+func Fn1447(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) int64
+//go:linkname Fn1458 github.com/xmdhs/anydoc-go/core/p4.Fn1458
+func Fn1458(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1461 github.com/xmdhs/anydoc-go/core/p4.Fn1461
+func Fn1461(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1463 github.com/xmdhs/anydoc-go/core/p4.Fn1463
+func Fn1463(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1469 github.com/xmdhs/anydoc-go/core/p4.Fn1469
+func Fn1469(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1471 github.com/xmdhs/anydoc-go/core/p4.Fn1471
+func Fn1471(m *base.Module, l0 int32)
+//go:linkname Fn1472 github.com/xmdhs/anydoc-go/core/p4.Fn1472
+func Fn1472(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1474 github.com/xmdhs/anydoc-go/core/p3.Fn1474
+func Fn1474(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1478 github.com/xmdhs/anydoc-go/core/p3.Fn1478
+func Fn1478(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1506 github.com/xmdhs/anydoc-go/core/p5.Fn1506
+func Fn1506(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1511 github.com/xmdhs/anydoc-go/core/p5.Fn1511
+func Fn1511(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1525 github.com/xmdhs/anydoc-go/core/p5.Fn1525
+func Fn1525(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1530 github.com/xmdhs/anydoc-go/core/p5.Fn1530
+func Fn1530(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1534 github.com/xmdhs/anydoc-go/core/p5.Fn1534
+func Fn1534(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1535 github.com/xmdhs/anydoc-go/core/p4.Fn1535
+func Fn1535(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1539 github.com/xmdhs/anydoc-go/core/p5.Fn1539
+func Fn1539(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1540 github.com/xmdhs/anydoc-go/core/p4.Fn1540
+func Fn1540(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn1550 github.com/xmdhs/anydoc-go/core/p5.Fn1550
 func Fn1550(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 //go:linkname Fn1551 github.com/xmdhs/anydoc-go/core/p4.Fn1551
 func Fn1551(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1553 github.com/xmdhs/anydoc-go/core/p3.Fn1553
-func Fn1553(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1563 github.com/xmdhs/anydoc-go/core/p5.Fn1563
-func Fn1563(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1564 github.com/xmdhs/anydoc-go/core/p4.Fn1564
-func Fn1564(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1574 github.com/xmdhs/anydoc-go/core/p5.Fn1574
-func Fn1574(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1584 github.com/xmdhs/anydoc-go/core/p3.Fn1584
-func Fn1584(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1587 github.com/xmdhs/anydoc-go/core/p3.Fn1587
-func Fn1587(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1595 github.com/xmdhs/anydoc-go/core/p3.Fn1595
-func Fn1595(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1601 github.com/xmdhs/anydoc-go/core/p5.Fn1601
-func Fn1601(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1602 github.com/xmdhs/anydoc-go/core/p4.Fn1602
-func Fn1602(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1606 github.com/xmdhs/anydoc-go/core/p5.Fn1606
-func Fn1606(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1612 github.com/xmdhs/anydoc-go/core/p5.Fn1612
-func Fn1612(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1613 github.com/xmdhs/anydoc-go/core/p4.Fn1613
-func Fn1613(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1620 github.com/xmdhs/anydoc-go/core/p5.Fn1620
-func Fn1620(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1626 github.com/xmdhs/anydoc-go/core/p5.Fn1626
-func Fn1626(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1632 github.com/xmdhs/anydoc-go/core/p5.Fn1632
-func Fn1632(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1633 github.com/xmdhs/anydoc-go/core/p4.Fn1633
-func Fn1633(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1645 github.com/xmdhs/anydoc-go/core/p5.Fn1645
-func Fn1645(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1646 github.com/xmdhs/anydoc-go/core/p4.Fn1646
-func Fn1646(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1567 github.com/xmdhs/anydoc-go/core/p5.Fn1567
+func Fn1567(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1573 github.com/xmdhs/anydoc-go/core/p5.Fn1573
+func Fn1573(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1574 github.com/xmdhs/anydoc-go/core/p4.Fn1574
+func Fn1574(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1602 github.com/xmdhs/anydoc-go/core/p5.Fn1602
+func Fn1602(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1603 github.com/xmdhs/anydoc-go/core/p4.Fn1603
+func Fn1603(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1606 github.com/xmdhs/anydoc-go/core/p4.Fn1606
+func Fn1606(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1608 github.com/xmdhs/anydoc-go/core/p5.Fn1608
+func Fn1608(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1609 github.com/xmdhs/anydoc-go/core/p4.Fn1609
+func Fn1609(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1613 github.com/xmdhs/anydoc-go/core/p5.Fn1613
+func Fn1613(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1614 github.com/xmdhs/anydoc-go/core/p4.Fn1614
+func Fn1614(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1618 github.com/xmdhs/anydoc-go/core/p5.Fn1618
+func Fn1618(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1619 github.com/xmdhs/anydoc-go/core/p4.Fn1619
+func Fn1619(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1629 github.com/xmdhs/anydoc-go/core/p3.Fn1629
+func Fn1629(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1639 github.com/xmdhs/anydoc-go/core/p5.Fn1639
+func Fn1639(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1640 github.com/xmdhs/anydoc-go/core/p4.Fn1640
+func Fn1640(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn1650 github.com/xmdhs/anydoc-go/core/p5.Fn1650
 func Fn1650(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1651 github.com/xmdhs/anydoc-go/core/p4.Fn1651
-func Fn1651(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1661 github.com/xmdhs/anydoc-go/core/p5.Fn1661
-func Fn1661(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1667 github.com/xmdhs/anydoc-go/core/p5.Fn1667
-func Fn1667(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1668 github.com/xmdhs/anydoc-go/core/p4.Fn1668
-func Fn1668(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1672 github.com/xmdhs/anydoc-go/core/p5.Fn1672
-func Fn1672(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1674 github.com/xmdhs/anydoc-go/core/p4.Fn1674
-func Fn1674(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1684 github.com/xmdhs/anydoc-go/core/p4.Fn1684
-func Fn1684(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1686 github.com/xmdhs/anydoc-go/core/p4.Fn1686
-func Fn1686(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1703 github.com/xmdhs/anydoc-go/core/p5.Fn1703
-func Fn1703(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1704 github.com/xmdhs/anydoc-go/core/p4.Fn1704
-func Fn1704(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1660 github.com/xmdhs/anydoc-go/core/p3.Fn1660
+func Fn1660(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1663 github.com/xmdhs/anydoc-go/core/p3.Fn1663
+func Fn1663(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1671 github.com/xmdhs/anydoc-go/core/p3.Fn1671
+func Fn1671(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1677 github.com/xmdhs/anydoc-go/core/p5.Fn1677
+func Fn1677(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1678 github.com/xmdhs/anydoc-go/core/p4.Fn1678
+func Fn1678(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1682 github.com/xmdhs/anydoc-go/core/p5.Fn1682
+func Fn1682(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1688 github.com/xmdhs/anydoc-go/core/p5.Fn1688
+func Fn1688(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1689 github.com/xmdhs/anydoc-go/core/p4.Fn1689
+func Fn1689(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1696 github.com/xmdhs/anydoc-go/core/p5.Fn1696
+func Fn1696(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1702 github.com/xmdhs/anydoc-go/core/p5.Fn1702
+func Fn1702(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 //go:linkname Fn1708 github.com/xmdhs/anydoc-go/core/p5.Fn1708
 func Fn1708(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1777 github.com/xmdhs/anydoc-go/core/p3.Fn1777
-func Fn1777(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1709 github.com/xmdhs/anydoc-go/core/p4.Fn1709
+func Fn1709(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1721 github.com/xmdhs/anydoc-go/core/p5.Fn1721
+func Fn1721(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1722 github.com/xmdhs/anydoc-go/core/p4.Fn1722
+func Fn1722(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1726 github.com/xmdhs/anydoc-go/core/p5.Fn1726
+func Fn1726(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1727 github.com/xmdhs/anydoc-go/core/p4.Fn1727
+func Fn1727(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1737 github.com/xmdhs/anydoc-go/core/p5.Fn1737
+func Fn1737(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1743 github.com/xmdhs/anydoc-go/core/p5.Fn1743
+func Fn1743(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1744 github.com/xmdhs/anydoc-go/core/p4.Fn1744
+func Fn1744(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1748 github.com/xmdhs/anydoc-go/core/p5.Fn1748
+func Fn1748(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1750 github.com/xmdhs/anydoc-go/core/p4.Fn1750
+func Fn1750(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1760 github.com/xmdhs/anydoc-go/core/p5.Fn1760
+func Fn1760(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1762 github.com/xmdhs/anydoc-go/core/p5.Fn1762
+func Fn1762(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn1779 github.com/xmdhs/anydoc-go/core/p5.Fn1779
-func Fn1779(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1783 github.com/xmdhs/anydoc-go/core/p3.Fn1783
-func Fn1783(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1786 github.com/xmdhs/anydoc-go/core/p3.Fn1786
-func Fn1786(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1792 github.com/xmdhs/anydoc-go/core/p3.Fn1792
-func Fn1792(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1795 github.com/xmdhs/anydoc-go/core/p3.Fn1795
-func Fn1795(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1807 github.com/xmdhs/anydoc-go/core/p3.Fn1807
-func Fn1807(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1810 github.com/xmdhs/anydoc-go/core/p3.Fn1810
-func Fn1810(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1813 github.com/xmdhs/anydoc-go/core/p3.Fn1813
-func Fn1813(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1816 github.com/xmdhs/anydoc-go/core/p3.Fn1816
-func Fn1816(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1819 github.com/xmdhs/anydoc-go/core/p3.Fn1819
-func Fn1819(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1822 github.com/xmdhs/anydoc-go/core/p3.Fn1822
-func Fn1822(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1870 github.com/xmdhs/anydoc-go/core/p3.Fn1870
-func Fn1870(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1885 github.com/xmdhs/anydoc-go/core/p3.Fn1885
-func Fn1885(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1888 github.com/xmdhs/anydoc-go/core/p3.Fn1888
-func Fn1888(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn1893 github.com/xmdhs/anydoc-go/core/p5.Fn1893
-func Fn1893(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn1894 github.com/xmdhs/anydoc-go/core/p4.Fn1894
-func Fn1894(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn1899 github.com/xmdhs/anydoc-go/core/p5.Fn1899
-func Fn1899(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn1900 github.com/xmdhs/anydoc-go/core/p4.Fn1900
-func Fn1900(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1905 github.com/xmdhs/anydoc-go/core/p4.Fn1905
-func Fn1905(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn1906 github.com/xmdhs/anydoc-go/core/p4.Fn1906
-func Fn1906(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1907 github.com/xmdhs/anydoc-go/core/p4.Fn1907
-func Fn1907(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1911 github.com/xmdhs/anydoc-go/core/p5.Fn1911
-func Fn1911(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn1912 github.com/xmdhs/anydoc-go/core/p4.Fn1912
-func Fn1912(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1917 github.com/xmdhs/anydoc-go/core/p5.Fn1917
-func Fn1917(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn1918 github.com/xmdhs/anydoc-go/core/p4.Fn1918
-func Fn1918(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1923 github.com/xmdhs/anydoc-go/core/p5.Fn1923
-func Fn1923(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn1924 github.com/xmdhs/anydoc-go/core/p4.Fn1924
-func Fn1924(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1929 github.com/xmdhs/anydoc-go/core/p5.Fn1929
-func Fn1929(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn1930 github.com/xmdhs/anydoc-go/core/p4.Fn1930
-func Fn1930(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1935 github.com/xmdhs/anydoc-go/core/p5.Fn1935
-func Fn1935(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-//go:linkname Fn1936 github.com/xmdhs/anydoc-go/core/p4.Fn1936
-func Fn1936(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1949 github.com/xmdhs/anydoc-go/core/p5.Fn1949
-func Fn1949(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn1951 github.com/xmdhs/anydoc-go/core/p3.Fn1951
-func Fn1951(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1955 github.com/xmdhs/anydoc-go/core/p3.Fn1955
-func Fn1955(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn1966 github.com/xmdhs/anydoc-go/core/p4.Fn1966
-func Fn1966(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn1984 github.com/xmdhs/anydoc-go/core/p5.Fn1984
-func Fn1984(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2006 github.com/xmdhs/anydoc-go/core/p1.Fn2006
-func Fn2006(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn2007 github.com/xmdhs/anydoc-go/core/p4.Fn2007
-func Fn2007(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2008 github.com/xmdhs/anydoc-go/core/p1.Fn2008
-func Fn2008(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn1779(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1780 github.com/xmdhs/anydoc-go/core/p4.Fn1780
+func Fn1780(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1784 github.com/xmdhs/anydoc-go/core/p5.Fn1784
+func Fn1784(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1853 github.com/xmdhs/anydoc-go/core/p3.Fn1853
+func Fn1853(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1855 github.com/xmdhs/anydoc-go/core/p5.Fn1855
+func Fn1855(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1859 github.com/xmdhs/anydoc-go/core/p3.Fn1859
+func Fn1859(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1862 github.com/xmdhs/anydoc-go/core/p3.Fn1862
+func Fn1862(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1868 github.com/xmdhs/anydoc-go/core/p3.Fn1868
+func Fn1868(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1871 github.com/xmdhs/anydoc-go/core/p3.Fn1871
+func Fn1871(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1883 github.com/xmdhs/anydoc-go/core/p3.Fn1883
+func Fn1883(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1886 github.com/xmdhs/anydoc-go/core/p3.Fn1886
+func Fn1886(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1889 github.com/xmdhs/anydoc-go/core/p3.Fn1889
+func Fn1889(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1892 github.com/xmdhs/anydoc-go/core/p3.Fn1892
+func Fn1892(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1895 github.com/xmdhs/anydoc-go/core/p3.Fn1895
+func Fn1895(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1898 github.com/xmdhs/anydoc-go/core/p3.Fn1898
+func Fn1898(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1946 github.com/xmdhs/anydoc-go/core/p3.Fn1946
+func Fn1946(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1961 github.com/xmdhs/anydoc-go/core/p3.Fn1961
+func Fn1961(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1964 github.com/xmdhs/anydoc-go/core/p3.Fn1964
+func Fn1964(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn1969 github.com/xmdhs/anydoc-go/core/p5.Fn1969
+func Fn1969(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn1970 github.com/xmdhs/anydoc-go/core/p4.Fn1970
+func Fn1970(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1975 github.com/xmdhs/anydoc-go/core/p5.Fn1975
+func Fn1975(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn1976 github.com/xmdhs/anydoc-go/core/p4.Fn1976
+func Fn1976(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1981 github.com/xmdhs/anydoc-go/core/p5.Fn1981
+func Fn1981(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn1982 github.com/xmdhs/anydoc-go/core/p4.Fn1982
+func Fn1982(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1983 github.com/xmdhs/anydoc-go/core/p4.Fn1983
+func Fn1983(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1987 github.com/xmdhs/anydoc-go/core/p5.Fn1987
+func Fn1987(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn1988 github.com/xmdhs/anydoc-go/core/p4.Fn1988
+func Fn1988(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1993 github.com/xmdhs/anydoc-go/core/p5.Fn1993
+func Fn1993(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn1994 github.com/xmdhs/anydoc-go/core/p4.Fn1994
+func Fn1994(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1999 github.com/xmdhs/anydoc-go/core/p5.Fn1999
+func Fn1999(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2000 github.com/xmdhs/anydoc-go/core/p4.Fn2000
+func Fn2000(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2005 github.com/xmdhs/anydoc-go/core/p5.Fn2005
+func Fn2005(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2006 github.com/xmdhs/anydoc-go/core/p4.Fn2006
+func Fn2006(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 //go:linkname Fn2011 github.com/xmdhs/anydoc-go/core/p5.Fn2011
-func Fn2011(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn2011(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 //go:linkname Fn2012 github.com/xmdhs/anydoc-go/core/p4.Fn2012
-func Fn2012(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2013 github.com/xmdhs/anydoc-go/core/p5.Fn2013
-func Fn2013(m *base.Module, l0 int32)
-//go:linkname Fn2022 github.com/xmdhs/anydoc-go/core/p5.Fn2022
-func Fn2022(m *base.Module, l0 int32)
-//go:linkname Fn2038 github.com/xmdhs/anydoc-go/core/p4.Fn2038
-func Fn2038(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2070 github.com/xmdhs/anydoc-go/core/p5.Fn2070
-func Fn2070(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2075 github.com/xmdhs/anydoc-go/core/p4.Fn2075
-func Fn2075(m *base.Module, l0 int32)
-//go:linkname Fn2101 github.com/xmdhs/anydoc-go/core/p4.Fn2101
-func Fn2101(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2120 github.com/xmdhs/anydoc-go/core/p4.Fn2120
-func Fn2120(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2167 github.com/xmdhs/anydoc-go/core/p4.Fn2167
-func Fn2167(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2177 github.com/xmdhs/anydoc-go/core/p3.Fn2177
-func Fn2177(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2186 github.com/xmdhs/anydoc-go/core/p4.Fn2186
-func Fn2186(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2193 github.com/xmdhs/anydoc-go/core/p3.Fn2193
-func Fn2193(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn2235 github.com/xmdhs/anydoc-go/core/p4.Fn2235
-func Fn2235(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2239 github.com/xmdhs/anydoc-go/core/p4.Fn2239
-func Fn2239(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2251 github.com/xmdhs/anydoc-go/core/p4.Fn2251
-func Fn2251(m *base.Module, l0 int32) int32
+func Fn2012(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2025 github.com/xmdhs/anydoc-go/core/p5.Fn2025
+func Fn2025(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2027 github.com/xmdhs/anydoc-go/core/p3.Fn2027
+func Fn2027(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2032 github.com/xmdhs/anydoc-go/core/p3.Fn2032
+func Fn2032(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2038 github.com/xmdhs/anydoc-go/core/p5.Fn2038
+func Fn2038(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2049 github.com/xmdhs/anydoc-go/core/p4.Fn2049
+func Fn2049(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2066 github.com/xmdhs/anydoc-go/core/p5.Fn2066
+func Fn2066(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2087 github.com/xmdhs/anydoc-go/core/p1.Fn2087
+func Fn2087(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn2088 github.com/xmdhs/anydoc-go/core/p4.Fn2088
+func Fn2088(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2089 github.com/xmdhs/anydoc-go/core/p1.Fn2089
+func Fn2089(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn2092 github.com/xmdhs/anydoc-go/core/p5.Fn2092
+func Fn2092(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn2093 github.com/xmdhs/anydoc-go/core/p4.Fn2093
+func Fn2093(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2094 github.com/xmdhs/anydoc-go/core/p5.Fn2094
+func Fn2094(m *base.Module, l0 int32)
+//go:linkname Fn2103 github.com/xmdhs/anydoc-go/core/p5.Fn2103
+func Fn2103(m *base.Module, l0 int32)
+//go:linkname Fn2119 github.com/xmdhs/anydoc-go/core/p5.Fn2119
+func Fn2119(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2151 github.com/xmdhs/anydoc-go/core/p5.Fn2151
+func Fn2151(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2181 github.com/xmdhs/anydoc-go/core/p4.Fn2181
+func Fn2181(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2200 github.com/xmdhs/anydoc-go/core/p5.Fn2200
+func Fn2200(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2247 github.com/xmdhs/anydoc-go/core/p4.Fn2247
+func Fn2247(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2257 github.com/xmdhs/anydoc-go/core/p3.Fn2257
+func Fn2257(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn2266 github.com/xmdhs/anydoc-go/core/p4.Fn2266
-func Fn2266(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2283 github.com/xmdhs/anydoc-go/core/p3.Fn2283
-func Fn2283(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn2293 github.com/xmdhs/anydoc-go/core/p4.Fn2293
-func Fn2293(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn2294 github.com/xmdhs/anydoc-go/core/p4.Fn2294
-func Fn2294(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn2302 github.com/xmdhs/anydoc-go/core/p3.Fn2302
-func Fn2302(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn2315 github.com/xmdhs/anydoc-go/core/p4.Fn2315
-func Fn2315(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2320 github.com/xmdhs/anydoc-go/core/p5.Fn2320
-func Fn2320(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2324 github.com/xmdhs/anydoc-go/core/p4.Fn2324
-func Fn2324(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2325 github.com/xmdhs/anydoc-go/core/p5.Fn2325
-func Fn2325(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2326 github.com/xmdhs/anydoc-go/core/p4.Fn2326
-func Fn2326(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2329 github.com/xmdhs/anydoc-go/core/p5.Fn2329
-func Fn2329(m *base.Module, l0 int32)
-//go:linkname Fn2330 github.com/xmdhs/anydoc-go/core/p4.Fn2330
-func Fn2330(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn2266(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2273 github.com/xmdhs/anydoc-go/core/p3.Fn2273
+func Fn2273(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn2314 github.com/xmdhs/anydoc-go/core/p4.Fn2314
+func Fn2314(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2315 github.com/xmdhs/anydoc-go/core/p5.Fn2315
+func Fn2315(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2319 github.com/xmdhs/anydoc-go/core/p4.Fn2319
+func Fn2319(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn2331 github.com/xmdhs/anydoc-go/core/p4.Fn2331
-func Fn2331(m *base.Module, l0 int32)
-//go:linkname Fn2334 github.com/xmdhs/anydoc-go/core/p5.Fn2334
-func Fn2334(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn2352 github.com/xmdhs/anydoc-go/core/p5.Fn2352
-func Fn2352(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2385 github.com/xmdhs/anydoc-go/core/p3.Fn2385
-func Fn2385(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2438 github.com/xmdhs/anydoc-go/core/p4.Fn2438
-func Fn2438(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2451 github.com/xmdhs/anydoc-go/core/p4.Fn2451
-func Fn2451(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2459 github.com/xmdhs/anydoc-go/core/p4.Fn2459
-func Fn2459(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2466 github.com/xmdhs/anydoc-go/core/p4.Fn2466
-func Fn2466(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn2467 github.com/xmdhs/anydoc-go/core/p4.Fn2467
-func Fn2467(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2469 github.com/xmdhs/anydoc-go/core/p4.Fn2469
-func Fn2469(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn2482 github.com/xmdhs/anydoc-go/core/p3.Fn2482
-func Fn2482(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn2483 github.com/xmdhs/anydoc-go/core/p3.Fn2483
-func Fn2483(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2484 github.com/xmdhs/anydoc-go/core/p4.Fn2484
-func Fn2484(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2485 github.com/xmdhs/anydoc-go/core/p4.Fn2485
-func Fn2485(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2488 github.com/xmdhs/anydoc-go/core/p4.Fn2488
-func Fn2488(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2489 github.com/xmdhs/anydoc-go/core/p4.Fn2489
-func Fn2489(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2490 github.com/xmdhs/anydoc-go/core/p3.Fn2490
-func Fn2490(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2491 github.com/xmdhs/anydoc-go/core/p4.Fn2491
-func Fn2491(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2502 github.com/xmdhs/anydoc-go/core/p4.Fn2502
-func Fn2502(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2503 github.com/xmdhs/anydoc-go/core/p4.Fn2503
-func Fn2503(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2506 github.com/xmdhs/anydoc-go/core/p4.Fn2506
-func Fn2506(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2509 github.com/xmdhs/anydoc-go/core/p4.Fn2509
-func Fn2509(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn2331(m *base.Module, l0 int32) int32
+//go:linkname Fn2346 github.com/xmdhs/anydoc-go/core/p4.Fn2346
+func Fn2346(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2363 github.com/xmdhs/anydoc-go/core/p3.Fn2363
+func Fn2363(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2373 github.com/xmdhs/anydoc-go/core/p4.Fn2373
+func Fn2373(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2374 github.com/xmdhs/anydoc-go/core/p4.Fn2374
+func Fn2374(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2382 github.com/xmdhs/anydoc-go/core/p3.Fn2382
+func Fn2382(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2395 github.com/xmdhs/anydoc-go/core/p4.Fn2395
+func Fn2395(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2400 github.com/xmdhs/anydoc-go/core/p5.Fn2400
+func Fn2400(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2404 github.com/xmdhs/anydoc-go/core/p5.Fn2404
+func Fn2404(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2405 github.com/xmdhs/anydoc-go/core/p5.Fn2405
+func Fn2405(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2406 github.com/xmdhs/anydoc-go/core/p4.Fn2406
+func Fn2406(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2409 github.com/xmdhs/anydoc-go/core/p5.Fn2409
+func Fn2409(m *base.Module, l0 int32)
+//go:linkname Fn2410 github.com/xmdhs/anydoc-go/core/p4.Fn2410
+func Fn2410(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2411 github.com/xmdhs/anydoc-go/core/p4.Fn2411
+func Fn2411(m *base.Module, l0 int32)
+//go:linkname Fn2414 github.com/xmdhs/anydoc-go/core/p5.Fn2414
+func Fn2414(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2432 github.com/xmdhs/anydoc-go/core/p5.Fn2432
+func Fn2432(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2465 github.com/xmdhs/anydoc-go/core/p3.Fn2465
+func Fn2465(m *base.Module, l0 int32, l1 int32)
 //go:linkname Fn2513 github.com/xmdhs/anydoc-go/core/p4.Fn2513
 func Fn2513(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2514 github.com/xmdhs/anydoc-go/core/p4.Fn2514
-func Fn2514(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn2515 github.com/xmdhs/anydoc-go/core/p4.Fn2515
-func Fn2515(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2522 github.com/xmdhs/anydoc-go/core/p4.Fn2522
-func Fn2522(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn2523 github.com/xmdhs/anydoc-go/core/p5.Fn2523
-func Fn2523(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn2526 github.com/xmdhs/anydoc-go/core/p4.Fn2526
-func Fn2526(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2527 github.com/xmdhs/anydoc-go/core/p4.Fn2527
-func Fn2527(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2528 github.com/xmdhs/anydoc-go/core/p4.Fn2528
-func Fn2528(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn2531 github.com/xmdhs/anydoc-go/core/p4.Fn2531
 func Fn2531(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2532 github.com/xmdhs/anydoc-go/core/p4.Fn2532
-func Fn2532(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2544 github.com/xmdhs/anydoc-go/core/p4.Fn2544
-func Fn2544(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2539 github.com/xmdhs/anydoc-go/core/p4.Fn2539
+func Fn2539(m *base.Module, l0 int32, l1 int32)
 //go:linkname Fn2546 github.com/xmdhs/anydoc-go/core/p4.Fn2546
-func Fn2546(m *base.Module, l0 int32) int32
-//go:linkname Fn2551 github.com/xmdhs/anydoc-go/core/p3.Fn2551
-func Fn2551(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2552 github.com/xmdhs/anydoc-go/core/p3.Fn2552
-func Fn2552(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-//go:linkname Fn2553 github.com/xmdhs/anydoc-go/core/p4.Fn2553
-func Fn2553(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn2554 github.com/xmdhs/anydoc-go/core/p4.Fn2554
-func Fn2554(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn2560 github.com/xmdhs/anydoc-go/core/p4.Fn2560
-func Fn2560(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn2582 github.com/xmdhs/anydoc-go/core/p5.Fn2582
-func Fn2582(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn2583 github.com/xmdhs/anydoc-go/core/p5.Fn2583
-func Fn2583(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn2588 github.com/xmdhs/anydoc-go/core/p1.Fn2588
-func Fn2588(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn2546(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2547 github.com/xmdhs/anydoc-go/core/p4.Fn2547
+func Fn2547(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2549 github.com/xmdhs/anydoc-go/core/p4.Fn2549
+func Fn2549(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2562 github.com/xmdhs/anydoc-go/core/p3.Fn2562
+func Fn2562(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn2563 github.com/xmdhs/anydoc-go/core/p3.Fn2563
+func Fn2563(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2564 github.com/xmdhs/anydoc-go/core/p4.Fn2564
+func Fn2564(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2565 github.com/xmdhs/anydoc-go/core/p4.Fn2565
+func Fn2565(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2568 github.com/xmdhs/anydoc-go/core/p4.Fn2568
+func Fn2568(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2569 github.com/xmdhs/anydoc-go/core/p5.Fn2569
+func Fn2569(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2570 github.com/xmdhs/anydoc-go/core/p3.Fn2570
+func Fn2570(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2571 github.com/xmdhs/anydoc-go/core/p4.Fn2571
+func Fn2571(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2582 github.com/xmdhs/anydoc-go/core/p4.Fn2582
+func Fn2582(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2583 github.com/xmdhs/anydoc-go/core/p3.Fn2583
+func Fn2583(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2586 github.com/xmdhs/anydoc-go/core/p4.Fn2586
+func Fn2586(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2587 github.com/xmdhs/anydoc-go/core/p1.Fn2587
+func Fn2587(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn2589 github.com/xmdhs/anydoc-go/core/p4.Fn2589
-func Fn2589(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2590 github.com/xmdhs/anydoc-go/core/p3.Fn2590
-func Fn2590(m *base.Module, l0 int32, l1 int32)
+func Fn2589(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2593 github.com/xmdhs/anydoc-go/core/p4.Fn2593
+func Fn2593(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn2594 github.com/xmdhs/anydoc-go/core/p4.Fn2594
-func Fn2594(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2596 github.com/xmdhs/anydoc-go/core/p5.Fn2596
-func Fn2596(m *base.Module, l0 int32, l1 int32)
+func Fn2594(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2595 github.com/xmdhs/anydoc-go/core/p4.Fn2595
+func Fn2595(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2602 github.com/xmdhs/anydoc-go/core/p4.Fn2602
+func Fn2602(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2603 github.com/xmdhs/anydoc-go/core/p5.Fn2603
+func Fn2603(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2606 github.com/xmdhs/anydoc-go/core/p4.Fn2606
+func Fn2606(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2607 github.com/xmdhs/anydoc-go/core/p4.Fn2607
+func Fn2607(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn2608 github.com/xmdhs/anydoc-go/core/p4.Fn2608
-func Fn2608(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn2609 github.com/xmdhs/anydoc-go/core/p4.Fn2609
-func Fn2609(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn2610 github.com/xmdhs/anydoc-go/core/p4.Fn2610
-func Fn2610(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn2608(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn2611 github.com/xmdhs/anydoc-go/core/p4.Fn2611
-func Fn2611(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn2611(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn2612 github.com/xmdhs/anydoc-go/core/p4.Fn2612
-func Fn2612(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn2615 github.com/xmdhs/anydoc-go/core/p5.Fn2615
-func Fn2615(m *base.Module, l0 int32) int32
-//go:linkname Fn2616 github.com/xmdhs/anydoc-go/core/p5.Fn2616
-func Fn2616(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn2622 github.com/xmdhs/anydoc-go/core/p3.Fn2622
-func Fn2622(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn2631 github.com/xmdhs/anydoc-go/core/p4.Fn2631
-func Fn2631(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn2612(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2624 github.com/xmdhs/anydoc-go/core/p5.Fn2624
+func Fn2624(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2625 github.com/xmdhs/anydoc-go/core/p4.Fn2625
+func Fn2625(m *base.Module, l0 int32) int32
+//go:linkname Fn2628 github.com/xmdhs/anydoc-go/core/p3.Fn2628
+func Fn2628(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2630 github.com/xmdhs/anydoc-go/core/p3.Fn2630
+func Fn2630(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2631 github.com/xmdhs/anydoc-go/core/p3.Fn2631
+func Fn2631(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
 //go:linkname Fn2632 github.com/xmdhs/anydoc-go/core/p4.Fn2632
-func Fn2632(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn2632(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 //go:linkname Fn2633 github.com/xmdhs/anydoc-go/core/p4.Fn2633
 func Fn2633(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn2636 github.com/xmdhs/anydoc-go/core/p4.Fn2636
-func Fn2636(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn2651 github.com/xmdhs/anydoc-go/core/p5.Fn2651
-func Fn2651(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn2652 github.com/xmdhs/anydoc-go/core/p4.Fn2652
-func Fn2652(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2669 github.com/xmdhs/anydoc-go/core/p5.Fn2669
-func Fn2669(m *base.Module, l0 int32)
-//go:linkname Fn2670 github.com/xmdhs/anydoc-go/core/p4.Fn2670
-func Fn2670(m *base.Module, l0 int32)
-//go:linkname Fn2671 github.com/xmdhs/anydoc-go/core/p4.Fn2671
-func Fn2671(m *base.Module, l0 int32)
+//go:linkname Fn2661 github.com/xmdhs/anydoc-go/core/p5.Fn2661
+func Fn2661(m *base.Module, l0 int32)
+//go:linkname Fn2663 github.com/xmdhs/anydoc-go/core/p4.Fn2663
+func Fn2663(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2664 github.com/xmdhs/anydoc-go/core/p5.Fn2664
+func Fn2664(m *base.Module, l0 int32)
 //go:linkname Fn2674 github.com/xmdhs/anydoc-go/core/p4.Fn2674
-func Fn2674(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn2677 github.com/xmdhs/anydoc-go/core/p5.Fn2677
-func Fn2677(m *base.Module, l0 int32)
-//go:linkname Fn2686 github.com/xmdhs/anydoc-go/core/p3.Fn2686
-func Fn2686(m *base.Module, l0 int32)
-//go:linkname Fn2696 github.com/xmdhs/anydoc-go/core/p4.Fn2696
-func Fn2696(m *base.Module, l0 int32)
-//go:linkname Fn2730 github.com/xmdhs/anydoc-go/core/p3.Fn2730
-func Fn2730(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn2754 github.com/xmdhs/anydoc-go/core/p4.Fn2754
-func Fn2754(m *base.Module, l0 int32)
-//go:linkname Fn3036 github.com/xmdhs/anydoc-go/core/p5.Fn3036
-func Fn3036(m *base.Module, l0 int32)
-//go:linkname Fn3168 github.com/xmdhs/anydoc-go/core/p5.Fn3168
-func Fn3168(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn3171 github.com/xmdhs/anydoc-go/core/p5.Fn3171
-func Fn3171(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn3172 github.com/xmdhs/anydoc-go/core/p4.Fn3172
-func Fn3172(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3176 github.com/xmdhs/anydoc-go/core/p5.Fn3176
-func Fn3176(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-//go:linkname Fn3177 github.com/xmdhs/anydoc-go/core/p4.Fn3177
-func Fn3177(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3178 github.com/xmdhs/anydoc-go/core/p5.Fn3178
-func Fn3178(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-//go:linkname Fn3179 github.com/xmdhs/anydoc-go/core/p3.Fn3179
-func Fn3179(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn3181 github.com/xmdhs/anydoc-go/core/p3.Fn3181
-func Fn3181(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn3188 github.com/xmdhs/anydoc-go/core/p4.Fn3188
-func Fn3188(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3190 github.com/xmdhs/anydoc-go/core/p4.Fn3190
-func Fn3190(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3191 github.com/xmdhs/anydoc-go/core/p4.Fn3191
-func Fn3191(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3194 github.com/xmdhs/anydoc-go/core/p4.Fn3194
-func Fn3194(m *base.Module, l0 int32)
-//go:linkname Fn3195 github.com/xmdhs/anydoc-go/core/p4.Fn3195
-func Fn3195(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3196 github.com/xmdhs/anydoc-go/core/p4.Fn3196
-func Fn3196(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn3197 github.com/xmdhs/anydoc-go/core/p3.Fn3197
-func Fn3197(m *base.Module, l0 int32)
-//go:linkname Fn3198 github.com/xmdhs/anydoc-go/core/p4.Fn3198
-func Fn3198(m *base.Module, l0 int32)
-//go:linkname Fn3200 github.com/xmdhs/anydoc-go/core/p4.Fn3200
-func Fn3200(m *base.Module, l0 int32, l1 int32)
-//go:linkname Fn3232 github.com/xmdhs/anydoc-go/core/p4.Fn3232
-func Fn3232(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3233 github.com/xmdhs/anydoc-go/core/p4.Fn3233
-func Fn3233(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3234 github.com/xmdhs/anydoc-go/core/p4.Fn3234
-func Fn3234(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3236 github.com/xmdhs/anydoc-go/core/p5.Fn3236
-func Fn3236(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3237 github.com/xmdhs/anydoc-go/core/p5.Fn3237
-func Fn3237(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn3240 github.com/xmdhs/anydoc-go/core/p4.Fn3240
-func Fn3240(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3242 github.com/xmdhs/anydoc-go/core/p4.Fn3242
-func Fn3242(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3243 github.com/xmdhs/anydoc-go/core/p4.Fn3243
-func Fn3243(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3244 github.com/xmdhs/anydoc-go/core/p4.Fn3244
-func Fn3244(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3245 github.com/xmdhs/anydoc-go/core/p4.Fn3245
-func Fn3245(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3248 github.com/xmdhs/anydoc-go/core/p4.Fn3248
-func Fn3248(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn3249 github.com/xmdhs/anydoc-go/core/p4.Fn3249
-func Fn3249(m *base.Module, l0 int32, l1 int32) int32
-//go:linkname Fn3301 github.com/xmdhs/anydoc-go/core/p4.Fn3301
+func Fn2674(m *base.Module, l0 int64, l1 int32) int32
+//go:linkname Fn2676 github.com/xmdhs/anydoc-go/core/p4.Fn2676
+func Fn2676(m *base.Module, l0 int32)
+//go:linkname Fn2679 github.com/xmdhs/anydoc-go/core/p5.Fn2679
+func Fn2679(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2684 github.com/xmdhs/anydoc-go/core/p5.Fn2684
+func Fn2684(m *base.Module)
+//go:linkname Fn2686 github.com/xmdhs/anydoc-go/core/p5.Fn2686
+func Fn2686(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2687 github.com/xmdhs/anydoc-go/core/p5.Fn2687
+func Fn2687(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn2692 github.com/xmdhs/anydoc-go/core/p1.Fn2692
+func Fn2692(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2693 github.com/xmdhs/anydoc-go/core/p4.Fn2693
+func Fn2693(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2694 github.com/xmdhs/anydoc-go/core/p3.Fn2694
+func Fn2694(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2698 github.com/xmdhs/anydoc-go/core/p5.Fn2698
+func Fn2698(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2700 github.com/xmdhs/anydoc-go/core/p5.Fn2700
+func Fn2700(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2712 github.com/xmdhs/anydoc-go/core/p4.Fn2712
+func Fn2712(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2713 github.com/xmdhs/anydoc-go/core/p4.Fn2713
+func Fn2713(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2714 github.com/xmdhs/anydoc-go/core/p4.Fn2714
+func Fn2714(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2715 github.com/xmdhs/anydoc-go/core/p4.Fn2715
+func Fn2715(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2716 github.com/xmdhs/anydoc-go/core/p4.Fn2716
+func Fn2716(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2719 github.com/xmdhs/anydoc-go/core/p5.Fn2719
+func Fn2719(m *base.Module, l0 int32) int32
+//go:linkname Fn2720 github.com/xmdhs/anydoc-go/core/p5.Fn2720
+func Fn2720(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn2726 github.com/xmdhs/anydoc-go/core/p3.Fn2726
+func Fn2726(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2735 github.com/xmdhs/anydoc-go/core/p4.Fn2735
+func Fn2735(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2736 github.com/xmdhs/anydoc-go/core/p4.Fn2736
+func Fn2736(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2737 github.com/xmdhs/anydoc-go/core/p4.Fn2737
+func Fn2737(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2740 github.com/xmdhs/anydoc-go/core/p4.Fn2740
+func Fn2740(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2755 github.com/xmdhs/anydoc-go/core/p5.Fn2755
+func Fn2755(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2756 github.com/xmdhs/anydoc-go/core/p5.Fn2756
+func Fn2756(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2773 github.com/xmdhs/anydoc-go/core/p5.Fn2773
+func Fn2773(m *base.Module, l0 int32)
+//go:linkname Fn2774 github.com/xmdhs/anydoc-go/core/p4.Fn2774
+func Fn2774(m *base.Module, l0 int32)
+//go:linkname Fn2775 github.com/xmdhs/anydoc-go/core/p4.Fn2775
+func Fn2775(m *base.Module, l0 int32)
+//go:linkname Fn2778 github.com/xmdhs/anydoc-go/core/p4.Fn2778
+func Fn2778(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2781 github.com/xmdhs/anydoc-go/core/p5.Fn2781
+func Fn2781(m *base.Module, l0 int32)
+//go:linkname Fn2790 github.com/xmdhs/anydoc-go/core/p3.Fn2790
+func Fn2790(m *base.Module, l0 int32)
+//go:linkname Fn2800 github.com/xmdhs/anydoc-go/core/p4.Fn2800
+func Fn2800(m *base.Module, l0 int32)
+//go:linkname Fn2834 github.com/xmdhs/anydoc-go/core/p3.Fn2834
+func Fn2834(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2858 github.com/xmdhs/anydoc-go/core/p5.Fn2858
+func Fn2858(m *base.Module, l0 int32)
+//go:linkname Fn3140 github.com/xmdhs/anydoc-go/core/p5.Fn3140
+func Fn3140(m *base.Module, l0 int32)
+//go:linkname Fn3275 github.com/xmdhs/anydoc-go/core/p5.Fn3275
+func Fn3275(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3276 github.com/xmdhs/anydoc-go/core/p4.Fn3276
+func Fn3276(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3280 github.com/xmdhs/anydoc-go/core/p5.Fn3280
+func Fn3280(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3281 github.com/xmdhs/anydoc-go/core/p4.Fn3281
+func Fn3281(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3282 github.com/xmdhs/anydoc-go/core/p5.Fn3282
+func Fn3282(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn3283 github.com/xmdhs/anydoc-go/core/p3.Fn3283
+func Fn3283(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn3285 github.com/xmdhs/anydoc-go/core/p3.Fn3285
+func Fn3285(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn3292 github.com/xmdhs/anydoc-go/core/p4.Fn3292
+func Fn3292(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3294 github.com/xmdhs/anydoc-go/core/p4.Fn3294
+func Fn3294(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3295 github.com/xmdhs/anydoc-go/core/p4.Fn3295
+func Fn3295(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3298 github.com/xmdhs/anydoc-go/core/p4.Fn3298
+func Fn3298(m *base.Module, l0 int32)
+//go:linkname Fn3299 github.com/xmdhs/anydoc-go/core/p4.Fn3299
+func Fn3299(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3300 github.com/xmdhs/anydoc-go/core/p4.Fn3300
+func Fn3300(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn3301 github.com/xmdhs/anydoc-go/core/p3.Fn3301
 func Fn3301(m *base.Module, l0 int32)
-//go:linkname Fn3334 github.com/xmdhs/anydoc-go/core/p3.Fn3334
-func Fn3334(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-//go:linkname Fn3338 github.com/xmdhs/anydoc-go/core/p3.Fn3338
-func Fn3338(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn3302 github.com/xmdhs/anydoc-go/core/p4.Fn3302
+func Fn3302(m *base.Module, l0 int32)
+//go:linkname Fn3304 github.com/xmdhs/anydoc-go/core/p5.Fn3304
+func Fn3304(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn3336 github.com/xmdhs/anydoc-go/core/p4.Fn3336
+func Fn3336(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3337 github.com/xmdhs/anydoc-go/core/p4.Fn3337
+func Fn3337(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3338 github.com/xmdhs/anydoc-go/core/p4.Fn3338
+func Fn3338(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn3340 github.com/xmdhs/anydoc-go/core/p5.Fn3340
-func Fn3340(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn3340(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3341 github.com/xmdhs/anydoc-go/core/p5.Fn3341
+func Fn3341(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn3344 github.com/xmdhs/anydoc-go/core/p4.Fn3344
+func Fn3344(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3346 github.com/xmdhs/anydoc-go/core/p4.Fn3346
+func Fn3346(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3347 github.com/xmdhs/anydoc-go/core/p4.Fn3347
+func Fn3347(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn3348 github.com/xmdhs/anydoc-go/core/p4.Fn3348
-func Fn3348(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn3359 github.com/xmdhs/anydoc-go/core/p3.Fn3359
-func Fn3359(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3365 github.com/xmdhs/anydoc-go/core/p4.Fn3365
-func Fn3365(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3370 github.com/xmdhs/anydoc-go/core/p4.Fn3370
-func Fn3370(m *base.Module, l0 int32, l1 int32, l2 int32)
-//go:linkname Fn3372 github.com/xmdhs/anydoc-go/core/p4.Fn3372
-func Fn3372(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-//go:linkname Fn3396 github.com/xmdhs/anydoc-go/core/p5.Fn3396
-func Fn3396(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-//go:linkname Fn3402 github.com/xmdhs/anydoc-go/core/p4.Fn3402
-func Fn3402(m *base.Module, l0 int32, l1 int64, l2 int64, l3 int64, l4 int64)
+func Fn3348(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3349 github.com/xmdhs/anydoc-go/core/p4.Fn3349
+func Fn3349(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3352 github.com/xmdhs/anydoc-go/core/p4.Fn3352
+func Fn3352(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3353 github.com/xmdhs/anydoc-go/core/p4.Fn3353
+func Fn3353(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3405 github.com/xmdhs/anydoc-go/core/p4.Fn3405
+func Fn3405(m *base.Module, l0 int32)
+//go:linkname Fn3424 github.com/xmdhs/anydoc-go/core/p5.Fn3424
+func Fn3424(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn3442 github.com/xmdhs/anydoc-go/core/p3.Fn3442
+func Fn3442(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn3446 github.com/xmdhs/anydoc-go/core/p3.Fn3446
+func Fn3446(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn3448 github.com/xmdhs/anydoc-go/core/p5.Fn3448
+func Fn3448(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn3456 github.com/xmdhs/anydoc-go/core/p4.Fn3456
+func Fn3456(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn3467 github.com/xmdhs/anydoc-go/core/p3.Fn3467
+func Fn3467(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3473 github.com/xmdhs/anydoc-go/core/p4.Fn3473
+func Fn3473(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3478 github.com/xmdhs/anydoc-go/core/p5.Fn3478
+func Fn3478(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3480 github.com/xmdhs/anydoc-go/core/p4.Fn3480
+func Fn3480(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn3505 github.com/xmdhs/anydoc-go/core/p4.Fn3505
+func Fn3505(m *base.Module, l0 int32)
+//go:linkname Fn3509 github.com/xmdhs/anydoc-go/core/p5.Fn3509
+func Fn3509(m *base.Module, l0 int32)
+//go:linkname Fn3512 github.com/xmdhs/anydoc-go/core/p5.Fn3512
+func Fn3512(m *base.Module, l0 int32, l1 int64, l2 int32)
+//go:linkname Fn3513 github.com/xmdhs/anydoc-go/core/p5.Fn3513
+func Fn3513(m *base.Module, l0 int32)
+//go:linkname Fn3515 github.com/xmdhs/anydoc-go/core/p5.Fn3515
+func Fn3515(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn3516 github.com/xmdhs/anydoc-go/core/p4.Fn3516
+func Fn3516(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn3518 github.com/xmdhs/anydoc-go/core/p4.Fn3518
+func Fn3518(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn3522 github.com/xmdhs/anydoc-go/core/p4.Fn3522
+func Fn3522(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3527 github.com/xmdhs/anydoc-go/core/p5.Fn3527
+func Fn3527(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3533 github.com/xmdhs/anydoc-go/core/p4.Fn3533
+func Fn3533(m *base.Module, l0 int32, l1 int64, l2 int64, l3 int64, l4 int64)

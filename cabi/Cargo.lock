@@ -96,6 +96,7 @@ dependencies = [
  "encoding_rs",
  "flate2",
  "log",
+ "lopdf",
  "pdf-inspector",
  "quick-xml",
  "zip",
