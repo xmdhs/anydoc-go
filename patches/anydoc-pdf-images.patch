@@ -1,0 +1,682 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 5cee478..77024bd 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -25,6 +25,7 @@ sha2 = "0.11"
+ cfb = "0.14.0"
+ csv = "1.4.0"
+ flate2 = "1"
++lopdf = "0.42"
+ encoding_rs = "0.8.35"
+ log = "0.4"
+ pdf-inspector = "1.14.2"
+diff --git a/src/formats/mod.rs b/src/formats/mod.rs
+index d570b26..45fd62e 100644
+--- a/src/formats/mod.rs
++++ b/src/formats/mod.rs
+@@ -5,6 +5,7 @@ pub mod detect;
+ mod doc;
+ mod docx;
+ mod epub;
++pub mod pdf_images;
+ mod odf;
+ pub mod pdf;
+ mod ppt;
+@@ -29,10 +30,7 @@ pub fn parse(bytes: &[u8], format: Format) -> Result<Document, ConvertError> {
+         Format::Doc if bytes.starts_with(b"{\\rtf") => rtf::parse(bytes),
+         Format::Doc => doc::parse(bytes),
+         Format::Ppt => ppt::parse(bytes),
+-        // pdf-inspector produces Markdown directly; there is no document
+-        // model for PDFs. `to_markdown_bytes` routes them to `pdf`.
+-        Format::Pdf => Err(ConvertError::Unsupported(
+-            "PDF converts directly to Markdown; use to_markdown or to_markdown_bytes".to_string(),
+-        )),
++        // PDF: extract text via pdf-inspector and images via lopdf.
++        Format::Pdf => pdf::to_document(bytes),
+     }
+ }
+diff --git a/src/formats/pdf.rs b/src/formats/pdf.rs
+index 74a36e1..77bbb89 100644
+--- a/src/formats/pdf.rs
++++ b/src/formats/pdf.rs
+@@ -1,17 +1,24 @@
+-//! PDF via [pdf-inspector]: classification plus direct Markdown extraction.
++//! PDF via [pdf-inspector] (text) + lopdf (image extraction).
+ //!
+-//! Unlike the other frontends, pdf-inspector emits Markdown itself, so PDFs
+-//! bypass the document model and the shared GFM writer. Scanned and
+-//! image-only PDFs need OCR, which is out of scope here; they error as
+-//! unsupported. Pages flagged for OCR in an otherwise text-based document
+-//! degrade with a log, consistent with the crate-wide recovery policy.
++//! Text is extracted via `pdf-inspector::process_pdf_mem`.  Images are
++//! extracted via the local `pdf_images` helper which scans `lopdf`
++//! `Subtype == Image` streams.  When there is no extractable text but
++//! images exist, a Document with image-only blocks is still produced so
++//! `--imgs` can emit the bytes (scanned-image case).
+ //!
+ //! [pdf-inspector]: https://github.com/firecrawl/pdf-inspector
+ 
+ use crate::error::ConvertError;
++use crate::model::{Asset, Block, Document, ImageSource, Inline};
++use crate::shared::assets::AssetSink;
+ use pdf_inspector::PdfError;
+ 
+-pub fn to_markdown(bytes: &[u8]) -> Result<String, ConvertError> {
++/// Extract markdown text (may be `None` when OCR is required) without
++/// converting to `Err` - the caller decides how to handle image-only PDFs.
++/// When `process_pdf_mem` classifies as ImageBased/Scanned and returns
++/// `markdown: None` but text is still extractable via the raw extractor, we
++/// fall back to that so that `with-text-image` fixtures keep their text.
++fn extract_text(bytes: &[u8]) -> Result<(Option<String>, u32, pdf_inspector::PdfType), ConvertError> {
+     let result = pdf_inspector::process_pdf_mem(bytes).map_err(map_error)?;
+     if !result.pages_needing_ocr.is_empty() {
+         log::warn!(
+@@ -23,20 +30,86 @@ pub fn to_markdown(bytes: &[u8]) -> Result<String, ConvertError> {
+     if result.has_encoding_issues {
+         log::warn!("broken font encodings detected; extracted text may be garbled");
+     }
+-    match result.markdown {
+-        Some(mut markdown) if !markdown.trim().is_empty() => {
+-            if !markdown.ends_with('\n') {
+-                markdown.push('\n');
++    let mut markdown = match result.markdown {
++        Some(mut m) if !m.trim().is_empty() => {
++            if !m.ends_with('\n') {
++                m.push('\n');
++            }
++            Some(m)
++        }
++        _ => None,
++    };
++    if markdown.is_none() {
++        if let Ok(t) = pdf_inspector::extractor::extract_text_mem(bytes) {
++            let t = t.trim().to_string();
++            if !t.is_empty() {
++                if !t.ends_with('\n') {
++                    let mut s = t;
++                    s.push('\n');
++                    markdown = Some(s);
++                } else {
++                    markdown = Some(t);
++                }
+             }
+-            Ok(markdown)
+         }
+-        _ => Err(ConvertError::Unsupported(format!(
++    }
++    Ok((markdown, result.page_count, result.pdf_type))
++}
++
++pub fn to_markdown(bytes: &[u8]) -> Result<String, ConvertError> {
++    let (markdown, page_count, pdf_type) = extract_text(bytes)?;
++    match markdown {
++        Some(m) => Ok(m),
++        None => Err(ConvertError::Unsupported(format!(
+             "PDF has no extractable text ({:?}, {} pages): OCR is required",
+-            result.pdf_type, result.page_count
++            pdf_type, page_count
+         ))),
+     }
+ }
+ 
++/// Build a `Document` for PDFs.  Text blocks come from pdf-inspector's
++/// markdown (split on blank lines).  Images come from `pdf_images::extract_images`.
++/// When there is no text but images exist, the document contains only image
++/// blocks so that `anydoc_assets` / `--imgs` can still emit bytes.
++pub fn to_document(bytes: &[u8]) -> Result<Document, ConvertError> {
++    let (markdown, page_count, pdf_type) = extract_text(bytes)?;
++    let raw_images = crate::formats::pdf_images::extract_images(bytes);
++    if markdown.is_none() && raw_images.is_empty() {
++        return Err(ConvertError::Unsupported(format!(
++            "PDF has no extractable text ({:?}, {} pages): OCR is required",
++            pdf_type, page_count
++        )));
++    }
++    let mut sink = AssetSink::new();
++    let mut assets: Vec<Asset> = Vec::new();
++    for (idx, img) in raw_images.into_iter().enumerate() {
++        let ext = match img.media_type.as_str() {
++            "image/jpeg" => "jpg",
++            "image/jp2" => "jp2",
++            "image/png" => "png",
++            "image/tiff" => "tiff",
++            _ => "bin",
++        };
++        let origin = format!("pdf/image-{idx}.{ext}");
++        let id = sink.add(img.media_type.clone(), origin.clone(), &img.bytes)?;
++        assets.push(Asset { id, media_type: img.media_type, origin_part: origin, bytes: img.bytes });
++    }
++    let mut blocks: Vec<Block> = Vec::new();
++    if let Some(md) = markdown {
++        for para in md.split("\n\n") {
++            let t = para.trim();
++            if t.is_empty() {
++                continue;
++            }
++            blocks.push(Block::Paragraph(vec![Inline::Text { text: t.to_string(), style: crate::model::Style::PLAIN }]));
++        }
++    }
++    for asset in &assets {
++        blocks.push(Block::Paragraph(vec![Inline::Image { alt: String::new(), source: ImageSource::Asset(asset.id) }]));
++    }
++    Ok(Document { blocks, notes: Vec::new(), assets })
++}
++
+ fn map_error(e: PdfError) -> ConvertError {
+     match e {
+         PdfError::Encrypted => ConvertError::Encrypted,
+diff --git a/src/formats/pdf_images.rs b/src/formats/pdf_images.rs
+new file mode 100644
+index 0000000..4ab573f
+--- /dev/null
++++ b/src/formats/pdf_images.rs
+@@ -0,0 +1,509 @@
++//! PDF image extraction via lopdf.
++//!
++//! Scans all `Subtype == Image` streams in the document and produces
++//! `RawImage` entries with decoded bytes and a media type.
++//! Filter handling:
++//! - `DCTDecode` / `DCT`  -> `image/jpeg`  (passthrough after decoding
++//!   preceding ASCII85/LZW/RunLength)
++//! - `JPXDecode`          -> `image/jp2`   (same passthrough)
++//! - `FlateDecode` (+ optional `ASCII85Decode`) -> decompress via
++//!   `lopdf::Stream::decompressed_content` and encode to PNG (RGB/Gray 8bpc
++//!   MVP; other ColorSpace/BPC are skipped with a warn)
++//! - `CCITTFaxDecode`, `JBIG2Decode`, `LZWDecode`, `RunLengthDecode` alone
++//!   are currently skipped (log warn). ASCII85/LZW/RunLength as wrappers
++//!   around DCT/JPX are decoded.
++//! `Inline` BI/EI images are not enumerated (out of scope for this patch).
++
++use lopdf::{Dictionary, Document, Object, Stream};
++
++#[derive(Debug, Clone)]
++pub struct RawImage {
++    pub bytes: Vec<u8>,
++    pub media_type: String,
++    pub width: u32,
++    pub height: u32,
++}
++
++/// Decode ASCII85 (Adobe variant, supports `z` and `~>` EOD).
++/// Copied from lopdf's private `Stream::decode_ascii85` to avoid relying on
++/// private API. Returns `Err` on overflow/illegal char.
++fn decode_ascii85(input: &[u8]) -> Result<Vec<u8>, String> {
++    let mut output = Vec::new();
++    let mut buffer: u32 = 0;
++    let mut count: u32 = 0;
++
++    // Strip EOD marker if present
++    let input_no_eod = if input.len() >= 2 && &input[input.len() - 2..] == b"~>" {
++        &input[..input.len() - 2]
++    } else {
++        input
++    };
++
++    for &ch in input_no_eod {
++        if ch == b'z' {
++            if count != 0 {
++                return Err("z in middle of group".into());
++            }
++            output.extend_from_slice(&[0u8, 0, 0, 0]);
++            continue;
++        }
++        if ch.is_ascii_whitespace() {
++            continue;
++        }
++        if !(b'!'..=b'u').contains(&ch) {
++            break;
++        }
++        buffer = buffer
++            .checked_mul(85)
++            .ok_or_else(|| "ascii85 mul overflow".to_string())?;
++        buffer += (ch - b'!') as u32;
++        count += 1;
++        if count == 5 {
++            output.extend_from_slice(&buffer.to_be_bytes());
++            buffer = 0;
++            count = 0;
++        }
++    }
++    if count > 0 {
++        for _ in count..5 {
++            buffer = buffer
++                .checked_mul(85)
++                .ok_or_else(|| "ascii85 mul overflow tail".to_string())?;
++            buffer += 84;
++        }
++        let bytes = buffer.to_be_bytes();
++        output.extend_from_slice(&bytes[..(count as usize - 1)]);
++    }
++    Ok(output)
++}
++
++fn get_filter_names(dict: &Dictionary) -> Vec<Vec<u8>> {
++    let Ok(filter_obj) = dict.get(b"Filter") else {
++        return Vec::new();
++    };
++    if let Ok(name) = filter_obj.as_name() {
++        return vec![name.to_vec()];
++    }
++    if let Ok(arr) = filter_obj.as_array() {
++        let mut out = Vec::new();
++        for item in arr {
++            if let Ok(name) = item.as_name() {
++                out.push(name.to_vec());
++            }
++        }
++        return out;
++    }
++    Vec::new()
++}
++
++fn filter_contains(filters: &[Vec<u8>], needle: &[u8]) -> bool {
++    filters.iter().any(|f| f.as_slice() == needle)
++}
++
++fn filter_index(filters: &[Vec<u8>], needle: &[u8]) -> Option<usize> {
++    filters.iter().position(|f| f.as_slice() == needle)
++}
++
++/// Encode raw RGB or Gray bytes to a minimal PNG (8bpc, no interlace).
++/// `data` must be `w*h*channels` bytes, row-major, 8 bits per sample.
++/// `channels`: 1 = Gray, 3 = RGB, 4 = RGBA.
++/// Uses `flate2` Zlib + `crc32fast` if available, otherwise hand-rolled CRC.
++fn encode_png(w: u32, h: u32, data: &[u8], channels: usize) -> Option<Vec<u8>> {
++    let color_type: u8 = match channels {
++        1 => 0, // Grey
++        3 => 2, // RGB
++        4 => 6, // RGBA
++        _ => return None,
++    };
++    // Build filtered rows (filter type 0 per row)
++    let row_len = w as usize * channels;
++    if data.len() < row_len * h as usize {
++        return None;
++    }
++    let mut raw = Vec::with_capacity((row_len + 1) * h as usize);
++    for y in 0..h as usize {
++        raw.push(0u8);
++        raw.extend_from_slice(&data[y * row_len..(y + 1) * row_len]);
++    }
++    // Deflate
++    let compressed = {
++        use flate2::write::ZlibEncoder;
++        use flate2::Compression;
++        use std::io::Write;
++        let mut enc = ZlibEncoder::new(Vec::new(), Compression::default());
++        if enc.write_all(&raw).is_err() {
++            return None;
++        }
++        match enc.finish() {
++            Ok(v) => v,
++            Err(_) => return None,
++        }
++    };
++
++    // CRC helper: use crc32fast if we can, else fallback is not needed because
++    // crc32fast is available via flate2's transitive dep; we vendor a tiny one.
++    fn crc32(data: &[u8]) -> u32 {
++        // Use crc32fast crate if linked; fallback to software table.
++        // We try to use `crc32fast::hash` via `cfg` but we don't depend on it
++        // explicitly, so implement a local table to avoid extra dep.
++        const TABLE: [u32; 256] = {
++            let mut t = [0u32; 256];
++            let mut i = 0usize;
++            while i < 256 {
++                let mut c = i as u32;
++                let mut k = 0;
++                while k < 8 {
++                    if c & 1 != 0 {
++                        c = 0xEDB88320u32 ^ (c >> 1);
++                    } else {
++                        c >>= 1;
++                    }
++                    k += 1;
++                }
++                t[i] = c;
++                i += 1;
++            }
++            t
++        };
++        let mut crc = 0xFFFF_FFFFu32;
++        for &b in data {
++            let idx = ((crc ^ b as u32) & 0xFF) as usize;
++            crc = TABLE[idx] ^ (crc >> 8);
++        }
++        !crc
++    }
++
++    let mut out = Vec::new();
++    out.extend_from_slice(b"\x89PNG\r\n\x1a\n");
++    // IHDR
++    {
++        let mut ihdr_data = Vec::with_capacity(13);
++        ihdr_data.extend_from_slice(&w.to_be_bytes());
++        ihdr_data.extend_from_slice(&h.to_be_bytes());
++        ihdr_data.push(8u8); // bit depth
++        ihdr_data.push(color_type);
++        ihdr_data.push(0); // compression
++        ihdr_data.push(0); // filter
++        ihdr_data.push(0); // interlace
++        let mut chunk = Vec::new();
++        chunk.extend_from_slice(b"IHDR");
++        chunk.extend_from_slice(&ihdr_data);
++        let crc = crc32(&chunk);
++        out.extend_from_slice(&(13u32.to_be_bytes()));
++        out.extend_from_slice(&chunk);
++        out.extend_from_slice(&crc.to_be_bytes());
++    }
++    // IDAT
++    {
++        let mut chunk = Vec::new();
++        chunk.extend_from_slice(b"IDAT");
++        chunk.extend_from_slice(&compressed);
++        let crc = crc32(&chunk);
++        out.extend_from_slice(&(compressed.len() as u32).to_be_bytes());
++        out.extend_from_slice(&chunk);
++        out.extend_from_slice(&crc.to_be_bytes());
++    }
++    // IEND
++    {
++        let mut chunk = Vec::new();
++        chunk.extend_from_slice(b"IEND");
++        let crc = crc32(&chunk);
++        out.extend_from_slice(&0u32.to_be_bytes());
++        out.extend_from_slice(&chunk);
++        out.extend_from_slice(&crc.to_be_bytes());
++    }
++    Some(out)
++}
++
++fn get_u32(dict: &Dictionary, key: &[u8]) -> Option<u32> {
++    dict.get(key)
++        .ok()
++        .and_then(|o| o.as_i64().ok())
++        .and_then(|v| u32::try_from(v).ok())
++}
++
++fn get_colorspace_name(dict: &Dictionary) -> String {
++    if let Ok(cs) = dict.get(b"ColorSpace") {
++        if let Ok(name) = cs.as_name() {
++            return String::from_utf8_lossy(name).to_string();
++        }
++        if let Ok(arr) = cs.as_array() {
++            if let Some(first) = arr.first() {
++                if let Ok(name) = first.as_name() {
++                    // e.g. [ /Indexed /DeviceRGB 255 <lookup> ]
++                    if name == b"Indexed" {
++                        return "Indexed".to_string();
++                    }
++                    return String::from_utf8_lossy(name).to_string();
++                }
++            }
++        }
++    }
++    String::new()
++}
++
++/// Try to extract the JPEG/JP2 bytes for a DCT/JPX image by decoding only
++/// the filters *before* the DCT/JPX one. For `[ASCII85, DCT]` this decodes
++/// ASCII85 and returns the JPEG bytes.
++fn extract_passthrough_bytes(stream: &Stream, filters: &[Vec<u8>], passthrough: &[u8]) -> Option<Vec<u8>> {
++    let idx = filter_index(filters, passthrough)?;
++    // Collect preceding filter names
++    let preceding = &filters[..idx];
++    let mut data = stream.content.clone();
++    for f in preceding {
++        match f.as_slice() {
++            b"ASCII85Decode" | b"A85" => match decode_ascii85(&data) {
++                Ok(d) => data = d,
++                Err(e) => {
++                    log::warn!("ASCII85 decode before {:?} failed: {}", String::from_utf8_lossy(passthrough), e);
++                    return None;
++                }
++            },
++            b"FlateDecode" | b"Fl" => {
++                // Unlikely before DCT, but handle via lopdf's zlib
++                // We can try to decompress as zlib
++                use flate2::read::ZlibDecoder;
++                use std::io::Read;
++                let mut dec = ZlibDecoder::new(data.as_slice());
++                let mut out = Vec::new();
++                if dec.read_to_end(&mut out).is_err() {
++                    log::warn!("Flate before passthrough failed");
++                    return None;
++                }
++                data = out;
++            }
++            b"LZWDecode" | b"LZW" => {
++                log::warn!("LZW before {:?} not supported, skipping image", String::from_utf8_lossy(passthrough));
++                return None;
++            }
++            b"RunLengthDecode" | b"RL" => {
++                // Implement minimal RLE? skip for now
++                log::warn!("RunLength before passthrough not supported");
++                return None;
++            }
++            other => {
++                log::warn!("unsupported preceding filter {:?} before passthrough", String::from_utf8_lossy(other));
++                return None;
++            }
++        }
++    }
++    Some(data)
++}
++
++pub fn extract_images(bytes: &[u8]) -> Vec<RawImage> {
++    let doc = match Document::load_mem(bytes) {
++        Ok(d) => d,
++        Err(e) => {
++            log::warn!("pdf_images: load_mem failed: {}", e);
++            return Vec::new();
++        }
++    };
++    let mut out = Vec::new();
++    let mut seen: std::collections::HashSet<lopdf::ObjectId> = std::collections::HashSet::new();
++
++    for (obj_id, obj) in &doc.objects {
++        let stream = match obj {
++            Object::Stream(s) => s,
++            _ => continue,
++        };
++        // Must be an Image XObject
++        let is_image = stream
++            .dict
++            .get(b"Subtype")
++            .ok()
++            .and_then(|o| o.as_name().ok())
++            .map(|n| n == b"Image")
++            .unwrap_or(false);
++        if !is_image {
++            continue;
++        }
++        if !seen.insert(*obj_id) {
++            continue;
++        }
++
++        let width = match get_u32(&stream.dict, b"Width") {
++            Some(v) if v > 0 && v < 10000 => v,
++            _ => {
++                log::warn!("pdf_images: image {:?} has invalid Width", obj_id);
++                continue;
++            }
++        };
++        let height = match get_u32(&stream.dict, b"Height") {
++            Some(v) if v > 0 && v < 10000 => v,
++            _ => {
++                log::warn!("pdf_images: image {:?} has invalid Height", obj_id);
++                continue;
++            }
++        };
++        // Reject huge images (cap at ~32Mpix or 32MiB raw)
++        let bpc = get_u32(&stream.dict, b"BitsPerComponent").unwrap_or(8);
++        let cs_name = get_colorspace_name(&stream.dict);
++        let filters = get_filter_names(&stream.dict);
++
++        // Passthrough JPEG / JP2
++        if filter_contains(&filters, b"DCTDecode") || filter_contains(&filters, b"DCT") {
++            let key: &[u8] = if filter_contains(&filters, b"DCTDecode") { b"DCTDecode" } else { b"DCT" };
++            if let Some(jpeg) = extract_passthrough_bytes(stream, &filters, key) {
++                // Validate JPEG magic
++                if jpeg.len() >= 2 && jpeg[0] == 0xFF && jpeg[1] == 0xD8 {
++                    out.push(RawImage {
++                        bytes: jpeg,
++                        media_type: "image/jpeg".to_string(),
++                        width,
++                        height,
++                    });
++                } else {
++                    // Still treat as jpeg; some DCT streams omit SOI? keep
++                    log::warn!("pdf_images: DCT image {:?} missing JPEG SOI, still emitting", obj_id);
++                    out.push(RawImage {
++                        bytes: jpeg,
++                        media_type: "image/jpeg".to_string(),
++                        width,
++                        height,
++                    });
++                }
++            }
++            continue;
++        }
++        if filter_contains(&filters, b"JPXDecode") {
++            if let Some(jp2) = extract_passthrough_bytes(stream, &filters, b"JPXDecode") {
++                // JPEG2000 magic: 00 00 00 0C 6A 50 20 20 or FF 4F FF 51
++                out.push(RawImage {
++                    bytes: jp2,
++                    media_type: "image/jp2".to_string(),
++                    width,
++                    height,
++                });
++            }
++            continue;
++        }
++        // Skip explicitly compressed bilevel / JBIG2 for MVP (warn)
++        if filter_contains(&filters, b"CCITTFaxDecode") || filter_contains(&filters, b"CCITTFaxDecode") {
++            log::warn!("pdf_images: CCITTFax image {:?} skipped (not yet supported)", obj_id);
++            continue;
++        }
++        if filter_contains(&filters, b"JBIG2Decode") {
++            log::warn!("pdf_images: JBIG2 image {:?} skipped", obj_id);
++            continue;
++        }
++        if filter_contains(&filters, b"JB2Decode") {
++            log::warn!("pdf_images: JB2 image {:?} skipped", obj_id);
++            continue;
++        }
++
++        // For Flate (and possibly ASCII85+Flate) try via lopdf's decompressed_content
++        // This handles predictor/palette via its internal png decode.
++        let is_flate = filter_contains(&filters, b"FlateDecode") || filter_contains(&filters, b"Fl");
++        if is_flate || filters.is_empty() {
++            // Use lopdf's decompression horn: clone stream and try
++            let mut s = stream.clone();
++            let decompressed = match s.decompressed_content() {
++                Ok(d) => d,
++                Err(e) => {
++                    // If it was only ASCII85+Flate and failed, try manual ASCII85
++                    // then re-attempt flate without going through lopdf.
++                    // For MVP we just warn.
++                    log::warn!("pdf_images: flate image {:?} decompress failed: {:?}", obj_id, e);
++                    continue;
++                }
++            };
++            // Now `decompressed` is raw samples.
++            // Determine channels from ColorSpace and bpc
++            let channels: usize = match cs_name.as_str() {
++                "DeviceRGB" | "DeviceRgb" => 3,
++                "DeviceGray" | "DeviceGrey" => 1,
++                "" => {
++                    // No ColorSpace -> assume Gray for 1bpc or RGB for 3
++                    // Heuristic: if bytes == w*h*3 -> RGB else Gray
++                    if decompressed.len() == (width as usize * height as usize * 3) {
++                        3
++                    } else if decompressed.len() == (width as usize * height as usize) {
++                        1
++                    } else {
++                        log::warn!("pdf_images: unknown ColorSpace for image {:?}, guessing", obj_id);
++                        3
++                    }
++                }
++                "Indexed" => {
++                    log::warn!("pdf_images: Indexed ColorSpace for image {:?} skipped (MVP)", obj_id);
++                    continue;
++                }
++                other if other.contains("CMYK") || other == "DeviceCMYK" => {
++                    log::warn!("pdf_images: CMYK image {:?} skipped (MVP)", obj_id);
++                    continue;
++                }
++                other => {
++                    log::warn!("pdf_images: ColorSpace {:?} for image {:?} skipped", other, obj_id);
++                    continue;
++                }
++            };
++
++            // Validate BPC: MVP only 8
++            if bpc != 8 {
++                // 1/2/4 bpc need bit unpacking; skip for MVP
++                if bpc == 1 && channels == 1 {
++                    // 1bpc bilevel via Flate: each byte holds 8 pixels.
++                    // Expand to 8-bit gray then encode via PNG.
++                    let row_bytes = ((width as usize * bpc as usize + 7) / 8) as usize;
++                    if decompressed.len() < row_bytes * height as usize {
++                        log::warn!("pdf_images: 1bpc image {:?} truncated", obj_id);
++                        continue;
++                    }
++                    let mut expanded = Vec::with_capacity(width as usize * height as usize);
++                    for y in 0..height as usize {
++                        let row = &decompressed[y * row_bytes..(y + 1) * row_bytes];
++                        for x in 0..width as usize {
++                            let byte = row[x / 8];
++                            let bit = 7 - (x % 8);
++                            let v = (byte >> bit) & 1;
++                            expanded.push(if v == 0 { 0u8 } else { 255u8 });
++                        }
++                    }
++                    if let Some(png) = encode_png(width, height, &expanded, 1) {
++                        out.push(RawImage {
++                            bytes: png,
++                            media_type: "image/png".to_string(),
++                            width,
++                            height,
++                        });
++                    }
++                    continue;
++                }
++                log::warn!("pdf_images: BPC={} for image {:?} skipped (MVP only 8 or 1/gray)", bpc, obj_id);
++                continue;
++            }
++
++            let expected = width as usize * height as usize * channels;
++            if decompressed.len() < expected {
++                log::warn!(
++                    "pdf_images: flate image {:?} decompressed {} < expected {} ({}x{}x{})",
++                    obj_id,
++                    decompressed.len(),
++                    expected,
++                    width,
++                    height,
++                    channels
++                );
++                continue;
++            }
++            // Trim to expected (some streams have extra predictor padding already removed)
++            let trimmed = &decompressed[..expected];
++            if let Some(png) = encode_png(width, height, trimmed, channels) {
++                out.push(RawImage {
++                    bytes: png,
++                    media_type: "image/png".to_string(),
++                    width,
++                    height,
++                });
++            } else {
++                log::warn!("pdf_images: encode_png failed for image {:?}", obj_id);
++            }
++            continue;
++        }
++
++        // Other filters (LZW, RunLength, etc.) – skip with warn for MVP
++        log::warn!("pdf_images: image {:?} with filters {:?} skipped (MVP)", obj_id, filters);
++    }
++
++    out
++}

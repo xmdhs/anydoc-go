@@ -114,6 +114,17 @@ func I64_div_u(x, y uint64) uint64 {
 	return x / y
 }
 
+func I32_rem_s(x, y int32) int32 {
+	if y == 0 {
+		Wasm_trap_div_zero()
+	}
+	if y == -1 {
+
+		return 0
+	}
+	return x % y
+}
+
 func I64_rem_s(x, y int64) int64 {
 	if y == 0 {
 		Wasm_trap_div_zero()
@@ -144,15 +155,63 @@ func I32_rotr(x, y int32) int32 { return int32(bits.RotateLeft32(uint32(x), -int
 
 func I64_rotl(x, y int64) int64 { return int64(bits.RotateLeft64(uint64(x), int(y&63))) }
 
+func F32_abs(x float32) float32 {
+	return math.Float32frombits(math.Float32bits(x) &^ (1 << 31))
+}
+
 func F64_abs(x float64) float64 {
 	return math.Float64frombits(math.Float64bits(x) &^ (1 << 63))
+}
+
+func F32_neg(x float32) float32 {
+	return math.Float32frombits(math.Float32bits(x) ^ (1 << 31))
 }
 
 func F64_neg(x float64) float64 {
 	return math.Float64frombits(math.Float64bits(x) ^ (1 << 63))
 }
 
+func F32_copysign(x, y float32) float32 {
+	return float32(math.Copysign(float64(x), float64(y)))
+}
+
 func F64_copysign(x, y float64) float64 { return math.Copysign(x, y) }
+
+func I32_trunc_sat_f32_s(x float32) int32 {
+	if x != x {
+		return 0
+	}
+	if x <= -2147483648.0 {
+		return math.MinInt32
+	}
+	if x >= 2147483648.0 {
+		return math.MaxInt32
+	}
+	return int32(x)
+}
+
+func I32_trunc_sat_f32_u(x float32) int32 {
+	if x != x || x <= 0 {
+		return 0
+	}
+	if x >= 4294967296.0 {
+		return -1
+	}
+	return int32(uint32(x))
+}
+
+func I32_trunc_sat_f64_s(x float64) int32 {
+	if x != x {
+		return 0
+	}
+	if x <= -2147483648.0 {
+		return math.MinInt32
+	}
+	if x >= 2147483648.0 {
+		return math.MaxInt32
+	}
+	return int32(x)
+}
 
 func I64_trunc_sat_f64_s(x float64) int64 {
 	if x != x {
@@ -285,8 +344,20 @@ func I32_rem_u_s(x, y int32) int32 { return int32(I32_rem_u(uint32(x), uint32(y)
 func I64_div_u_s(x, y int64) int64 { return int64(I64_div_u(uint64(x), uint64(y))) }
 func I64_rem_u_s(x, y int64) int64 { return int64(I64_rem_u(uint64(x), uint64(y))) }
 
+// The explicit same-type conversions are NOT redundant: they are
+// rounding points. Once these helpers inline, gc is free to fuse a
+// multiply feeding an add into a single FMA — legal Go, but wasm
+// requires every operation individually rounded, and a fused result
+// diverges from every wasm runtime (bitwise, and observably in greedy
+// sampling). A float conversion forces the intermediate rounding and
+// forbids the fusion (spec: Conversions, "rounds to the precision of
+// the target type"; the same rule math.FMA documents).
+func F32_add(x, y float32) float32 { return float32(x + y) }
+func F32_sub(x, y float32) float32 { return float32(x - y) }
+func F32_mul(x, y float32) float32 { return float32(x * y) }
+func F32_div(x, y float32) float32 { return float32(x / y) }
 func F64_add(x, y float64) float64 { return float64(x + y) }
-
+func F64_sub(x, y float64) float64 { return float64(x - y) }
 func F64_mul(x, y float64) float64 { return float64(x * y) }
 func F64_div(x, y float64) float64 { return float64(x / y) }
 
@@ -296,6 +367,51 @@ func I32_popcnt(x int32) int32 { return int32(bits.OnesCount32(uint32(x))) }
 
 func I64_clz(x int64) int64 { return int64(bits.LeadingZeros64(uint64(x))) }
 func I64_ctz(x int64) int64 { return int64(bits.TrailingZeros64(uint64(x))) }
+
+func F32_ceil(x float32) float32 { return float32(math.Ceil(float64(x))) }
+
+func F32_floor(x float32) float32 { return float32(math.Floor(float64(x))) }
+
+func F64_trunc(x float64) float64 { return math.Trunc(x) }
+func F32_sqrt(x float32) float32  { return float32(math.Sqrt(float64(x))) }
+func F64_sqrt(x float64) float64  { return math.Sqrt(x) }
+
+func F32_eq(x, y float32) int32 {
+	if x == y {
+		return 1
+	}
+	return 0
+}
+func F32_ne(x, y float32) int32 {
+	if x != y {
+		return 1
+	}
+	return 0
+}
+func F32_lt(x, y float32) int32 {
+	if x < y {
+		return 1
+	}
+	return 0
+}
+func F32_gt(x, y float32) int32 {
+	if x > y {
+		return 1
+	}
+	return 0
+}
+func F32_le(x, y float32) int32 {
+	if x <= y {
+		return 1
+	}
+	return 0
+}
+func F32_ge(x, y float32) int32 {
+	if x >= y {
+		return 1
+	}
+	return 0
+}
 
 func F64_eq(x, y float64) int32 {
 	if x == y {
@@ -315,7 +431,18 @@ func F64_lt(x, y float64) int32 {
 	}
 	return 0
 }
-
+func F64_gt(x, y float64) int32 {
+	if x > y {
+		return 1
+	}
+	return 0
+}
+func F64_le(x, y float64) int32 {
+	if x <= y {
+		return 1
+	}
+	return 0
+}
 func F64_ge(x, y float64) int32 {
 	if x >= y {
 		return 1
@@ -323,21 +450,37 @@ func F64_ge(x, y float64) int32 {
 	return 0
 }
 
-func I32_wrap_i64(x int64) int32     { return int32(x) }
-func I64_extend_i32_s(x int32) int64 { return int64(x) }
-func I64_extend_i32_u(x int32) int64 { return int64(uint32(x)) }
+func I32_wrap_i64(x int64) int32       { return int32(x) }
+func I64_extend_i32_s(x int32) int64   { return int64(x) }
+func I64_extend_i32_u(x int32) int64   { return int64(uint32(x)) }
+func F32_demote_f64(x float64) float32 { return float32(x) }
+func F64_promote_f32(x float32) float64 {
 
+	if math.IsNaN(float64(x)) {
+
+		return float64(x)
+	}
+	return float64(x)
+}
+
+func F32_convert_i32_s(x int32) float32 { return float32(x) }
+func F32_convert_i32_u(x int32) float32 { return float32(uint32(x)) }
+func F32_convert_i64_s(x int64) float32 { return float32(x) }
+func F32_convert_i64_u(x int64) float32 { return float32(uint64(x)) }
 func F64_convert_i32_s(x int32) float64 { return float64(x) }
 func F64_convert_i32_u(x int32) float64 { return float64(uint32(x)) }
 
 func F64_convert_i64_u(x int64) float64 { return float64(uint64(x)) }
 
+func I32_reinterpret_f32(x float32) int32 { return int32(math.Float32bits(x)) }
 func I64_reinterpret_f64(x float64) int64 { return int64(math.Float64bits(x)) }
-
+func F32_reinterpret_i32(x int32) float32 { return math.Float32frombits(uint32(x)) }
 func F64_reinterpret_i64(x int64) float64 { return math.Float64frombits(uint64(x)) }
 
 func I32_extend8_s(x int32) int32  { return int32(int8(x)) }
 func I32_extend16_s(x int32) int32 { return int32(int16(x)) }
+
+func I64_extend16_s(x int64) int64 { return int64(int16(x)) }
 
 func MemoryFill(m *Module, dst int32, val int32, n int32) {
 	if n == 0 {

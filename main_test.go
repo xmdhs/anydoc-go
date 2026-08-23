@@ -138,12 +138,15 @@ func TestErrors(t *testing.T) {
 		}
 	})
 	t.Run("pdfUncompiled", func(t *testing.T) {
-		// pdf-inspector 被本地 stub patch 剔除（cabi Cargo.toml 的
-		// [patch.crates-io]）：应报 unsupported。
+		// 已启用真实 pdf-inspector（patches/getrandom 去 wasm-bindgen，
+		// 无需 stub）：testdata/fixtures/pdf/text.pdf 应可转换出内容。
 		input := readFile(t, "testdata/fixtures/pdf/text.pdf")
-		_, err := conv.ConvertBytes(input, "")
-		if err == nil || !strings.Contains(err.Error(), "unsupported") {
-			t.Errorf("want unsupported error for pdf build, got %v", err)
+		md, err := conv.ConvertBytes(input, "")
+		if err != nil {
+			t.Fatalf("pdf should convert, got %v", err)
+		}
+		if !strings.Contains(md, "Fixture Document") {
+			t.Errorf("pdf markdown missing expected content: %q", md[:min(len(md), 80)])
 		}
 	})
 }
@@ -271,4 +274,71 @@ func TestURLPathEscape(t *testing.T) {
 			t.Errorf("url.PathEscape(%q) = %q, want %q", c.in, got, c.want)
 		}
 	}
+}
+
+func TestPdfImageAssets(t *testing.T) {
+	conv := anydoc.NewConverter()
+	cases := []struct {
+		name string
+		wantAssets int
+		wantMedia map[string]bool
+	}{
+		{"pdf/with-text-image.pdf", 1, map[string]bool{"image/jpeg": true}},
+		{"pdf/scanned-image.pdf", 1, map[string]bool{"image/jpeg": true}},
+		{"pdf/multi-image.pdf", 2, map[string]bool{"image/jpeg": true, "image/png": true}},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			data := readFile(t, "testdata/fixtures/"+c.name)
+			res, err := conv.ConvertWithAssets(data, "")
+			if err != nil {
+				t.Fatalf("ConvertWithAssets: %v", err)
+			}
+			if len(res.Assets) != c.wantAssets {
+				t.Fatalf("want %d assets, got %d", c.wantAssets, len(res.Assets))
+			}
+			for _, a := range res.Assets {
+				if !c.wantMedia[a.MediaType] {
+					t.Errorf("unexpected media_type %q", a.MediaType)
+				}
+				if len(a.Bytes) == 0 {
+					t.Errorf("asset %d empty bytes", a.ID)
+				}
+				// JPEG magic
+				if a.MediaType == "image/jpeg" && (len(a.Bytes) < 2 || a.Bytes[0] != 0xFF || a.Bytes[1] != 0xD8) {
+					t.Errorf("jpeg asset %d missing SOI FF D8", a.ID)
+				}
+				if a.MediaType == "image/png" && (len(a.Bytes) < 4 || a.Bytes[0] != 0x89) {
+					t.Errorf("png asset %d missing PNG sig", a.ID)
+				}
+			}
+			// Markdown must contain asset:// placeholders
+			for _, a := range res.Assets {
+				placeholder := fmt.Sprintf("asset://%d", a.ID)
+				if !strings.Contains(res.Markdown, placeholder) {
+					t.Errorf("markdown missing %q, got: %q", placeholder, res.Markdown[:testMin(300, len(res.Markdown))])
+				}
+			}
+			// Also via writeAssetRefs:落盘并重写
+			dir := t.TempDir()
+			out, err := writeAssetRefs(res.Markdown, res.Assets, dir, strings.TrimSuffix(filepath.Base(c.name), filepath.Ext(c.name)))
+			if err != nil {
+				t.Fatalf("writeAssetRefs: %v", err)
+			}
+			if !strings.Contains(out, "imgs/") {
+				t.Errorf("rewritten markdown missing imgs/: %q", out[:testMin(200, len(out))])
+			}
+			entries, _ := os.ReadDir(dir)
+			if len(entries) != c.wantAssets {
+				t.Errorf("want %d files on disk, got %d", c.wantAssets, len(entries))
+			}
+		})
+	}
+}
+
+func testMin(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }

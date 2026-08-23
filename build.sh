@@ -32,8 +32,8 @@ FETCH_REF="${FETCH_REF:-}"           # 同时覆盖两个第三方仓库（兼�
 # anydoc 锁定已验证 tag：patches/ 的 stub 版本（pdf-inspector）与源码 patch
 # 只对该版本验证过——上游发新版时需同步升级 patch 与 CI 的 ANYDOC_REF。
 # 显式 ANYDOC_REF="" 可回落"最新 semver tag"。
-ANYDOC_REF="${ANYDOC_REF:-v0.1.8}"
-GOCCY_REF="${GOCCY_REF:-f30ec292fd4ea1737263c30ed97157e4593796db}"
+ANYDOC_REF="${ANYDOC_REF:-v0.2.3}"
+GOCCY_REF="${GOCCY_REF:-16cd8518d208b13876765f05d5aca9197b63ac9a}"
 WASM="${CARGO_TARGET_DIR}/wasm32-unknown-unknown/release/anydoc_cabi.wasm"
 
 # 语义化版本排序的最新 tag（v0.1.9 > v0.1.10 > v0.2.0）。
