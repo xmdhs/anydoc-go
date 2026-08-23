@@ -107,6 +107,25 @@ jobs:
           build darwin arm64 ""
           file dist/*
 
+      - name: Compress binaries with UPX (Linux/Windows only; Mach-O skipped)
+        run: |
+          set -euxo pipefail
+          upx --version
+          echo "before:"
+          ls -lh dist/
+          # Mach-O (darwin) 在 macOS 13+ 上因 Apple 未公开的加载器变更已不可用
+          # （UPX #612 / #777 / #786：压缩后运行时 Killed: 9 / invalid Mach-O header，
+          #  需 --force-macos 才允许压缩但产物仍无法在 13+ 运行），故仅压缩 ELF/PE。
+          for f in dist/*; do
+            case "$f" in
+              *darwin*) echo "skip upx for $f (Mach-O unsupported on macOS 13+, see upx#612)" ; continue ;;
+            esac
+            echo "upx $f"
+            upx --best --lzma "$f" 2>&1 || upx --best "$f" 2>&1 || echo "warn: upx failed for $f, keeping original" >&2
+          done
+          echo "after:"
+          ls -lh dist/
+
       - name: Upload cross-platform binaries
         uses: actions/upload-artifact@v7
         with:
