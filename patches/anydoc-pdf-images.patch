@@ -1,12 +1,14 @@
 diff --git a/Cargo.toml b/Cargo.toml
-index 5cee478..77024bd 100644
+index 5cee478..c091eb6 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -25,6 +25,7 @@ sha2 = "0.11"
+@@ -25,6 +25,9 @@ sha2 = "0.11"
  cfb = "0.14.0"
  csv = "1.4.0"
  flate2 = "1"
 +lopdf = "0.42"
++hayro-ccitt = "0.3"
++hayro-jbig2 = { version = "0.3", default-features = false }
  encoding_rs = "0.8.35"
  log = "0.4"
  pdf-inspector = "1.14.2"
@@ -167,10 +169,10 @@ index 74a36e1..77bbb89 100644
          PdfError::Encrypted => ConvertError::Encrypted,
 diff --git a/src/formats/pdf_images.rs b/src/formats/pdf_images.rs
 new file mode 100644
-index 0000000..4ab573f
+index 0000000..760b8bf
 --- /dev/null
 +++ b/src/formats/pdf_images.rs
-@@ -0,0 +1,509 @@
+@@ -0,0 +1,913 @@
 +//! PDF image extraction via lopdf.
 +//!
 +//! Scans all `Subtype == Image` streams in the document and produces
@@ -182,9 +184,10 @@ index 0000000..4ab573f
 +//! - `FlateDecode` (+ optional `ASCII85Decode`) -> decompress via
 +//!   `lopdf::Stream::decompressed_content` and encode to PNG (RGB/Gray 8bpc
 +//!   MVP; other ColorSpace/BPC are skipped with a warn)
-+//! - `CCITTFaxDecode`, `JBIG2Decode`, `LZWDecode`, `RunLengthDecode` alone
-+//!   are currently skipped (log warn). ASCII85/LZW/RunLength as wrappers
-+//!   around DCT/JPX are decoded.
++//! - `CCITTFaxDecode` / `CCF` -> decode via `hayro-ccitt` then encode PNG
++//! - `JBIG2Decode` / `JB2Decode` -> decode via `hayro-jbig2` (with optional
++//!   `JBIG2Globals`) then encode PNG
++//! - `LZWDecode`, `RunLengthDecode` alone are currently skipped (log warn).
 +//! `Inline` BI/EI images are not enumerated (out of scope for this patch).
 +
 +use lopdf::{Dictionary, Document, Object, Stream};
@@ -316,9 +319,6 @@ index 0000000..4ab573f
 +    // CRC helper: use crc32fast if we can, else fallback is not needed because
 +    // crc32fast is available via flate2's transitive dep; we vendor a tiny one.
 +    fn crc32(data: &[u8]) -> u32 {
-+        // Use crc32fast crate if linked; fallback to software table.
-+        // We try to use `crc32fast::hash` via `cfg` but we don't depend on it
-+        // explicitly, so implement a local table to avoid extra dep.
 +        const TABLE: [u32; 256] = {
 +            let mut t = [0u32; 256];
 +            let mut i = 0usize;
@@ -395,6 +395,17 @@ index 0000000..4ab573f
 +        .and_then(|v| u32::try_from(v).ok())
 +}
 +
++fn get_bool(dict: &Dictionary, key: &[u8]) -> Option<bool> {
++    dict.get(key).ok().and_then(|o| o.as_bool().ok())
++}
++
++fn get_i32(dict: &Dictionary, key: &[u8]) -> Option<i32> {
++    dict.get(key)
++        .ok()
++        .and_then(|o| o.as_i64().ok())
++        .and_then(|v| i32::try_from(v).ok())
++}
++
 +fn get_colorspace_name(dict: &Dictionary) -> String {
 +    if let Ok(cs) = dict.get(b"ColorSpace") {
 +        if let Ok(name) = cs.as_name() {
@@ -433,8 +444,6 @@ index 0000000..4ab573f
 +                }
 +            },
 +            b"FlateDecode" | b"Fl" => {
-+                // Unlikely before DCT, but handle via lopdf's zlib
-+                // We can try to decompress as zlib
 +                use flate2::read::ZlibDecoder;
 +                use std::io::Read;
 +                let mut dec = ZlibDecoder::new(data.as_slice());
@@ -450,7 +459,6 @@ index 0000000..4ab573f
 +                return None;
 +            }
 +            b"RunLengthDecode" | b"RL" => {
-+                // Implement minimal RLE? skip for now
 +                log::warn!("RunLength before passthrough not supported");
 +                return None;
 +            }
@@ -461,6 +469,331 @@ index 0000000..4ab573f
 +        }
 +    }
 +    Some(data)
++}
++
++/// Decode filters that appear *before* the given `target` filter.
++/// Returns the bytes that should be fed to the target decoder.
++/// Currently handles ASCII85 / A85 and empty preceding chain.
++fn decode_ascii_hex(data: &[u8]) -> Option<Vec<u8>> {
++    let mut out = Vec::new();
++    let mut hi: Option<u8> = None;
++    for &c in data {
++        if c.is_ascii_whitespace() {
++            continue;
++        }
++        if c == b'>' {
++            break;
++        }
++        let v = match c {
++            b'0'..=b'9' => c - b'0',
++            b'a'..=b'f' => c - b'a' + 10,
++            b'A'..=b'F' => c - b'A' + 10,
++            _ => return None,
++        };
++        if let Some(h) = hi {
++            out.push((h << 4) | v);
++            hi = None;
++        } else {
++            hi = Some(v);
++        }
++    }
++    if let Some(h) = hi {
++        out.push(h << 4);
++    }
++    Some(out)
++}
++
++fn decode_preceding_filters(stream: &Stream, filters: &[Vec<u8>], target: &[u8]) -> Option<Vec<u8>> {
++    let idx = filter_index(filters, target)?;
++    let preceding = &filters[..idx];
++    if preceding.is_empty() {
++        return Some(stream.content.clone());
++    }
++    let mut data = stream.content.clone();
++    for f in preceding {
++        match f.as_slice() {
++            b"ASCII85Decode" | b"A85" => match decode_ascii85(&data) {
++                Ok(d) => data = d,
++                Err(e) => {
++                    log::warn!("ASCII85 decode before {:?} failed: {}", String::from_utf8_lossy(target), e);
++                    return None;
++                }
++            },
++            b"ASCIIHexDecode" | b"AHx" => {
++                match decode_ascii_hex(&data) {
++                    Some(d) => data = d,
++                    None => {
++                        log::warn!("ASCIIHex decode before {:?} failed", String::from_utf8_lossy(target));
++                        return None;
++                    }
++                }
++            }
++            other => {
++                log::warn!("unsupported preceding filter {:?} before {:?}", String::from_utf8_lossy(other), String::from_utf8_lossy(target));
++                return None;
++            }
++        }
++    }
++    Some(data)
++}
++
++fn get_decode_parms_dict(
++    dict: &Dictionary,
++    filters: &[Vec<u8>],
++    needle: &[u8],
++    doc: &Document,
++) -> Option<Dictionary> {
++    let idx = filter_index(filters, needle)?;
++    let parms_obj = dict.get(b"DecodeParms").ok()?;
++    let (_, resolved) = doc.dereference(parms_obj).ok()?;
++    match resolved {
++        Object::Dictionary(d) => Some(d.clone()),
++        Object::Array(arr) => {
++            if idx >= arr.len() {
++                return None;
++            }
++            let elem = &arr[idx];
++            let (_, elem_resolved) = doc.dereference(elem).ok()?;
++            match elem_resolved {
++                Object::Dictionary(d) => Some(d.clone()),
++                Object::Null => None,
++                _ => None,
++            }
++        }
++        Object::Null => None,
++        _ => None,
++    }
++}
++
++fn decoded_stream_bytes(stream: &Stream) -> Option<Vec<u8>> {
++    let filters = get_filter_names(&stream.dict);
++    if filters.is_empty() {
++        return Some(stream.content.clone());
++    }
++    let mut data = stream.content.clone();
++    for f in &filters {
++        match f.as_slice() {
++            b"ASCIIHexDecode" | b"AHx" => {
++                data = decode_ascii_hex(&data)?;
++            }
++            b"ASCII85Decode" | b"A85" => {
++                data = decode_ascii85(&data).ok()?;
++            }
++            other => {
++                log::warn!("unsupported filter {:?} in globals stream", String::from_utf8_lossy(other));
++                return None;
++            }
++        }
++    }
++    Some(data)
++}
++
++fn get_jbig2_globals(
++    dict: &Dictionary,
++    filters: &[Vec<u8>],
++    doc: &Document,
++) -> Option<Vec<u8>> {
++    // JBIG2Globals lives inside DecodeParms array/dict
++    let target = if filter_contains(filters, b"JBIG2Decode") {
++        b"JBIG2Decode".as_slice()
++    } else if filter_contains(filters, b"JB2Decode") {
++        b"JB2Decode".as_slice()
++    } else {
++        return None;
++    };
++    let parms = get_decode_parms_dict(dict, filters, target, doc)?;
++    let globals_obj = parms.get(b"JBIG2Globals").ok()?;
++    // Try to dereference to get the stream object
++    if let Ok((_, resolved)) = doc.dereference(globals_obj) {
++        match resolved {
++            Object::Stream(s) => return decoded_stream_bytes(s),
++            Object::Reference(id) => {
++                if let Ok(Object::Stream(s)) = doc.get_object(*id) {
++                    return decoded_stream_bytes(s);
++                }
++            }
++            _ => {}
++        }
++    }
++    // Fallback: globals_obj is directly a Reference
++    if let Ok(oid) = globals_obj.as_reference() {
++        if let Ok(Object::Stream(s)) = doc.get_object(oid) {
++            return decoded_stream_bytes(s);
++        }
++    }
++    None
++}
++
++fn decode_ccitt(
++    data: &[u8],
++    width: u32,
++    height: u32,
++    parms: Option<&Dictionary>,
++) -> Option<Vec<u8>> {
++    let k = parms.and_then(|d| get_i32(d, b"K")).unwrap_or(0);
++    let columns = parms.and_then(|d| get_u32(d, b"Columns")).unwrap_or(width);
++    let rows_param = parms.and_then(|d| get_u32(d, b"Rows")).unwrap_or(0);
++    let rows = rows_param.max(height);
++    let end_of_block = parms.and_then(|d| get_bool(d, b"EndOfBlock")).unwrap_or(true);
++    let end_of_line = parms.and_then(|d| get_bool(d, b"EndOfLine")).unwrap_or(false);
++    let encoded_byte_align = parms.and_then(|d| get_bool(d, b"EncodedByteAlign")).unwrap_or(false);
++    let black_is_1 = parms.and_then(|d| get_bool(d, b"BlackIs1")).unwrap_or(false);
++
++    if columns == 0 || rows == 0 {
++        log::warn!("CCITT invalid dimensions columns={} rows={}", columns, rows);
++        return None;
++    }
++    // Cap at ~32Mpix to avoid OOM (3GB wasm)
++    let total_pixels = (columns as u64).checked_mul(rows as u64)?;
++    if total_pixels > 32_000_000 {
++        log::warn!("CCITT image too large {}x{} ({} pixels), skipping", columns, rows, total_pixels);
++        return None;
++    }
++    let output_len = (columns as usize).checked_mul(rows as usize)?;
++    if output_len > 128 * 1024 * 1024 {
++        log::warn!("CCITT output too large {} bytes, skipping", output_len);
++        return None;
++    }
++
++    let encoding = if k < 0 {
++        hayro_ccitt::EncodingMode::Group4
++    } else if k == 0 {
++        hayro_ccitt::EncodingMode::Group3_1D
++    } else {
++        hayro_ccitt::EncodingMode::Group3_2D { k: k as u32 }
++    };
++
++    let settings = hayro_ccitt::DecodeSettings {
++        columns,
++        rows,
++        end_of_block,
++        end_of_line,
++        rows_are_byte_aligned: encoded_byte_align,
++        encoding,
++        invert_black: black_is_1,
++    };
++
++    struct Luma8Decoder {
++        output: Vec<u8>,
++        idx: usize,
++        decoded_rows: u32,
++    }
++    impl hayro_ccitt::Decoder for Luma8Decoder {
++        fn push_pixel(&mut self, white: bool) {
++            if !white {
++                if self.idx < self.output.len() {
++                    self.output[self.idx] = 0x00;
++                }
++            }
++            self.idx += 1;
++        }
++        fn push_pixel_chunk(&mut self, white: bool, chunk_count: u32) {
++            let count = chunk_count as usize * 8;
++            if !white {
++                let end = (self.idx + count).min(self.output.len());
++                if self.idx < end {
++                    self.output[self.idx..end].fill(0x00);
++                }
++            }
++            self.idx += count;
++        }
++        fn next_line(&mut self) {
++            self.decoded_rows += 1;
++        }
++    }
++
++    let mut decoder = Luma8Decoder {
++        output: vec![0xFF; output_len],
++        idx: 0,
++        decoded_rows: 0,
++    };
++    let mut ctx = hayro_ccitt::DecoderContext::new(settings);
++    let result = hayro_ccitt::decode(data, &mut decoder, &mut ctx);
++    if result.is_err() && decoder.decoded_rows == 0 {
++        log::warn!("CCITT decode failed: {:?}", result.err());
++        return None;
++    }
++    if result.is_err() {
++        // Truncate to actual decoded rows
++        let actual_len = (decoder.decoded_rows as usize) * (columns as usize);
++        if actual_len < decoder.output.len() {
++            decoder.output.truncate(actual_len);
++        } else {
++            decoder.output.truncate(decoder.idx.min(decoder.output.len()));
++        }
++        if decoder.output.is_empty() {
++            return None;
++        }
++        // If we truncated, we need to adjust rows for PNG encoding.
++        // The caller will use decoder.decoded_rows as height if it differs.
++        // For now we return the buffer and caller can compute height.
++        // To keep API simple, we return the buffer and let caller use columns x decoded_rows.
++        // But we don't have a way to return height; we assume caller will use rows if fully decoded.
++        // We'll just return truncated buffer; caller should check length.
++    }
++    // If we decoded fewer rows than expected, the buffer length tells us.
++    // Return the buffer as-is; caller will derive height from len / columns.
++    Some(decoder.output)
++}
++
++fn decode_jbig2(
++    data: &[u8],
++    globals: Option<&[u8]>,
++    width: u32,
++    height: u32,
++) -> Option<(Vec<u8>, u32, u32)> {
++    let image = hayro_jbig2::Image::new_embedded(data, globals).ok()?;
++    let w = image.width();
++    let h = image.height();
++    if w == 0 || h == 0 || w > 10000 || h > 10000 {
++        log::warn!("JBIG2 invalid dimensions {}x{}", w, h);
++        return None;
++    }
++    let total = (w as u64) * (h as u64);
++    if total > 32_000_000 {
++        log::warn!("JBIG2 image too large {}x{} ({} pixels), skipping", w, h, total);
++        return None;
++    }
++    if total as usize > 128 * 1024 * 1024 {
++        log::warn!("JBIG2 output too large {} bytes, skipping", total);
++        return None;
++    }
++    // Use Luma8 path: white=0xFF, black=0x00
++    struct Luma8Decoder {
++        output: Vec<u8>,
++        pos: usize,
++    }
++    impl hayro_jbig2::Decoder for Luma8Decoder {
++        fn push_pixel(&mut self, black: bool) {
++            if black {
++                if self.pos < self.output.len() {
++                    self.output[self.pos] = 0x00;
++                }
++            }
++            self.pos += 1;
++        }
++        fn push_pixel_chunk(&mut self, black: bool, chunk_count: u32) {
++            let count = chunk_count as usize * 8;
++            if black {
++                let end = (self.pos + count).min(self.output.len());
++                if self.pos < end {
++                    self.output[self.pos..end].fill(0x00);
++                }
++            }
++            self.pos += count;
++        }
++        fn next_line(&mut self) {}
++    }
++    // If dimensions from JBIG2 differ from PDF dict, trust JBIG2 but warn.
++    if w != width || h != height {
++        log::warn!("JBIG2 dimensions {}x{} differ from PDF {}x{}", w, h, width, height);
++    }
++    let mut decoder = Luma8Decoder {
++        output: vec![0xFF; (w as usize) * (h as usize)],
++        pos: 0,
++    };
++    image.decode(&mut decoder).ok()?;
++    Some((decoder.output, w, h))
 +}
 +
 +pub fn extract_images(bytes: &[u8]) -> Vec<RawImage> {
@@ -550,17 +883,93 @@ index 0000000..4ab573f
 +            }
 +            continue;
 +        }
-+        // Skip explicitly compressed bilevel / JBIG2 for MVP (warn)
-+        if filter_contains(&filters, b"CCITTFaxDecode") || filter_contains(&filters, b"CCITTFaxDecode") {
-+            log::warn!("pdf_images: CCITTFax image {:?} skipped (not yet supported)", obj_id);
++        // CCITTFaxDecode (Group 3/4) via hayro-ccitt
++        if filter_contains(&filters, b"CCITTFaxDecode") || filter_contains(&filters, b"CCF") {
++            let target = if filter_contains(&filters, b"CCITTFaxDecode") { b"CCITTFaxDecode".as_slice() } else { b"CCF".as_slice() };
++            let data = match decode_preceding_filters(stream, &filters, target) {
++                Some(d) => d,
++                None => {
++                    log::warn!("pdf_images: CCITTFax image {:?} preceding filter decode failed", obj_id);
++                    continue;
++                }
++            };
++            let parms = get_decode_parms_dict(&stream.dict, &filters, target, &doc);
++            match decode_ccitt(&data, width, height, parms.as_ref()) {
++                Some(decoded) => {
++                    // decoded is luma8 buffer; may be larger than width*height if Columns != width or truncated
++                    let columns = parms.as_ref().and_then(|d| get_u32(d, b"Columns")).unwrap_or(width);
++                    let expected_rows = parms.as_ref().and_then(|d| get_u32(d, b"Rows")).unwrap_or(0).max(height);
++                    // Derive actual height from decoded length
++                    let actual_height = if decoded.len() % (columns as usize) == 0 {
++                        (decoded.len() / (columns as usize)) as u32
++                    } else {
++                        expected_rows
++                    };
++                    let png_w = columns;
++                    let png_h = if actual_height > 0 { actual_height } else { expected_rows };
++                    // Ensure dimensions sane
++                    if png_w == 0 || png_h == 0 || png_w > 10000 || png_h > 10000 {
++                        log::warn!("pdf_images: CCITT decoded dimensions invalid {}x{:?}", png_w, png_h);
++                        continue;
++                    }
++                    // If decoded length matches png_w*png_h, encode; else try with width/height
++                    let to_encode: Option<Vec<u8>> = if decoded.len() == (png_w as usize) * (png_h as usize) {
++                        encode_png(png_w, png_h, &decoded, 1)
++                    } else if decoded.len() == (width as usize) * (height as usize) {
++                        encode_png(width, height, &decoded, 1)
++                    } else {
++                        // Fallback: try to encode with columns x (len/columns)
++                        if decoded.len() % (png_w as usize) == 0 {
++                            let h2 = (decoded.len() / (png_w as usize)) as u32;
++                            encode_png(png_w, h2, &decoded, 1)
++                        } else {
++                            None
++                        }
++                    };
++                    if let Some(png) = to_encode {
++                        out.push(RawImage {
++                            bytes: png,
++                            media_type: "image/png".to_string(),
++                            width: png_w,
++                            height: png_h,
++                        });
++                    } else {
++                        log::warn!("pdf_images: CCITT image {:?} encode_png failed (decoded {} bytes)", obj_id, decoded.len());
++                    }
++                }
++                None => {
++                    log::warn!("pdf_images: CCITTFax image {:?} decode failed", obj_id);
++                }
++            }
 +            continue;
 +        }
-+        if filter_contains(&filters, b"JBIG2Decode") {
-+            log::warn!("pdf_images: JBIG2 image {:?} skipped", obj_id);
-+            continue;
-+        }
-+        if filter_contains(&filters, b"JB2Decode") {
-+            log::warn!("pdf_images: JB2 image {:?} skipped", obj_id);
++        if filter_contains(&filters, b"JBIG2Decode") || filter_contains(&filters, b"JB2Decode") {
++            let target = if filter_contains(&filters, b"JBIG2Decode") { b"JBIG2Decode".as_slice() } else { b"JB2Decode".as_slice() };
++            let data = match decode_preceding_filters(stream, &filters, target) {
++                Some(d) => d,
++                None => {
++                    log::warn!("pdf_images: JBIG2 image {:?} preceding filter decode failed", obj_id);
++                    continue;
++                }
++            };
++            let globals = get_jbig2_globals(&stream.dict, &filters, &doc);
++            match decode_jbig2(&data, globals.as_deref(), width, height) {
++                Some((decoded, w, h)) => {
++                    if let Some(png) = encode_png(w, h, &decoded, 1) {
++                        out.push(RawImage {
++                            bytes: png,
++                            media_type: "image/png".to_string(),
++                            width: w,
++                            height: h,
++                        });
++                    } else {
++                        log::warn!("pdf_images: JBIG2 image {:?} encode_png failed", obj_id);
++                    }
++                }
++                None => {
++                    log::warn!("pdf_images: JBIG2 image {:?} decode failed", obj_id);
++                }
++            }
 +            continue;
 +        }
 +
@@ -573,9 +982,6 @@ index 0000000..4ab573f
 +            let decompressed = match s.decompressed_content() {
 +                Ok(d) => d,
 +                Err(e) => {
-+                    // If it was only ASCII85+Flate and failed, try manual ASCII85
-+                    // then re-attempt flate without going through lopdf.
-+                    // For MVP we just warn.
 +                    log::warn!("pdf_images: flate image {:?} decompress failed: {:?}", obj_id, e);
 +                    continue;
 +                }

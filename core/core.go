@@ -11,22 +11,23 @@ import (
 
 func New() *base.Module {
 	m := &base.Module{}
-	m.Memory = make([]byte, 3145728, 3932160)
+	m.Memory = make([]byte, 3211264, 4014080)
 	m.MemMu = &sync.Mutex{}
 	m.MemSize = &atomic.Uint64{}
 	m.Threads = &base.ThreadPool{}
-	m.MemSize.Store(3145728)
+	m.MemSize.Store(3211264)
 	m.M = unsafe.Pointer(unsafe.SliceData(m.Memory))
 	m.MaxMem = 4294967296
-	m.T0 = make([]any, 619)
+	m.T0 = make([]any, 622)
 	m.G0 = int32(1048576)
+	InitElemSeg_1_0(m)
 	InitElemSeg_2_0(m)
 	InitElemSeg_3_0(m)
 	InitElemSeg_4_0(m)
 	InitElemSeg_5_0(m)
 	InitElemSeg_5_1(m)
 	InitElemSeg_5_2(m)
-	m.DataEnd = 3135076
+	m.DataEnd = 3150484
 	initData_0(m)
 	return m
 }
@@ -42,15 +43,16 @@ func NewWithMemory(memory []byte, memSize uint64) *base.Module {
 	m.MemSize.Store(memSize)
 	m.M = unsafe.Pointer(unsafe.SliceData(m.Memory))
 	m.MaxMem = uint64(len(memory))
-	m.T0 = make([]any, 619)
+	m.T0 = make([]any, 622)
 	m.G0 = int32(1048576)
+	InitElemSeg_1_0(m)
 	InitElemSeg_2_0(m)
 	InitElemSeg_3_0(m)
 	InitElemSeg_4_0(m)
 	InitElemSeg_5_0(m)
 	InitElemSeg_5_1(m)
 	InitElemSeg_5_2(m)
-	m.DataEnd = 3135076
+	m.DataEnd = 3150484
 	return m
 }
 func NewFromSnapshot(memory []byte, memSize uint64, globals []uint64) *base.Module {
@@ -65,20 +67,21 @@ func NewFromSnapshot(memory []byte, memSize uint64, globals []uint64) *base.Modu
 	m.MemSize.Store(memSize)
 	m.M = unsafe.Pointer(unsafe.SliceData(m.Memory))
 	m.MaxMem = uint64(len(memory))
-	m.T0 = make([]any, 619)
+	m.T0 = make([]any, 622)
 	m.G0 = int32(1048576)
+	InitElemSeg_1_0(m)
 	InitElemSeg_2_0(m)
 	InitElemSeg_3_0(m)
 	InitElemSeg_4_0(m)
 	InitElemSeg_5_0(m)
 	InitElemSeg_5_1(m)
 	InitElemSeg_5_2(m)
-	m.DataEnd = 3135076
+	m.DataEnd = 3150484
 	base.RestoreGlobals(m, globals)
 	return m
 }
 func initData_0(m *base.Module) {
-	copy(m.Memory[1048576:], wasm2goData_data_bin[0:2086500])
+	copy(m.Memory[1048576:], wasm2goData_data_bin[0:2101908])
 }
 func AnydocAlloc(m *base.Module, l0 int32) int32 {
 	return Fn17(m, l0)
