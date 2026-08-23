@@ -138,12 +138,15 @@ func TestErrors(t *testing.T) {
 		}
 	})
 	t.Run("pdfUncompiled", func(t *testing.T) {
-		// pdf-inspector 被本地 stub patch 剔除（cabi Cargo.toml 的
-		// [patch.crates-io]）：应报 unsupported。
+		// 已启用真实 pdf-inspector（patches/getrandom 去 wasm-bindgen，
+		// 无需 stub）：testdata/fixtures/pdf/text.pdf 应可转换出内容。
 		input := readFile(t, "testdata/fixtures/pdf/text.pdf")
-		_, err := conv.ConvertBytes(input, "")
-		if err == nil || !strings.Contains(err.Error(), "unsupported") {
-			t.Errorf("want unsupported error for pdf build, got %v", err)
+		md, err := conv.ConvertBytes(input, "")
+		if err != nil {
+			t.Fatalf("pdf should convert, got %v", err)
+		}
+		if !strings.Contains(md, "Fixture Document") {
+			t.Errorf("pdf markdown missing expected content: %q", md[:min(len(md), 80)])
 		}
 	})
 }

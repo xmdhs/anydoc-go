@@ -1,0 +1,20 @@
+[package]
+name = "getrandom"
+version = "0.4.3"
+edition = "2021"
+description = "本地 patch：getrandom 的 wasm-unknown 去 wasm-bindgen 实现（anydoc-go 用，wasi/非 wasm 走原始实现）"
+
+[lib]
+path = "src/lib.rs"
+
+[features]
+std = []
+sys_rng = ["dep:rand_core"]
+wasm_js = []
+
+[dependencies]
+cfg-if = "1"
+
+[dependencies.rand_core]
+version = "0.10.0"
+optional = true

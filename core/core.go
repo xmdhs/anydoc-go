@@ -5,24 +5,28 @@ import (
 	"sync"
 	"sync/atomic"
 	"unsafe"
-	_ "github.com/xmdhs/anydoc-go/core/p1"
+	_ "github.com/xmdhs/anydoc-go/core/p5"
 	_ "embed"
 )
 
 func New() *base.Module {
 	m := &base.Module{}
-	m.Memory = make([]byte, 1310720, 1638400)
+	m.Memory = make([]byte, 3145728, 3932160)
 	m.MemMu = &sync.Mutex{}
 	m.MemSize = &atomic.Uint64{}
 	m.Threads = &base.ThreadPool{}
-	m.MemSize.Store(1310720)
+	m.MemSize.Store(3145728)
 	m.M = unsafe.Pointer(unsafe.SliceData(m.Memory))
 	m.MaxMem = 4294967296
-	m.T0 = make([]any, 147)
+	m.T0 = make([]any, 590)
 	m.G0 = int32(1048576)
-	InitElemSeg_0_0(m)
 	InitElemSeg_1_0(m)
-	m.DataEnd = 1293520
+	InitElemSeg_2_0(m)
+	InitElemSeg_3_0(m)
+	InitElemSeg_4_0(m)
+	InitElemSeg_5_0(m)
+	InitElemSeg_5_1(m)
+	m.DataEnd = 3124300
 	initData_0(m)
 	return m
 }
@@ -38,11 +42,15 @@ func NewWithMemory(memory []byte, memSize uint64) *base.Module {
 	m.MemSize.Store(memSize)
 	m.M = unsafe.Pointer(unsafe.SliceData(m.Memory))
 	m.MaxMem = uint64(len(memory))
-	m.T0 = make([]any, 147)
+	m.T0 = make([]any, 590)
 	m.G0 = int32(1048576)
-	InitElemSeg_0_0(m)
 	InitElemSeg_1_0(m)
-	m.DataEnd = 1293520
+	InitElemSeg_2_0(m)
+	InitElemSeg_3_0(m)
+	InitElemSeg_4_0(m)
+	InitElemSeg_5_0(m)
+	InitElemSeg_5_1(m)
+	m.DataEnd = 3124300
 	return m
 }
 func NewFromSnapshot(memory []byte, memSize uint64, globals []uint64) *base.Module {
@@ -57,16 +65,20 @@ func NewFromSnapshot(memory []byte, memSize uint64, globals []uint64) *base.Modu
 	m.MemSize.Store(memSize)
 	m.M = unsafe.Pointer(unsafe.SliceData(m.Memory))
 	m.MaxMem = uint64(len(memory))
-	m.T0 = make([]any, 147)
+	m.T0 = make([]any, 590)
 	m.G0 = int32(1048576)
-	InitElemSeg_0_0(m)
 	InitElemSeg_1_0(m)
-	m.DataEnd = 1293520
+	InitElemSeg_2_0(m)
+	InitElemSeg_3_0(m)
+	InitElemSeg_4_0(m)
+	InitElemSeg_5_0(m)
+	InitElemSeg_5_1(m)
+	m.DataEnd = 3124300
 	base.RestoreGlobals(m, globals)
 	return m
 }
 func initData_0(m *base.Module) {
-	copy(m.Memory[1048576:], wasm2goData_data_bin[0:244944])
+	copy(m.Memory[1048576:], wasm2goData_data_bin[0:2075724])
 }
 func AnydocAlloc(m *base.Module, l0 int32) int32 {
 	return Fn17(m, l0)
