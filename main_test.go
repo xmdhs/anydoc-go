@@ -4,7 +4,12 @@
 package main
 
 import (
+	"bytes"
+	"compress/zlib"
+	"encoding/binary"
 	"fmt"
+	"hash/crc32"
+	"io"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -279,13 +284,19 @@ func TestURLPathEscape(t *testing.T) {
 func TestPdfImageAssets(t *testing.T) {
 	conv := anydoc.NewConverter()
 	cases := []struct {
-		name string
+		name       string
 		wantAssets int
-		wantMedia map[string]bool
+		wantMedia  map[string]bool
+		wantDims   [][2]int  // per-asset width×height, 0 means skip
+		checkFirst [][3]byte // per-asset first pixel RGB (non-empty means check)
 	}{
-		{"pdf/with-text-image.pdf", 1, map[string]bool{"image/jpeg": true}},
-		{"pdf/scanned-image.pdf", 1, map[string]bool{"image/jpeg": true}},
-		{"pdf/multi-image.pdf", 2, map[string]bool{"image/jpeg": true, "image/png": true}},
+		{"pdf/with-text-image.pdf", 1, map[string]bool{"image/jpeg": true}, nil, nil},
+		{"pdf/scanned-image.pdf", 1, map[string]bool{"image/jpeg": true}, nil, nil},
+		{"pdf/multi-image.pdf", 2, map[string]bool{"image/jpeg": true, "image/png": true}, nil, nil},
+		{"pdf/ccitt-g4.pdf", 1, map[string]bool{"image/png": true}, [][2]int{{415, 314}}, nil},
+		{"pdf/jbig2-globals.pdf", 1, map[string]bool{"image/png": true}, [][2]int{{1747, 2554}}, nil},
+		{"pdf/indexed-rgb.pdf", 1, map[string]bool{"image/png": true}, [][2]int{{717, 717}}, nil},
+		{"pdf/cmyk-flate.pdf", 1, map[string]bool{"image/png": true}, [][2]int{{2, 2}}, [][3]byte{{0x00, 0xFF, 0xFF}}}, // cyan
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
@@ -308,8 +319,28 @@ func TestPdfImageAssets(t *testing.T) {
 				if a.MediaType == "image/jpeg" && (len(a.Bytes) < 2 || a.Bytes[0] != 0xFF || a.Bytes[1] != 0xD8) {
 					t.Errorf("jpeg asset %d missing SOI FF D8", a.ID)
 				}
-				if a.MediaType == "image/png" && (len(a.Bytes) < 4 || a.Bytes[0] != 0x89) {
-					t.Errorf("png asset %d missing PNG sig", a.ID)
+				if a.MediaType == "image/png" {
+					if len(a.Bytes) < 4 || a.Bytes[0] != 0x89 {
+						t.Errorf("png asset %d missing PNG sig", a.ID)
+					}
+					// Pixel correctness: decode PNG IHDR + IDAT, check dims and first pixel
+					if len(c.wantDims) > int(a.ID) && c.wantDims[a.ID][0] != 0 {
+						w, h, ct, raw := decodePngForTest(a.Bytes)
+						wantW, wantH := c.wantDims[a.ID][0], c.wantDims[a.ID][1]
+						if w != wantW || h != wantH {
+							t.Errorf("png asset %d dims %dx%d, want %dx%d", a.ID, w, h, wantW, wantH)
+						}
+						// Grayscale / RGB share first pixel checks
+						_ = raw
+						_ = ct
+					}
+					if len(c.checkFirst) > int(a.ID) && c.checkFirst[a.ID] != [3]byte{} {
+						_, _, _, raw := decodePngForTest(a.Bytes)
+						want := c.checkFirst[a.ID]
+						if len(raw) < 3 || raw[0] != want[0] || raw[1] != want[1] || raw[2] != want[2] {
+							t.Errorf("png asset %d first pixel got %02x %02x %02x, want %02x %02x %02x", a.ID, raw[0], raw[1], raw[2], want[0], want[1], want[2])
+						}
+					}
 				}
 			}
 			// Markdown must contain asset:// placeholders
@@ -334,6 +365,61 @@ func TestPdfImageAssets(t *testing.T) {
 			}
 		})
 	}
+}
+
+// decodePngForTest 解码本项目 encode_png 生成的极简 PNG（IHDR+IDAT(Zlib)+IEND，filter 0），返回宽高、colorType 与原始像素。
+func decodePngForTest(png []byte) (w, h int, colorType byte, raw []byte) {
+	if len(png) < 8 || string(png[:8]) != "\x89PNG\r\n\x1a\n" {
+		return 0, 0, 0, nil
+	}
+	pos := 8
+	var idat []byte
+	for pos+12 <= len(png) {
+		length := int(binary.BigEndian.Uint32(png[pos : pos+4]))
+		typ := string(png[pos+4 : pos+8])
+		data := png[pos+8 : pos+8+length]
+		wantCrc := binary.BigEndian.Uint32(png[pos+8+length : pos+12+length])
+		chunkHdr := png[pos+4 : pos+8+length]
+		if crc32.ChecksumIEEE(chunkHdr) != wantCrc {
+			break
+		}
+		if typ == "IHDR" && length >= 13 {
+			w = int(binary.BigEndian.Uint32(data[0:4]))
+			h = int(binary.BigEndian.Uint32(data[4:8]))
+			colorType = data[9]
+		} else if typ == "IDAT" {
+			idat = append(idat, data...)
+		}
+		pos += 12 + length
+	}
+	if len(idat) == 0 {
+		return w, h, colorType, nil
+	}
+	r := io.NopCloser(zlib.NewReader(bytes.NewReader(idat)))
+	defer func() { _ = r.Close() }()
+	inflated, err := io.ReadAll(r)
+	if err != nil {
+		return w, h, colorType, nil
+	}
+	// Each row: 1 filter byte (0) + channels*w bytes. Our encoder always uses filter 0.
+	channels := 1
+	switch colorType {
+	case 0:
+		channels = 1
+	case 2:
+		channels = 3
+	case 6:
+		channels = 4
+	}
+	raw = make([]byte, 0, w*h*channels)
+	for y := 0; y < h; y++ {
+		off := y * (w*channels + 1)
+		if off+w*channels+1 > len(inflated) {
+			break
+		}
+		raw = append(raw, inflated[off+1:off+1+w*channels]...)
+	}
+	return w, h, colorType, raw
 }
 
 func testMin(a, b int) int {

@@ -169,10 +169,10 @@ index 74a36e1..77bbb89 100644
          PdfError::Encrypted => ConvertError::Encrypted,
 diff --git a/src/formats/pdf_images.rs b/src/formats/pdf_images.rs
 new file mode 100644
-index 0000000..760b8bf
+index 0000000..3f09b40
 --- /dev/null
 +++ b/src/formats/pdf_images.rs
-@@ -0,0 +1,913 @@
+@@ -0,0 +1,1144 @@
 +//! PDF image extraction via lopdf.
 +//!
 +//! Scans all `Subtype == Image` streams in the document and produces
@@ -426,6 +426,185 @@ index 0000000..760b8bf
 +    String::new()
 +}
 +
++#[derive(Debug, Clone, Copy, PartialEq, Eq)]
++enum BaseKind { Gray, Rgb, Cmyk }
++
++struct IndexedInfo {
++    base: BaseKind,
++    hival: u8,
++    lookup: Vec<u8>,
++}
++
++fn base_components(base: BaseKind) -> usize {
++    match base { BaseKind::Gray => 1, BaseKind::Rgb => 3, BaseKind::Cmyk => 4 }
++}
++
++fn parse_base_name(name: &[u8]) -> Option<BaseKind> {
++    match name {
++        b"DeviceRGB" | b"RGB" => Some(BaseKind::Rgb),
++        b"DeviceGray" | b"Gray" | b"DeviceGrey" | b"Grey" => Some(BaseKind::Gray),
++        b"DeviceCMYK" | b"CMYK" => Some(BaseKind::Cmyk),
++        _ => None,
++    }
++}
++
++fn resolve_lookup_bytes(doc: &Document, obj: &Object) -> Option<Vec<u8>> {
++    let (_, resolved) = doc.dereference(obj).ok()?;
++    match resolved {
++        Object::String(s, _) => Some(s.clone()),
++        Object::Stream(s) => decoded_stream_bytes(s),
++        Object::Reference(id) => {
++            if let Ok(Object::Stream(s)) = doc.get_object(*id) {
++                return decoded_stream_bytes(s);
++            }
++            None
++        }
++        _ => {
++            // Fallback: obj itself may be Reference not dereferenced to String/Stream
++            if let Ok(oid) = obj.as_reference() {
++                if let Ok(Object::Stream(s)) = doc.get_object(oid) {
++                    return decoded_stream_bytes(s);
++                }
++                if let Ok(Object::String(ss2, _)) = doc.get_object(oid) {
++                    return Some(ss2.clone());
++                }
++            }
++            None
++        }
++    }
++}
++
++fn parse_indexed(doc: &Document, dict: &Dictionary) -> Option<IndexedInfo> {
++    let cs_obj = dict.get(b"ColorSpace").ok()?;
++    let (_, cs_resolved) = doc.dereference(cs_obj).ok()?;
++    let arr = match cs_resolved {
++        Object::Array(a) => a,
++        _ => return None,
++    };
++    if arr.len() < 4 { return None; }
++    let first = arr[0].as_name().ok()?;
++    if first != b"Indexed" { return None; }
++    // base: Name or Array
++    let base = match &arr[1] {
++        Object::Name(n) => parse_base_name(n).unwrap_or(BaseKind::Rgb),
++        Object::Array(base_arr) => {
++            if let Some(name_obj) = base_arr.first() {
++                if let Ok(name) = name_obj.as_name() {
++                    // ICCBased etc -> fallback to RGB with warn
++                    if name == b"ICCBased" || name == b"Lab" || name == b"Separation" || name == b"DeviceN" {
++                        log::warn!("Indexed base {:?} not fully supported, falling back to RGB", String::from_utf8_lossy(name));
++                        BaseKind::Rgb
++                    } else {
++                        parse_base_name(name).unwrap_or(BaseKind::Rgb)
++                    }
++                } else { BaseKind::Rgb }
++            } else { BaseKind::Rgb }
++        }
++        Object::Reference(id) => {
++            if let Ok(obj) = doc.get_object(*id) {
++                if let Ok(name) = obj.as_name() {
++                    parse_base_name(name).unwrap_or(BaseKind::Rgb)
++                } else { BaseKind::Rgb }
++            } else { BaseKind::Rgb }
++        }
++        _ => BaseKind::Rgb,
++    };
++    let hival = arr[2].as_i64().ok().and_then(|v| u8::try_from(v).ok()).unwrap_or(255);
++    let lookup_obj = &arr[3];
++    let mut lookup = resolve_lookup_bytes(doc, lookup_obj)?;
++    let comps = base_components(base);
++    let expected = (hival as usize + 1) * comps;
++    if lookup.len() < expected {
++        log::warn!("Indexed lookup truncated {} < expected {}, padding", lookup.len(), expected);
++        lookup.resize(expected, 0);
++    } else if lookup.len() > expected {
++        log::warn!("Indexed lookup oversized {} > expected {}, truncating", lookup.len(), expected);
++        lookup.truncate(expected);
++    }
++    if lookup.is_empty() { return None; }
++    Some(IndexedInfo { base, hival, lookup })
++}
++
++fn unpack_indices(data: &[u8], width: u32, height: u32, bpc: u32) -> Option<Vec<u8>> {
++    let w = width as usize;
++    let h = height as usize;
++    let total = w.checked_mul(h)?;
++    if bpc == 8 {
++        if data.len() < total { return None; }
++        return Some(data[..total].to_vec());
++    }
++    if bpc != 1 && bpc != 2 && bpc != 4 {
++        return None;
++    }
++    let row_bytes = (w * bpc as usize + 7) / 8;
++    if data.len() < row_bytes * h { return None; }
++    let mut out = Vec::with_capacity(total);
++    let mask: u32 = (1u32 << bpc) - 1;
++    for y in 0..h {
++        let row = &data[y * row_bytes..(y+1)*row_bytes];
++        let mut bit_pos = 0usize;
++        for _x in 0..w {
++            let byte_idx = bit_pos / 8;
++            let bit_off = bit_pos % 8;
++            // bits are MSB first
++            let shift = 8 - bit_off - bpc as usize;
++            let v = if byte_idx < row.len() {
++                ((row[byte_idx] as u32) >> shift) & mask
++            } else { 0 };
++            out.push(v as u8);
++            bit_pos += bpc as usize;
++        }
++    }
++    Some(out)
++}
++
++fn cmyk_to_rgb_naive(c: u8, m: u8, y: u8, k: u8) -> (u8, u8, u8) {
++    let cf = c as f32 / 255.0;
++    let mf = m as f32 / 255.0;
++    let yf = y as f32 / 255.0;
++    let kf = k as f32 / 255.0;
++    let r = ((1.0 - cf) * (1.0 - kf) * 255.0).round().clamp(0.0, 255.0) as u8;
++    let g = ((1.0 - mf) * (1.0 - kf) * 255.0).round().clamp(0.0, 255.0) as u8;
++    let b = ((1.0 - yf) * (1.0 - kf) * 255.0).round().clamp(0.0, 255.0) as u8;
++    (r, g, b)
++}
++
++fn lookup_to_rgb(indices: &[u8], info: &IndexedInfo, width: u32, height: u32) -> Option<Vec<u8>> {
++    let total = (width as usize) * (height as usize);
++    if indices.len() < total { return None; }
++    let comps = base_components(info.base);
++    // Already validated lookup len == (hival+1)*comps
++    let mut out = Vec::with_capacity(total * 3);
++    for i in 0..total {
++        let idx = (indices[i] as usize).min(info.hival as usize);
++        let off = idx * comps;
++        if off + comps > info.lookup.len() {
++            // clamp to 0
++            match info.base {
++                BaseKind::Gray => { let v = info.lookup[0]; out.extend_from_slice(&[v,v,v]); }
++                BaseKind::Rgb => out.extend_from_slice(&[0,0,0]),
++                BaseKind::Cmyk => out.extend_from_slice(&[0,0,0]),
++            }
++            continue;
++        }
++        match info.base {
++            BaseKind::Gray => {
++                let v = info.lookup[off];
++                out.extend_from_slice(&[v,v,v]);
++            }
++            BaseKind::Rgb => {
++                out.extend_from_slice(&info.lookup[off..off+3]);
++            }
++            BaseKind::Cmyk => {
++                let (r,g,b) = cmyk_to_rgb_naive(info.lookup[off], info.lookup[off+1], info.lookup[off+2], info.lookup[off+3]);
++                out.extend_from_slice(&[r,g,b]);
++            }
++        }
++    }
++    Some(out)
++}
++
++
 +/// Try to extract the JPEG/JP2 bytes for a DCT/JPX image by decoding only
 +/// the filters *before* the DCT/JPX one. For `[ASCII85, DCT]` this decodes
 +/// ASCII85 and returns the JPEG bytes.
@@ -579,8 +758,23 @@ index 0000000..760b8bf
 +            b"ASCII85Decode" | b"A85" => {
 +                data = decode_ascii85(&data).ok()?;
 +            }
++            b"FlateDecode" | b"Fl" => {
++                use flate2::read::ZlibDecoder;
++                use std::io::Read;
++                let mut dec = ZlibDecoder::new(data.as_slice());
++                let mut out = Vec::new();
++                if dec.read_to_end(&mut out).is_err() {
++                    log::warn!("Flate decode failed in stream");
++                    return None;
++                }
++                data = out;
++            }
++            b"LZWDecode" | b"LZW" => {
++                log::warn!("LZW not supported in stream");
++                return None;
++            }
 +            other => {
-+                log::warn!("unsupported filter {:?} in globals stream", String::from_utf8_lossy(other));
++                log::warn!("unsupported filter {:?} in stream", String::from_utf8_lossy(other));
 +                return None;
 +            }
 +        }
@@ -1004,11 +1198,48 @@ index 0000000..760b8bf
 +                    }
 +                }
 +                "Indexed" => {
-+                    log::warn!("pdf_images: Indexed ColorSpace for image {:?} skipped (MVP)", obj_id);
++                    // Try Indexed palette decode first
++                    if let Some(info) = parse_indexed(&doc, &stream.dict) {
++
++                        if bpc != 1 && bpc != 2 && bpc != 4 && bpc != 8 {
++                            log::warn!("pdf_images: Indexed BPC={} for image {:?} skipped", bpc, obj_id);
++                            continue;
++                        }
++                        if let Some(indices) = unpack_indices(&decompressed, width, height, bpc) {
++                            if let Some(rgb) = lookup_to_rgb(&indices, &info, width, height) {
++                                if let Some(png) = encode_png(width, height, &rgb, 3) {
++                                    out.push(RawImage { bytes: png, media_type: "image/png".to_string(), width, height });
++                                    continue;
++                                }
++                            }
++                        }
++                        log::warn!("pdf_images: Indexed decode failed for image {:?}", obj_id);
++                    } else {
++                        log::warn!("pdf_images: Indexed ColorSpace for image {:?} parse failed", obj_id);
++                    }
 +                    continue;
 +                }
 +                other if other.contains("CMYK") || other == "DeviceCMYK" => {
-+                    log::warn!("pdf_images: CMYK image {:?} skipped (MVP)", obj_id);
++                    if bpc != 8 {
++                        log::warn!("pdf_images: CMYK BPC={} for image {:?} skipped", bpc, obj_id);
++                        continue;
++                    }
++                    let expected = (width as usize) * (height as usize) * 4;
++                    if decompressed.len() < expected {
++                        log::warn!("pdf_images: CMYK image {:?} decompressed {} < expected {} truncated", obj_id, decompressed.len(), expected);
++                        continue;
++                    }
++                    let trimmed = &decompressed[..expected];
++                    let mut rgb = Vec::with_capacity((width as usize)*(height as usize)*3);
++                    for chunk in trimmed.chunks_exact(4) {
++                        let (r,g,b) = cmyk_to_rgb_naive(chunk[0], chunk[1], chunk[2], chunk[3]);
++                        rgb.extend_from_slice(&[r,g,b]);
++                    }
++                    if let Some(png) = encode_png(width, height, &rgb, 3) {
++                        out.push(RawImage { bytes: png, media_type: "image/png".to_string(), width, height });
++                    } else {
++                        log::warn!("pdf_images: CMYK encode_png failed for image {:?}", obj_id);
++                    }
 +                    continue;
 +                }
 +                other => {
