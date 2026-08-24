@@ -27,7 +27,7 @@ func New() *base.Module {
 	InitElemSeg_5_0(m)
 	InitElemSeg_5_1(m)
 	InitElemSeg_5_2(m)
-	m.DataEnd = 3146900
+	m.DataEnd = 3147052
 	initData_0(m)
 	return m
 }
@@ -52,7 +52,7 @@ func NewWithMemory(memory []byte, memSize uint64) *base.Module {
 	InitElemSeg_5_0(m)
 	InitElemSeg_5_1(m)
 	InitElemSeg_5_2(m)
-	m.DataEnd = 3146900
+	m.DataEnd = 3147052
 	return m
 }
 func NewFromSnapshot(memory []byte, memSize uint64, globals []uint64) *base.Module {
@@ -76,12 +76,12 @@ func NewFromSnapshot(memory []byte, memSize uint64, globals []uint64) *base.Modu
 	InitElemSeg_5_0(m)
 	InitElemSeg_5_1(m)
 	InitElemSeg_5_2(m)
-	m.DataEnd = 3146900
+	m.DataEnd = 3147052
 	base.RestoreGlobals(m, globals)
 	return m
 }
 func initData_0(m *base.Module) {
-	copy(m.Memory[1048576:], wasm2goData_data_bin[0:2098324])
+	copy(m.Memory[1048576:], wasm2goData_data_bin[0:2098476])
 }
 func AnydocAlloc(m *base.Module, l0 int32) int32 {
 	return Fn17(m, l0)
