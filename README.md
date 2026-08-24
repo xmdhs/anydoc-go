@@ -1,210 +1,55 @@
-# anydoc-go: anydoc via goccy/wasm2go + a Go CLI
+# anydoc-go
 
-anydoc（Rust 文档→Markdown 库）的 C-ABI wasm 用 [goccy/wasm2go] 的 `-pure`
-模式编译成纯 Go 源码，再由一个 Go CLI 把任意文档
-（docx/pptx/xlsx/ods/odp/epub/doc/odt/rtf/csv；pdf 被 stub 剔除，见
-「架构」）转成 GitHub-Flavored Markdown。
+把常见文档（docx / pptx / xlsx / csv / odt / rtf / epub / html，以及伪装成 `.doc` 的 Word HTML）转成 GitHub-Flavored Markdown。基于 [firecrawl/anydoc]（Rust）与 [JohannesKaufmann/html-to-markdown]（Go），以纯 Go 方式分发，无需本地工具链。
 
-独立仓库：第三方代码只放在 `third-party/`（不提交），其余全部自足。
-
-```
-cabi/            Rust cdylib：C ABI 导出 anydoc 核心库（避开 wasm-bindgen JS 依赖）
-core/            goccy-wasm2go -pure 生成产物（core.go + base/ + p0/ + p1/ + data.bin，
-                 随仓库提交；纯 Go，无 asm bundle）
-third-party/     build.sh fetch 拉取的第三方仓库：anydoc、goccy-wasm2go（git 工作树）
-patches/         本地 crate 替换：web-time（去 wasm-bindgen 依赖）、pdf-inspector stub
-tools/           辅助脚本（split_gen.py 已不再使用——goccy 自带多包拆分）
-bin/             goccy-wasm2go 翻译器 + 最终 anydoc 二进制
-target/          cargo 编译目录（.gitignore 排除）
-testdata/        单元测试样本（fixtures/ 复制自 anydoc + expected/ 快照期望）
-main.go          唯一手写 Go 入口（package main）
-build.sh         构建管线：fetch / wasm / cli / test / build
-```
-
-## 架构
-
-```
-main.go + cabi/src/lib.rs
-   ├── anydoc_alloc(size) -> ptr        （8 字节对齐分配，Rust 全局分配器）
-   ├── anydoc_free(ptr, size)
-   └── anydoc_to_markdown(input,len, fmt,fmt_len, out_len,out_code) -> ptr
-        fmt==NULL/len==0 自动检测；CSV 无签名必须显式 -f
-        out_code: 0=成功 / 1 unsupported / 2 malformed / 3 encrypted /
-                  4 resourceLimit / 5 missingPart / 6 io / 7 other
-        success → 返回 Markdown UTF-8；失败 → 错误消息；anydoc_free 释放
-        │ cargo build --release --target wasm32-unknown-unknown（zig cc 提供宿主链接器）
-        ▼
-anydoc_cabi.wasm（≈1.7MB；pdf-inspector 被本地 stub patch 剔除）
-        │ goccy-wasm2go -pure -pkg core -import github.com/xmdhs/anydoc-go/core -out-dir core
-        ▼
-core/core.go + base/ + p0/ + p1/ + data.bin（≈25MB，纯 Go）
-        │ go build -p 2 -trimpath -ldflags="-s -w"
-        ▼
-bin/anydoc（≈8MB static ELF）
-```
-
-- **SIMD 显式关闭**：`wasm_step` 用 `RUSTFLAGS="-C target-feature=-simd128"`。
-  文档转换是标量/字符串/XML/zlib 主导，实测 SIMD 开启反而慢 3-4 倍（见
-  「工具链对比」），goccy 虽支持 SIMD wasm 但本负载用不上。
-- **无 wasm-bindgen 残留**：pdf 剔除（见下）把依赖树里的 web-time/getrandom
-  一并带走了，`core.New()` 无宿主接口参数，wasm 是纯 anydoc 导出。
-- **PDF 被 stub 剔除**（重要）：anydoc 新版把 pdf-inspector 移入普通依赖
-  （非 optional feature），`default-features = false` 裁不掉。cabi 用
-  `[patch.crates-io]` 把它替换为本地 stub（patches/pdf-inspector，85 行），
-  依赖闭包 129 个 crate 全部消失：wasm 7.2→1.7MB、纯 Go 生成物约 25MB
-  中 pdf 相关代码为零。pdf 输入报 unsupported（"no extractable text"）。
-  stub 接口即 anydoc 用到的 `PdfError`/`process_pdf_mem`/`PdfProcessResult`
-  （map_error 穷尽匹配，接口漂移会编译失败提醒）。恢复 pdf：删掉
-  cabi/Cargo.toml 里的 patch 行并重建即可。
-
-## 构建
-
-C 工具链：本机用 zig（`.zig/bin/cc` 是 `zig cc` 的 wrapper，作为 rustc
-的宿主链接器——本机没有 gcc/clang）。有系统 cc 的环境直接用系统工具链，
-无需 zig。goccy 的 `-pure` 翻译不生成 asm bundle 和架构 build tags，
-只需 `GOCACHE`/`GOPATH` 可写（build.sh 已默认指到项目内缓存）。
+## 安装与构建
 
 ```bash
-./build.sh fetch    # 首次 & 更新：拉取第三方仓库并应用本地 patch
-                    #   anydoc 默认锁定已验证 tag（v0.1.8，见 ANYDOC_REF）；goccy 固定已验证 revision
-./build.sh wasm     # cargo → anydoc_cabi.wasm（-simd128）
-./build.sh cli      # goccy-wasm2go -pure → core/ → go build（仅 wasm 变更后重跑）
-./build.sh test     # 单元测试（见「验证」）
-./build.sh build    # wasm + cli 全流程（默认）
+go build -o bin/anydoc .                 # 纯 Go 构建（日常改 lib/main.go 足够）
+./build.sh fetch && ./build.sh build     # 完整管线：拉第三方 → wasm → 纯 Go 生成物（core/）
 ```
 
-注意：`core/` 随仓库提交，日常改 `main.go`/`lib` 只跑 `go build` 即可，
-无需重新翻译。`third-party/` 不入库，`build.sh fetch` 会应用 `patches/`
-中的 anydoc patch。生成输入 wasm 位于 `target/`，不提交；main
-上影响生成结果的提交会由 `.github/workflows/generate-core.yml` 重新执行
-wasm→纯 Go 全流程并把完整 `core/` 提交回仓库。
-
-## 工具链对比：与原生静态库
-
-除 wasm→Go（goccy）路线外，还有一条原生路线：cabi 直接编成宿主静态库
-（`target-static/release/libanydoc_cabi.a`，导出同一套 C ABI），由 Go 用 cgo
-链接（`CC=zig cc`，需 `-lunwind -lm`）。本机（AMD GX-215JJ，2 核）中位耗时
-（ms）对比：
-
-| 输入 | goccy（本仓库） | native 静态库 |
-| --- | ---: | ---: |
-| book.epub | 1.17 | 1.08 |
-| pres.pptx | 3.36 | 3.22 |
-| sheet.ods | 1.71 | 1.51 |
-| text.docx | 4.65 | 3.74 |
-| sheet.csv | 0.54 | 0.39 |
-| 2MB CSV | 321 | 371 |
-
-结论：
-
-- **小样本（zip/XML/zlib 主导）native 比 goccy 再快约 8-25%**；**大 CSV 相反，
-  goccy 快 16%**（flat 数据无 XML 开销时，cgo 跨语言边界与每次调用重复拷贝
-  的代价占了上风）。
-- 但 native 路线代价大：最终二进制**动态链接 glibc**、依赖 cgo/zig 工具链、
-  `libanydoc_cabi.a` 用 `panic=unwind` 宿主配置编（还要链 unwind 库）、且无
-  长驻实例复用。本仓库选 goccy：**全静态、纯 Go 构建、行为与快照逐字节一致**。
-- 相对上一代 ncruces 纯 Go 翻译：goccy 路线历史实测快约 1.6-2×、最终二进制
-  12.5→8.4MB；当前使用 `-pure` 后生成物约 25MB，且不包含 asm bundle。SIMD
-  已显式关闭（`wasm_step` 的 `-C target-feature=-simd128`）：文档转换是标量/
-  字符串主导，实测 SIMD 开启反而慢 3-4 倍。
-
-## 用法
+## 用法（CLI）
 
 ```bash
-bin/anydoc report.docx              # → 同目录 report.docx.md（默认）
-bin/anydoc "docs/*.docx" "*.csv"    # glob 批量（模式含 * 时用引号包裹）
-bin/anydoc -s report.docx           # 输出到 stdout（可多个输入）
-bin/anydoc -o out.md report.docx    # 指定单个输出文件
-bin/anydoc -o - a.docx              # 与 -s 等价
-bin/anydoc -f docx weird.bin          # 强制定制解析
-bin/anydoc --imgs "docs/*.docx"        # 顺带导出内嵌图片到 imgs/
+bin/anydoc report.docx                   # → report.docx.md（同目录）
+bin/anydoc "docs/*.docx" "*.csv"         # glob 批量（模式含 * 时加引号）
+bin/anydoc -s report.docx                # 输出到 stdout（可多个输入）
+bin/anydoc -o out.md report.docx         # 指定单个输出文件
+bin/anydoc -o - report.docx              # 与 -s 等价
+bin/anydoc -f docx odd.bin               # 按扩展名强制定格式
+bin/anydoc --imgs "docs/*.docx"          # 导出内嵌图片到 imgs/
 ```
 
-**内嵌图片**（docx/pptx 等容器内的图片字节不会出现在 markdown 里——本地
-patch 渲染为 `![alt](asset://<id>)` 占位，`<id>` 即资产下标）：
-- **默认不导出**：md 里保留 `asset://` 占位；
-- `--imgs`：以 `<stem>-<id>.<ext>` 写入 md 输出旁的 `imgs/`，md 引用替换为
-  相对 `imgs/` 路径。默认输出（`<input>.md` 同目录）与 `-o out.md`：
-  `imgs/` 位于 md 文件所在目录，引用始终成立；`-s`（stdout）没有输出位置
-  基准，资产落在输入目录的 `imgs/`，引用按输入目录相对路径计算；
-- 各输入独立目录无跨输入覆盖，重复转换幂等；扩展名由 media type 派生，
-  其余一律 `bin`。
-- 库 API 对应 `Converter.ExtractAssets`（返回 `ID/MediaType/Bytes`）与合并
-  解析 `Converter.ConvertWithAssets`；两者 id 语义一致。
+**格式识别**：`-f` 显式 > 内容自动检测 > 路径扩展名兜底。`html`/`htm` 或内容形如 `<!doctype html` / `<html` 时走 HTML 分支（Word 导出的伪装 `.doc` 自动识别，`gb2312/GBK` 自动转 UTF-8）。
 
-格式识别优先级：`-f` 显式 > 文件内容自动检测 > **路径扩展名兜底**（CSV 等
-无签名格式直接转换，无需再传 `-f`）。字节流 API（`ConvertBytes`）没有路径
-概念，仍需显式格式。
+**图片导出**（docx/pptx 等）：默认 `![alt](asset://<id>)` 占位；`--imgs` 将资产写入 `imgs/<stem>-<id>.<ext>` 并重写为相对路径。`lib/` 对应 `ExtractAssets` / `ConvertWithAssets`（同一次解析，`asset://` 与 `Assets[id]` 一一对应）。
 
-## Go 库
-
-`lib/`（包名 `anydoc`）封装转换核心。**Converter 非线程安全**——同一实例
-同一时间只能被一个 goroutine 使用（wasm 模块是共享线性内存/栈指针的单例）；
-并发转换用每 goroutine 独立实例（内存各自独立，天然并行）：
+## 用法（Go 库）
 
 ```go
-import (
-    "fmt"
-    "log"
+import lib "github.com/xmdhs/anydoc-go/lib"
 
-    lib "github.com/xmdhs/anydoc-go/lib"
-)
-
-conv := lib.NewConverter() // 创建成本约 1ms 级，长期复用
-
-md, err := conv.ConvertFile("report.docx", "") // 自动检测格式
+conv := lib.NewConverter()                      // 每个实例非线程安全；并发请每 goroutine 一个
+md, err := conv.ConvertFile("report.docx", "")  // 自动检测（html 伪装 doc 也可）
 md, err = conv.ConvertBytes(data, "csv")        // 无签名格式需显式扩展名
-err = conv.ConvertFileTo("a.docx", "", "a.md")  // 或直接写出 md
+_ = conv.ConvertFileTo("a.docx", "", "a.md")    // 便捷写出
 
-if cerr, ok := err.(*lib.ConvertError); ok {
-    log.Fatalf("%s: %s", cerr.Code, cerr.Msg) // Code: unsupported/malformed/...
+if cerr, ok := err.(*lib.ConvertError); ok {    // Code: unsupported / malformed / encrypted / ...
+    // 处理
 }
 
-// 并发：每 goroutine 一个实例
-md, err = func() (string, error) {
-    c := lib.NewConverter()
-    defer ... // 无资源释放，忽略也可
-    return c.ConvertFile("report.docx", "")
-}()
+// 合并解析（一次得到 Markdown + 资产，CLI --imgs 即用此路径）
+res, _ := conv.ConvertWithAssets(data, "")
+_ = res.Markdown
+_ = res.Assets // []Asset{ID, MediaType, Bytes}
 ```
-
-导入路径为 `github.com/xmdhs/anydoc-go`，可直接从仓库导入。
-
-**资产合并解析**：`Converter.ConvertWithAssets`/`ConvertFileWithAssets`
-**一次解析**同时拿到 Markdown 与资产（core 常驻 wasm 的 `anydoc_convert`
-合并导出，同一 `Document` 同源，`asset://<id>` 与 `Assets[id].ID` 一一对应，
-避免第二次 wasm 解析，CLI 的 `--imgs` 即走此路径）。`asset://<id>` 占位以
-**顺序消费**方式替换为 `imgs/...`，占位 ID 不在提取结果中时**显式报错**
-（不做全文正则扫描）。`Converter.ExtractAssets` 保留以独立提取资产。
 
 ## 验证
 
-单元测试（`./build.sh test`，标准 go test）：
+```bash
+./build.sh test   # go test ./...（含 26 个伪装 HTML 样本的回归）
+```
 
-- **TestConvertMatchesExpected**：6 种格式（docx/csv/doc/pptx/epub/ods）用
-  third-party/anydoc 的样本（testdata/fixtures/）转换，与快照期望
-  （testdata/expected/，`tools/gen_expected.py` 从 anydoc 的 insta 快照生成，
-  **例外**：含内嵌图片的样例在本地 patch 下多出 `asset://` 占位，
-  与官方快照不同，已手工更新 docx/doc/epub 三个文件）逐字节比对；
-- **TestExtractAssets**：手工构造的 in-image.docx（1×1 PNG）→ markdown
-  含 `asset://0` 占位、`ExtractAssets` 取回原始 PNG 字节；CLI 集成用例
-  验证 `--imgs` 落盘 + 引用重写；
-- **TestReuseModuleIsStateless**：同一模块连续转换结果一致；
-- **TestErrors**：encrypted / malformed / 未识别格式 / CSV 需要 -f /
-  PDF 报 unsupported（stub 剔除后不解析）。
-
-新增格式样本：`cp third-party/anydoc/tests/fixtures/<fmt>/*.xxx testdata/fixtures/<fmt>/`
-并跑 `python3 tools/gen_expected.py third-party/anydoc/tests/snapshots testdata/expected`。
-
-## 已知限制
-
-- panic = "abort"（wasm 内部崩溃直接终止进程）；
-- 运行期线性内存 1.25MB 起、可 grow，单次 docx 转换约 4-5ms（goccy AOT）；
-- PDF 不解析（stub 剔除，报 unsupported），见「架构」；
-- 生成物接口以 `core` 包为准：导出为顶层 `core.New()`/`core.Memory(m)`/
-  `core.Anydoc*` 函数，模块类型是 `core/base.Module`。lib 依赖这些名字，
-  不要手工注释或改名（编译即校验）；
-- `cli` 步骤（goccy 翻译）耗时长，core/ 已随仓库提交，日常构建无需重跑。
-
-[goccy/wasm2go]: https://github.com/goccy/wasm2go
-[ncruces/wasm2go]: https://github.com/ncruces/wasm2go
+[firecrawl/anydoc]: https://github.com/firecrawl/anydoc
+[JohannesKaufmann/html-to-markdown]: https://github.com/JohannesKaufmann/html-to-markdown

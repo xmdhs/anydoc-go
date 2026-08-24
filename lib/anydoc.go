@@ -79,34 +79,68 @@ var errOutOfMemory = errors.New("out of memory")
 
 // ConvertBytes 把内存中的文档字节流转为 Markdown。非线程安全。
 // format 为扩展名（"docx"、"csv"、…，可带点），空串自动从内容检测；
-// 无签名格式（CSV）必须显式给出。
+// 无签名格式（CSV）必须显式给出。HTML（含伪装成 .doc 的 Word 导出 HTML）
+// 走纯 Go 的 html-to-markdown 分支（GFM：表格、删除线）。
 func (c *Converter) ConvertBytes(data []byte, format string) (string, error) {
-	return c.convert(data, strings.TrimPrefix(format, "."))
+	ext := strings.TrimPrefix(format, ".")
+	if isHTMLFormat(ext) {
+		return htmlToMarkdown(data)
+	}
+	if ext == "" && isHTMLData(data) {
+		return htmlToMarkdown(data)
+	}
+	// 显式 doc 但内容实为 HTML 时，视为 HTML（兼容 /mnt/hdd/docs 样本）。
+	if strings.EqualFold(ext, "doc") && isHTMLData(data) {
+		return htmlToMarkdown(data)
+	}
+	return c.convert(data, ext)
 }
 
 // ConvertFile 读取文件并转换为 Markdown。非线程安全。
 //
 // format 为空时先按文件内容自动检测；检测不出来的无签名格式（CSV）会
 // 用路径扩展名兜底（与 anydoc 核心库 to_markdown(path) 的行为一致）；
-// format 非空时直接按该扩展名解析。
+// format 非空时直接按该扩展名解析。HTML（含伪装成 .doc 的 Word 导出 HTML）
+// 与 .html/.htm 显式格式走纯 Go 的 html-to-markdown 分支（GFM：表格、删除线）。
 func (c *Converter) ConvertFile(path, format string) (string, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return "", err
 	}
-	if format == "" {
-		md, err := c.convert(data, "")
-		if err != nil {
-			// 内容检测不出（如 CSV），回退到文件扩展名。
-			if ext := strings.TrimPrefix(filepath.Ext(path), "."); ext != "" {
-				if md2, err2 := c.convert(data, ext); err2 == nil {
+	ext := strings.TrimPrefix(format, ".")
+	if ext != "" {
+		if isHTMLFormat(ext) {
+			return htmlToMarkdown(data)
+		}
+		if strings.EqualFold(ext, "doc") && isHTMLData(data) {
+			return htmlToMarkdown(data)
+		}
+		return c.convert(data, ext)
+	}
+	// 未指定格式：先看内容是否像 HTML（含假 .doc），再走原 wasm 路径。
+	if isHTMLData(data) {
+		return htmlToMarkdown(data)
+	}
+	md, err := c.convert(data, "")
+	if err != nil {
+		// 内容检测不出（如 CSV / 伪装 HTML 未被上分支捕获），回退到文件扩展名。
+		if fileExt := strings.TrimPrefix(filepath.Ext(path), "."); fileExt != "" {
+			if isHTMLFormat(fileExt) {
+				if md2, err2 := htmlToMarkdown(data); err2 == nil {
 					return md2, nil
 				}
 			}
+			if strings.EqualFold(fileExt, "doc") && isHTMLData(data) {
+				if md2, err2 := htmlToMarkdown(data); err2 == nil {
+					return md2, nil
+				}
+			}
+			if md2, err2 := c.convert(data, fileExt); err2 == nil {
+				return md2, nil
+			}
 		}
-		return md, err
 	}
-	return c.convert(data, strings.TrimPrefix(format, "."))
+	return md, err
 }
 
 // Asset 是文档内嵌的二进制资产（图片、嵌入对象），对应渲染占位符
@@ -120,7 +154,12 @@ type Asset struct {
 // ExtractAssets 解析文档并返回内嵌资产（字节原样保留）。与 ConvertBytes
 // 同一输入协议；markdown 里的图片以 `![alt](asset://<ID>)` 占位，用返回
 // 的 ID/MediaType/Bytes 落盘后可自行替换引用。非线程安全（同 Converter）。
+// HTML 分支无内嵌资产概念（图片为外链），返回空切片。
 func (c *Converter) ExtractAssets(data []byte, format string) ([]Asset, error) {
+	ext := strings.TrimPrefix(strings.TrimSpace(format), ".")
+	if isHTMLFormat(ext) || (ext == "" && isHTMLData(data)) || (strings.EqualFold(ext, "doc") && isHTMLData(data)) {
+		return []Asset{}, nil
+	}
 	mdl := c.mdl
 	if mdl == nil {
 		return nil, errors.New("converter not initialized")

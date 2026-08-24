@@ -27,30 +27,87 @@ type ConvertResult struct {
 
 // ConvertWithAssets 把字节流转为 Markdown 并返回内嵌资产（一次 wasm 调用，
 // 单次解析）。format 为扩展名，空串自动从内容检测；无签名格式（CSV）须显式。
-// 非线程安全（同 Converter）。
+// HTML（含伪装成 .doc 的 Word 导出 HTML）走纯 Go 的 html-to-markdown 分支
+// （GFM：表格、删除线），此时 Assets 为空（HTML 图像为外链，非内嵌资产）。
+// 非线程安全（同 Converter；HTML 分支内部用全局转换器，本身并发安全）。
 func (c *Converter) ConvertWithAssets(data []byte, format string) (*ConvertResult, error) {
-	return c.convertWithAssets(data, strings.TrimPrefix(format, "."))
+	ext := strings.TrimPrefix(format, ".")
+	if isHTMLFormat(ext) {
+		md, err := htmlToMarkdown(data)
+		if err != nil {
+			return nil, err
+		}
+		return &ConvertResult{Markdown: md}, nil
+	}
+	if ext == "" && isHTMLData(data) {
+		md, err := htmlToMarkdown(data)
+		if err != nil {
+			return nil, err
+		}
+		return &ConvertResult{Markdown: md}, nil
+	}
+	if strings.EqualFold(ext, "doc") && isHTMLData(data) {
+		md, err := htmlToMarkdown(data)
+		if err != nil {
+			return nil, err
+		}
+		return &ConvertResult{Markdown: md}, nil
+	}
+	return c.convertWithAssets(data, ext)
 }
 
 // ConvertFileWithAssets 读取文件并合并转换；format 空时先内容自动检测，
 // 检测不出（如 CSV）回退到路径扩展名（与 ConvertFile 的兜底一致）。
+// HTML（含伪装成 .doc 的 Word 导出 HTML）与 .html/.htm 走纯 Go 分支，Assets 为空。
 func (c *Converter) ConvertFileWithAssets(path, format string) (*ConvertResult, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
-	if format == "" {
-		res, err := c.convertWithAssets(data, "")
+	ext := strings.TrimPrefix(format, ".")
+	if ext != "" {
+		if isHTMLFormat(ext) {
+			md, err := htmlToMarkdown(data)
+			if err != nil {
+				return nil, err
+			}
+			return &ConvertResult{Markdown: md}, nil
+		}
+		if strings.EqualFold(ext, "doc") && isHTMLData(data) {
+			md, err := htmlToMarkdown(data)
+			if err != nil {
+				return nil, err
+			}
+			return &ConvertResult{Markdown: md}, nil
+		}
+		return c.convertWithAssets(data, ext)
+	}
+	if isHTMLData(data) {
+		md, err := htmlToMarkdown(data)
 		if err != nil {
-			if ext := strings.TrimPrefix(filepath.Ext(path), "."); ext != "" {
-				if res2, err2 := c.convertWithAssets(data, ext); err2 == nil {
-					return res2, nil
+			return nil, err
+		}
+		return &ConvertResult{Markdown: md}, nil
+	}
+	res, err := c.convertWithAssets(data, "")
+	if err != nil {
+		if fileExt := strings.TrimPrefix(filepath.Ext(path), "."); fileExt != "" {
+			if isHTMLFormat(fileExt) {
+				if md2, err2 := htmlToMarkdown(data); err2 == nil {
+					return &ConvertResult{Markdown: md2}, nil
 				}
 			}
+			if strings.EqualFold(fileExt, "doc") && isHTMLData(data) {
+				if md2, err2 := htmlToMarkdown(data); err2 == nil {
+					return &ConvertResult{Markdown: md2}, nil
+				}
+			}
+			if res2, err2 := c.convertWithAssets(data, fileExt); err2 == nil {
+				return res2, nil
+			}
 		}
-		return res, err
 	}
-	return c.convertWithAssets(data, strings.TrimPrefix(format, "."))
+	return res, err
 }
 
 // convertWithAssets 调用 anydoc_convert，一次解析同时读取 Markdown 长度与
