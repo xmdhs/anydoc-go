@@ -395,7 +395,11 @@ func decodePngForTest(png []byte) (w, h int, colorType byte, raw []byte) {
 	if len(idat) == 0 {
 		return w, h, colorType, nil
 	}
-	r := io.NopCloser(zlib.NewReader(bytes.NewReader(idat)))
+	zr, err := zlib.NewReader(bytes.NewReader(idat))
+	if err != nil {
+		return w, h, colorType, nil
+	}
+	r := io.NopCloser(zr)
 	defer func() { _ = r.Close() }()
 	inflated, err := io.ReadAll(r)
 	if err != nil {
