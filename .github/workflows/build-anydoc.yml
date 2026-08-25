@@ -28,10 +28,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      # build.sh 默认把工具链缓存放在仓库根（.rustup/.cargo/target/…）；
-      # CI 上改用 runner 的 home，避免污染工作区并方便 actions/cache。
       RUSTUP_HOME: /home/runner/.rustup
       CARGO_HOME: /home/runner/.cargo
+      # build.sh 默认将 GOCACHE/GOPATH 指向仓库根的 .go-cache/.gopath
+      # （见 .gitignore，属本地临时目录）；CI 改用 runner 标准缓存位置，
+      # 配合 actions/setup-go 的 cache 命中.
+      GOCACHE: /home/runner/.cache/go-build
+      GOPATH: /home/runner/go
       # 与 generate-core.yml 同锁 anydoc 版本：patches/（pdf-inspector stub
       # 版本号、源码 patch）只对 v0.1.8 验证过，build.sh 默认值与此一致。
       ANYDOC_REF: v0.2.3
@@ -43,6 +46,7 @@ jobs:
         uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
+          cache: true
 
       - name: Setup Rust (wasm32 target)
         uses: dtolnay/rust-toolchain@v1
@@ -53,14 +57,12 @@ jobs:
       # 注：zig 只为无 C 编译器的环境准备（见 build.sh/README 本机约束）；
       # ubuntu runner 自带 gcc，直接作为 rustc 的 cc。
 
-      - name: Cache cargo, Go, and generator artifacts
+      - name: Cache cargo and generator artifacts
         uses: actions/cache@v6
         with:
           path: |
             /home/runner/.cargo
             target/
-            .go-cache/
-            .gopath/
           key: anydoc-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('cabi/Cargo.lock', 'go.mod', 'build.sh', 'patches/*.patch') }}
           restore-keys: |
             anydoc-build-${{ runner.os }}-${{ runner.arch }}-
@@ -127,16 +129,7 @@ jobs:
         uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
-
-      - name: Cache Go modules
-        uses: actions/cache@v6
-        with:
-          path: |
-            .go-cache/
-            .gopath/
-          key: anydoc-go-${{ runner.os }}-${{ hashFiles('go.mod') }}
-          restore-keys: |
-            anydoc-go-${{ runner.os }}-
+          cache: true
 
       - name: Build binary
         run: |
