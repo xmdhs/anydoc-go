@@ -92,13 +92,11 @@ jobs:
 
   # core 是纯 Go + 嵌入式 wasm 数据（无 cgo），Linux runner 上即可
   # 交叉编译全部平台，无宿主 asm 或 GOAMD64 要求。
-  # 改为 matrix 并行：单机只编译 1 个架构，避免串行 6 次 go build
-  # 打满 ubuntu-latest 资源触发 exit 143 / shutdown signal。
   cross-build:
     name: Build ${{ matrix.goos }}-${{ matrix.goarch }}
     needs: build-and-test
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
@@ -106,21 +104,27 @@ jobs:
           - goos: linux
             goarch: amd64
             ext: ""
+            runner: ubuntu-latest
           - goos: linux
             goarch: arm64
             ext: ""
+            runner: ubuntu-24.04-arm
           - goos: windows
             goarch: amd64
             ext: ".exe"
+            runner: ubuntu-latest
           - goos: windows
             goarch: arm64
             ext: ".exe"
+            runner: ubuntu-24.04-arm
           - goos: darwin
             goarch: amd64
             ext: ""
+            runner: ubuntu-latest
           - goos: darwin
             goarch: arm64
             ext: ""
+            runner: ubuntu-24.04-arm
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -137,7 +141,7 @@ jobs:
           # 默认构建即合并解析路径（core 常驻 AnydocConvert），发布产物与
           # ./build.sh test 验证的是同一代码路径。
           CGO_ENABLED=0 GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build \
-            -trimpath -ldflags="-s -w" -o "anydoc-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}" .
+            -p 1 -trimpath -ldflags="-s -w" -o "anydoc-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}" .
           file "anydoc-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}"
           ls -lh "anydoc-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.ext }}"
 
