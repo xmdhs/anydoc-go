@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
+      attestations: write
     env:
       RUSTUP_HOME: /home/runner/.rustup
       CARGO_HOME: /home/runner/.cargo
@@ -104,6 +106,11 @@ jobs:
         run: |
           ./bin/anydoc -s testdata/fixtures/docx/text.docx > /tmp/smoke.md
           diff /tmp/smoke.md testdata/expected/docx/text.md
+
+      - name: Attest generated Go core
+        uses: actions/attest@v4
+        with:
+          subject-path: 'core/**'
 
       - name: Upload regenerated core
         uses: actions/upload-artifact@v7
