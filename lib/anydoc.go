@@ -9,7 +9,7 @@
 //
 // format 传空字符串表示从内容自动检测；CSV 等无签名格式必须显式命名。
 // 转换错误是 *ConvertError，带有稳定的 Code（"unsupported"、"malformed"、
-// "encrypted"、"resourceLimit"、"missingPart"、"io"、"other"）。
+// "encrypted"、"resourceLimit"、"missingPart"、"io"、"needsOcr"、"other"）。
 package anydoc
 
 import (
@@ -50,6 +50,8 @@ func codeName(code uint32) string {
 		return "missingPart"
 	case 6:
 		return "io"
+	case 8:
+		return "needsOcr"
 	default:
 		return "other"
 	}

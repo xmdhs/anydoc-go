@@ -1,5 +1,5 @@
 diff --git a/Cargo.toml b/Cargo.toml
-index 5cee478..c091eb6 100644
+index 2a334b7..c5127e2 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -25,6 +25,9 @@ sha2 = "0.11"
@@ -38,18 +38,18 @@ index d570b26..45fd62e 100644
      }
  }
 diff --git a/src/formats/pdf.rs b/src/formats/pdf.rs
-index 74a36e1..77bbb89 100644
+index 7bc7de2..4eca8b2 100644
 --- a/src/formats/pdf.rs
 +++ b/src/formats/pdf.rs
-@@ -1,17 +1,24 @@
+@@ -1,44 +1,155 @@
 -//! PDF via [pdf-inspector]: classification plus direct Markdown extraction.
 +//! PDF via [pdf-inspector] (text) + lopdf (image extraction).
  //!
 -//! Unlike the other frontends, pdf-inspector emits Markdown itself, so PDFs
--//! bypass the document model and the shared GFM writer. Scanned and
--//! image-only PDFs need OCR, which is out of scope here; they error as
--//! unsupported. Pages flagged for OCR in an otherwise text-based document
--//! degrade with a log, consistent with the crate-wide recovery policy.
+-//! bypass the document model and the shared GFM writer. OCR is out of scope
+-//! here: a document with scanned or image-only pages errors naming them,
+-//! whether that is every page or one of a hundred, because output missing
+-//! those pages would read as complete.
 +//! Text is extracted via `pdf-inspector::process_pdf_mem`.  Images are
 +//! extracted via the local `pdf_images` helper which scans `lopdf`
 +//! `Subtype == Image` streams.  When there is no extractable text but
@@ -57,23 +57,40 @@ index 74a36e1..77bbb89 100644
 +//! `--imgs` can emit the bytes (scanned-image case).
  //!
  //! [pdf-inspector]: https://github.com/firecrawl/pdf-inspector
- 
+
  use crate::error::ConvertError;
 +use crate::model::{Asset, Block, Document, ImageSource, Inline};
 +use crate::shared::assets::AssetSink;
  use pdf_inspector::PdfError;
- 
+
 -pub fn to_markdown(bytes: &[u8]) -> Result<String, ConvertError> {
 +/// Extract markdown text (may be `None` when OCR is required) without
 +/// converting to `Err` - the caller decides how to handle image-only PDFs.
 +/// When `process_pdf_mem` classifies as ImageBased/Scanned and returns
 +/// `markdown: None` but text is still extractable via the raw extractor, we
 +/// fall back to that so that `with-text-image` fixtures keep their text.
-+fn extract_text(bytes: &[u8]) -> Result<(Option<String>, u32, pdf_inspector::PdfType), ConvertError> {
++///
++/// The returned `Vec<u32>` names the 1-indexed pages that genuinely need
++/// OCR (empty when every flagged page yielded text on re-extraction).
++fn extract_text(
++    bytes: &[u8],
++) -> Result<(Option<String>, u32, pdf_inspector::PdfType, Vec<u32>), ConvertError> {
      let result = pdf_inspector::process_pdf_mem(bytes).map_err(map_error)?;
++    // Detection samples content streams and over-reports short or
++    // image-heavy text pages; extraction knows which of them yielded none.
++    let mut needs_ocr: Vec<u32> = Vec::new();
      if !result.pages_needing_ocr.is_empty() {
-         log::warn!(
-@@ -23,20 +30,86 @@ pub fn to_markdown(bytes: &[u8]) -> Result<String, ConvertError> {
+-        // Detection samples content streams and over-reports short or
+-        // image-heavy text pages; extraction knows which of them yielded none.
+         let flagged: Vec<u32> = result.pages_needing_ocr.iter().map(|page| page - 1).collect();
+-        let pages = pdf_inspector::extract_pages_markdown_mem(bytes, Some(&flagged))
++        needs_ocr = pdf_inspector::extract_pages_markdown_mem(bytes, Some(&flagged))
+             .map_err(map_error)?
+             .pages_needing_ocr;
+-        if !pages.is_empty() {
+-            return Err(ConvertError::NeedsOcr { pages, page_count: result.page_count });
+-        }
+     }
      if result.has_encoding_issues {
          log::warn!("broken font encodings detected; extracted text may be garbled");
      }
@@ -101,38 +118,59 @@ index 74a36e1..77bbb89 100644
 +                } else {
 +                    markdown = Some(t);
 +                }
-             }
--            Ok(markdown)
-         }
--        _ => Err(ConvertError::Unsupported(format!(
++            }
++        }
 +    }
-+    Ok((markdown, result.page_count, result.pdf_type))
++    Ok((markdown, result.page_count, result.pdf_type, needs_ocr))
++}
++
++/// Error for a PDF with no extractable text and no images: pages that
++/// genuinely need OCR error as `NeedsOcr` (naming them, like upstream);
++/// otherwise the text is simply absent.
++fn no_text_error(
++    page_count: u32,
++    pdf_type: pdf_inspector::PdfType,
++    needs_ocr: Vec<u32>,
++) -> ConvertError {
++    if needs_ocr.is_empty() {
++        ConvertError::Unsupported(format!(
++            "PDF has no extractable text ({pdf_type:?}, {page_count} pages)"
++        ))
++    } else {
++        ConvertError::NeedsOcr { pages: needs_ocr, page_count }
++    }
 +}
 +
 +pub fn to_markdown(bytes: &[u8]) -> Result<String, ConvertError> {
-+    let (markdown, page_count, pdf_type) = extract_text(bytes)?;
++    let (markdown, page_count, pdf_type, needs_ocr) = extract_text(bytes)?;
 +    match markdown {
-+        Some(m) => Ok(m),
-+        None => Err(ConvertError::Unsupported(format!(
-             "PDF has no extractable text ({:?}, {} pages): OCR is required",
--            result.pdf_type, result.page_count
-+            pdf_type, page_count
-         ))),
-     }
- }
- 
++        Some(m) => {
++            // Text missing OCR pages would read as complete.
++            if needs_ocr.is_empty() {
++                Ok(m)
++            } else {
++                Err(ConvertError::NeedsOcr { pages: needs_ocr, page_count })
++            }
++        }
++        None => Err(no_text_error(page_count, pdf_type, needs_ocr)),
++    }
++}
++
 +/// Build a `Document` for PDFs.  Text blocks come from pdf-inspector's
 +/// markdown (split on blank lines).  Images come from `pdf_images::extract_images`.
 +/// When there is no text but images exist, the document contains only image
 +/// blocks so that `anydoc_assets` / `--imgs` can still emit bytes.
 +pub fn to_document(bytes: &[u8]) -> Result<Document, ConvertError> {
-+    let (markdown, page_count, pdf_type) = extract_text(bytes)?;
++    let (markdown, page_count, pdf_type, needs_ocr) = extract_text(bytes)?;
++    // Pages that need OCR would leave text silently incomplete; like
++    // `to_markdown`, refuse unless the document carries no text at all
++    // (then images alone are the whole content, e.g. scanned-image).
++    if markdown.is_some() && !needs_ocr.is_empty() {
++        return Err(ConvertError::NeedsOcr { pages: needs_ocr, page_count });
++    }
 +    let raw_images = crate::formats::pdf_images::extract_images(bytes);
 +    if markdown.is_none() && raw_images.is_empty() {
-+        return Err(ConvertError::Unsupported(format!(
-+            "PDF has no extractable text ({:?}, {} pages): OCR is required",
-+            pdf_type, page_count
-+        )));
++        return Err(no_text_error(page_count, pdf_type, needs_ocr));
 +    }
 +    let mut sink = AssetSink::new();
 +    let mut assets: Vec<Asset> = Vec::new();
@@ -146,7 +184,12 @@ index 74a36e1..77bbb89 100644
 +        };
 +        let origin = format!("pdf/image-{idx}.{ext}");
 +        let id = sink.add(img.media_type.clone(), origin.clone(), &img.bytes)?;
-+        assets.push(Asset { id, media_type: img.media_type, origin_part: origin, bytes: img.bytes });
++        assets.push(Asset {
++            id,
++            media_type: img.media_type,
++            origin_part: origin,
++            bytes: img.bytes,
++        });
 +    }
 +    let mut blocks: Vec<Block> = Vec::new();
 +    if let Some(md) = markdown {
@@ -154,19 +197,28 @@ index 74a36e1..77bbb89 100644
 +            let t = para.trim();
 +            if t.is_empty() {
 +                continue;
-+            }
-+            blocks.push(Block::Paragraph(vec![Inline::Text { text: t.to_string(), style: crate::model::Style::PLAIN }]));
-+        }
-+    }
+             }
+-            Ok(markdown)
++            blocks.push(Block::Paragraph(vec![Inline::Text {
++                text: t.to_string(),
++                style: crate::model::Style::PLAIN,
++            }]));
+         }
+-        _ => Err(ConvertError::Unsupported(format!(
+-            "PDF has no extractable text ({:?}, {} pages)",
+-            result.pdf_type, result.page_count
+-        ))),
+     }
 +    for asset in &assets {
-+        blocks.push(Block::Paragraph(vec![Inline::Image { alt: String::new(), source: ImageSource::Asset(asset.id) }]));
++        blocks.push(Block::Paragraph(vec![Inline::Image {
++            alt: String::new(),
++            source: ImageSource::Asset(asset.id),
++        }]));
 +    }
 +    Ok(Document { blocks, notes: Vec::new(), assets })
-+}
-+
+ }
+
  fn map_error(e: PdfError) -> ConvertError {
-     match e {
-         PdfError::Encrypted => ConvertError::Encrypted,
 diff --git a/src/formats/pdf_images.rs b/src/formats/pdf_images.rs
 new file mode 100644
 index 0000000..3f09b40

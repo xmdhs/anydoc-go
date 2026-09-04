@@ -36,8 +36,9 @@ jobs:
       GOCACHE: /home/runner/.cache/go-build
       GOPATH: /home/runner/go
       # 与 generate-core.yml 同锁 anydoc 版本：patches/（pdf-inspector stub
-      # 版本号、源码 patch）只对 v0.1.8 验证过，build.sh 默认值与此一致。
-      ANYDOC_REF: v0.2.3
+      # 版本号、源码 patch）只对该版本验证过，build.sh 默认值与此一致。
+      ANYDOC_REF: v0.2.4
+      GOCCY_REF: f57f53361e9e507a8a8df83b82338c1901a77ce7
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -154,6 +155,10 @@ jobs:
     name: Collect binaries
     needs: cross-build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
     steps:
       - name: Download all platform binaries
         uses: actions/download-artifact@v7
@@ -167,6 +172,11 @@ jobs:
           set -euxo pipefail
           ls -lh dist/
           file dist/*
+
+      - name: Attest build provenance
+        uses: actions/attest@v4
+        with:
+          subject-path: 'dist/*'
 
       - name: Upload cross-platform binaries
         uses: actions/upload-artifact@v7

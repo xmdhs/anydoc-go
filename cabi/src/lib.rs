@@ -26,6 +26,7 @@ pub const ERR_RESOURCE_LIMIT: u32 = 4;
 pub const ERR_MISSING_PART: u32 = 5;
 pub const ERR_IO: u32 = 6;
 pub const ERR_OTHER: u32 = 7;
+pub const ERR_NEEDS_OCR: u32 = 8;
 
 /// Map a stable error to its code (mirrors `ConvertError::code`).
 fn code_of(err: &ConvertError) -> u32 {
@@ -36,6 +37,7 @@ fn code_of(err: &ConvertError) -> u32 {
         "resourceLimit" => ERR_RESOURCE_LIMIT,
         "missingPart" => ERR_MISSING_PART,
         "io" => ERR_IO,
+        "needsOcr" => ERR_NEEDS_OCR,
         _ => ERR_OTHER,
     }
 }

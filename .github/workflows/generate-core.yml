@@ -22,8 +22,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  ANYDOC_REF: v0.2.3
-  GOCCY_REF: 16cd8518d208b13876765f05d5aca9197b63ac9a
+  ANYDOC_REF: v0.2.4
+  GOCCY_REF: f57f53361e9e507a8a8df83b82338c1901a77ce7
 
 jobs:
   generate:
